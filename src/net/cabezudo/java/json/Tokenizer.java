@@ -11,17 +11,19 @@ class Tokenizer {
   static Tokens tokenize(String string) {
     char[] chars = string.toCharArray();
     Tokens tokens = new Tokens();
-    Token token = new Token(0);
+    Token token = new Token(Position.INITIAL);
     boolean isString = false;
 
-    for (int i = 0; i < chars.length; i++) {
+    int line = token.getPosition().getLine();
+    int row = token.getPosition().getRow();
+    for (int i = 0; i < chars.length; i++, row++) {
       char c = chars[i];
       if (isString) {
         if (c == '"') {
           token.append(c);
           isString = false;
           tokens.add(token);
-          token = new Token(i + 1);
+          token = new Token(new Position(line, row + 1));
         } else {
           token.append(c);
         }
@@ -32,6 +34,8 @@ class Tokenizer {
             isString = true;
             break;
           case '\n':
+            line++;
+            row = 1;
           case ' ':
           case ':':
           case ',':
@@ -40,10 +44,10 @@ class Tokenizer {
           case '[':
           case ']':
             tokens.add(token);
-            token = new Token(i);
+            token = new Token(new Position(line, row));
             token.append(c);
             tokens.add(token);
-            token = new Token(i + 1);
+            token = new Token(new Position(line, row + 1));
             break;
           default:
             token.append(c);

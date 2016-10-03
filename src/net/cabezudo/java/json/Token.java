@@ -11,23 +11,24 @@ import net.cabezudo.java.json.exceptions.InvalidTokenException;
  */
 class Token {
 
-  private final int position;
+  private final Position position;
 
   private StringBuilder sb;
   private TokenType type = TokenType.NONE;
 
-  Token(int position) {
+  Token(Position position) {
     this.position = position;
     sb = new StringBuilder();
   }
 
-  Token(String string) {
-    position = 0;
-    sb = new StringBuilder(string);
-  }
+//  Token(String string) {
+//    line = 1;
+//    row = 1;
+//    sb = new StringBuilder(string);
+//  }
   @Override
   public String toString() {
-    return sb + " (" + type + ", " + position + ")";
+    return sb + " (" + type + ", " + position.getLine() + ", " + position.getRow() + ")";
   }
 
   void append(char c) {
@@ -112,7 +113,7 @@ class Token {
     return sb.length() == 0;
   }
 
-  int getPosition() {
+  Position getPosition() {
     return position;
   }
 

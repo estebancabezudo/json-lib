@@ -2,7 +2,7 @@ package net.cabezudo.java.json.values;
 
 import java.util.List;
 import net.cabezudo.java.json.JSONElement;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
@@ -123,7 +123,7 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testGetReferencedElement() throws ParseException {
+  public void testGetReferencedElement() throws JSONParseException {
     JSONObject a = new JSONObject("{ \"id\": 2, \"name\": \"Esteban\" }");
     a.setReferenceFieldName("id");
     jsonArray.add(a);

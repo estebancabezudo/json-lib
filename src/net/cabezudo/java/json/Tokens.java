@@ -12,7 +12,7 @@ import net.cabezudo.java.json.exceptions.EmptyQueueException;
  */
 class Tokens {
 
-  private int position;
+  private Position position;
   private final Queue<Token> queue = new LinkedList<>();
 
   boolean add(Token token) {
@@ -39,7 +39,7 @@ class Tokens {
     return queue.element();
   }
 
-  int getPosition() {
+  Position getPosition() {
     return position;
   }
 

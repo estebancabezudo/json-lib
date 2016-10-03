@@ -6,7 +6,7 @@ import java.math.MathContext;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.java.json.JSONPair;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 import net.cabezudo.java.json.objects.DigTypes;
 import net.cabezudo.java.json.objects.Types;
@@ -103,7 +103,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigBoolean() throws ParseException, PropertyNotExistException {
+  public void testDigBoolean() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -112,7 +112,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigByte() throws ParseException, PropertyNotExistException {
+  public void testDigByte() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -121,7 +121,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigChar() throws ParseException, PropertyNotExistException {
+  public void testDigChar() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -130,7 +130,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigCharacter() throws ParseException, PropertyNotExistException {
+  public void testDigCharacter() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -139,7 +139,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigDouble() throws ParseException, PropertyNotExistException {
+  public void testDigDouble() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -148,7 +148,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigFloat() throws ParseException, PropertyNotExistException {
+  public void testDigFloat() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -157,7 +157,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigInt() throws ParseException, PropertyNotExistException {
+  public void testDigInt() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -166,7 +166,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigInteger() throws ParseException, PropertyNotExistException {
+  public void testDigInteger() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -175,7 +175,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigLong() throws ParseException, PropertyNotExistException {
+  public void testDigLong() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -184,7 +184,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullByte() throws ParseException {
+  public void testDigNullByte() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -196,7 +196,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullChar() throws ParseException {
+  public void testDigNullChar() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -208,7 +208,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullCharacter() throws ParseException {
+  public void testDigNullCharacter() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -217,7 +217,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullDouble() throws ParseException {
+  public void testDigNullDouble() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -229,7 +229,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullFloat() throws ParseException {
+  public void testDigNullFloat() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -241,7 +241,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullInt() throws ParseException {
+  public void testDigNullInt() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -253,7 +253,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullInteger() throws ParseException {
+  public void testDigNullInteger() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -262,7 +262,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullLong() throws ParseException {
+  public void testDigNullLong() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -274,7 +274,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullObjectByte() throws ParseException {
+  public void testDigNullObjectByte() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -286,7 +286,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullObjectDouble() throws ParseException {
+  public void testDigNullObjectDouble() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -295,7 +295,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullObjectFloat() throws ParseException {
+  public void testDigNullObjectFloat() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -304,7 +304,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullObjectLong() throws ParseException {
+  public void testDigNullObjectLong() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -313,7 +313,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullObjectShort() throws ParseException {
+  public void testDigNullObjectShort() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -322,7 +322,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullShort() throws ParseException {
+  public void testDigNullShort() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -334,7 +334,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigNullString() throws ParseException {
+  public void testDigNullString() throws JSONParseException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -346,7 +346,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectBoolean() throws ParseException, PropertyNotExistException {
+  public void testDigObjectBoolean() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -355,7 +355,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectByte() throws ParseException, PropertyNotExistException {
+  public void testDigObjectByte() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -364,7 +364,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectDouble() throws ParseException, PropertyNotExistException {
+  public void testDigObjectDouble() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -373,7 +373,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectFloat() throws ParseException, PropertyNotExistException {
+  public void testDigObjectFloat() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -382,7 +382,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectLong() throws ParseException, PropertyNotExistException {
+  public void testDigObjectLong() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -391,7 +391,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigObjectShort() throws ParseException, PropertyNotExistException {
+  public void testDigObjectShort() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -400,7 +400,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigShort() throws ParseException, PropertyNotExistException {
+  public void testDigShort() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -409,7 +409,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testDigString() throws ParseException, PropertyNotExistException {
+  public void testDigString() throws JSONParseException, PropertyNotExistException {
     DigTypes digTypes = new DigTypes();
     JSONObject jsonObject = new JSONObject(digTypes);
 
@@ -418,7 +418,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBigDecimalUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetBigDecimalUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -428,7 +428,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBigDecimalUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetBigDecimalUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -438,7 +438,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBigIntegerUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetBigIntegerUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -447,7 +447,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBigIntegerUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetBigIntegerUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -456,7 +456,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBooleanObjectUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetBooleanObjectUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -465,7 +465,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBooleanUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetBooleanUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -474,7 +474,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetBooleanUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetBooleanUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -483,7 +483,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetByteArrayUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetByteArrayUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -496,7 +496,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetByteArrayUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetByteArrayUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -509,7 +509,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetByteUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetByteUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -518,7 +518,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetByteUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetByteUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -527,7 +527,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCalendarUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetCalendarUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -540,7 +540,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCalendarUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetCalendarUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -553,7 +553,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCharUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetCharUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -562,7 +562,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCharUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetCharUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -571,7 +571,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCharacterUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetCharacterUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -580,7 +580,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetCharacterUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetCharacterUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -589,7 +589,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetChilds() throws ParseException, PropertyNotExistException {
+  public void testGetChilds() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -705,7 +705,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetDoubleUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetDoubleUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -714,7 +714,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetDoubleUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetDoubleUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -723,7 +723,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetElementUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetElementUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -732,7 +732,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetElementUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetElementUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -741,7 +741,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetFloatUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetFloatUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -750,7 +750,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetFloatUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetFloatUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -759,7 +759,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetIntUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetIntUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -768,7 +768,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetIntUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetIntUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -777,7 +777,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetIntegerUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetIntegerUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -786,7 +786,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetIntegerUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetIntegerUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -795,7 +795,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetJSONArrayUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetJSONArrayUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -808,7 +808,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetJSONArrayUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetJSONArrayUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -821,7 +821,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetLongUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetLongUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -830,7 +830,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetLongUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetLongUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -839,7 +839,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBigDecimalUsingThePropertyIndex() throws ParseException {
+  public void testGetNullBigDecimalUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -849,7 +849,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBigDecimalUsingThePropertyName() throws ParseException {
+  public void testGetNullBigDecimalUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -862,7 +862,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBigIntegerUsingThePropertyIndex() throws ParseException {
+  public void testGetNullBigIntegerUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -871,7 +871,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBigIntegerUsingThePropertyName() throws ParseException {
+  public void testGetNullBigIntegerUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -880,7 +880,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBooleanUsingThePropertyIndex() throws ParseException {
+  public void testGetNullBooleanUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -889,7 +889,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullBooleanUsingThePropertyName() throws ParseException {
+  public void testGetNullBooleanUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -901,7 +901,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullByteArray() throws ParseException {
+  public void testGetNullByteArray() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -917,7 +917,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullByteUsingThePropertyIndex() throws ParseException {
+  public void testGetNullByteUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -926,7 +926,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullByteUsingThePropertyName() throws ParseException {
+  public void testGetNullByteUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -938,7 +938,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCalendarUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetNullCalendarUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -954,7 +954,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCalendarUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetNullCalendarUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -970,7 +970,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCharString() throws ParseException {
+  public void testGetNullCharString() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -982,7 +982,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCharUsingThePropertyIndex() throws ParseException {
+  public void testGetNullCharUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -991,7 +991,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCharacterUsingThePropertyIndex() throws ParseException {
+  public void testGetNullCharacterUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1005,7 +1005,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullCharacterUsingThePropertyName() throws ParseException {
+  public void testGetNullCharacterUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1017,7 +1017,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullDoubleUsingThePropertyIndex() throws ParseException {
+  public void testGetNullDoubleUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1026,7 +1026,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullDoubleUsingThePropertyName() throws ParseException {
+  public void testGetNullDoubleUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1038,7 +1038,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullElementUsingThePropertyIndex() throws PropertyNotExistException, ParseException {
+  public void testGetNullElementUsingThePropertyIndex() throws PropertyNotExistException, JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1047,7 +1047,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullElementUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetNullElementUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1059,7 +1059,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullFloatUsingThePropertyIndex() throws ParseException {
+  public void testGetNullFloatUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1068,7 +1068,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullFloatUsingThePropertyName() throws ParseException {
+  public void testGetNullFloatUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1080,7 +1080,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullIntUsingThePropertyIndex() throws ParseException {
+  public void testGetNullIntUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1089,7 +1089,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullIntUsingThePropertyName() throws ParseException {
+  public void testGetNullIntUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1101,7 +1101,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullIntegerUsingThePropertyIndex() throws ParseException {
+  public void testGetNullIntegerUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1110,7 +1110,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullIntegerUsingThePropertyName() throws ParseException {
+  public void testGetNullIntegerUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1122,7 +1122,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullJSONArrayUsingThePropertyIndex() throws ParseException {
+  public void testGetNullJSONArrayUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1135,7 +1135,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullJSONArrayUsingThePropertyName() throws ParseException {
+  public void testGetNullJSONArrayUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1151,7 +1151,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullLongUsingThePropertyIndex() throws ParseException {
+  public void testGetNullLongUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1160,7 +1160,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullLongUsingThePropertyName() throws ParseException {
+  public void testGetNullLongUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1172,7 +1172,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectBooleanUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectBooleanUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1181,7 +1181,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectBooleanUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectBooleanUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1189,7 +1189,7 @@ public class JSONObjectIT {
     assertEquals(true, b);
   }
 
-  public void testGetNullObjectByteUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectByteUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1198,7 +1198,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectByteUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectByteUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1207,7 +1207,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectDoubleUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectDoubleUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1216,7 +1216,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectDoubleUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectDoubleUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1228,7 +1228,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectFloatUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectFloatUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1237,7 +1237,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectFloatUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectFloatUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1249,7 +1249,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectLongUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectLongUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1258,7 +1258,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectLongUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectLongUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1270,7 +1270,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectShortUsingThePropertyIndex() throws ParseException {
+  public void testGetNullObjectShortUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1279,7 +1279,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullObjectShortUsingThePropertyName() throws ParseException {
+  public void testGetNullObjectShortUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1291,7 +1291,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullShortUsingThePropertyIndex() throws ParseException {
+  public void testGetNullShortUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1300,7 +1300,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullShortUsingThePropertyName() throws ParseException {
+  public void testGetNullShortUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1312,7 +1312,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullStringUsingThePropertyIndex() throws ParseException {
+  public void testGetNullStringUsingThePropertyIndex() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1324,7 +1324,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullStringUsingThePropertyName() throws ParseException {
+  public void testGetNullStringUsingThePropertyName() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1336,7 +1336,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectBooleanUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectBooleanUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1345,7 +1345,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectByteUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectByteUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1354,7 +1354,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectByteUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectByteUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1363,7 +1363,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectDoubleUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectDoubleUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1372,7 +1372,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectDoubleUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectDoubleUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1381,7 +1381,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectFloatUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectFloatUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1390,7 +1390,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectFloatUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectFloatUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1399,7 +1399,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectLongUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectLongUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1408,7 +1408,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectLongUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectLongUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1417,7 +1417,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectShortUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectShortUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1426,7 +1426,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectShortUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectShortUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1435,7 +1435,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetObjectUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1447,7 +1447,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetObjectUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetObjectUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1459,7 +1459,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetReferencedElement() throws ParseException, PropertyNotExistException {
+  public void testGetReferencedElement() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1470,7 +1470,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetShortUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetShortUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1479,7 +1479,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetShortUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetShortUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1488,7 +1488,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetStringUsingThePropertyIndex() throws ParseException, PropertyNotExistException {
+  public void testGetStringUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1497,7 +1497,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetStringUsingThePropertyName() throws ParseException, PropertyNotExistException {
+  public void testGetStringUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1506,7 +1506,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testHasChilds() throws ParseException {
+  public void testHasChilds() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1514,7 +1514,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsArray() throws ParseException {
+  public void testIsArray() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1522,7 +1522,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsBoolean() throws ParseException {
+  public void testIsBoolean() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1530,7 +1530,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsNotReferenciable() throws ParseException {
+  public void testIsNotReferenciable() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1538,7 +1538,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsNull() throws ParseException {
+  public void testIsNull() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1546,7 +1546,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsNumber() throws ParseException {
+  public void testIsNumber() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1554,7 +1554,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsObject() throws ParseException {
+  public void testIsObject() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1562,7 +1562,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsReferenciable() throws ParseException {
+  public void testIsReferenciable() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1570,7 +1570,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsString() throws ParseException {
+  public void testIsString() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1578,7 +1578,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIsValue() throws ParseException {
+  public void testIsValue() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1586,7 +1586,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIterator() throws ParseException, PropertyNotExistException {
+  public void testIterator() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1708,7 +1708,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testToArray() throws ParseException, PropertyNotExistException {
+  public void testToArray() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1801,7 +1801,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testToJSON() throws ParseException {
+  public void testToJSON() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1813,7 +1813,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testToJSONArray() throws ParseException, PropertyNotExistException {
+  public void testToJSONArray() throws JSONParseException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 

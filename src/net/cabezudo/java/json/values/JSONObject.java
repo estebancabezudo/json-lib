@@ -15,7 +15,7 @@ import java.util.TreeSet;
 import net.cabezudo.java.json.JSON;
 import net.cabezudo.java.json.JSONPair;
 import net.cabezudo.java.json.Log;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 
 /**
@@ -32,9 +32,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    *
    * @param data
-   * @throws ParseException
+   * @throws JSONParseException
    */
-  public JSONObject(String data) throws ParseException {
+  public JSONObject(String data) throws JSONParseException {
     JSONValue jsonData = JSON.parse(data);
     if (jsonData instanceof JSONObject) {
       JSONObject jsonObject = (JSONObject) jsonData;
@@ -77,9 +77,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    *
    * @param object
-   * @throws ParseException
+   * @throws JSONParseException
    */
-  public JSONObject(Object object) throws ParseException {
+  public JSONObject(Object object) throws JSONParseException {
     this((JSONObject) JSON.toJSONTree(object));
   }
 
@@ -355,7 +355,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       return jsonValue;
     } else {
       String propertyName = propertyFullName.substring(0, point);
-      JSONObject nextLevelObject = getNullObject(propertyName);
+      JSONValue nextLevelValue = digNullValue(propertyName);
+      if (!nextLevelValue.isObject()) {
+        return null;
+      }
+      JSONObject nextLevelObject = nextLevelValue.toObject();
 
       // TODO verify that the point is not the last character in the property name
       String nextPropertyName = propertyFullName.substring(point + 1);

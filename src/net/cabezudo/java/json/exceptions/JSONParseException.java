@@ -1,5 +1,7 @@
 package net.cabezudo.java.json.exceptions;
 
+import net.cabezudo.java.json.Position;
+
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.0
@@ -7,21 +9,11 @@ package net.cabezudo.java.json.exceptions;
  * @date 06/04/2014
  * @serial exclude
  */
-public class ParseException extends Exception {
+public class JSONParseException extends Exception {
 
   private static final long serialVersionUID = -1056432009939512679L;
 
-  private final Integer position;
-
-  /**
-   *
-   * @param message
-   * @param cause
-   */
-  public ParseException(String message, Throwable cause) {
-    super(message, cause);
-    this.position = null;
-  }
+  private final Position position;
 
   /**
    *
@@ -29,7 +21,7 @@ public class ParseException extends Exception {
    * @param cause
    * @param position
    */
-  public ParseException(String message, Throwable cause, Integer position) {
+  public JSONParseException(String message, Throwable cause, Position position) {
     super(message, cause);
     this.position = position;
   }
@@ -39,7 +31,7 @@ public class ParseException extends Exception {
    * @param message
    * @param position
    */
-  public ParseException(String message, Integer position) {
+  public JSONParseException(String message, Position position) {
     super(message);
     this.position = position;
   }
@@ -48,7 +40,7 @@ public class ParseException extends Exception {
    *
    * @return
    */
-  public Integer getPosition() {
+  public Position getPosition() {
     return position;
   }
 }

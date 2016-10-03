@@ -13,9 +13,10 @@ import java.util.Arrays;
 import java.util.List;
 import net.cabezudo.java.json.annotations.JSONProperty;
 import net.cabezudo.java.json.exceptions.EmptyQueueException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.NotPropertiesException;
 import net.cabezudo.java.json.exceptions.ObjectException;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.ReadFileException;
 import net.cabezudo.java.json.values.JSONArray;
 import net.cabezudo.java.json.values.JSONNull;
 import net.cabezudo.java.json.values.JSONObject;
@@ -101,9 +102,9 @@ public class JSON {
    *
    * @param string
    * @return
-   * @throws ParseException
+   * @throws JSONParseException
    */
-  public static JSONValue parse(String string) throws ParseException {
+  public static JSONValue parse(String string) throws JSONParseException {
     Tokens tokens = Tokenizer.tokenize(string);
     JSONValue jsonElement;
 
@@ -111,7 +112,7 @@ public class JSON {
     try {
       token = tokens.poll();
     } catch (EmptyQueueException e) {
-      throw new ParseException("Unexpected end parsing " + string + ".", e, 0);
+      throw new JSONParseException("Unexpected end parsing " + string + ".", e, Position.INITIAL);
     }
 
     TokenType tokenType = token.getType();
@@ -126,7 +127,7 @@ public class JSON {
         jsonElement = jsonFactory.getJSONArray(tokens);
         break;
       default:
-        throw new ParseException("Unexpected token: " + token, token.getPosition());
+        throw new JSONParseException("Unexpected token: " + token, token.getPosition());
     }
     return jsonElement;
   }
@@ -136,20 +137,21 @@ public class JSON {
    * @param filePath
    * @param encoding
    * @return
-   * @throws ParseException
+   * @throws JSONParseException
+   * @throws net.cabezudo.java.json.exceptions.ReadFileException
    */
-  public static JSONValue parse(Path filePath, String encoding) throws ParseException {
+  public static JSONValue parse(Path filePath, String encoding) throws JSONParseException, ReadFileException {
     byte[] data;
     try {
       data = Files.readAllBytes(filePath);
     } catch (IOException e) {
-      throw new ParseException("Can't read the file " + filePath + ".", e);
+      throw new ReadFileException("Can't read the file " + filePath + ".", e);
     }
     String jsonString;
     try {
       jsonString = new String(data, encoding);
     } catch (UnsupportedEncodingException e) {
-      throw new ParseException("Bad encoding for file " + filePath + " using " + encoding + ".", e);
+      throw new ReadFileException("Bad encoding for file " + filePath + " using " + encoding + ".", e);
     }
     return parse(jsonString);
   }

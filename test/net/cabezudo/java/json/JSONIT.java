@@ -14,8 +14,9 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
+import net.cabezudo.java.json.exceptions.ReadFileException;
 import net.cabezudo.java.json.objects.Book;
 import net.cabezudo.java.json.objects.BookList;
 import net.cabezudo.java.json.objects.Data;
@@ -74,13 +75,13 @@ public class JSONIT {
       jsonValue = jsonObject.getValue("number");
       assertTrue(jsonValue.isNumber());
 
-    } catch (PropertyNotExistException | ParseException e) {
+    } catch (PropertyNotExistException | JSONParseException e) {
       fail(e.getMessage());
     }
   }
 
   @Test
-  public void testParsePath() throws IOException {
+  public void testParsePath() throws IOException, ReadFileException {
     System.out.println("Get a string from a file and parse into a JSONElement tree.");
 
     final File temporaryFile = folder.newFile("tempFile.txt");
@@ -123,28 +124,29 @@ public class JSONIT {
 
       jsonValue = jsonObject.getValue("number");
       assertTrue(jsonValue.isNumber());
-    } catch (ParseException | PropertyNotExistException e) {
+    } catch (JSONParseException | PropertyNotExistException e) {
       fail(e.getMessage());
     }
 
     // TODO Make this test
     // TODO Make this test
   }
+
   @Test
   public void testToJSONArray() {
-    
+
     List<JSONable> list = new ArrayList<>();
-    
+
     Book book;
-    
+
     book = new Book(1, "Evolution");
     list.add(book);
     book = new Book(2, "The double");
     list.add(book);
-    
+
     JSONArray jsonArray = JSON.toJSONArray(list);
     assertEquals(2, jsonArray.size());
-    
+
     JSONValue jsonElement;
     jsonElement = jsonArray.get(0);
     assertEquals("{ \"id\": 1, \"name\": \"Evolution\" }", jsonElement.toJSON());
@@ -245,7 +247,7 @@ public class JSONIT {
       assertEquals(types.getPLong(), (long) jsonTypesValue.getLong("pLong"));
       assertEquals(types.getPShort(), (long) jsonTypesValue.getShort("pShort"));
       assertEquals(types.getString(), jsonTypesValue.getString("string"));
-    }catch (PropertyNotExistException e) {
+    } catch (PropertyNotExistException e) {
       fail(e.getMessage());
     }
   }

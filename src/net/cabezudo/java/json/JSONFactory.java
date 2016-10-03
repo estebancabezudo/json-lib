@@ -6,7 +6,7 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import net.cabezudo.java.json.exceptions.EmptyQueueException;
-import net.cabezudo.java.json.exceptions.ParseException;
+import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.values.JSONArray;
 import net.cabezudo.java.json.values.JSONBoolean;
 import net.cabezudo.java.json.values.JSONNull;
@@ -127,15 +127,15 @@ public class JSONFactory {
     return new JSONString(value);
   }
 
-  private JSONValue get(Tokens tokens) throws ParseException {
+  private JSONValue get(Tokens tokens) throws JSONParseException {
 
     Token token;
-    int position = 0;
+    Position position = Position.INITIAL;
 
     try {
       token = tokens.poll();
     } catch (EmptyQueueException e) {
-      throw new ParseException("Unexpected end of tokens", e, position);
+      throw new JSONParseException("Unexpected end of tokens", e, position);
     }
 
     JSONValue jsonValue;
@@ -167,16 +167,17 @@ public class JSONFactory {
         return jsonValue;
       default:
         position = token.getPosition();
-        throw new ParseException("Value expected but I have '" + token.getValue() + "' of type '" + type + "' in " + position + ".", position);
+        throw new JSONParseException("Value expected but I have '" + token.getValue() + "' of type '" + type + "' in line " + position.getLine() + ", row " + position.getRow() + ".", position);
     }
   }
 
-  JSONArray getJSONArray(Tokens tokens) throws ParseException {
+  JSONArray getJSONArray(Tokens tokens) throws JSONParseException {
 
     JSONArray jsonArray = new JSONArray();
     Log.debug("Create a new array %s.%n", jsonArray);
     Token token;
-    int position = 0;
+    int line = 1;
+    Position position = Position.INITIAL;
     token = tokens.element();
 
     if (token.isRightBracket()) {
@@ -197,19 +198,19 @@ public class JSONFactory {
       } while (token.getType() == TokenType.COMMA);
 
       if (!token.isRightBracket()) {
-        throw new ParseException("Closing bracket expected and found " + token + ".", position);
+        throw new JSONParseException("Closing bracket expected and found " + token + ".", position);
       }
 
     } catch (EmptyQueueException e) {
-      throw new ParseException("Unexpected end.", e, position);
+      throw new JSONParseException("Unexpected end.", e, position);
     }
     return jsonArray;
   }
 
-  JSONObject getJSONObject(Tokens tokens) throws ParseException {
+  JSONObject getJSONObject(Tokens tokens) throws JSONParseException {
     JSONObject jsonObject = new JSONObject();
     Token token;
-    int positionOnToken = 0;
+    Position positionOnToken = Position.INITIAL;
     token = tokens.element();
     if (token.isRightBrace()) {
       return jsonObject;
@@ -218,14 +219,14 @@ public class JSONFactory {
       do {
         token = tokens.poll();
         if (token.getType() != TokenType.STRING) {
-          throw new ParseException("Unexpected token: " + token, token.getPosition());
+          throw new JSONParseException("Unexpected token: " + token, token.getPosition());
         }
         JSONString jsonString = createJSONString(token);
 
         token = tokens.poll();
         if (token.getType() != TokenType.COLON) {
           positionOnToken = token.getPosition();
-          throw new ParseException("Colon expected.", positionOnToken);
+          throw new JSONParseException("Colon expected.", positionOnToken);
         }
 
         JSONValue jsonValue = get(tokens);
@@ -236,7 +237,7 @@ public class JSONFactory {
         positionOnToken = token.getPosition();
       } while (token.getType() == TokenType.COMMA);
     } catch (EmptyQueueException e) {
-      throw new ParseException("Unexpected end.", e, positionOnToken);
+      throw new JSONParseException("Unexpected end.", e, positionOnToken);
     }
     return jsonObject;
   }
