@@ -90,8 +90,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   private JSONPair privateAdd(JSONPair jsonPair) {
-    list.add(jsonPair);
     String key = jsonPair.getKey();
+    if (map.containsKey(key)) {
+      throw new RuntimeException("The object " + this.toJSON() + " already has the key " + key + ".");
+    }
+    list.add(jsonPair);
     return map.put(key, jsonPair);
   }
 
