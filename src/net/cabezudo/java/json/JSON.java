@@ -163,9 +163,30 @@ public class JSON {
       switch (c) {
         case '"':
           sb.append('\\');
+          sb.append(c);
+          break;
+        case '\b':
+          sb.append("\\b");
+          break;
+        case '\f':
+          sb.append("\\f");
+          break;
+        case '\n':
+          sb.append("\\n");
+          break;
+        case '\r':
+          sb.append("\\r");
+          break;
+        case '\t':
+          sb.append("\\t");
+          break;
+        case '\\':
+          sb.append("\\\\");
+          break;
+        default:
+          sb.append(c);
           break;
       }
-      sb.append(c);
     }
     return sb.toString();
   }

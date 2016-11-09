@@ -135,6 +135,13 @@ public class JSONIT {
   }
 
   @Test
+  public void testToEscapedString() {
+    String origin = "\"\b\f\n\r\t\\";
+    String result = JSON.toEscapedString(origin);
+    assertEquals(result, "\\\"\\b\\f\\n\\r\\t\\\\");
+  }
+
+  @Test
   public void testToJSONArray() {
 
     List<JSONable> list = new ArrayList<>();
