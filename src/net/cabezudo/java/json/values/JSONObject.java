@@ -51,6 +51,16 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    *
+   * @param jsonPairs
+   */
+  public JSONObject(JSONPair... jsonPairs) {
+    for (JSONPair jsonPair : jsonPairs) {
+      privateAdd(jsonPair);
+    }
+  }
+
+  /**
+   *
    * @param jsonObject
    */
   public JSONObject(JSONObject jsonObject) {
@@ -77,9 +87,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    *
    * @param object
-   * @throws JSONParseException
    */
-  public JSONObject(Object object) throws JSONParseException {
+  public JSONObject(Object object) {
     this((JSONObject) JSON.toJSONTree(object));
   }
 
