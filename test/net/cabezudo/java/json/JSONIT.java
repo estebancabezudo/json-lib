@@ -47,7 +47,8 @@ public class JSONIT {
   @Test
   public void testParse() {
     System.out.println("Parse a string into a JSONElement tree.");
-    String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"Esteban Cabezudo\", \"number\": 234 } }";
+    String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
+    System.out.println("String: " + jsonUnparsedString);
     try {
       JSONObject jsonObject = JSON.parse(jsonUnparsedString).toObject();
 
@@ -70,7 +71,8 @@ public class JSONIT {
       jsonValue = jsonObject.getValue("string");
       assertTrue(jsonValue.isString());
       String name = jsonValue.toString();
-      assertEquals("Esteban Cabezudo", name);
+      System.out.println("Name: " + name);
+      assertEquals("George \\\"Baby Face\\\" Nelson", name);
 
       jsonValue = jsonObject.getValue("number");
       assertTrue(jsonValue.isNumber());

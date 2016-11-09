@@ -19,14 +19,25 @@ class Tokenizer {
     for (int i = 0; i < chars.length; i++, row++) {
       char c = chars[i];
       if (isString) {
-        if (c == '"') {
-          token.append(c);
-          isString = false;
-          tokens.add(token);
-          token = new Token(new Position(line, row + 1));
-        } else {
-          token.append(c);
-        }
+        do {
+          if (c == '\\') {
+            token.append(c);
+            i++;
+            if (i < chars.length) {
+              c = chars[i];
+              token.append(c);
+            }
+            break;
+          }
+          if (c == '"') {
+            token.append(c);
+            isString = false;
+            tokens.add(token);
+            token = new Token(new Position(line, row + 1));
+          } else {
+            token.append(c);
+          }
+        } while (false);
       } else {
         switch (c) {
           case '"':

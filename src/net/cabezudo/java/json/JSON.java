@@ -156,6 +156,20 @@ public class JSON {
     return parse(jsonString);
   }
 
+  public static String toEscapedString(String string) {
+    StringBuilder sb = new StringBuilder();
+    char[] chars = string.toCharArray();
+    for (char c : chars) {
+      switch (c) {
+        case '"':
+          sb.append('\\');
+          break;
+      }
+      sb.append(c);
+    }
+    return sb.toString();
+  }
+
   public static JSONArray toJSONArray(List<?> list) {
     JSONArray jsonArray = new JSONArray();
 
