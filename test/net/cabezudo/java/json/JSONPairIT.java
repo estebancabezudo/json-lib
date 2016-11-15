@@ -25,7 +25,7 @@ public class JSONPairIT {
 
   @Test
   public void testCompareTo() {
-    System.out.println("Compare two objects JSONPair.");
+    Log.debug("Compare two objects JSONPair.");
     JSONPair a = new JSONPair("b", "b");
     JSONPair b = new JSONPair("b", "b");
     JSONPair c = new JSONPair("b", "a");
@@ -46,7 +46,7 @@ public class JSONPairIT {
 
   @Test
   public void testEquals() {
-    System.out.println("Compare two objects JSONPair for equality.");
+    Log.debug("Compare two objects JSONPair for equality.");
     JSONPair a = new JSONPair("a", "b");
     JSONPair b = new JSONPair("a", "b");
     JSONPair c = new JSONPair("a", "c");
@@ -61,7 +61,7 @@ public class JSONPairIT {
 
   @Test
   public void testGetValue() {
-    System.out.println("Get the element value.");
+    Log.debug("Get the element value.");
     JSONString jsonExpectedValue = new JSONString("A string");
     JSONPair jsonPair = new JSONPair("key", jsonExpectedValue);
     JSONValue jsonValue = jsonPair.getValue();
@@ -70,14 +70,14 @@ public class JSONPairIT {
 
   @Test
   public void testHasElements() {
-    System.out.println("Check if an element has childs.");
+    Log.debug("Check if an element has childs.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.hasElements();
   }
 
   @Test
   public void testHash() {
-    System.out.println("Compare two objects JSONPair hash.");
+    Log.debug("Compare two objects JSONPair hash.");
     JSONPair a = new JSONPair("a", "b");
     JSONPair b = new JSONPair("a", "b");
     JSONPair c = new JSONPair("a", "c");
@@ -93,63 +93,63 @@ public class JSONPairIT {
 
   @Test
   public void testIsArray() {
-    System.out.println("Check if the element is an array.");
+    Log.debug("Check if the element is an array.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isArray());
   }
 
   @Test
   public void testIsBoolean() {
-    System.out.println("Check if the element is a boolean.");
+    Log.debug("Check if the element is a boolean.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isBoolean());
   }
 
   @Test
   public void testIsNull() {
-    System.out.println("Check if the element is a null.");
+    Log.debug("Check if the element is a null.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isNull());
   }
 
   @Test
   public void testIsNumber() {
-    System.out.println("Check if the element is a number.");
+    Log.debug("Check if the element is a number.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isNumber());
   }
 
   @Test
   public void testIsObject() {
-    System.out.println("Check if the element is an object.");
+    Log.debug("Check if the element is an object.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isObject());
   }
 
   @Test
   public void testIsReferenciable() {
-    System.out.println("Check if the element is referenciable.");
+    Log.debug("Check if the element is referenciable.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isReferenciable());
   }
 
   @Test
   public void testIsString() {
-    System.out.println("Check if the element is a string.");
+    Log.debug("Check if the element is a string.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isString());
   }
 
   @Test
   public void testIsValue() {
-    System.out.println("Check if the element is a value.");
+    Log.debug("Check if the element is a value.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isValue());
   }
 
   @Test
   public void testObjectUsingABigDecimal() {
-    System.out.println("Create a JSONValue using a BigDecimal object.");
+    Log.debug("Create a JSONValue using a BigDecimal object.");
     BigDecimal bigDecimal = new BigDecimal("10");
     JSONPair jsonPair = new JSONPair("key", bigDecimal);
     String key = jsonPair.getKey();
@@ -163,7 +163,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingABigInteger() {
-    System.out.println("Create a JSONValue using a BigInteger object.");
+    Log.debug("Create a JSONValue using a BigInteger object.");
     BigInteger bigInteger = new BigInteger("10");
     JSONPair jsonPair = new JSONPair("key", bigInteger);
     String key = jsonPair.getKey();
@@ -177,7 +177,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingABoolean() {
-    System.out.println("Create a JSONValue using a Boolean object.");
+    Log.debug("Create a JSONValue using a Boolean object.");
     Boolean b = true;
     JSONPair jsonPair = new JSONPair("key", b);
     String key = jsonPair.getKey();
@@ -188,7 +188,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAByte() {
-    System.out.println("Create a JSONValue using a Byte object.");
+    Log.debug("Create a JSONValue using a Byte object.");
     Byte b = 10;
     JSONPair jsonPair = new JSONPair("key", b);
     String key = jsonPair.getKey();
@@ -199,7 +199,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingACalendar() {
-    System.out.println("Create a JSONValue using a Calendar object.");
+    Log.debug("Create a JSONValue using a Calendar object.");
     Calendar calendar = Calendar.getInstance();
     JSONPair jsonPair = new JSONPair("key", calendar);
     String key = jsonPair.getKey();
@@ -220,7 +220,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingACharacter() {
-    System.out.println("Create a JSONValue using a Character object.");
+    Log.debug("Create a JSONValue using a Character object.");
     Character c = 'a';
     JSONPair jsonPair = new JSONPair("key", c);
     String key = jsonPair.getKey();
@@ -231,7 +231,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingADate() {
-    System.out.println("Create a JSONValue using a Date object.");
+    Log.debug("Create a JSONValue using a Date object.");
     Date date = new Date();
     JSONPair jsonPair = new JSONPair("key", date);
     String key = jsonPair.getKey();
@@ -250,7 +250,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingADouble() {
-    System.out.println("Create a JSONValue using a Double object.");
+    Log.debug("Create a JSONValue using a Double object.");
     Double d = new Double(10);
     JSONPair jsonPair = new JSONPair("key", d);
     String key = jsonPair.getKey();
@@ -261,7 +261,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAFloat() {
-    System.out.println("Create a JSONValue using a Float object.");
+    Log.debug("Create a JSONValue using a Float object.");
     Float f = new Float(10);
     JSONPair jsonPair = new JSONPair("key", f);
     String key = jsonPair.getKey();
@@ -272,7 +272,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAInteger() {
-    System.out.println("Create a JSONValue using a Integer object.");
+    Log.debug("Create a JSONValue using a Integer object.");
     Integer i = 10;
     JSONPair jsonPair = new JSONPair("key", i);
     String key = jsonPair.getKey();
@@ -283,7 +283,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingALong() {
-    System.out.println("Create a JSONValue using a Long object.");
+    Log.debug("Create a JSONValue using a Long object.");
     Long l = 10l;
     JSONPair jsonPair = new JSONPair("key", l);
     String key = jsonPair.getKey();
@@ -294,7 +294,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingANull() {
-    System.out.println("Create a JSONValue using a null.");
+    Log.debug("Create a JSONValue using a null.");
     Object n = null;
     JSONPair jsonPair = new JSONPair("key", n);
     String key = jsonPair.getKey();
@@ -305,7 +305,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveBoolean() {
-    System.out.println("Create a JSONValue using a primitive boolean.");
+    Log.debug("Create a JSONValue using a primitive boolean.");
     boolean b = true;
     JSONPair jsonPair = new JSONPair("key", b);
     String key = jsonPair.getKey();
@@ -316,7 +316,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveByte() {
-    System.out.println("Create a JSONValue using a primitive byte.");
+    Log.debug("Create a JSONValue using a primitive byte.");
     byte b = 10;
     JSONPair jsonPair = new JSONPair("key", b);
     String key = jsonPair.getKey();
@@ -327,7 +327,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveChar() {
-    System.out.println("Create a JSONValue using a primitive character.");
+    Log.debug("Create a JSONValue using a primitive character.");
     char c = 'a';
     JSONPair jsonPair = new JSONPair("key", c);
     String key = jsonPair.getKey();
@@ -338,7 +338,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveDouble() {
-    System.out.println("Create a JSONValue using a primitive double.");
+    Log.debug("Create a JSONValue using a primitive double.");
     double d = 10;
     JSONPair jsonPair = new JSONPair("key", d);
     String key = jsonPair.getKey();
@@ -349,7 +349,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveFloat() {
-    System.out.println("Create a JSONValue using a primitive float.");
+    Log.debug("Create a JSONValue using a primitive float.");
     float f = 10;
     JSONPair jsonPair = new JSONPair("key", f);
     String key = jsonPair.getKey();
@@ -360,7 +360,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveInt() {
-    System.out.println("Create a JSONValue using a primitive integer.");
+    Log.debug("Create a JSONValue using a primitive integer.");
     int i = 10;
     JSONPair jsonPair = new JSONPair("key", i);
     String key = jsonPair.getKey();
@@ -371,7 +371,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveLong() {
-    System.out.println("Create a JSONValue using a primitive long.");
+    Log.debug("Create a JSONValue using a primitive long.");
     long l = 10;
     JSONPair jsonPair = new JSONPair("key", l);
     String key = jsonPair.getKey();
@@ -382,7 +382,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAPrimitiveShort() {
-    System.out.println("Create a JSONValue using a primitive short.");
+    Log.debug("Create a JSONValue using a primitive short.");
     short s = 10;
     JSONPair jsonPair = new JSONPair("key", s);
     String key = jsonPair.getKey();
@@ -393,7 +393,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAShort() {
-    System.out.println("Create a JSONValue using a Short object.");
+    Log.debug("Create a JSONValue using a Short object.");
     Short s = 10;
     JSONPair jsonPair = new JSONPair("key", s);
     String key = jsonPair.getKey();
@@ -404,7 +404,7 @@ public class JSONPairIT {
 
   @Test
   public void testObjectUsingAString() {
-    System.out.println("Create a JSONValue using a String object.");
+    Log.debug("Create a JSONValue using a String object.");
     String s = "A string";
     JSONPair jsonPair = new JSONPair("key", s);
     String key = jsonPair.getKey();
@@ -415,14 +415,14 @@ public class JSONPairIT {
 
   @Test
   public void testSetReferenceFieldName() {
-    System.out.println("Set the reference field name.");
+    Log.debug("Set the reference field name.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.setReferenceFieldName("fieldName");
   }
 
   @Test
   public void testToBigDecimal() {
-    System.out.println("Convert the element into an object BigDecimal.");
+    Log.debug("Convert the element into an object BigDecimal.");
 
     JSONPair jsonPair;
 
@@ -435,14 +435,14 @@ public class JSONPairIT {
 
   @Test
   public void testToBoolean() {
-    System.out.println("Convert the element into an object Boolean.");
+    Log.debug("Convert the element into an object Boolean.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toBoolean();
   }
 
   @Test
   public void testToByte() {
-    System.out.println("Convert the element into a Byte object.");
+    Log.debug("Convert the element into a Byte object.");
 
     JSONPair jsonPair;
 
@@ -455,14 +455,14 @@ public class JSONPairIT {
 
   @Test
   public void testToCharacter() {
-    System.out.println("Convert the element into a Character object.");
+    Log.debug("Convert the element into a Character object.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toCharacter();
   }
 
   @Test
   public void testToDouble() {
-    System.out.println("Convert the element into a Double object.");
+    Log.debug("Convert the element into a Double object.");
 
     JSONPair jsonPair;
 
@@ -475,7 +475,7 @@ public class JSONPairIT {
 
   @Test
   public void testToFloat() {
-    System.out.println("Convert the element into a Float object.");
+    Log.debug("Convert the element into a Float object.");
 
     JSONPair jsonPair;
 
@@ -488,7 +488,7 @@ public class JSONPairIT {
 
   @Test
   public void testToInteger() {
-    System.out.println("Convert the element into a Integer object.");
+    Log.debug("Convert the element into a Integer object.");
 
     JSONPair jsonPair;
 
@@ -501,7 +501,7 @@ public class JSONPairIT {
 
   @Test
   public void testToJSON() {
-    System.out.println("Returnn the JSON string element representation.");
+    Log.debug("Returnn the JSON string element representation.");
     String expectedValue = "\"" + "key" + "\": \"" + "A string" + "\"";
     JSONPair jsonPair = new JSONPair("key", "A string");
     String value = jsonPair.toJSON();
@@ -510,35 +510,35 @@ public class JSONPairIT {
 
   @Test
   public void testToJSONArray() {
-    System.out.println("Convert the element into a JSONArray object.");
+    Log.debug("Convert the element into a JSONArray object.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toJSONArray();
   }
 
   @Test
   public void testToJSONString() {
-    System.out.println("Convert the element into a JSONString object.");
+    Log.debug("Convert the element into a JSONString object.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toJSONString();
   }
 
   @Test
   public void testToJSONTree() {
-    System.out.println("Convert the element to a JSON tree.");
+    Log.debug("Convert the element to a JSON tree.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toJSONTree();
   }
 
   @Test
   public void testToList() {
-    System.out.println("Convert the element into a List<JSONValues>.");
+    Log.debug("Convert the element into a List<JSONValues>.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toList();
   }
 
   @Test
   public void testToLong() {
-    System.out.println("Convert the element into a Long object.");
+    Log.debug("Convert the element into a Long object.");
 
     JSONPair jsonPair;
 
@@ -551,14 +551,14 @@ public class JSONPairIT {
 
   @Test(expected = JSONCastException.class)
   public void testToObject() {
-    System.out.println("Convert the element into a JSONObject object.");
+    Log.debug("Convert the element into a JSONObject object.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     jsonPair.toObject();
   }
 
   @Test
   public void testToShort() {
-    System.out.println("Convert the element into a Short object.");
+    Log.debug("Convert the element into a Short object.");
 
     JSONPair jsonPair;
 
@@ -571,7 +571,7 @@ public class JSONPairIT {
 
   @Test
   public void testToString() {
-    System.out.println("Return the element string representation.");
+    Log.debug("Return the element string representation.");
     String expectedValue = "(" + "key" + ", " + "A string" + ")";
     JSONPair jsonPair = new JSONPair("key", "A string");
     String value = jsonPair.toString();

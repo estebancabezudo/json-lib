@@ -1,7 +1,6 @@
 package net.cabezudo.java.json.values;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 import net.cabezudo.java.json.JSON;
@@ -30,7 +29,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONArray(List<JSONValue> valuesList) {
     for (JSONValue jsonValue : valuesList) {
-      add(jsonValue);
+      internalAdd(jsonValue);
     }
   }
 
@@ -40,7 +39,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONArray(JSONValue... jsonValues) {
     for (JSONValue jsonValue : jsonValues) {
-      add(jsonValue);
+      internalAdd(jsonValue);
     }
   }
 
@@ -50,15 +49,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONArray(Object... objects) {
     for (Object object : objects) {
-      add(object);
+      internalAdd(object);
     }
   }
 
-  /**
-   *
-   * @param jsonValue
-   */
-  public void add(JSONValue jsonValue) {
+
+  private void internalAdd(JSONValue jsonValue) {
     if (jsonValue == null) {
       list.add(JSONNull.getValue());
     } else {
@@ -66,17 +62,28 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     }
   }
 
-  /**
-   *
-   * @param object
-   */
-  public void add(Object object) {
+
+  private void internalAdd(Object object) {
     if (object == null) {
       list.add(JSONNull.getValue());
     } else {
       JSONValue jsonValue = JSON.toJSONTree(object);
       list.add(jsonValue);
     }
+  }
+  /**
+   *
+   * @param jsonValue
+   */
+  public void add(JSONValue jsonValue) {
+    internalAdd(jsonValue);
+  }
+  /**
+   *
+   * @param object
+   */
+  public void add(Object object) {
+    internalAdd(object);
   }
 
   @Override
@@ -95,6 +102,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   public JSONElement deleteElement(int index) {
     return list.remove(index);
   }
+
   /**
    *
    * @param index
@@ -111,19 +119,6 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONElement getElement(int index) {
     return list.get(index);
-  }
-
-  /**
-   *
-   * @return
-   */
-  @Override
-  public List<JSONElement> getElements() {
-    List<JSONElement> elementList = new ArrayList<>();
-    for (JSONElement jsonElement : list) {
-      elementList.add(jsonElement.getReferencedElement());
-    }
-    return Collections.unmodifiableList(elementList);
   }
 
   /**
@@ -181,6 +176,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   public JSONValue setValue(int index, JSONValue jsonValue) {
     return list.set(index, jsonValue);
   }
+
   /**
    *
    * @return
@@ -193,6 +189,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    *
    * @return
    */
+  @Override
   public JSONValue[] toArray() {
     JSONValue[] array = new JSONValue[list.size()];
     int i = 0;
@@ -202,6 +199,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     }
     return array;
   }
+
   /**
    *
    * @return

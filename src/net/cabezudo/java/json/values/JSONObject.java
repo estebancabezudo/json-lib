@@ -14,25 +14,36 @@ import java.util.Set;
 import java.util.TreeSet;
 import net.cabezudo.java.json.JSON;
 import net.cabezudo.java.json.JSONPair;
-import net.cabezudo.java.json.Log;
 import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 
 /**
+ * A {@link JSONObject} is an object extended from {@link JSONValue} object in order to represent a JSON object that can be used to create
+ * JSON structures.
+ *
+ * <p>
+ * A {@link JSONObject} is a list of {@link JSONPair} objects that represent the JSON object structure.
+ *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.0
  * @since 1.7
  * @date 10/01/2014
  */
 public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPair> {
+  private final Set<String> keys = new TreeSet<>();
 
   private final List<JSONPair> list = new ArrayList<>();
   private final Map<String, JSONPair> map = new HashMap<>();
 
   /**
+   * Create a newly {@link JSONObject} object using a JSON string.
    *
-   * @param data
-   * @throws JSONParseException
+   * <p>
+   * This constructor parse a string passed by parameter in order to create the {@link JSONObject} that represent the JSON object
+   * strcucture.
+   *
+   * @param data The JSON string to parse.
+   * @throws JSONParseException if the string passed by parameter can not be parsed.
    */
   public JSONObject(String data) throws JSONParseException {
     JSONValue jsonData = JSON.parse(data);
@@ -43,7 +54,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct an empty JSON object.
+   * Construct an empty {@link JSONObject} object.
+   * <p>
+   * A empty {@link JSONObject} object can be used to create a more complex object by adding {@link JSONPair} objects.
    */
   public JSONObject() {
     // Nothing to do here. Just for convenience.
@@ -64,7 +77,6 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param jsonObject
    */
   public JSONObject(JSONObject jsonObject) {
-    // TODO Think about this. We need this constructor
     copy(jsonObject);
   }
 
@@ -98,12 +110,17 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     }
   }
 
+  private List<String> getKeyList() {
+    return new ArrayList(keys);
+  }
+
   private JSONPair privateAdd(JSONPair jsonPair) {
     String key = jsonPair.getKey();
     if (map.containsKey(key)) {
       throw new RuntimeException("The object " + this.toJSON() + " already has the key " + key + ".");
     }
     list.add(jsonPair);
+    keys.add(key);
     return map.put(key, jsonPair);
   }
 
@@ -126,8 +143,34 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       return c;
     }
 
-    for (JSONPair jsonPair : jsonObject.list) {
-      // TODO implement this
+    List<String> keyListOfThis = this.getKeyList();
+    List<String> keyListOfObject = jsonObject.getKeyList();
+
+    int size = keyListOfThis.size();
+
+    for (int i = 0; i < size; i++) {
+      String sa = keyListOfThis.get(i);
+      String sb = keyListOfObject.get(i);
+      c = sa.compareTo(sb);
+      if (c != 0) {
+        return c;
+      }
+    }
+
+    for (int i = 0; i < size; i++) {
+      JSONValue va;
+      JSONValue vb;
+      String key = keyListOfThis.get(i);
+      try {
+        va = this.getValue(key);
+        vb = jsonObject.getValue(key);
+      } catch (PropertyNotExistException e) {
+        throw new RuntimeException(e);
+      }
+      c = va.compareTo(vb);
+      if (c != 0) {
+        return c;
+      }
     }
     return 0;
   }
@@ -140,6 +183,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONPair deleteElement(String propertyName) {
     JSONPair element = map.get(propertyName);
     list.remove(element);
+    keys.remove(propertyName);
     return map.remove(propertyName);
   }
 
@@ -152,6 +196,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     JSONPair element = list.get(index);
     list.remove(element);
     String propertyName = element.getKey();
+    keys.remove(propertyName);
     return map.remove(propertyName);
   }
 
@@ -358,10 +403,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (propertyFullName == null || propertyFullName.isEmpty()) {
       throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
     }
-    Log.debug("Property full name: %s%n", propertyFullName);
 
     int point = propertyFullName.indexOf('.');
-    Log.debug("Point index: %s.%n", point);
     if (point == -1) {
       JSONValue jsonValue = getNullValue(propertyFullName);
       return jsonValue;
@@ -373,9 +416,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       }
       JSONObject nextLevelObject = nextLevelValue.toObject();
 
-      // TODO verify that the point is not the last character in the property name
-      String nextPropertyName = propertyFullName.substring(point + 1);
-      Log.debug("Next property name: %s%n", nextPropertyName);
+      int newStart = point + 1;
+      if (newStart >= propertyFullName.length()) {
+        throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
+      }
+      String nextPropertyName = propertyFullName.substring(newStart);
 
       return nextLevelObject.digNullValue(nextPropertyName);
     }

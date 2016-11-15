@@ -12,17 +12,16 @@ import org.junit.Test;
  */
 public class JSONNullIT {
 
-
   @Test
   public void testCompareTo() {
     assertEquals(JSONNull.getValue(), JSONNull.getValue());
   }
+
   @Test
   public void testGetReferencedElement() {
     JSONNull jsonNull = JSONNull.getValue();
-    assertEquals(jsonNull.getElement(), jsonNull.getReferencedElement());
+    assertEquals(jsonNull, jsonNull.getReferencedElement());
   }
-
 
   @Test
   public void testIsArray() {
@@ -77,10 +76,12 @@ public class JSONNullIT {
     JSONNull jsonNull = JSONNull.getValue();
     assertEquals(true, jsonNull.isValue());
   }
+
   @Test
   public void testToJSON() {
     assertEquals("null", JSONNull.getValue().toJSON());
   }
+
   @Test
   public void testToJSONArray() {
     JSONNull jsonNull = JSONNull.getValue();
@@ -88,14 +89,17 @@ public class JSONNullIT {
     assertEquals(1, array.size());
     assertEquals(new JSONString("null"), array.get(0));
   }
+
   @Test
   public void testToJSONString() {
     assertEquals(new JSONString("null"), JSONNull.getValue().toJSONString());
   }
+
   @Test
   public void testToJSONTree() {
     assertEquals(JSONNull.getValue(), JSONNull.getValue().toJSONTree());
   }
+
   @Test
   public void testToList() {
     JSONNull jsonNull = JSONNull.getValue();
@@ -103,6 +107,7 @@ public class JSONNullIT {
     assertEquals(1, array.size());
     assertEquals(JSONNull.getValue(), array.get(0));
   }
+
   @Test
   public void testToStringArray() {
     JSONNull jsonNull = JSONNull.getValue();

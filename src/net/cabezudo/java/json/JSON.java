@@ -117,7 +117,6 @@ public class JSON {
 
     TokenType tokenType = token.getType();
     JSONFactory jsonFactory = new JSONFactory();
-    Log.debug("Token type: %s.%n", tokenType);
 
     switch (tokenType) {
       case LEFT_BRACE:
@@ -216,8 +215,6 @@ public class JSON {
 
       for (JSONPair jsonPair : jsonObject) {
         JSONElement referencedElement = jsonPair.getValue().getReferencedElement();
-        Log.debug("The referenced element returned by getReferencedElement for a %s with the value %s is %s.%n",
-            jsonPair.getClass().getName(), jsonPair.toJSON(), referencedElement.toJSON());
 
         JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement);
         jsonReferencedObject.add(newJSONPair);
@@ -232,7 +229,6 @@ public class JSON {
 
       for (JSONElement jsonArrayElement : jsonArray) {
         JSONElement referencedElement = jsonArrayElement.getReferencedElement();
-        Log.debug("The referenced element returned by getReferencedElement for %s is %s.%n", jsonArrayElement.toJSON(), referencedElement.toJSON());
         jsonReferencedArray.add(referencedElement);
       }
 
@@ -249,69 +245,52 @@ public class JSON {
    */
   public static JSONValue toJSONTree(Object object) {
     if (object == null) {
-      Log.debug("The object is null. Return a JSONNull object.%n");
       return JSONNull.getValue();
     }
     if (object instanceof JSONValue) {
-      Log.debug("Return from toJSONTree() DOING NOTHING because the object is a JSONValue. The object is a %s.%n", object.getClass().getName());
       return (JSONValue) object;
     }
-    Log.debug("Using the method toJSONTree() with parameter of type %s in order to get a JSONValue tree.%n", object.getClass().getName());
 
     JSONValue jsonValue;
 
     if (Iterable.class.isAssignableFrom(object.getClass())) {
-      Log.debug("The parameter %s is ITERABLE.%n", object.getClass().getName());
       Iterable iterable = (Iterable) object;
       JSONArray jsonArray = new JSONArray();
       for (Object child : iterable) {
-        Log.debug("Call the method toJSONTree() using the child object %s with the value %s.%n", child.getClass().getCanonicalName(), child);
         jsonValue = toJSONTree(child);
-        Log.debug("Add to jsonArray %s the object of type %s with value %s.%n", jsonArray.toJSON(), jsonValue.getClass().getName(), jsonValue);
         jsonArray.add(jsonValue);
       }
-      Log.debug("Return the object of type %s with value %s from the method toJSONTree().%n", jsonArray.getClass().getName(), jsonArray.toJSON());
       return jsonArray;
     }
     if (object.getClass().getSimpleName().startsWith("[")) {
-      Log.debug("Native array in method toJSONTree for the object of type %s.%n", object.getClass().getName());
       JSONArray jsonArray = new JSONArray();
       Object[] array = (Object[]) object;
 
       for (Object child : array) {
-        Log.debug("Call toJSONTree with child of type %s and value %s.%n", child.getClass().getName(), child);
         jsonValue = toJSONTree(child);
         jsonArray.add(jsonValue);
       }
-      Log.debug("Return the object %s with value %s from method toJSONTree().%n", jsonArray.getClass().getName(), jsonArray.toJSON());
       return jsonArray;
     }
 
-    Log.debug("Call the JSON factory with object of type %s.%n", object.getClass().getName());
     jsonValue = JSONFactory.get(object);
 
     if (jsonValue != null) {
-      Log.debug("Return the object %s with value %s from method toJSONTree().%n", jsonValue.getClass().getName(), jsonValue.toJSON());
       return jsonValue;
     }
 
-    Log.debug("Plain object found for %s in method toJSONTree().%n", object.getClass().getName());
     JSONObject jsonObject = new JSONObject();
 
     Class<?> objectClass = object.getClass();
 
     List<Field> fieldsInObject = getInheritedFields(objectClass);
 
-    Log.debug("The number of fields in the object %s is %s.%n", object.getClass().getName(), fieldsInObject.size());
-
     for (Field field : fieldsInObject) {
       String fieldName = field.getName();
-      Log.debug("Field name %s.%n", fieldName);
 
       JSONProperty property;
       Annotation annotation = field.getAnnotation(JSONProperty.class);
       if (annotation != null) {
-        Log.debug("Found JSONProperty annotation in field %s.%n", fieldName);
         property = (JSONProperty) annotation;
         String propertyName = property.name();
         if (!JSONProperty.DEFAULT_NAME.equals(propertyName)) {
@@ -320,13 +299,10 @@ public class JSON {
 
         String getterName = getGetterName(field, fieldName);
         Object fieldValue = getFieldValue(object, getterName);
-        Log.debug("The field value for %s in the object of type %s is %s.%n", fieldName, object.getClass().getName(), fieldValue);
 
         jsonValue = JSONFactory.get(fieldValue);
 
         if (jsonValue == null) {
-          Log.debug("The value from the factory is null so we try hard.%n");
-          Log.debug("Call the method toJSONTree() using the object of type %s with value %s.%n", fieldValue.getClass().getName(), fieldValue);
           jsonValue = toJSONTree(fieldValue);
         } else {
           if (property.dontShowIfNull() && jsonValue instanceof JSONNull) {
@@ -339,7 +315,6 @@ public class JSON {
         }
         jsonObject.setReferenceFieldName(property.field());
         JSONPair jsonPair = new JSONPair(fieldName, jsonValue);
-        Log.debug("Add pair %s to JSONObject %s.%n", jsonPair.toJSON(), jsonObject.toJSON());
         jsonObject.add(jsonPair);
       }
     }
@@ -347,9 +322,6 @@ public class JSON {
     if (!jsonObject.hasChilds()) {
       throw new NotPropertiesException("The object " + object.getClass().getName() + " doesn't have properties.");
     }
-
-    Log.debug("Return the object of type %s with value %s from the method toJSONTree() for the parameter of type %s.%n",
-        jsonObject.getClass().getName(), jsonObject.toJSON(), object.getClass().getName());
 
     return jsonObject;
   }

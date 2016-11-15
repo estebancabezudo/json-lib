@@ -46,9 +46,9 @@ public class JSONIT {
 
   @Test
   public void testParse() {
-    System.out.println("Parse a string into a JSONElement tree.");
+    Log.debug("Parse a string into a JSONElement tree.");
     String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
-    System.out.println("String: " + jsonUnparsedString);
+    Log.debug("String: " + jsonUnparsedString);
     try {
       JSONObject jsonObject = JSON.parse(jsonUnparsedString).toObject();
 
@@ -71,7 +71,7 @@ public class JSONIT {
       jsonValue = jsonObject.getValue("string");
       assertTrue(jsonValue.isString());
       String name = jsonValue.toString();
-      System.out.println("Name: " + name);
+      Log.debug("Name: " + name);
       assertEquals("George \\\"Baby Face\\\" Nelson", name);
 
       jsonValue = jsonObject.getValue("number");
@@ -84,7 +84,7 @@ public class JSONIT {
 
   @Test
   public void testParsePath() throws IOException, ReadFileException {
-    System.out.println("Get a string from a file and parse into a JSONElement tree.");
+    Log.debug("Get a string from a file and parse into a JSONElement tree.");
 
     final File temporaryFile = folder.newFile("tempFile.txt");
     try {
@@ -129,9 +129,6 @@ public class JSONIT {
     } catch (JSONParseException | PropertyNotExistException e) {
       fail(e.getMessage());
     }
-
-    // TODO Make this test
-    // TODO Make this test
   }
 
   @Test
@@ -165,7 +162,7 @@ public class JSONIT {
 
   @Test
   public void testToJSONReferencedTree() {
-    System.out.println("Create a refered JSON tree using Java objects.");
+    Log.debug("Create a refered JSON tree using Java objects.");
     Data data = new Data();
     JSONObject jsonObject = JSON.toJSONTree(data).toObject();
     JSONElement jsonReferencedTree = JSON.toJSONReferencedTree(jsonObject);

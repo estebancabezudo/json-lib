@@ -9,8 +9,6 @@ import java.util.List;
  */
 public class Formatter {
 
-  private Formatter() {
-  }
 
   private static String ident(int n) {
     StringBuilder sb = new StringBuilder(n * 3);
@@ -97,5 +95,7 @@ public class Formatter {
       } while (false);
     }
     return sb.toString();
+  }
+  private Formatter() {
   }
 }

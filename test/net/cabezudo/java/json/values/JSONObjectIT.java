@@ -6,6 +6,7 @@ import java.math.MathContext;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.java.json.JSONPair;
+import net.cabezudo.java.json.Log;
 import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 import net.cabezudo.java.json.objects.DigTypes;
@@ -31,18 +32,18 @@ public class JSONObjectIT {
   private final int BYTE_ARRAY = 3;
   private final int CALENDAR = 4;
   private final int CHARACTER = 17;
-  private final int OBJECT_CHARACTER = 9;
   private final int DATE = 5;
   private final int DOUBLE = 18;
   private final int FLOAT = 19;
   private final int INTEGER = 20;
-  private final int OBJECT_INTEGER = 12;
   private final int LONG = 21;
   private final int NULL_REFERENCE = 6;
   private final int OBJECT_BOOLEAN = 7;
   private final int OBJECT_BYTE = 8;
+  private final int OBJECT_CHARACTER = 9;
   private final int OBJECT_DOUBLE = 10;
   private final int OBJECT_FLOAT = 11;
+  private final int OBJECT_INTEGER = 12;
   private final int OBJECT_LONG = 13;
   private final int OBJECT_SHORT = 14;
   private final int SHORT = 22;
@@ -1807,7 +1808,7 @@ public class JSONObjectIT {
 
     String json = jsonObject.toJSON();
 
-    System.out.println(json);
+    Log.debug(json);
 
     assertEquals("{ \"bigDecimal\": 15.4, \"bigInteger\": 14, \"book\": { \"id\": 1, \"name\": \"Evolution\" }, \"byteArray\": [ 1, 2, 3, 4 ], \"calendar\": \"1974-01-30T14:20:12.125Z\", \"date\": \"1974-01-30T14:20:12.125Z\", \"nullReference\": null, \"oBoolean\": true, \"oByte\": 2, \"oCharacter\": \"b\", \"oDouble\": 12.5, \"oFloat\": 10.5, \"oInteger\": 6, \"oLong\": 8, \"oShort\": 4, \"pBoolean\": false, \"pByte\": 1, \"pCharacter\": \"a\", \"pDouble\": 11.5, \"pFloat\": 9.5, \"pInteger\": 5, \"pLong\": 7, \"pShort\": 3, \"string\": \"Esteban\" }", json);
   }

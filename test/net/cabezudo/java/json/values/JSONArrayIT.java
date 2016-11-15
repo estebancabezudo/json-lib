@@ -1,7 +1,6 @@
 package net.cabezudo.java.json.values;
 
 import java.util.List;
-import net.cabezudo.java.json.JSONElement;
 import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 import org.junit.Assert;
@@ -81,27 +80,6 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testGetElements() {
-    JSONNumber jsonNumber = new JSONNumber(1);
-    jsonArray.add(jsonNumber);
-
-    JSONString jsonString = new JSONString("Esteban");
-    jsonArray.add(jsonString);
-
-    List<JSONElement> list = jsonArray.getElements();
-
-    assertEquals(2, list.size());
-
-    JSONValue element;
-
-    element = jsonArray.getValue(0);
-    assertEquals(new JSONNumber(1), element);
-
-    element = jsonArray.getValue(1);
-    assertEquals(new JSONString("Esteban"), element);
-  }
-
-  @Test
   public void testGetNullValue() {
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
@@ -109,7 +87,7 @@ public class JSONArrayIT {
     JSONString jsonString = new JSONString("Esteban");
     jsonArray.add(jsonString);
 
-    List<JSONElement> list = jsonArray.getElements();
+    List<JSONValue> list = jsonArray.toList();
 
     assertEquals(2, list.size());
 
@@ -151,7 +129,7 @@ public class JSONArrayIT {
     JSONString jsonString = new JSONString("Esteban");
     jsonArray.add(jsonString);
 
-    List<JSONElement> list = jsonArray.getElements();
+    List<JSONValue> list = jsonArray.toList();
 
     assertEquals(2, list.size());
 
@@ -174,12 +152,13 @@ public class JSONArrayIT {
     JSONString jsonString = new JSONString("Esteban");
     jsonArray.add(jsonString);
 
-    List<JSONElement> list = jsonArray.getElements();
+    List<JSONValue> list = jsonArray.toList();
 
     assertEquals(2, list.size());
 
     Assert.assertTrue(jsonArray.hasElements());
   }
+
   @Test
   public void testIsValue() {
     assertEquals(true, jsonArray.isValue());

@@ -9,8 +9,8 @@ package net.cabezudo.java.json;
 public class Position {
 
   public static final Position INITIAL = new Position(1, 1);
-  public final int line;
   private final int row;
+  public final int line;
 
   Position(int line, int row) {
     this.line = line;

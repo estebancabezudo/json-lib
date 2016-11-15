@@ -15,9 +15,13 @@ public class Log {
   /**
    *
    * @param message
-   * @param object
+   * @param objects
    */
-  public static void debug(String message, Object... object) {
-//    LOG.log(Level.FINEST, String.format(message, object));
+  public static void debug(String message, Object... objects) {
+    LOG.info(String.format(message, objects));
+  }
+
+  private Log() {
+    // To avoid the instantiation.
   }
 }

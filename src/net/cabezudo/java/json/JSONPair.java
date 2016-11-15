@@ -77,7 +77,6 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   @Override
   public JSONPair getReferencedElement() {
     JSONElement jsonReferencedElement = value.getReferencedElement();
-    Log.debug("The referenced value for %s is %s.%n", value, jsonReferencedElement);
     JSONPair jsonPair = new JSONPair(key, jsonReferencedElement);
     return jsonPair;
   }

@@ -33,7 +33,6 @@ public class JSONFactory {
       return JSONNull.getValue();
     }
     if (object instanceof JSONValue) {
-      Log.debug("Return from factory, untouched, %s with the value %s.%n", object.getClass().getName(), object);
       return (JSONValue) object;
     }
     Class<?> objectClass = object.getClass();
@@ -112,12 +111,6 @@ public class JSONFactory {
         jsonValue = null;
         break;
     }
-    if (jsonValue == null) {
-      Log.debug("Return null from factory.%n");
-    } else {
-      Log.debug("Return from factory a %s with the value %s.%n", jsonValue.getClass().getName(), jsonValue.toJSON());
-    }
-
     return jsonValue;
   }
 
@@ -150,11 +143,9 @@ public class JSONFactory {
         jsonValue = new JSONNumber(bigDecimal);
         return jsonValue;
       case LEFT_BRACE:
-        Log.debug("LEFT_BRACE.%n");
         jsonValue = getJSONObject(tokens);
         return jsonValue;
       case LEFT_BRACKET:
-        Log.debug("LEFT_BRACKET.%n");
         jsonValue = getJSONArray(tokens);
         return jsonValue;
       case FALSE:
@@ -174,26 +165,22 @@ public class JSONFactory {
   JSONArray getJSONArray(Tokens tokens) throws JSONParseException {
 
     JSONArray jsonArray = new JSONArray();
-    Log.debug("Create a new array %s.%n", jsonArray);
     Token token;
     int line = 1;
     Position position = Position.INITIAL;
     token = tokens.element();
 
     if (token.isRightBracket()) {
-      Log.debug("Is right bracket.%n");
       return jsonArray;
     }
 
     try {
       do {
         JSONValue jsonValue = get(tokens);
-        Log.debug("The new JSON value created is %s.%n", jsonValue);
         jsonArray.add(jsonValue);
 
         token = tokens.poll();
         position = token.getPosition();
-        Log.debug("Token: %s.%n", token);
 
       } while (token.getType() == TokenType.COMMA);
 
