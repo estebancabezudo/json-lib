@@ -3,7 +3,6 @@ package net.cabezudo.java.json.values;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 import java.util.Collections;
 import java.util.HashMap;
@@ -30,6 +29,7 @@ import net.cabezudo.java.json.exceptions.PropertyNotExistException;
  * @date 10/01/2014
  */
 public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPair> {
+
   private final Set<String> keys = new TreeSet<>();
 
   private final List<JSONPair> list = new ArrayList<>();
@@ -63,8 +63,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Construct a {@link JSONObject} object using the array of {@link JSONPair} objects to create the JSON object properties.
    *
-   * @param jsonPairs
+   * @param jsonPairs the {@link JSONPair} objects to create the JSON object properties
    */
   public JSONObject(JSONPair... jsonPairs) {
     for (JSONPair jsonPair : jsonPairs) {
@@ -73,35 +74,26 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Construct a {@link JSONObject} object using the properties of another {@link JSONObject} object.
    *
-   * @param jsonObject
+   * <p>
+   * Create a copy of the {@link JSONObject} object passed by parameter.
+   *
+   * @param jsonObject the {@link JSONObject} object which to take the properties.
    */
   public JSONObject(JSONObject jsonObject) {
     copy(jsonObject);
   }
 
   /**
+   * Construct a {@link JSONObject} object from a Java {@code Object} parameter using the {@link JSON#toJSONTree(java.lang.Object)}.
+   * <p>
+   * If the object is
    *
-   * @param jsonObject
-   * @param fs
-   */
-  public JSONObject(JSONObject jsonObject, String... fs) {
-    Set<String> fields = new TreeSet<>();
-    fields.addAll(Arrays.asList(fs));
-
-    for (JSONPair jsonPair : jsonObject.list) {
-      if (fields.contains(jsonPair.getValue().toString())) {
-        privateAdd(jsonPair);
-      }
-    }
-  }
-
-  /**
-   *
-   * @param object
+   * @param object a Java {@code Object}
    */
   public JSONObject(Object object) {
-    this((JSONObject) JSON.toJSONTree(object));
+    this(JSON.toJSONTree(object).toObject());
   }
 
   private void copy(JSONObject jsonObject) {
@@ -411,7 +403,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     } else {
       String propertyName = propertyFullName.substring(0, point);
       JSONValue nextLevelValue = digNullValue(propertyName);
-      if (!nextLevelValue.isObject()) {
+      if (nextLevelValue == null || !nextLevelValue.isObject()) {
         return null;
       }
       JSONObject nextLevelObject = nextLevelValue.toObject();
