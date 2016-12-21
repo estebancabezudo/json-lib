@@ -6,6 +6,7 @@ import java.math.MathContext;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import net.cabezudo.java.json.Position;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -83,6 +84,16 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    * @param bigDecimal
    */
   public JSONNumber(BigDecimal bigDecimal) {
+    this(bigDecimal, null);
+  }
+
+  /**
+   *
+   * @param bigDecimal
+   * @param position
+   */
+  public JSONNumber(BigDecimal bigDecimal, Position position) {
+    super(position);
     if (bigDecimal == null) {
       throw new IllegalArgumentException("You can't create an object using null.");
     }
@@ -94,6 +105,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    * @param bigInteger
    */
   public JSONNumber(BigInteger bigInteger) {
+    super(null);
     if (bigInteger == null) {
       throw new IllegalArgumentException("You can't create an object using null.");
     }

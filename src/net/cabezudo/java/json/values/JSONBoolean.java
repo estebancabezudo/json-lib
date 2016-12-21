@@ -4,6 +4,7 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
+import net.cabezudo.java.json.Position;
 import net.cabezudo.java.json.exceptions.JSONCastException;
 
 /**
@@ -14,15 +15,14 @@ import net.cabezudo.java.json.exceptions.JSONCastException;
  */
 public class JSONBoolean extends JSONValue<JSONBoolean> {
 
-
   /**
    *
    */
-  public static final JSONBoolean FALSE = new JSONBoolean(false);
+  public static final JSONBoolean FALSE = new JSONBoolean(false, null);
   /**
    *
    */
-  public static final JSONBoolean TRUE = new JSONBoolean(true);
+  public static final JSONBoolean TRUE = new JSONBoolean(true, null);
 
   private final Boolean value;
 
@@ -39,7 +39,8 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
     }
   }
 
-  private JSONBoolean(boolean value) {
+  private JSONBoolean(boolean value, Position position) {
+    super(position);
     this.value = value;
   }
 
@@ -95,7 +96,6 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
     return value;
   }
 
-
   /**
    *
    * @return
@@ -104,6 +104,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   public Byte toByte() {
     return (byte) (value ? 1 : 0);
   }
+
   /**
    *
    * @return
@@ -148,6 +149,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   public Integer toInteger() {
     return (value ? 1 : 0);
   }
+
   /**
    *
    * @return
@@ -156,7 +158,6 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   public String toJSON() {
     return value ? "true" : "false";
   }
-
 
   /**
    *
@@ -175,8 +176,9 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
    */
   @Override
   public JSONString toJSONString() {
-    return new JSONString(this.toString());
+    return new JSONString(this.toString(), getPosition());
   }
+
   /**
    *
    * @return
@@ -187,6 +189,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
     list.add(this);
     return list;
   }
+
   /**
    *
    * @return

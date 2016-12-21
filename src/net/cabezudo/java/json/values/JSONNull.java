@@ -2,6 +2,7 @@ package net.cabezudo.java.json.values;
 
 import java.util.ArrayList;
 import java.util.List;
+import net.cabezudo.java.json.Position;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -11,22 +12,16 @@ import java.util.List;
  */
 public class JSONNull extends JSONValue<JSONNull> {
 
-  private static JSONNull INSTANCE;
-
   private final String nullString = "null";
-  /**
-   *
-   * @return
-   */
-  public static synchronized JSONNull getValue() {
-    if (INSTANCE == null) {
-      INSTANCE = new JSONNull();
-    }
-    return INSTANCE;
+
+  public JSONNull(Position position) {
+    super(position);
   }
 
-  private JSONNull() {
+  public JSONNull() {
+    this(null);
   }
+
   @Override
   public int compareTo(JSONNull jsonNull) {
     return 0;
@@ -58,6 +53,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   public String toJSON() {
     return nullString;
   }
+
   /**
    *
    * @return
@@ -75,9 +71,8 @@ public class JSONNull extends JSONValue<JSONNull> {
    */
   @Override
   public JSONString toJSONString() {
-    return new JSONString(nullString);
+    return new JSONString(nullString, getPosition());
   }
-
 
   /**
    *

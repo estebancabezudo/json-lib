@@ -13,6 +13,7 @@ import java.util.Set;
 import java.util.TreeSet;
 import net.cabezudo.java.json.JSON;
 import net.cabezudo.java.json.JSONPair;
+import net.cabezudo.java.json.Position;
 import net.cabezudo.java.json.exceptions.JSONParseException;
 import net.cabezudo.java.json.exceptions.PropertyNotExistException;
 
@@ -46,6 +47,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @throws JSONParseException if the string passed by parameter can not be parsed.
    */
   public JSONObject(String data) throws JSONParseException {
+    super(null);
     JSONValue jsonData = JSON.parse(data);
     if (jsonData instanceof JSONObject) {
       JSONObject jsonObject = (JSONObject) jsonData;
@@ -57,9 +59,22 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * Construct an empty {@link JSONObject} object.
    * <p>
    * A empty {@link JSONObject} object can be used to create a more complex object by adding {@link JSONPair} objects.
+   *
    */
   public JSONObject() {
+    super(null);
     // Nothing to do here. Just for convenience.
+  }
+
+  /**
+   * Construct an empty {@link JSONObject} object.
+   * <p>
+   * A empty {@link JSONObject} object can be used to create a more complex object by adding {@link JSONPair} objects.
+   *
+   * @param position The position for the {@link JSONObject} in the JSON string.
+   */
+  public JSONObject(Position position) {
+    super(position);
   }
 
   /**
@@ -68,6 +83,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param jsonPairs the {@link JSONPair} objects to create the JSON object properties
    */
   public JSONObject(JSONPair... jsonPairs) {
+    super(null);
     for (JSONPair jsonPair : jsonPairs) {
       privateAdd(jsonPair);
     }
@@ -82,6 +98,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param jsonObject the {@link JSONObject} object which to take the properties.
    */
   public JSONObject(JSONObject jsonObject) {
+    super(jsonObject.getPosition());
     copy(jsonObject);
   }
 
@@ -460,7 +477,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONValue digValue(String propertyName) throws PropertyNotExistException {
     JSONValue value = digNullValue(propertyName);
     if (value == null) {
-      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.");
+      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
     }
     return value;
   }
@@ -667,7 +684,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONPair getElement(String propertyName) throws PropertyNotExistException {
     JSONPair jsonPair = getNullElement(propertyName);
     if (jsonPair == null) {
-      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.");
+      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
     }
     return jsonPair;
   }
@@ -681,7 +698,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONPair getElement(int propertyIndex) throws PropertyNotExistException {
     JSONPair jsonPair = getNullElement(propertyIndex);
     if (jsonPair == null) {
-      throw new PropertyNotExistException("The property " + propertyIndex + " doesn't exist.");
+      throw new PropertyNotExistException("The property " + propertyIndex + " doesn't exist.", getPosition());
     }
     return jsonPair;
   }
@@ -1311,7 +1328,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONValue getValue(String propertyName) throws PropertyNotExistException {
     JSONValue jsonValue = getNullValue(propertyName);
     if (jsonValue == null) {
-      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.");
+      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
     }
     return jsonValue;
   }
@@ -1325,7 +1342,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONValue getValue(int index) throws PropertyNotExistException {
     JSONValue jsonValue = getNullValue(index);
     if (jsonValue == null) {
-      throw new PropertyNotExistException("The position " + index + " don't have a value.");
+      throw new PropertyNotExistException("The position " + index + " don't have a value.", getPosition());
     }
     return jsonValue;
   }

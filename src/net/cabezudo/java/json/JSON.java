@@ -120,10 +120,10 @@ public class JSON {
 
     switch (tokenType) {
       case LEFT_BRACE:
-        jsonElement = jsonFactory.getJSONObject(tokens);
+        jsonElement = jsonFactory.getJSONObject(tokens, token.getPosition());
         break;
       case LEFT_BRACKET:
-        jsonElement = jsonFactory.getJSONArray(tokens);
+        jsonElement = jsonFactory.getJSONArray(tokens, token.getPosition());
         break;
       default:
         throw new JSONParseException("Unexpected token: " + token, token.getPosition());
@@ -216,7 +216,7 @@ public class JSON {
       for (JSONPair jsonPair : jsonObject) {
         JSONElement referencedElement = jsonPair.getValue().getReferencedElement();
 
-        JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement);
+        JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement, jsonValue.getPosition());
         jsonReferencedObject.add(newJSONPair);
       }
 
@@ -245,7 +245,7 @@ public class JSON {
    */
   public static JSONValue toJSONTree(Object object) {
     if (object == null) {
-      return JSONNull.getValue();
+      return new JSONNull();
     }
     if (object instanceof JSONValue) {
       return (JSONValue) object;

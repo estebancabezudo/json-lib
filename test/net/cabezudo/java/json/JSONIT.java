@@ -243,7 +243,7 @@ public class JSONIT {
       assertEquals(types.getOInteger(), jsonTypesValue.getInteger("oInteger"));
       assertEquals(types.getOLong(), jsonTypesValue.getLong("oLong"));
       assertEquals(types.getOShort(), jsonTypesValue.getShort("oShort"));
-      assertEquals(JSONNull.getValue(), jsonTypesValue.getValue("nullReference"));
+      assertEquals(new JSONNull(), jsonTypesValue.getValue("nullReference"));
       assertEquals(types.isPBoolean(), jsonTypesValue.getBoolean("pBoolean"));
       assertEquals(types.getPByte(), (long) jsonTypesValue.getByte("pByte"));
       assertEquals(types.getPCharacter(), (long) jsonTypesValue.getCharacter("pCharacter"));

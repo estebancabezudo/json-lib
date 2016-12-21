@@ -10,6 +10,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Objects;
 import net.cabezudo.java.json.JSON;
+import net.cabezudo.java.json.Position;
 import net.cabezudo.java.json.exceptions.JSONCastException;
 
 /**
@@ -31,6 +32,17 @@ public class JSONString extends JSONValue<JSONString> {
    * @param value A {@code String}
    */
   public JSONString(String value) {
+    this(value, null);
+  }
+
+  /**
+   * Initializes a newly created {@link JSONString} object so that it represents the same string as the argument.
+   *
+   * @param value A {@code String}
+   * @param position The position of the {@code String} in origen
+   */
+  public JSONString(String value, Position position) {
+    super(position);
     this.value = value;
   }
 
@@ -40,6 +52,7 @@ public class JSONString extends JSONValue<JSONString> {
    * @param character A {@code Character} object.
    */
   public JSONString(Character character) {
+    super(null);
     this.value = character.toString();
   }
 
@@ -50,6 +63,7 @@ public class JSONString extends JSONValue<JSONString> {
    * @param bigInteger A {@code BigInteger} object.
    */
   public JSONString(BigInteger bigInteger) {
+    super(null);
     this.value = bigInteger.toString();
   }
 
@@ -60,6 +74,7 @@ public class JSONString extends JSONValue<JSONString> {
    * @param bigDecimal A {@code BigDecimal} object.
    */
   public JSONString(BigDecimal bigDecimal) {
+    super(null);
     this.value = bigDecimal.toString();
   }
 
@@ -141,7 +156,7 @@ public class JSONString extends JSONValue<JSONString> {
   @Override
   public JSONValue[] toArray() {
     JSONValue array[] = new JSONValue[1];
-    array[0] = new JSONString(value);
+    array[0] = new JSONString(value, getPosition());
     return array;
   }
 
@@ -313,7 +328,7 @@ public class JSONString extends JSONValue<JSONString> {
    */
   @Override
   public JSONString toJSONString() {
-    return new JSONString(value);
+    return new JSONString(value, getPosition());
   }
 
   /**

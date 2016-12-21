@@ -5,6 +5,7 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.java.json.JSONElement;
+import net.cabezudo.java.json.Position;
 import net.cabezudo.java.json.exceptions.JSONCastException;
 
 /**
@@ -22,6 +23,10 @@ import net.cabezudo.java.json.exceptions.JSONCastException;
  * @date 10/01/2014
  */
 public abstract class JSONValue<T> extends JSONElement implements Comparable<T> {
+
+  public JSONValue(Position position) {
+    super(position);
+  }
 
   /**
    * Returns if the JSON element is a value. This object represent a JSON value, so allways return a true.

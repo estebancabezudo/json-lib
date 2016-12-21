@@ -25,13 +25,18 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    * @param key
    * @param object
    */
-  public JSONPair(String key, Object object) {
+  public JSONPair(String key, Object object, Position position) {
+    super(position);
     if (key == null) {
       throw new IllegalArgumentException("The parameter key is null.");
     }
     this.key = key;
     JSONValue jsonValue = JSON.toJSONTree(object);
     this.value = jsonValue;
+  }
+
+  public JSONPair(String key, Object object) {
+    this(key, object, null);
   }
 
   @Override
@@ -77,7 +82,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   @Override
   public JSONPair getReferencedElement() {
     JSONElement jsonReferencedElement = value.getReferencedElement();
-    JSONPair jsonPair = new JSONPair(key, jsonReferencedElement);
+    JSONPair jsonPair = new JSONPair(key, jsonReferencedElement, getPosition());
     return jsonPair;
   }
 
@@ -161,7 +166,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   public String toJSON() {
     JSONValue jsonValue;
     if (value == null) {
-      jsonValue = JSONNull.getValue();
+      jsonValue = new JSONNull();
     } else {
       jsonValue = value;
     }

@@ -5,6 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import net.cabezudo.java.json.JSON;
 import net.cabezudo.java.json.JSONElement;
+import net.cabezudo.java.json.Position;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -18,9 +19,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   /**
    * Construct an empty JSON array object.
+   *
+   * @param position
    */
-  public JSONArray() {
+  public JSONArray(Position position) {
     // Nothing to do here. Just needed for create an empty array.
+    super(position);
   }
 
   /**
@@ -28,6 +32,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * @param valuesList
    */
   public JSONArray(List<JSONValue> valuesList) {
+    super(null);
     for (JSONValue jsonValue : valuesList) {
       internalAdd(jsonValue);
     }
@@ -38,6 +43,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * @param jsonValues
    */
   public JSONArray(JSONValue... jsonValues) {
+    super(null);
     for (JSONValue jsonValue : jsonValues) {
       internalAdd(jsonValue);
     }
@@ -48,29 +54,29 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * @param objects
    */
   public JSONArray(Object... objects) {
+    super(null);
     for (Object object : objects) {
       internalAdd(object);
     }
   }
 
-
   private void internalAdd(JSONValue jsonValue) {
     if (jsonValue == null) {
-      list.add(JSONNull.getValue());
+      list.add(new JSONNull());
     } else {
       list.add(jsonValue);
     }
   }
 
-
   private void internalAdd(Object object) {
     if (object == null) {
-      list.add(JSONNull.getValue());
+      list.add(new JSONNull());
     } else {
       JSONValue jsonValue = JSON.toJSONTree(object);
       list.add(jsonValue);
     }
   }
+
   /**
    *
    * @param jsonValue
@@ -78,6 +84,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   public void add(JSONValue jsonValue) {
     internalAdd(jsonValue);
   }
+
   /**
    *
    * @param object
@@ -160,6 +167,16 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   @Override
   public Boolean hasElements() {
     return !list.isEmpty();
+  }
+
+  /**
+   * Returns whether the element is an array or not.
+   *
+   * @return <code>true</code> if the element is an array, <code>false</code> otherwise.
+   */
+  @Override
+  public boolean isArray() {
+    return true;
   }
 
   @Override

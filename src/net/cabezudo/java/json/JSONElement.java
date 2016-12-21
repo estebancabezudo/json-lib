@@ -14,6 +14,15 @@ package net.cabezudo.java.json;
 public abstract class JSONElement implements JSONable {
 
   private String referenceFieldName;
+  private final Position position;
+
+  public Position getPosition() {
+    return position;
+  }
+
+  public JSONElement(Position position) {
+    this.position = position;
+  }
 
   /**
    * Returns the name of the field whose value is used as a reference.

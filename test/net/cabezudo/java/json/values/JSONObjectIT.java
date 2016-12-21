@@ -658,7 +658,7 @@ public class JSONObjectIT {
 
     pair = childs.get(NULL_REFERENCE);
     assertEquals("nullReference", pair.getKey());
-    assertEquals(JSONNull.getValue(), pair.getValue());
+    assertEquals(new JSONNull(), pair.getValue());
 
     pair = childs.get(BOOLEAN);
     assertEquals("pBoolean", pair.getKey());
@@ -1653,7 +1653,7 @@ public class JSONObjectIT {
           break;
         case NULL_REFERENCE:
           assertEquals("nullReference", jsonPair.getKey());
-          assertEquals(JSONNull.getValue(), jsonPair.getValue());
+          assertEquals(new JSONNull(), jsonPair.getValue());
           break;
         case BOOLEAN:
           assertEquals("pBoolean", jsonPair.getKey());
@@ -1764,7 +1764,7 @@ public class JSONObjectIT {
     assertEquals(new JSONNumber(4), value);
 
     value = array[NULL_REFERENCE];
-    assertEquals(JSONNull.getValue(), value);
+    assertEquals(new JSONNull(), value);
 
     value = array[BOOLEAN];
     assertEquals(JSONBoolean.get(false), value
@@ -1869,7 +1869,7 @@ public class JSONObjectIT {
     assertEquals(new JSONNumber(4), value);
 
     value = array.get(NULL_REFERENCE);
-    assertEquals(JSONNull.getValue(), value);
+    assertEquals(new JSONNull(), value);
 
     value = array.get(BOOLEAN);
     assertEquals(JSONBoolean.get(false), value);

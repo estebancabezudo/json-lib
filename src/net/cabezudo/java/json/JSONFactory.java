@@ -30,7 +30,7 @@ public class JSONFactory {
    */
   public static JSONValue get(Object object) {
     if (object == null) {
-      return JSONNull.getValue();
+      return new JSONNull();
     }
     if (object instanceof JSONValue) {
       return (JSONValue) object;
@@ -117,7 +117,7 @@ public class JSONFactory {
   private JSONString createJSONString(Token token) {
     String valueInQuotes = token.getValue();
     String value = valueInQuotes.substring(1, valueInQuotes.length() - 1);
-    return new JSONString(value);
+    return new JSONString(value, token.getPosition());
   }
 
   private JSONValue get(Tokens tokens) throws JSONParseException {
@@ -143,10 +143,10 @@ public class JSONFactory {
         jsonValue = new JSONNumber(bigDecimal);
         return jsonValue;
       case LEFT_BRACE:
-        jsonValue = getJSONObject(tokens);
+        jsonValue = getJSONObject(tokens, token.getPosition());
         return jsonValue;
       case LEFT_BRACKET:
-        jsonValue = getJSONArray(tokens);
+        jsonValue = getJSONArray(tokens, token.getPosition());
         return jsonValue;
       case FALSE:
       case TRUE:
@@ -154,7 +154,7 @@ public class JSONFactory {
         jsonValue = JSONBoolean.get(booleanValue);
         return jsonValue;
       case NULL:
-        jsonValue = JSONNull.getValue();
+        jsonValue = new JSONNull();
         return jsonValue;
       default:
         position = token.getPosition();
@@ -162,12 +162,10 @@ public class JSONFactory {
     }
   }
 
-  JSONArray getJSONArray(Tokens tokens) throws JSONParseException {
+  JSONArray getJSONArray(Tokens tokens, Position position) throws JSONParseException {
 
-    JSONArray jsonArray = new JSONArray();
+    JSONArray jsonArray = new JSONArray(position);
     Token token;
-    int line = 1;
-    Position position = Position.INITIAL;
     token = tokens.element();
 
     if (token.isRightBracket()) {
@@ -194,7 +192,7 @@ public class JSONFactory {
     return jsonArray;
   }
 
-  JSONObject getJSONObject(Tokens tokens) throws JSONParseException {
+  JSONObject getJSONObject(Tokens tokens, Position position) throws JSONParseException {
     JSONObject jsonObject = new JSONObject();
     Token token;
     Position positionOnToken = Position.INITIAL;
@@ -217,7 +215,7 @@ public class JSONFactory {
         }
 
         JSONValue jsonValue = get(tokens);
-        JSONPair jsonPair = new JSONPair(jsonString.toString(), jsonValue);
+        JSONPair jsonPair = new JSONPair(jsonString.toString(), jsonValue, position);
         jsonObject.add(jsonPair);
 
         token = tokens.poll();
