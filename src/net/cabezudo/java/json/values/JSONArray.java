@@ -296,4 +296,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     return array;
   }
 
+  public void addAll(Iterable list) {
+    for (Object object : list) {
+      internalAdd(object);
+    }
+  }
 }
