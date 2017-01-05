@@ -57,9 +57,6 @@ import net.cabezudo.java.json.values.JSONValue;
  */
 public class JSON {
 
-  /**
-   *
-   */
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
   private static Object getFieldValue(Object object, String getterName) {
@@ -82,7 +79,7 @@ public class JSON {
     String getterPrefix;
 
     if (fieldType == boolean.class
-        || fieldType == Boolean.class) {
+            || fieldType == Boolean.class) {
       getterPrefix = "is";
     } else {
       getterPrefix = "get";
@@ -303,7 +300,11 @@ public class JSON {
         jsonValue = JSONFactory.get(fieldValue);
 
         if (jsonValue == null) {
-          jsonValue = toJSONTree(fieldValue);
+          try {
+            jsonValue = toJSONTree(fieldValue);
+          } catch (NotPropertiesException e) {
+            throw new NotPropertiesException("The field named '" + fieldName + "' contain an object " + fieldValue.getClass().getName() + " doesn't have properties.");
+          }
         } else {
           if (property.dontShowIfNull() && jsonValue instanceof JSONNull) {
             continue;
