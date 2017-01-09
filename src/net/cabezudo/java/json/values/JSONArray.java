@@ -298,7 +298,6 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   public void addAll(Iterable list) {
     for (Object object : list) {
-      System.out.println("object: " + object.getClass().getName() + ", " + object);
       internalAdd(object);
     }
   }
