@@ -48,6 +48,7 @@ class Tokenizer {
             line++;
             row = 1;
           case ' ':
+          case '\u00A0':
           case ':':
           case ',':
           case '{':

@@ -21,11 +21,6 @@ class Token {
     sb = new StringBuilder();
   }
 
-//  Token(String string) {
-//    line = 1;
-//    row = 1;
-//    sb = new StringBuilder(string);
-//  }
   @Override
   public String toString() {
     return sb + " (" + type + ", " + position.getLine() + ", " + position.getRow() + ")";
@@ -68,9 +63,6 @@ class Token {
           case "]":
             type = TokenType.RIGHT_BRACKET;
             break;
-          default:
-            type = TokenType.STRING;
-            break;
         }
         break;
       case 2:
@@ -105,7 +97,7 @@ class Token {
               sb = new StringBuilder(number.toString());
               break;
             } catch (NumberFormatException e) {
-              type = TokenType.NONE;
+              throw new InvalidTokenException("Unexpected token " + s + ".");
             }
           } while (false);
           break;
