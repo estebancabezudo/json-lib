@@ -31,7 +31,7 @@ class Token {
     return sb + " (" + type + ", " + position.getLine() + ", " + position.getRow() + ")";
   }
 
-  void append(char c) {
+  void append(Character c) {
     sb.append(c);
   }
 
@@ -47,6 +47,7 @@ class Token {
             type = TokenType.NEWLINE;
             break;
           case " ":
+          case "\u00A0":
             type = TokenType.SPACE;
             break;
           case ":":
@@ -66,6 +67,9 @@ class Token {
             break;
           case "]":
             type = TokenType.RIGHT_BRACKET;
+            break;
+          default:
+            type = TokenType.STRING;
             break;
         }
         break;
