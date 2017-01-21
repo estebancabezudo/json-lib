@@ -291,6 +291,19 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param propertyName
    * @return
    */
+  public Boolean digNullBoolean(String propertyName) {
+    JSONValue jsonValue = digNullValue(propertyName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBoolean();
+  }
+
+  /**
+   *
+   * @param propertyName
+   * @return
+   */
   public Byte digNullByte(String propertyName) {
     JSONValue jsonValue = digNullValue(propertyName);
     if (jsonValue == null) {
