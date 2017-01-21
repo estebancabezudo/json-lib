@@ -30,12 +30,12 @@ class Token {
     sb.append(c);
   }
 
-  void clasify() {
+  void clasify() throws InvalidTokenException {
     String s = sb.toString();
 
     switch (s.length()) {
       case 0:
-        throw new InvalidTokenException("Zero length token.");
+        throw new InvalidTokenException("Zero length token.", position);
       case 1:
         switch (s) {
           case "\n":
@@ -97,7 +97,7 @@ class Token {
               sb = new StringBuilder(number.toString());
               break;
             } catch (NumberFormatException e) {
-              throw new InvalidTokenException("Unexpected token " + s + ".");
+              throw new InvalidTokenException("Unexpected token " + s + ".", position);
             }
           } while (false);
           break;

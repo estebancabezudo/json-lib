@@ -1,5 +1,7 @@
 package net.cabezudo.java.json;
 
+import net.cabezudo.java.json.exceptions.InvalidTokenException;
+
 /**
  * @author Esteban Cabezudo
  * @version 1.0
@@ -8,7 +10,7 @@ package net.cabezudo.java.json;
  */
 class Tokenizer {
 
-  static Tokens tokenize(String string) {
+  static Tokens tokenize(String string) throws InvalidTokenException {
     char[] chars = string.toCharArray();
     Tokens tokens = new Tokens();
     Token token = new Token(Position.INITIAL);

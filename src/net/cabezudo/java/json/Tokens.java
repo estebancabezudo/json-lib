@@ -3,6 +3,7 @@ package net.cabezudo.java.json;
 import java.util.LinkedList;
 import java.util.Queue;
 import net.cabezudo.java.json.exceptions.EmptyQueueException;
+import net.cabezudo.java.json.exceptions.InvalidTokenException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -15,7 +16,7 @@ class Tokens {
   private Position position;
   private final Queue<Token> queue = new LinkedList<>();
 
-  boolean add(Token token) {
+  boolean add(Token token) throws InvalidTokenException {
     if (token == null || token.empty()) {
       return false;
     }
