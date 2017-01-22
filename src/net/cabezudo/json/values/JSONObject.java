@@ -189,7 +189,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param propertyName
    * @return
    */
-  public JSONPair deleteElement(String propertyName) {
+  public JSONPair remove(String propertyName) {
     JSONPair element = map.get(propertyName);
     list.remove(element);
     keys.remove(propertyName);

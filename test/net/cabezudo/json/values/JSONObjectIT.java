@@ -1,12 +1,5 @@
 package net.cabezudo.json.values;
 
-import net.cabezudo.json.values.JSONBoolean;
-import net.cabezudo.json.values.JSONValue;
-import net.cabezudo.json.values.JSONNull;
-import net.cabezudo.json.values.JSONArray;
-import net.cabezudo.json.values.JSONNumber;
-import net.cabezudo.json.values.JSONString;
-import net.cabezudo.json.values.JSONObject;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
@@ -104,7 +97,7 @@ public class JSONObjectIT {
     s = jsonObject.toJSON();
     assertEquals("{ \"name\": \"Esteban\", \"numberOfLegs\": 2 }", s);
 
-    jsonObject.deleteElement("name");
+    jsonObject.remove("name");
 
     s = jsonObject.toJSON();
     assertEquals("{ \"numberOfLegs\": 2 }", s);
