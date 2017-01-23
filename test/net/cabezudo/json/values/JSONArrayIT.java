@@ -1,17 +1,16 @@
 package net.cabezudo.json.values;
 
-import net.cabezudo.json.values.JSONValue;
-import net.cabezudo.json.values.JSONNumber;
-import net.cabezudo.json.values.JSONArray;
-import net.cabezudo.json.values.JSONObject;
-import net.cabezudo.json.values.JSONString;
+import java.math.BigDecimal;
+import java.math.BigInteger;
+import java.util.Calendar;
 import java.util.List;
+import net.cabezudo.json.JSON;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import org.junit.Before;
 import org.junit.Test;
 
 /**
@@ -22,15 +21,9 @@ import org.junit.Test;
  */
 public class JSONArrayIT {
 
-  private JSONArray jsonArray;
-
-  @Before
-  public void createJSONArray() {
-    jsonArray = new JSONArray();
-  }
-
   @Test
-  public void testAddJSONValue() throws PropertyNotExistException {
+  public void testAddJSONValue() throws ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     int size = jsonArray.size();
     Assert.assertEquals(0, size);
     JSONNumber jsonNumber = new JSONNumber(10);
@@ -43,6 +36,7 @@ public class JSONArrayIT {
 
   @Test
   public void testAddObject() {
+    JSONArray jsonArray = new JSONArray();
     int size = jsonArray.size();
     Assert.assertEquals(0, size);
     jsonArray.add(new JSONNumber(10));
@@ -69,14 +63,15 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testDeleteElement() {
+  public void testDeleteElement() throws ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
     JSONString jsonString = new JSONString("Esteban");
     jsonArray.add(jsonString);
 
-    jsonArray.deleteElement(0);
+    jsonArray.remove(0);
 
     assertEquals(1, jsonArray.size());
 
@@ -86,6 +81,7 @@ public class JSONArrayIT {
 
   @Test
   public void testGetNullValue() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -106,7 +102,8 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testGetReferencedElement() throws JSONParseException {
+  public void testGetReferencedElement() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     JSONObject a = new JSONObject("{ \"id\": 2, \"name\": \"Esteban\" }");
     a.setReferenceFieldName("id");
     jsonArray.add(a);
@@ -128,6 +125,7 @@ public class JSONArrayIT {
 
   @Test
   public void testGetValue() throws Exception {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -149,6 +147,7 @@ public class JSONArrayIT {
 
   @Test
   public void testHasElements() {
+    JSONArray jsonArray = new JSONArray();
     Assert.assertFalse(jsonArray.hasElements());
 
     JSONNumber jsonNumber = new JSONNumber(1);
@@ -166,11 +165,13 @@ public class JSONArrayIT {
 
   @Test
   public void testIsValue() {
+    JSONArray jsonArray = new JSONArray();
     assertEquals(true, jsonArray.isValue());
   }
 
   @Test
   public void testIterator() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -194,7 +195,8 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testSetValue() {
+  public void testSetValue() throws ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -215,6 +217,7 @@ public class JSONArrayIT {
 
   @Test
   public void testToArray() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -233,6 +236,7 @@ public class JSONArrayIT {
 
   @Test
   public void testToJSON() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -245,7 +249,8 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testToJSONArray() {
+  public void testToJSONArray() throws ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -266,7 +271,8 @@ public class JSONArrayIT {
   }
 
   @Test
-  public void testToJSONTree() {
+  public void testToJSONTree() throws ElementNotExistException {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -288,6 +294,7 @@ public class JSONArrayIT {
 
   @Test
   public void testToList() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -305,6 +312,7 @@ public class JSONArrayIT {
 
   @Test
   public void testToStringArray() {
+    JSONArray jsonArray = new JSONArray();
     JSONNumber jsonNumber = new JSONNumber(1);
     jsonArray.add(jsonNumber);
 
@@ -318,6 +326,412 @@ public class JSONArrayIT {
 
     assertEquals("1", a);
     assertEquals("Esteban", b);
+  }
+
+  @Test
+  public void testGetBigDecimal() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    BigDecimal value = jsonArray.getBigDecimal(0);
+    BigDecimal expectedValue = new BigDecimal("123456.789");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetBigInteger() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 62345324523452345234523452365476489 ]").toJSONArray();
+    BigInteger value = jsonArray.getBigInteger(0);
+    BigInteger expectedValue = new BigInteger("62345324523452345234523452365476489");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetBoolean() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ true ]").toJSONArray();
+    Boolean value = jsonArray.getBoolean(0);
+    Boolean expectedValue = Boolean.TRUE;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetByte() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 42 ]").toJSONArray();
+    Byte value = jsonArray.getByte(0);
+    Byte expectedValue = new Byte("42");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetCalendar() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"2017-01-23T11:20:32.222Z-0000\" ]").toJSONArray();
+    Calendar value = jsonArray.getCalendar(0);
+    Calendar expectedValue = Calendar.getInstance();
+    expectedValue.set(Calendar.MILLISECOND, 222);
+    expectedValue.set(2017, 0, 23, 11, 20, 32);
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetCharacter() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"a\", \"be\" ]").toJSONArray();
+    Character value = jsonArray.getCharacter(0);
+    Character expectedValue = 'a';
+    assertEquals(expectedValue, value);
+    value = jsonArray.getCharacter(1);
+    expectedValue = 'b';
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetDouble() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
+    Double value = jsonArray.getDouble(0);
+    Double expectedValue = 15.5;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetFloat() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    Float value = jsonArray.getFloat(0);
+    Float expectedValue = new Float("123456.789");
+    assertEquals(expectedValue, value, 3);
+  }
+
+  @Test
+  public void testGetLong() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 1865345634563456345 ]").toJSONArray();
+    Long value = jsonArray.getLong(0);
+    Long expectedValue = 1865345634563456345l;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetInteger() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456 ]").toJSONArray();
+    Integer value = jsonArray.getInteger(0);
+    Integer expectedValue = 123456;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetShort() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
+    Short value = jsonArray.getShort(0);
+    short expectedValue = 12789;
+    assertEquals(expectedValue, (short) value);
+  }
+
+  @Test
+  public void testGetString() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"House\" ]").toJSONArray();
+    String value = jsonArray.getString(0);
+    String expectedValue = "House";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullBigDecimal() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    BigDecimal value = jsonArray.getNullBigDecimal(0);
+    BigDecimal expectedValue = new BigDecimal("123456.789");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullBigInteger() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 62345324523452345234523452365476489 ]").toJSONArray();
+    BigInteger value = jsonArray.getNullBigInteger(0);
+    BigInteger expectedValue = new BigInteger("62345324523452345234523452365476489");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullBoolean() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ true ]").toJSONArray();
+    Boolean value = jsonArray.getNullBoolean(0);
+    Boolean expectedValue = Boolean.TRUE;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullByte() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 42 ]").toJSONArray();
+    Byte value = jsonArray.getNullByte(0);
+    Byte expectedValue = new Byte("42");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullCalendar() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"2017-01-23T11:20:32.222Z-0000\" ]").toJSONArray();
+    Calendar value = jsonArray.getNullCalendar(0);
+    Calendar expectedValue = Calendar.getInstance();
+    expectedValue.set(Calendar.MILLISECOND, 222);
+    expectedValue.set(2017, 0, 23, 11, 20, 32);
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullCharacter() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"a\", \"be\" ]").toJSONArray();
+    Character value = jsonArray.getNullCharacter(0);
+    Character expectedValue = 'a';
+    assertEquals(expectedValue, value);
+    value = jsonArray.getNullCharacter(1);
+    expectedValue = 'b';
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullDouble() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
+    System.out.println(jsonArray);
+    Double value = jsonArray.getNullDouble(0);
+    Double expectedValue = 15.5;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullFloat() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    Float value = jsonArray.getNullFloat(0);
+    Float expectedValue = new Float("123456.789");
+    assertEquals(expectedValue, value, 3);
+  }
+
+  @Test
+  public void testGetNullLong() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 1234523453245232345 ]").toJSONArray();
+    Long value = jsonArray.getNullLong(0);
+    Long expectedValue = 1234523453245232345l;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullInteger() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456789 ]").toJSONArray();
+    Integer value = jsonArray.getNullInteger(0);
+    Integer expectedValue = 123456789;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testGetNullShort() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
+    Short value = jsonArray.getNullShort(0);
+    short expectedValue = 12789;
+    assertEquals(expectedValue, (short) value);
+  }
+
+  @Test
+  public void testGetNullString() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"House\" ]").toJSONArray();
+    String value = jsonArray.getNullString(0);
+    String expectedValue = "House";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigBigDecimal() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    BigDecimal value = jsonArray.digBigDecimal("[0]");
+    BigDecimal expectedValue = new BigDecimal("123456.789");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigBigInteger() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 62345324523452345234523452365476489 ]").toJSONArray();
+    BigInteger value = jsonArray.digBigInteger("[0]");
+    BigInteger expectedValue = new BigInteger("62345324523452345234523452365476489");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigBoolean() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ true ]").toJSONArray();
+    Boolean value = jsonArray.digBoolean("[0]");
+    Boolean expectedValue = Boolean.TRUE;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigByte() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 42 ]").toJSONArray();
+    Byte value = jsonArray.digByte("[0]");
+    Byte expectedValue = new Byte("42");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigCalendar() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"2017-01-23T11:20:32.222Z-0000\" ]").toJSONArray();
+    Calendar value = jsonArray.digCalendar("[0]");
+    Calendar expectedValue = Calendar.getInstance();
+    expectedValue.set(Calendar.MILLISECOND, 222);
+    expectedValue.set(2017, 0, 23, 11, 20, 32);
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigCharacter() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"a\", \"be\" ]").toJSONArray();
+    Character value = jsonArray.digCharacter("[0]");
+    Character expectedValue = 'a';
+    assertEquals(expectedValue, value);
+    value = jsonArray.digCharacter("[1]");
+    expectedValue = 'b';
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigDouble() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
+    Double value = jsonArray.digDouble("[0]");
+    Double expectedValue = 15.5;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigFloat() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    Float value = jsonArray.digFloat("[0]");
+    Float expectedValue = new Float("123456.789");
+    assertEquals(expectedValue, value, 3);
+  }
+
+  @Test
+  public void testDigLong() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 1865345634563456345 ]").toJSONArray();
+    Long value = jsonArray.digLong("[0]");
+    Long expectedValue = 1865345634563456345l;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigInteger() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 123456 ]").toJSONArray();
+    Integer value = jsonArray.digInteger("[0]");
+    Integer expectedValue = 123456;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigShort() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
+    Short value = jsonArray.digShort("[0]");
+    short expectedValue = 12789;
+    assertEquals(expectedValue, (short) value);
+  }
+
+  @Test
+  public void testDigString() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ \"House\" ]").toJSONArray();
+    String value = jsonArray.digString("[0]");
+    String expectedValue = "House";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullBigDecimal() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    BigDecimal value = jsonArray.digNullBigDecimal("[0]");
+    BigDecimal expectedValue = new BigDecimal("123456.789");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullBigInteger() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 62345324523452345234523452365476489 ]").toJSONArray();
+    BigInteger value = jsonArray.digNullBigInteger("[0]");
+    BigInteger expectedValue = new BigInteger("62345324523452345234523452365476489");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullBoolean() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ true ]").toJSONArray();
+    Boolean value = jsonArray.digNullBoolean("[0]");
+    Boolean expectedValue = Boolean.TRUE;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullByte() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 42 ]").toJSONArray();
+    Byte value = jsonArray.digNullByte("[0]");
+    Byte expectedValue = new Byte("42");
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullCalendar() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"2017-01-23T11:20:32.222Z-0000\" ]").toJSONArray();
+    Calendar value = jsonArray.digNullCalendar("[0]");
+    Calendar expectedValue = Calendar.getInstance();
+    expectedValue.set(Calendar.MILLISECOND, 222);
+    expectedValue.set(2017, 0, 23, 11, 20, 32);
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullCharacter() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"a\", \"be\" ]").toJSONArray();
+    Character value = jsonArray.digNullCharacter("[0]");
+    Character expectedValue = 'a';
+    assertEquals(expectedValue, value);
+    value = jsonArray.digNullCharacter("[1]");
+    expectedValue = 'b';
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullDouble() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
+    System.out.println(jsonArray);
+    Double value = jsonArray.digNullDouble("[0]");
+    Double expectedValue = 15.5;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullFloat() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456.789 ]").toJSONArray();
+    Float value = jsonArray.digNullFloat("[0]");
+    Float expectedValue = new Float("123456.789");
+    assertEquals(expectedValue, value, 3);
+  }
+
+  @Test
+  public void testDigNullLong() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 1234523453245232345 ]").toJSONArray();
+    Long value = jsonArray.digNullLong("[0]");
+    Long expectedValue = 1234523453245232345l;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullInteger() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 123456789 ]").toJSONArray();
+    Integer value = jsonArray.digNullInteger("[0]");
+    Integer expectedValue = 123456789;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigNullShort() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
+    Short value = jsonArray.digNullShort("[0]");
+    short expectedValue = 12789;
+    assertEquals(expectedValue, (short) value);
+  }
+
+  @Test
+  public void testDigNullString() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ \"House\" ]").toJSONArray();
+    String value = jsonArray.digNullString("[0]");
+    String expectedValue = "House";
+    assertEquals(expectedValue, value);
   }
 
 }

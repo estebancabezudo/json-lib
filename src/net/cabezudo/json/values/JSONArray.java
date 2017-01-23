@@ -1,11 +1,16 @@
 package net.cabezudo.json.values;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Iterator;
 import java.util.List;
 import net.cabezudo.json.JSON;
 import net.cabezudo.json.JSONElement;
 import net.cabezudo.json.Position;
+import net.cabezudo.json.exceptions.ElementNotExistException;
+import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -106,17 +111,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * @param index
    * @return
    */
-  public JSONElement deleteElement(int index) {
+  public JSONElement remove(int index) {
     return list.remove(index);
-  }
-
-  /**
-   *
-   * @param index
-   * @return
-   */
-  public JSONValue get(int index) {
-    return getValue(index);
   }
 
   /**
@@ -154,9 +150,13 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    *
    * @param index
    * @return
+   * @throws net.cabezudo.json.exceptions.ElementNotExistException
    */
-  public JSONValue getValue(int index) {
+  public JSONValue getValue(int index) throws ElementNotExistException {
     JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      throw new ElementNotExistException("The index " + index + " doesn't have a value.", getPosition());
+    }
     return jsonValue;
   }
 
@@ -300,5 +300,411 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     for (Object object : list) {
       internalAdd(object);
     }
+  }
+
+  public BigDecimal getBigDecimal(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toBigDecimal();
+  }
+
+  public BigInteger getBigInteger(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toBigInteger();
+  }
+
+  public Boolean getBoolean(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toBoolean();
+  }
+
+  public Byte getByte(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toByte();
+  }
+
+  public Calendar getCalendar(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toCalendar();
+  }
+
+  public Character getCharacter(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toCharacter();
+  }
+
+  public Double getDouble(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toDouble();
+  }
+
+  public Float getFloat(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toFloat();
+  }
+
+  public Long getLong(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toLong();
+  }
+
+  public Integer getInteger(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toInteger();
+  }
+
+  public Short getShort(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toShort();
+  }
+
+  public String getString(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toString();
+  }
+
+  public BigDecimal getNullBigDecimal(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBigDecimal();
+  }
+
+  public BigInteger getNullBigInteger(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBigInteger();
+  }
+
+  public Boolean getNullBoolean(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBoolean();
+  }
+
+  public Byte getNullByte(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toByte();
+  }
+
+  public Calendar getNullCalendar(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCalendar();
+  }
+
+  public Character getNullCharacter(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCharacter();
+  }
+
+  public Double getNullDouble(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toDouble();
+  }
+
+  public Float getNullFloat(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toFloat();
+  }
+
+  public Long getNullLong(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toLong();
+  }
+
+  public Integer getNullInteger(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toInteger();
+  }
+
+  public Short getNullShort(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toShort();
+  }
+
+  public String getNullString(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toString();
+  }
+
+  /**
+   *
+   * @param propertyFullName
+   * @return
+   */
+  public JSONValue digNullValue(String propertyFullName) {
+    return digNullValue(propertyFullName, 1);
+  }
+
+  /**
+   *
+   * @param propertyFullName
+   * @param oldPosition
+   * @return
+   */
+  protected JSONValue digNullValue(String propertyFullName, int oldPosition) {
+    if (propertyFullName == null || propertyFullName.isEmpty()) {
+      throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
+    }
+
+    int point = propertyFullName.indexOf('.');
+    if (point == -1) {
+      int index = getIndexFrom(propertyFullName, oldPosition);
+      JSONValue jsonValue = getNullValue(index);
+      return jsonValue;
+    } else {
+      String propertyName = propertyFullName.substring(0, point);
+      int p = point + 1;
+      if (p >= propertyFullName.length()) {
+        throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
+      }
+      int index = getIndexFrom(propertyFullName, oldPosition);
+      JSONValue nextLevelValue = getNullValue(index);
+      if (nextLevelValue == null || !(nextLevelValue.isObject() || nextLevelValue.isArray())) {
+        return null;
+      }
+      String nextPropertyName = propertyFullName.substring(p);
+
+      if (nextLevelValue.isObject()) {
+        JSONObject nextLevelObject = nextLevelValue.toObject();
+        return nextLevelObject.digNullValue(nextPropertyName, p + oldPosition);
+      }
+      if (nextLevelValue.isArray()) {
+        JSONArray nextLevelArray = nextLevelValue.toJSONArray();
+        return nextLevelArray.digNullValue(nextPropertyName, p + oldPosition);
+      }
+    }
+    throw new RuntimeException("The next level value is not an object nor an array.");
+  }
+
+  private int getIndexFrom(String property, int oldPosition) {
+    char c = property.charAt(0);
+    if (c != '[') {
+      throw new RuntimeException("Invalid format for property. Expect a left bracket ([) and have a '" + c + "' in position " + oldPosition + ".");
+    }
+    int pointPosition = property.indexOf('.');
+    int lastPosition;
+    if (pointPosition == -1) {
+      lastPosition = property.length() - 1;
+    } else {
+      lastPosition = pointPosition - 1;
+    }
+    c = property.charAt(lastPosition);
+    if (c != ']') {
+      throw new RuntimeException("Invalid format for property. Expect a left bracket (]) and have a '" + c + "' in position " + (oldPosition + lastPosition) + ".");
+    }
+    String stringIndex = property.substring(1, lastPosition);
+
+    try {
+      int index = Integer.parseInt(stringIndex);
+      return index;
+    } catch (NumberFormatException e) {
+      throw new RuntimeException("Invalid format for index property '" + stringIndex + "' in position  " + (oldPosition + 1) + ".");
+    }
+  }
+
+  /**
+   *
+   * @param propertyName
+   * @return
+   * @throws PropertyNotExistException
+   */
+  public JSONValue digValue(String propertyName) throws PropertyNotExistException {
+    JSONValue value = digNullValue(propertyName);
+    if (value == null) {
+      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
+    }
+    return value;
+  }
+
+  public BigDecimal digBigDecimal(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toBigDecimal();
+  }
+
+  public BigInteger digBigInteger(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toBigInteger();
+  }
+
+  public Boolean digBoolean(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toBoolean();
+  }
+
+  public Byte digByte(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toByte();
+  }
+
+  public Calendar digCalendar(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toCalendar();
+  }
+
+  public Character digCharacter(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toCharacter();
+  }
+
+  public Double digDouble(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toDouble();
+  }
+
+  public Float digFloat(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toFloat();
+  }
+
+  public Long digLong(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toLong();
+  }
+
+  public Integer digInteger(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toInteger();
+  }
+
+  public Short digShort(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toShort();
+  }
+
+  public String digString(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toString();
+  }
+
+  public BigDecimal digNullBigDecimal(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBigDecimal();
+  }
+
+  public BigInteger digNullBigInteger(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBigInteger();
+  }
+
+  public Boolean digNullBoolean(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toBoolean();
+  }
+
+  public Byte digNullByte(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toByte();
+  }
+
+  public Calendar digNullCalendar(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCalendar();
+  }
+
+  public Character digNullCharacter(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCharacter();
+  }
+
+  public Double digNullDouble(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toDouble();
+  }
+
+  public Float digNullFloat(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toFloat();
+  }
+
+  public Long digNullLong(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toLong();
+  }
+
+  public Integer digNullInteger(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toInteger();
+  }
+
+  public Short digNullShort(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toShort();
+  }
+
+  public String digNullString(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toString();
+  }
+
+  BigInteger getBigInteger(String test0) {
+    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 }

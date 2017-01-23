@@ -1,12 +1,10 @@
 package net.cabezudo.json.values;
 
-import net.cabezudo.json.values.JSONValue;
-import net.cabezudo.json.values.JSONArray;
-import net.cabezudo.json.values.JSONNumber;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
@@ -174,11 +172,11 @@ public class JSONNumberIT {
   }
 
   @Test
-  public void testToJSONArray() {
+  public void testToJSONArray() throws ElementNotExistException {
     JSONNumber jsonNumber = new JSONNumber(1);
     JSONArray array = jsonNumber.toJSONArray();
     assertEquals(1, array.size());
-    assertEquals(new JSONNumber(1), array.get(0));
+    assertEquals(new JSONNumber(1), array.getValue(0));
   }
 
   @Test

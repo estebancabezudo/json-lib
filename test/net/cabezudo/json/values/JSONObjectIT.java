@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Log;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.objects.DigTypes;
@@ -590,7 +591,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetChilds() throws JSONParseException, PropertyNotExistException {
+  public void testGetChilds() throws JSONParseException, PropertyNotExistException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -796,7 +797,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetJSONArrayUsingThePropertyIndex() throws JSONParseException, PropertyNotExistException {
+  public void testGetJSONArrayUsingThePropertyIndex() throws JSONParseException, ElementNotExistException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -809,7 +810,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetJSONArrayUsingThePropertyName() throws JSONParseException, PropertyNotExistException {
+  public void testGetJSONArrayUsingThePropertyName() throws JSONParseException, ElementNotExistException, PropertyNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1123,7 +1124,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullJSONArrayUsingThePropertyIndex() throws JSONParseException {
+  public void testGetNullJSONArrayUsingThePropertyIndex() throws JSONParseException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1136,7 +1137,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testGetNullJSONArrayUsingThePropertyName() throws JSONParseException {
+  public void testGetNullJSONArrayUsingThePropertyName() throws JSONParseException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1587,7 +1588,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testIterator() throws JSONParseException, PropertyNotExistException {
+  public void testIterator() throws JSONParseException, PropertyNotExistException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1709,7 +1710,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testToArray() throws JSONParseException, PropertyNotExistException {
+  public void testToArray() throws JSONParseException, PropertyNotExistException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1814,7 +1815,7 @@ public class JSONObjectIT {
   }
 
   @Test
-  public void testToJSONArray() throws JSONParseException, PropertyNotExistException {
+  public void testToJSONArray() throws JSONParseException, PropertyNotExistException, ElementNotExistException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
@@ -1824,13 +1825,13 @@ public class JSONObjectIT {
 
     JSONValue value;
 
-    value = array.get(BIG_DECIMAL);
+    value = array.getValue(BIG_DECIMAL);
     assertEquals(new JSONNumber(15.4), value);
 
-    value = array.get(BIG_INTEGER);
+    value = array.getValue(BIG_INTEGER);
     assertEquals(new JSONNumber(14), value);
 
-    value = array.get(BYTE_ARRAY);
+    value = array.getValue(BYTE_ARRAY);
     JSONArray a = (JSONArray) value;
     assertEquals(4, a.size());
     assertEquals(new JSONNumber(1), a.getValue(0));
@@ -1838,67 +1839,67 @@ public class JSONObjectIT {
     assertEquals(new JSONNumber(3), a.getValue(2));
     assertEquals(new JSONNumber(4), a.getValue(3));
 
-    value = array.get(CALENDAR);
+    value = array.getValue(CALENDAR);
     assertEquals(new JSONString("1974-01-30T14:20:12.125Z"), value);
 
-    value = array.get(DATE);
+    value = array.getValue(DATE);
     assertEquals(new JSONString("1974-01-30T14:20:12.125Z"), value);
 
-    value = array.get(OBJECT_BOOLEAN);
+    value = array.getValue(OBJECT_BOOLEAN);
     assertEquals(JSONBoolean.TRUE, value);
 
-    value = array.get(OBJECT_BYTE);
+    value = array.getValue(OBJECT_BYTE);
     assertEquals(new JSONNumber(2), value);
 
-    value = array.get(OBJECT_CHARACTER);
+    value = array.getValue(OBJECT_CHARACTER);
     assertEquals(new JSONString("b"), value);
 
-    value = array.get(OBJECT_DOUBLE);
+    value = array.getValue(OBJECT_DOUBLE);
     assertEquals(new JSONNumber(12.5), value);
 
-    value = array.get(OBJECT_FLOAT);
+    value = array.getValue(OBJECT_FLOAT);
     assertEquals(new JSONNumber(10.5), value);
 
-    value = array.get(OBJECT_INTEGER);
+    value = array.getValue(OBJECT_INTEGER);
     assertEquals(new JSONNumber(6), value);
 
-    value = array.get(OBJECT_LONG);
+    value = array.getValue(OBJECT_LONG);
     assertEquals(new JSONNumber(8), value);
 
-    value = array.get(OBJECT_SHORT);
+    value = array.getValue(OBJECT_SHORT);
     assertEquals(new JSONNumber(4), value);
 
-    value = array.get(NULL_REFERENCE);
+    value = array.getValue(NULL_REFERENCE);
     assertEquals(new JSONNull(), value);
 
-    value = array.get(BOOLEAN);
+    value = array.getValue(BOOLEAN);
     assertEquals(JSONBoolean.get(false), value);
 
-    value = array.get(BYTE);
+    value = array.getValue(BYTE);
     assertEquals(new JSONNumber(1), value);
 
-    value = array.get(CHARACTER);
+    value = array.getValue(CHARACTER);
     assertEquals(new JSONString('a'), value);
 
-    value = array.get(DOUBLE);
+    value = array.getValue(DOUBLE);
     assertEquals(new JSONNumber(11.5), value);
 
-    value = array.get(FLOAT);
+    value = array.getValue(FLOAT);
     assertEquals(new JSONNumber(9.5), value);
 
-    value = array.get(INTEGER);
+    value = array.getValue(INTEGER);
     assertEquals(new JSONNumber(5), value);
 
-    value = array.get(LONG);
+    value = array.getValue(LONG);
     assertEquals(new JSONNumber(7), value);
 
-    value = array.get(SHORT);
+    value = array.getValue(SHORT);
     assertEquals(new JSONNumber(3), value);
 
-    value = array.get(STRING);
+    value = array.getValue(STRING);
     assertEquals(new JSONString("Esteban"), value);
 
-    JSONObject jsonBook = array.get(BOOK).toObject();
+    JSONObject jsonBook = array.getValue(BOOK).toObject();
     int id = jsonBook.getInteger("id");
     String name = jsonBook.getString("name");
     assertEquals(1, id);
