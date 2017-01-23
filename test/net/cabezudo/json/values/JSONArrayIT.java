@@ -414,6 +414,15 @@ public class JSONArrayIT {
   }
 
   @Test
+  public void testGetObject() throws JSONParseException, ElementNotExistException {
+    JSONArray jsonArray = JSON.parse("[ { \"number\": 123456 } ]").toJSONArray();
+    JSONObject jsonValue = jsonArray.getObject(0);
+    String value = jsonValue.toJSON();
+    String expectedValue = "{ \"number\": 123456 }";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
   public void testGetShort() throws JSONParseException, ElementNotExistException {
     JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
     Short value = jsonArray.getShort(0);
@@ -516,6 +525,15 @@ public class JSONArrayIT {
   }
 
   @Test
+  public void testGetNullObject() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ { \"number\": 123456 } ]").toJSONArray();
+    JSONObject jsonValue = jsonArray.getNullObject(0);
+    String value = jsonValue.toJSON();
+    String expectedValue = "{ \"number\": 123456 }";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
   public void testGetNullShort() throws JSONParseException {
     JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
     Short value = jsonArray.getNullShort(0);
@@ -613,6 +631,15 @@ public class JSONArrayIT {
     JSONArray jsonArray = JSON.parse("[ 123456 ]").toJSONArray();
     Integer value = jsonArray.digInteger("[0]");
     Integer expectedValue = 123456;
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testDigObject() throws JSONParseException, PropertyNotExistException {
+    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
+    JSONObject jsonValue = jsonArray.digObject("[0].person");
+    String value = jsonValue.toJSON();
+    String expectedValue = "{ \"name\": \"John\" }";
     assertEquals(expectedValue, value);
   }
 
@@ -719,6 +746,15 @@ public class JSONArrayIT {
   }
 
   @Test
+  public void testDigNullObject() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
+    JSONObject jsonValue = jsonArray.digNullObject("[0].person");
+    String value = jsonValue.toJSON();
+    String expectedValue = "{ \"name\": \"John\" }";
+    assertEquals(expectedValue, value);
+  }
+
+  @Test
   public void testDigNullShort() throws JSONParseException {
     JSONArray jsonArray = JSON.parse("[ 12789 ]").toJSONArray();
     Short value = jsonArray.digNullShort("[0]");
@@ -733,5 +769,4 @@ public class JSONArrayIT {
     String expectedValue = "House";
     assertEquals(expectedValue, value);
   }
-
 }

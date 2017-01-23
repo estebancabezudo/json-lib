@@ -352,6 +352,11 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     return jsonValue.toInteger();
   }
 
+  public JSONObject getObject(int index) throws ElementNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toObject();
+  }
+
   public Short getShort(int index) throws ElementNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toShort();
@@ -440,6 +445,14 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
       return null;
     }
     return jsonValue.toInteger();
+  }
+
+  public JSONObject getNullObject(int index) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toObject();
   }
 
   public Short getNullShort(int index) {
@@ -598,6 +611,11 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     return jsonValue.toInteger();
   }
 
+  public JSONObject digObject(String propertyFullName) throws PropertyNotExistException {
+    JSONValue jsonValue = digValue(propertyFullName);
+    return jsonValue.toObject();
+  }
+
   public Short digShort(String propertyFullName) throws PropertyNotExistException {
     JSONValue jsonValue = digValue(propertyFullName);
     return jsonValue.toShort();
@@ -688,6 +706,14 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     return jsonValue.toInteger();
   }
 
+  public JSONObject digNullObject(String propertyFullName) {
+    JSONValue jsonValue = digNullValue(propertyFullName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toObject();
+  }
+
   public Short digNullShort(String propertyFullName) {
     JSONValue jsonValue = digNullValue(propertyFullName);
     if (jsonValue == null) {
@@ -702,9 +728,5 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
       return null;
     }
     return jsonValue.toString();
-  }
-
-  BigInteger getBigInteger(String test0) {
-    throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
   }
 }
