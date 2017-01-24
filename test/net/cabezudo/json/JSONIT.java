@@ -261,4 +261,9 @@ public class JSONIT {
       fail(e.getMessage());
     }
   }
+  
+  @Test
+  void testPushtest() {
+	  Log.debug("This is not a test");
+  }
 }
