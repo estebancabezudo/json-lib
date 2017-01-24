@@ -261,6 +261,6 @@ public class JSONIT {
   
   @Test
   void testPushtest() {
-	  Log.debug("This is not a test");
+	  Log.debug("This is still not a test");
   }
 }
