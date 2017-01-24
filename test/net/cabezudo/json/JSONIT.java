@@ -1,9 +1,5 @@
 package net.cabezudo.json;
 
-import net.cabezudo.json.JSON;
-import net.cabezudo.json.JSONElement;
-import net.cabezudo.json.JSONable;
-import net.cabezudo.json.Log;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -18,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.exceptions.ReadFileException;
@@ -49,7 +46,7 @@ public class JSONIT {
   public TemporaryFolder folder = new TemporaryFolder();
 
   @Test
-  public void testParse() {
+  public void testParse() throws ElementNotExistException {
     Log.debug("Parse a string into a JSONElement tree.");
     String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
     Log.debug("String: " + jsonUnparsedString);
@@ -87,7 +84,7 @@ public class JSONIT {
   }
 
   @Test
-  public void testParsePath() throws IOException, ReadFileException {
+  public void testParsePath() throws IOException, ReadFileException, ElementNotExistException {
     Log.debug("Get a string from a file and parse into a JSONElement tree.");
 
     final File temporaryFile = folder.newFile("tempFile.txt");
@@ -143,7 +140,7 @@ public class JSONIT {
   }
 
   @Test
-  public void testToJSONArray() {
+  public void testToJSONArray() throws ElementNotExistException {
 
     List<JSONable> list = new ArrayList<>();
 
@@ -157,11 +154,11 @@ public class JSONIT {
     JSONArray jsonArray = JSON.toJSONArray(list);
     assertEquals(2, jsonArray.size());
 
-    JSONValue jsonElement;
-    jsonElement = jsonArray.get(0);
-    assertEquals("{ \"id\": 1, \"name\": \"Evolution\" }", jsonElement.toJSON());
-    jsonElement = jsonArray.get(1);
-    assertEquals("{ \"id\": 2, \"name\": \"The double\" }", jsonElement.toJSON());
+    JSONValue jsonValue;
+    jsonValue = jsonArray.getValue(0);
+    assertEquals("{ \"id\": 1, \"name\": \"Evolution\" }", jsonValue.toJSON());
+    jsonValue = jsonArray.getValue(1);
+    assertEquals("{ \"id\": 2, \"name\": \"The double\" }", jsonValue.toJSON());
   }
 
   @Test

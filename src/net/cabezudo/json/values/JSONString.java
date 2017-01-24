@@ -78,6 +78,12 @@ public class JSONString extends JSONValue<JSONString> {
     this.value = bigDecimal.toString();
   }
 
+  public JSONString(Calendar calendar) {
+    super(null);
+    SimpleDateFormat sdf = new SimpleDateFormat(JSON.SIMPLE_DATE_FORMAT_PATTERN);
+    this.value = sdf.format(calendar.getTimeInMillis());
+  }
+
   /**
    * Compares the string values represented by two {@link JSONString} objects.
    *

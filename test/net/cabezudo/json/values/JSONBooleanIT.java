@@ -1,10 +1,7 @@
 package net.cabezudo.json.values;
 
-import net.cabezudo.json.values.JSONBoolean;
-import net.cabezudo.json.values.JSONValue;
-import net.cabezudo.json.values.JSONArray;
-import net.cabezudo.json.values.JSONString;
 import java.util.List;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -52,7 +49,6 @@ public class JSONBooleanIT {
 
     assertEquals(e, r);
   }
-
 
   @Test
   public void testIsArray() {
@@ -107,6 +103,7 @@ public class JSONBooleanIT {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
     assertEquals(true, jsonBoolean.isValue());
   }
+
   @Test
   public void testToBoolean() {
     JSONBoolean a = JSONBoolean.get(true);
@@ -118,54 +115,59 @@ public class JSONBooleanIT {
     assertEquals(true, c.toBoolean());
     assertEquals(false, d.toBoolean());
   }
+
   @Test
   public void testToJSON() {
     JSONBoolean a = JSONBoolean.TRUE;
     JSONBoolean b = JSONBoolean.FALSE;
-    
+
     String aStirng = a.toJSON();
     String bStirng = b.toJSON();
-    
+
     assertEquals("true", aStirng);
     assertEquals("false", bStirng);
   }
+
   @Test
-  public void testToJSONArray() {
+  public void testToJSONArray() throws ElementNotExistException {
     JSONBoolean b = JSONBoolean.TRUE;
-    
+
     JSONArray array = b.toJSONArray();
-    
+
     assertEquals(1, array.size());
-    assertEquals(JSONBoolean.TRUE, array.get(0));
+    assertEquals(JSONBoolean.TRUE, array.getValue(0));
   }
+
   @Test
   public void testToJSONString() {
     JSONBoolean a = JSONBoolean.TRUE;
     JSONBoolean b = JSONBoolean.FALSE;
-    
+
     JSONString jsonTrue = a.toJSONString();
     JSONString jsonFalse = b.toJSONString();
-    
+
     assertEquals(new JSONString("true"), jsonTrue);
     assertEquals(new JSONString("false"), jsonFalse);
   }
+
   @Test
   public void testToList() {
     JSONBoolean b = JSONBoolean.TRUE;
-    
+
     List<JSONValue> list = b.toList();
-    
+
     assertEquals(1, list.size());
     assertEquals(JSONBoolean.TRUE, list.get(0));
   }
+
   @Test
   public void testToStringArray() {
     JSONBoolean a = JSONBoolean.TRUE;
     JSONBoolean b = JSONBoolean.FALSE;
-    
+
     String stirngTrue = a.toString();
     String stirngFalse = b.toString();
-    
+
     assertEquals("true", stirngTrue);
     assertEquals("false", stirngFalse);
   }

@@ -1,12 +1,10 @@
 package net.cabezudo.json.values;
 
-import net.cabezudo.json.values.JSONValue;
-import net.cabezudo.json.values.JSONArray;
-import net.cabezudo.json.values.JSONString;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
+import net.cabezudo.json.exceptions.ElementNotExistException;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -75,6 +73,7 @@ public class JSONStringIT {
     assertTrue(!new JSONString("Esteban").isObject());
     assertTrue(new JSONString("Esteban").isValue());
   }
+
   @Test
   public void testIsValue() {
     JSONString jsonString = new JSONString("Esteban");
@@ -127,26 +126,28 @@ public class JSONStringIT {
     byte b = a.toByte();
     assertEquals((byte) 1, b);
   }
+
   @Test
   public void testToByteArray() {
     JSONString a = new JSONString("15");
-    
+
     byte[] byteArray = a.toByteArray();
-    
+
     assertEquals(1, byteArray.length);
-    
+
     byte b = byteArray[0];
     assertEquals(15, b);
   }
+
   @Test
   public void testToCalendar() {
     JSONString a = new JSONString("1974-01-30T14:20:12.125Z");
-    
+
     Calendar expectedCalendar = Calendar.getInstance();
-    
+
     expectedCalendar.set(1974, 0, 30, 14, 20, 12);
     expectedCalendar.set(Calendar.MILLISECOND, 125);
-    
+
     Calendar calendar = a.toCalendar();
     assertEquals(expectedCalendar, calendar);
   }
@@ -195,7 +196,7 @@ public class JSONStringIT {
   }
 
   @Test
-  public void testToJSONArray() {
+  public void testToJSONArray() throws ElementNotExistException {
     JSONString s = new JSONString("Esteban");
 
     JSONArray array = s.toJSONArray();

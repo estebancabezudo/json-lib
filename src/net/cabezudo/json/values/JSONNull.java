@@ -23,6 +23,16 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   @Override
+  public boolean equals(Object o) {
+    return o instanceof JSONNull;
+  }
+
+  @Override
+  public int hashCode() {
+    return this.nullString.hashCode();
+  }
+
+  @Override
   public int compareTo(JSONNull jsonNull) {
     return 0;
   }

@@ -13,7 +13,7 @@ package net.cabezudo.json;
  */
 public abstract class JSONElement implements JSONable {
 
-  private String referenceFieldName;
+  private String referenceFieldName = "id";
   private final Position position;
 
   public Position getPosition() {

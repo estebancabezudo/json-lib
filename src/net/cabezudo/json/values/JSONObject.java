@@ -422,6 +422,16 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @return
    */
   public JSONValue digNullValue(String propertyFullName) {
+    return digNullValue(propertyFullName, 1);
+  }
+
+  /**
+   *
+   * @param propertyFullName
+   * @param oldPosition
+   * @return
+   */
+  protected JSONValue digNullValue(String propertyFullName, int oldPosition) {
     if (propertyFullName == null || propertyFullName.isEmpty()) {
       throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
     }
@@ -432,19 +442,25 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       return jsonValue;
     } else {
       String propertyName = propertyFullName.substring(0, point);
-      JSONValue nextLevelValue = digNullValue(propertyName);
-      if (nextLevelValue == null || !nextLevelValue.isObject()) {
-        return null;
-      }
-      JSONObject nextLevelObject = nextLevelValue.toObject();
-
-      int newStart = point + 1;
-      if (newStart >= propertyFullName.length()) {
+      int newStartPosition = point + 1;
+      if (newStartPosition >= propertyFullName.length()) {
         throw new IllegalArgumentException("Invalid parameter '" + propertyFullName + "'.");
       }
-      String nextPropertyName = propertyFullName.substring(newStart);
+      JSONValue nextLevelValue = getNullValue(propertyName);
+      if (nextLevelValue == null || !(nextLevelValue.isObject() || nextLevelValue.isArray())) {
+        return null;
+      }
+      String nextPropertyName = propertyFullName.substring(newStartPosition);
 
-      return nextLevelObject.digNullValue(nextPropertyName);
+      if (nextLevelValue.isObject()) {
+        JSONObject nextLevelObject = nextLevelValue.toObject();
+        return nextLevelObject.digNullValue(nextPropertyName, newStartPosition + oldPosition);
+      }
+      if (nextLevelValue.isArray()) {
+        JSONArray nextLevelArray = nextLevelValue.toJSONArray();
+        return nextLevelArray.digNullValue(nextPropertyName, newStartPosition + oldPosition);
+      }
+      throw new RuntimeException("The next level value is not an object nor an array.");
     }
   }
 

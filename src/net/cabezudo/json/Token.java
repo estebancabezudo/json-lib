@@ -92,7 +92,6 @@ class Token {
             }
             try {
               BigDecimal number = new BigDecimal(s);
-              number = number.setScale(0, BigDecimal.ROUND_HALF_DOWN);
               type = TokenType.NUMBER;
               sb = new StringBuilder(number.toString());
               break;

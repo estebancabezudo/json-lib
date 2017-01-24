@@ -13,9 +13,9 @@ public class Version {
   @JSONProperty
   private final int id = 1;
 
-
   @JSONProperty
   private final int minor = 0;
+
   @JSONProperty
   private final int version = 1;
 
