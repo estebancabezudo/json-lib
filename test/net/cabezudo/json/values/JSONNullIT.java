@@ -21,7 +21,7 @@ public class JSONNullIT {
   @Test
   public void testGetReferencedElement() {
     JSONNull jsonNull = new JSONNull();
-    assertEquals(jsonNull, jsonNull.getReferencedElement());
+    assertEquals(jsonNull, jsonNull.toReferencedElement());
   }
 
   @Test

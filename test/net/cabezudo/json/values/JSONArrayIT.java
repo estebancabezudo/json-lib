@@ -112,7 +112,7 @@ public class JSONArrayIT {
     b.setReferenceFieldName("id");
     jsonArray.add(b);
 
-    JSONArray referencedElement = jsonArray.getReferencedElement();
+    JSONArray referencedElement = jsonArray.toReferencedElement();
 
     JSONValue c = referencedElement.getValue(0);
     long d = c.toInteger();

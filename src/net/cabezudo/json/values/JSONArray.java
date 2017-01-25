@@ -138,10 +138,10 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * @return
    */
   @Override
-  public JSONArray getReferencedElement() {
+  public JSONArray toReferencedElement() {
     JSONArray jsonArray = new JSONArray();
     for (JSONElement jsonElement : list) {
-      jsonArray.add(jsonElement.getReferencedElement());
+      jsonArray.add(jsonElement.toReferencedElement());
     }
     return jsonArray;
   }

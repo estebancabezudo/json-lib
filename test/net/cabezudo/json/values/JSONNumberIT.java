@@ -37,7 +37,7 @@ public class JSONNumberIT {
   @Test
   public void testGetReferencedElement() {
     JSONNumber jsonNumber = new JSONNumber(1);
-    JSONNumber referencedElement = jsonNumber.getReferencedElement();
+    JSONNumber referencedElement = jsonNumber.toReferencedElement();
     assertEquals(jsonNumber, referencedElement);
   }
 

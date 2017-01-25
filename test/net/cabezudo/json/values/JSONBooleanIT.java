@@ -45,7 +45,7 @@ public class JSONBooleanIT {
   @Test
   public void testGetReferencedElement() {
     JSONBoolean e = JSONBoolean.TRUE;
-    JSONBoolean r = e.getReferencedElement();
+    JSONBoolean r = e.toReferencedElement();
 
     assertEquals(e, r);
   }

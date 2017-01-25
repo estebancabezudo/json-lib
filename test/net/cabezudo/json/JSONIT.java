@@ -17,7 +17,6 @@ import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
-import net.cabezudo.json.exceptions.ReadFileException;
 import net.cabezudo.json.objects.Book;
 import net.cabezudo.json.objects.BookList;
 import net.cabezudo.json.objects.Data;
@@ -84,7 +83,7 @@ public class JSONIT {
   }
 
   @Test
-  public void testParsePath() throws IOException, ReadFileException, ElementNotExistException {
+  public void testParsePath() throws IOException, ElementNotExistException {
     Log.debug("Get a string from a file and parse into a JSONElement tree.");
 
     final File temporaryFile = folder.newFile("tempFile.txt");
@@ -130,13 +129,6 @@ public class JSONIT {
     } catch (JSONParseException | PropertyNotExistException e) {
       fail(e.getMessage());
     }
-  }
-
-  @Test
-  public void testToEscapedString() {
-    String origin = "\"\b\f\n\r\t\\";
-    String result = JSON.toEscapedString(origin);
-    assertEquals(result, "\\\"\\b\\f\\n\\r\\t\\\\");
   }
 
   @Test

@@ -9,7 +9,6 @@ import java.util.List;
  */
 public class Formatter {
 
-
   private static String ident(int n) {
     StringBuilder sb = new StringBuilder(n * 3);
     for (int i = 0; i < n; i++) {
@@ -19,9 +18,10 @@ public class Formatter {
   }
 
   /**
-   * Add carriages returns and indent the given <code>String</code> and return the <code>String</code> with the JSON indented.
+   * Add carriages returns and indent the given {@code String} and return the {@code String} with
+   * the JSON indented.
    *
-   * @param jsonString the JSON <code>String</code> with the JSON string to indent.
+   * @param jsonString the JSON {@code String} with the JSON string to indent.
    * @return the JSON string indented.
    */
   public static String indent(String jsonString) {
@@ -96,6 +96,7 @@ public class Formatter {
     }
     return sb.toString();
   }
+
   private Formatter() {
   }
 }

@@ -1465,8 +1465,8 @@ public class JSONObjectIT {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
-    JSONValue jsonTypes = jsonObject.getReferencedElement();
-    JSONObject referencedObject = ((JSONValue) jsonTypes.getReferencedElement()).toObject();
+    JSONValue jsonTypes = jsonObject.toReferencedElement();
+    JSONObject referencedObject = ((JSONValue) jsonTypes.toReferencedElement()).toObject();
     JSONPair referencedPair = referencedObject.getElement("book");
     assertEquals("\"book\": 1", referencedPair.toJSON());
   }

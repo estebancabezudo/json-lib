@@ -46,7 +46,7 @@ public class JSONStringIT {
   public void testGetReferencedElement() {
     JSONString a = new JSONString("Esteban");
     a.setReferenceFieldName("id");
-    JSONValue b = a.getReferencedElement();
+    JSONValue b = a.toReferencedElement();
 
     assertEquals(new JSONString("Esteban"), b);
 

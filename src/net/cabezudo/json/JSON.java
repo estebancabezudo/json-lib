@@ -16,7 +16,6 @@ import net.cabezudo.json.exceptions.EmptyQueueException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.NotPropertiesException;
 import net.cabezudo.json.exceptions.ObjectException;
-import net.cabezudo.json.exceptions.ReadFileException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
 import net.cabezudo.json.values.JSONObject;
@@ -25,29 +24,35 @@ import net.cabezudo.json.values.JSONValue;
 /**
  * Provide the methods for parse and create JSON objects.
  * <p>
- * JSON class allow you to parse a string with JSON format in to a JSON tree to manipulate. You can also get the string from a file on disk.
- * The JSON class allow you to create a JSON tree from any Java object and create a tree using the references to the object
+ * JSON class allow you to parse a string with JSON format in to a JSON tree to manipulate. You can
+ * also get the string from a file on disk. The JSON class allow you to create a JSON tree from any
+ * Java object and create a tree using the references to the object
  * <h4>Parse</h4>
  * <p>
- * You can create from a string a JSON tree that use objects to represent the JSON string. You can take parts of the tree, add elements,
- * delete elements and set new values.
+ * You can create from a string a JSON tree that use objects to represent the JSON string. You can
+ * take parts of the tree, add elements, delete elements and set new values.
  * <p>
  * Also, you can use a file disk like origin for the data to create the JSON tree.
  * <h4>JSON tree</h4>
- * The JSON tree is a tree formed for objects inherited from {@link net.cabezudo.java.json.JSONValue} that represent the JSON elements.
+ * The JSON tree is a tree formed for objects inherited from
+ * {@link net.cabezudo.java.json.JSONValue} that represent the JSON elements.
  * <p>
- * This elements has diferents properties and you hava many methods to work with its. The elements are null null {@link net.cabezudo.java.json.JSONArray JSONArray},
+ * This elements has diferents properties and you hava many methods to work with its. The elements
+ * are null null {@link net.cabezudo.java.json.JSONArray JSONArray},
  * {@link net.cabezudo.json.values.JSONArray JSONArray}, {@link net.cabezudo.json.values.JSONBoolean JSONBoolean}, {@link net.cabezudo.json.values.JSONNull JSONNull},
- * {@link net.cabezudo.json.values.JSONNumber JSONNumber}, {@link net.cabezudo.json.values.JSONObject JSONObject}, and
- * {@link net.cabezudo.json.values.JSONString JSONString}. You can get the values from the elements tree using dig methods to reach the
- * element or value you want or navigate through the tree getting the elements and theirs values one by one.
+ * {@link net.cabezudo.json.values.JSONNumber JSONNumber}, {@link net.cabezudo.json.values.JSONObject JSONObject},
+ * and {@link net.cabezudo.json.values.JSONString JSONString}. You can get the values from the
+ * elements tree using dig methods to reach the element or value you want or navigate through the
+ * tree getting the elements and theirs values one by one.
  * <h4>JSON referenced tree</h4>
  * <p>
- * A referenced tree is a normal tree transformed into a small tree using references that you can specify for the objects. The easy way to
- * get a referency tree is using normal objects to create a JSONTree and than create a referenced tree. That is because the referenced
- * information isn't in the JSON string. If you create a tree from Java normal objects or using the elements one by one you can specify the
- * field that going to be used to create the referenced tree. The JSON elements has or can have the reference information but not that JESON
- * trees created parsing a JSON string. In order to set the fiel reference for a object you can use
+ * A referenced tree is a normal tree transformed into a small tree using references that you can
+ * specify for the objects. The easy way to get a referency tree is using normal objects to create a
+ * JSONTree and than create a referenced tree. That is because the referenced information isn't in
+ * the JSON string. If you create a tree from Java normal objects or using the elements one by one
+ * you can specify the field that going to be used to create the referenced tree. The JSON elements
+ * has or can have the reference information but not that JESON trees created parsing a JSON string.
+ * In order to set the fiel reference for a object you can use
  * {@link net.cabezudo.java.json.JSONNull#setReferenceFieldName(String referenceFieldName) }.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -96,10 +101,12 @@ public class JSON {
   }
 
   /**
+   * Parse a string and create a JSON structure of objects representation of JSON elements.
    *
-   * @param string
-   * @return
-   * @throws JSONParseException
+   * @param string the string used to create the JSON structure.
+   * @return the JSON structure.
+   * @throws JSONParseException if the {@code String} does not contain a parsable JSON string. The
+   * exception contains the information of the position where the parse error raise.
    */
   public static JSONValue parse(String string) throws JSONParseException {
     Tokens tokens = Tokenizer.tokenize(string);
@@ -129,64 +136,34 @@ public class JSON {
   }
 
   /**
+   * This method take the information from a file and parse it to create a JSON structure of objects
+   * representation of JSON elements.
    *
-   * @param filePath
-   * @param encoding
-   * @return
-   * @throws JSONParseException
-   * @throws net.cabezudo.json.exceptions.ReadFileException
+   * @param filePath the {@link java.nio.file.Path} where is the file
+   * @param charsetName The name of a supported {@code Charset}
+   * @return A JSON structure of objects JSONValue and JSONPair representation of the data in the
+   * string.
+   * @throws JSONParseException if the {@code String} does not contain a parsable JSON string. The
+   * exception contains the information of the position where the parse error raise.
+   * @throws java.io.UnsupportedEncodingException if the Character Encoding is not supported.
+   * @throws IOException if an I/O error occurs opening the file.
    */
-  public static JSONValue parse(Path filePath, String encoding) throws JSONParseException, ReadFileException {
+  public static JSONValue parse(Path filePath, String charsetName) throws JSONParseException, UnsupportedEncodingException, IOException {
     byte[] data;
-    try {
-      data = Files.readAllBytes(filePath);
-    } catch (IOException e) {
-      throw new ReadFileException("Can't read the file " + filePath + ".", e);
-    }
+    data = Files.readAllBytes(filePath);
     String jsonString;
-    try {
-      jsonString = new String(data, encoding);
-    } catch (UnsupportedEncodingException e) {
-      throw new ReadFileException("Bad encoding for file " + filePath + " using " + encoding + ".", e);
-    }
+    jsonString = new String(data, charsetName);
     return parse(jsonString);
   }
 
-  public static String toEscapedString(String string) {
-    StringBuilder sb = new StringBuilder();
-    char[] chars = string.toCharArray();
-    for (char c : chars) {
-      switch (c) {
-        case '"':
-          sb.append('\\');
-          sb.append(c);
-          break;
-        case '\b':
-          sb.append("\\b");
-          break;
-        case '\f':
-          sb.append("\\f");
-          break;
-        case '\n':
-          sb.append("\\n");
-          break;
-        case '\r':
-          sb.append("\\r");
-          break;
-        case '\t':
-          sb.append("\\t");
-          break;
-        case '\\':
-          sb.append("\\\\");
-          break;
-        default:
-          sb.append(c);
-          break;
-      }
-    }
-    return sb.toString();
-  }
-
+  /**
+   * Convert a list of objects in a {@link net.cabezudo.json.values.JSONArray} The objects in the
+   * list must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty}
+   * in order to be used as object property.
+   *
+   * @param list the list of objects to be converted.
+   * @return a {@link net.cabezudo.json.values.JSONArray} with a list of JSON elements.
+   */
   public static JSONArray toJSONArray(List<?> list) {
     JSONArray jsonArray = new JSONArray();
 
@@ -196,14 +173,25 @@ public class JSON {
     return jsonArray;
   }
 
+  /**
+   * Convert a POJO in a JSONObject. The object must have the properties annotated with
+   * {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a object property.
+   *
+   * @param object the object to be converted.
+   * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
+   */
   public static JSONObject toJSONObject(Object object) {
     return toJSONTree(object).toObject();
   }
 
   /**
+   * Create a JSON structure where the the root object don't contain another object, instead of it
+   * contain the references to the objects. The reference is a field value of the object. The value
+   * of the property that has the object is replaced with the value of the object property marked
+   * like reference field. The reference field should not be an object or array.
    *
-   * @param jsonValue
-   * @return
+   * @param jsonValue The JSON structure to be converted to a referenced structure.
+   * @return a new JSON structure with all the object referenced.
    */
   public static JSONValue toJSONReferencedTree(JSONValue jsonValue) {
     if (jsonValue instanceof JSONObject) {
@@ -211,7 +199,7 @@ public class JSON {
       JSONObject jsonObject = (JSONObject) jsonValue;
 
       for (JSONPair jsonPair : jsonObject) {
-        JSONElement referencedElement = jsonPair.getValue().getReferencedElement();
+        JSONElement referencedElement = jsonPair.getValue().toReferencedElement();
 
         JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement, jsonValue.getPosition());
         jsonReferencedObject.add(newJSONPair);
@@ -225,20 +213,24 @@ public class JSON {
       JSONArray jsonArray = (JSONArray) jsonValue;
 
       for (JSONElement jsonArrayElement : jsonArray) {
-        JSONElement referencedElement = jsonArrayElement.getReferencedElement();
+        JSONElement referencedElement = jsonArrayElement.toReferencedElement();
         jsonReferencedArray.add(referencedElement);
       }
 
       return jsonReferencedArray;
     }
 
-    return (JSONValue) jsonValue.getReferencedElement();
+    return (JSONValue) jsonValue.toReferencedElement();
   }
 
   /**
+   * Convert a POJO in a {@link net.cabezudo.json.values.JSONValue}. The object must have the
+   * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
+   * used as a object property. If the object is {@code Iterable} or the object is a primiteve array
+   * the result is a {@link net.cabezudo.json.values.JSONArray}.
    *
-   * @param object
-   * @return
+   * @param object the object to be converted.
+   * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.
    */
   public static JSONValue toJSONTree(Object object) {
     if (object == null) {
@@ -330,5 +322,4 @@ public class JSON {
   private JSON() {
     // Nothing to do. Just protect the object construction.
   }
-
 }

@@ -29,26 +29,26 @@ public class Pruebas {
 
     Pruebas p = new Pruebas();
 
-    p.testStructureCreationFromJSONElements();
-    p.testParseAJSONString();
-    p.testGetPropertiesFromAnObject();
-    p.testGetABooleanInOneLine();
-    p.testDigABooleanInOneLine();
-    p.testGetAPropertyUsingAnIndex();
-    p.testTraverseAnArray();
-    p.testGetTheNumberOfChildren();
-    p.testAddPropertiesToAnObject();
-    p.testRemovePropertiesFromAnObject();
-    p.testGetChildsFromAnObject();
-    p.testOnePairFromAnObjectUsingThePropertyName();
-    p.testGetAReferencedElement();
-    p.testGetACustomReferencedElement();
-    p.testCreateAJSONStructureFromPOJO();
+//    p.testStructureCreationFromJSONElements();
+//    p.testParseAJSONString();
+//    p.testGetPropertiesFromAnObject();
+//    p.testGetABooleanInOneLine();
+//    p.testDigABooleanInOneLine();
+//    p.testGetAPropertyUsingAnIndex();
+//    p.testTraverseAnArray();
+//    p.testGetTheNumberOfChildren();
+//    p.testAddPropertiesToAnObject();
+//    p.testRemovePropertiesFromAnObject();
+//    p.testGetChildsFromAnObject();
+//    p.testOnePairFromAnObjectUsingThePropertyName();
+//    p.testGetAReferencedElement();
+//    p.testGetACustomReferencedElement();
+//    p.testCreateAJSONStructureFromPOJO();
     p.testCreateAJSONStructureFromPOJOWithReferences();
-    p.testGetAnElementFromArrayUsingTheIndex();
-    p.testDigStringFromAnArray();
-    p.testGetCalendar();
-    p.testCreateDateProperty();
+//    p.testGetAnElementFromArrayUsingTheIndex();
+//    p.testDigStringFromAnArray();
+//    p.testGetCalendar();
+//    p.testCreateDateProperty();
   }
 
   private void testStructureCreationFromJSONElements() throws JSONParseException, ElementNotExistException {
@@ -200,7 +200,7 @@ public class Pruebas {
     System.out.println("\n" + (char) 27 + "[32m*** Get a referenced element.");
     JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
 
-    JSONValue jsonReferencedElement = jsonObject.getReferencedElement();
+    JSONValue jsonReferencedElement = jsonObject.toReferencedElement();
     System.out.println(jsonReferencedElement);
   }
 
@@ -210,7 +210,7 @@ public class Pruebas {
 
     JSONObject maritalStatus = jsonObject.getNullObject("maritalStatus");
     maritalStatus.setReferenceFieldName("name");
-    JSONValue jsonReferencedElement = jsonObject.getReferencedElement();
+    JSONValue jsonReferencedElement = jsonObject.toReferencedElement();
     System.out.println(jsonReferencedElement);
   }
 
@@ -229,6 +229,7 @@ public class Pruebas {
     Person son = new Person("Julio", "Perez", 12);
     Person person = new Person("Juan", "Perez", 34, son);
     JSONObject jsonPerson = JSON.toJSONObject(person);
+    jsonPerson.setReferenceFieldName("name");
     JSONElement jsonReferencedElement = JSON.toJSONReferencedTree(jsonPerson);
     System.out.println(jsonReferencedElement);
   }

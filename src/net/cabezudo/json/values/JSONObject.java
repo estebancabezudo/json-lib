@@ -18,11 +18,12 @@ import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
- * A {@link JSONObject} is an object extended from {@link JSONValue} object in order to represent a JSON object that can be used to create
- * JSON structures.
+ * A {@link JSONObject} is an object extended from {@link JSONValue} object in order to represent a
+ * JSON object that can be used to create JSON structures.
  *
  * <p>
- * A {@link JSONObject} is a list of {@link JSONPair} objects that represent the JSON object structure.
+ * A {@link JSONObject} is a list of {@link JSONPair} objects that represent the JSON object
+ * structure.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.0
@@ -40,8 +41,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * Create a newly {@link JSONObject} object using a JSON string.
    *
    * <p>
-   * This constructor parse a string passed by parameter in order to create the {@link JSONObject} that represent the JSON object
-   * strcucture.
+   * This constructor parse a string passed by parameter in order to create the {@link JSONObject}
+   * that represent the JSON object strcucture.
    *
    * @param data The JSON string to parse.
    * @throws JSONParseException if the string passed by parameter can not be parsed.
@@ -58,7 +59,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Construct an empty {@link JSONObject} object.
    * <p>
-   * A empty {@link JSONObject} object can be used to create a more complex object by adding {@link JSONPair} objects.
+   * A empty {@link JSONObject} object can be used to create a more complex object by adding
+   * {@link JSONPair} objects.
    *
    */
   public JSONObject() {
@@ -69,7 +71,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Construct an empty {@link JSONObject} object.
    * <p>
-   * A empty {@link JSONObject} object can be used to create a more complex object by adding {@link JSONPair} objects.
+   * A empty {@link JSONObject} object can be used to create a more complex object by adding
+   * {@link JSONPair} objects.
    *
    * @param position The position for the {@link JSONObject} in the JSON string.
    */
@@ -78,7 +81,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object using the array of {@link JSONPair} objects to create the JSON object properties.
+   * Construct a {@link JSONObject} object using the array of {@link JSONPair} objects to create the
+   * JSON object properties.
    *
    * @param jsonPairs the {@link JSONPair} objects to create the JSON object properties
    */
@@ -90,7 +94,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object using the properties of another {@link JSONObject} object.
+   * Construct a {@link JSONObject} object using the properties of another {@link JSONObject}
+   * object.
    *
    * <p>
    * Create a copy of the {@link JSONObject} object passed by parameter.
@@ -103,7 +108,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object from a Java {@code Object} parameter using the {@link JSON#toJSONTree(java.lang.Object)}.
+   * Construct a {@link JSONObject} object from a Java {@code Object} parameter using the
+   * {@link JSON#toJSONTree(java.lang.Object)}.
    * <p>
    * If the object is
    *
@@ -703,12 +709,14 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the element asociated with the property name. For an objet the element is a
-   * {@link net.cabezudo.java.json.values.JSONPair JSONArray} formed by the property name and the value.
+   * {@link net.cabezudo.java.json.values.JSONPair JSONArray} formed by the property name and the
+   * value.
    *
    * @param propertyName the name of the property to get
-   * @return an object {@link net.cabezudo.java.json.values.JSONPair JSONArray} with the pair data/value in the object with the property
-   * name specified.
-   * @throws net.cabezudo.json.exceptions.PropertyNotExistException if the property specified don't exist in the object
+   * @return an object {@link net.cabezudo.java.json.values.JSONPair JSONArray} with the pair
+   * data/value in the object with the property name specified.
+   * @throws net.cabezudo.json.exceptions.PropertyNotExistException if the property specified don't
+   * exist in the object
    */
   public JSONPair getElement(String propertyName) throws PropertyNotExistException {
     JSONPair jsonPair = getNullElement(propertyName);
@@ -1286,7 +1294,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @return
    */
   @Override
-  public JSONValue getReferencedElement() {
+  public JSONValue toReferencedElement() {
     String referenceFieldNameToSearch = getReferenceFieldName();
     for (JSONPair jsonPair : list) {
       String keyName = jsonPair.getKey();
@@ -1298,7 +1306,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     JSONObject jsonObject = new JSONObject();
     if (list.size() > 0) {
       for (JSONPair jsonPair : list) {
-        jsonObject.add(jsonPair.getReferencedElement());
+        jsonObject.add(jsonPair.toReferencedElement());
       }
     }
     return jsonObject;

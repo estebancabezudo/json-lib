@@ -14,8 +14,8 @@ import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONCastException;
 
 /**
- * A {@link JSONString} is an object extended from {@link JSONValue} object in order to represent a JSON string that can be used to create
- * JSON structures.
+ * A {@link JSONString} is an object extended from {@link JSONValue} object in order to represent a
+ * JSON string that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.0
@@ -27,7 +27,8 @@ public class JSONString extends JSONValue<JSONString> {
   private final String value;
 
   /**
-   * Initializes a newly created {@link JSONString} object so that it represents the same string as the argument.
+   * Initializes a newly created {@link JSONString} object so that it represents the same string as
+   * the argument.
    *
    * @param value A {@code String}
    */
@@ -36,7 +37,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object so that it represents the same string as the argument.
+   * Initializes a newly created {@link JSONString} object so that it represents the same string as
+   * the argument.
    *
    * @param value A {@code String}
    * @param position The position of the {@code String} in origen
@@ -47,7 +49,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code Character} passed as argument.
+   * Initializes a newly created {@link JSONString} object using the {@code Character} passed as
+   * argument.
    *
    * @param character A {@code Character} object.
    */
@@ -57,8 +60,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code BigInteger} object passed as argument. The object convertion is
-   * made using the {@code toString()} method of the {@code BigInteger} object.
+   * Initializes a newly created {@link JSONString} object using the {@code BigInteger} object
+   * passed as argument. The object convertion is made using the {@code toString()} method of the
+   * {@code BigInteger} object.
    *
    * @param bigInteger A {@code BigInteger} object.
    */
@@ -68,8 +72,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code BigdECIMAL} object passed as argument. The object convertion is
-   * made using the {@code toString()} method of the {@code BigdECIMAL} object.
+   * Initializes a newly created {@link JSONString} object using the {@code BigdECIMAL} object
+   * passed as argument. The object convertion is made using the {@code toString()} method of the
+   * {@code BigdECIMAL} object.
    *
    * @param bigDecimal A {@code BigDecimal} object.
    */
@@ -88,8 +93,9 @@ public class JSONString extends JSONValue<JSONString> {
    * Compares the string values represented by two {@link JSONString} objects.
    *
    * @param jsonString the {@link JSONString} to be compared.
-   * @return the integer value {@code 0} if the argument {@link JSONString} is equal to this {@link JSONString}; a value less than {@code 0}
-   * if this {@link JSONString} is lexicographically less than the {@link JSONString} argument; and a value greater than {@code 0} if this
+   * @return the integer value {@code 0} if the argument {@link JSONString} is equal to this
+   * {@link JSONString}; a value less than {@code 0} if this {@link JSONString} is lexicographically
+   * less than the {@link JSONString} argument; and a value greater than {@code 0} if this
    * {@link JSONString} is lexicographically greater than the {@link JSONString} argument.
    */
   @Override
@@ -104,7 +110,8 @@ public class JSONString extends JSONValue<JSONString> {
    *
    * @param object The object to compare this {@code String} against
    *
-   * @return {@code true} if the given object represents a {@code String} equivalent to this string, {@code false} otherwise
+   * @return {@code true} if the given object represents a {@code String} equivalent to this string,
+   * {@code false} otherwise
    */
   @Override
   public boolean equals(Object object) {
@@ -123,18 +130,20 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * /**
-   * Returns {@code this} {@link JSONString} object, a non referenced {@link JSONString} object is the same object than a referenced
-   * {@link JSONString} object because is not an JSON object to be referenced.
+   * Returns {@code this} {@link JSONString} object, a non referenced {@link JSONString} object is
+   * the same object than a referenced {@link JSONString} object because is not an JSON object to be
+   * referenced.
    *
    * @return The element whose referenciable objects have been replaced with their references.
    */
   @Override
-  public JSONValue getReferencedElement() {
+  public JSONValue toReferencedElement() {
     return this;
   }
 
   /**
-   * Returns a hash code for this string. The hash code for a {@link JSONString} is the same hash that a {@code String} object.
+   * Returns a hash code for this string. The hash code for a {@link JSONString} is the same hash
+   * that a {@code String} object.
    *
    * @return a hash code value for this object.
    */
@@ -144,9 +153,10 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns if the JSON element is a {@link JSONString}. This object represent a JSON string, so allways return a true.
+   * Returns if the JSON element is a {@link JSONString}. This object represent a JSON string, so
+   * allways return a true.
    *
-   * @return <code>true</code> because the object is a {@link JSONString}.
+   * @return {@code true} because the object is a {@link JSONString}.
    */
   @Override
   public boolean isString() {
@@ -154,8 +164,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@link JSONValue} objects. The result array is an array of only one element, the
-   * {@code this} object.
+   * Convert the {@link JSONString} into an array of {@link JSONValue} objects. The result array is
+   * an array of only one element, the {@code this} object.
    *
    * @return an array of {@link JSONValue} with a single element.
    */
@@ -167,12 +177,14 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Try to create, using the {@code BigDecimal} constructor, a {@code BigDecimal} object using the {@code BigDecimal} rules for
-   * {@code String} and throw a {@code NumberFormatException} if the {@link JSONString} don't have a valid representation for a {code
-   * BigDecimal}.
+   * Try to create, using the {@code BigDecimal} constructor, a {@code BigDecimal} object using the
+   * {@code BigDecimal} rules for {@code String} and throw a {@code NumberFormatException} if the
+   * {@link JSONString} don't have a valid representation for a {code BigDecimal}.
    *
-   * @return a {code BigDecimal} result to translate the {@code String} represented in {@link JSONString}.
-   * @throws NumberFormatException if {@code value} is not a valid representation of a {@code BigDecimal}.
+   * @return a {code BigDecimal} result to translate the {@code String} represented in
+   * {@link JSONString}.
+   * @throws NumberFormatException if {@code value} is not a valid representation of a
+   * {@code BigDecimal}.
    */
   @Override
   public BigDecimal toBigDecimal() {
@@ -180,11 +192,14 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Try to create, using the {@code BigInteger} constructor, a {@code BigInteger} object using the {@code BigInteger} rules for {code
-   * String} and throw a {@code NumberFormatException} if the {@link JSONString} don't have a valid representation for a {code BigInteger}.
+   * Try to create, using the {@code BigInteger} constructor, a {@code BigInteger} object using the
+   * {@code BigInteger} rules for {code String} and throw a {@code NumberFormatException} if the
+   * {@link JSONString} don't have a valid representation for a {code BigInteger}.
    *
-   * @return a {code BigInteger} result to translate the {@code String} represented in {@link JSONString}.
-   * @throws NumberFormatException if {@code value} is not a valid representation of a {@code BigInteger}.
+   * @return a {code BigInteger} result to translate the {@code String} represented in
+   * {@link JSONString}.
+   * @throws NumberFormatException if {@code value} is not a valid representation of a
+   * {@code BigInteger}.
    */
   @Override
   public BigInteger toBigInteger() {
@@ -192,10 +207,12 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns a {@code Boolean} with the boolean value represented by the specified string. The {@code Boolean} returned represents a true
-   * value if the string represented in {@code this} is not {@code null} and is equal, ignoring case, to the string {@code "true"}.
+   * Returns a {@code Boolean} with the boolean value represented by the specified string. The
+   * {@code Boolean} returned represents a true value if the string represented in {@code this} is
+   * not {@code null} and is equal, ignoring case, to the string {@code "true"}.
    *
-   * @return a {code Boolean} result to convert, using {@code Boolean.valueOf()}, the {@code String} represented in {@link JSONString}.
+   * @return a {code Boolean} result to convert, using {@code Boolean.valueOf()}, the {@code String}
+   * represented in {@link JSONString}.
    */
   @Override
   public Boolean toBoolean() {
@@ -203,9 +220,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Byte} object that represents the value indicated by the {@code String} value in the
-   * {@link JSONString}. The string is converted to a {@code Byte} value in exactly the manner used by the {@code parseByte} method for
-   * radix 10.
+   * Constructs an return a newly allocated {@code Byte} object that represents the value indicated
+   * by the {@code String} value in the {@link JSONString}. The string is converted to a
+   * {@code Byte} value in exactly the manner used by the {@code parseByte} method for radix 10.
    *
    * @return the value of this {@link JSONString} as a {@code Byte}.
    * @throws NumberFormatException if the {@code String} does not contain a parsable {@code Byte}.
@@ -216,8 +233,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@code byte} primitives. The result array is an array of only one element, the
-   * converted value of {@code this} object.
+   * Convert the {@link JSONString} into an array of {@code byte} primitives. The result array is an
+   * array of only one element, the converted value of {@code this} object.
    *
    * @return an array of {@link JSONValue} with a only one element.
    */
@@ -229,9 +246,10 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Calendar} object that represents the value indicated by the {@code String} represented in
-   * the {@link JSONString}. The string is converted to a {@code Calendar} value using the {@code SimpleDateFormat} {@code parse} method and
-   * the pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
+   * Constructs an return a newly allocated {@code Calendar} object that represents the value
+   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
+   * to a {@code Calendar} value using the {@code SimpleDateFormat} {@code parse} method and the
+   * pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
    *
    * @return the value of this {@link JSONString} as a {@code Calendar}.
    * @throws JSONCastException if the {@code String} does not contain a parsable {@code Calendar}.
@@ -251,8 +269,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into a {@code Character} object using the {@code this} value. The result {@code Character} is a
-   * {@code Character} object created with the first character of the value {@code String}.
+   * Convert the {@link JSONString} into a {@code Character} object using the {@code this} value.
+   * The result {@code Character} is a {@code Character} object created with the first character of
+   * the value {@code String}.
    *
    * @return a {@code Character}.
    * @exception IndexOutOfBoundsException if the value {@code String} length is less than one.
@@ -264,12 +283,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Double} object that represents the value indicated by the {@code String} represented in
-   * the {@link JSONString}. The string is converted to a {@code Double} using the {@code Double} constructor.
+   * Constructs an return a newly allocated {@code Double} object that represents the value
+   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
+   * to a {@code Double} using the {@code Double} constructor.
    *
    * @return the value of this {@link JSONString} as a {@code Double}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString} does not contain a parseable double
-   * number.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
+   * does not contain a parseable double number.
    */
   @Override
   public Double toDouble() {
@@ -277,11 +297,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Float} object that represents the value indicated by the {@code String} represented in
-   * the {@link JSONString}. The string is converted to a {@code Float} using the {@code Float} constructor.
+   * Constructs an return a newly allocated {@code Float} object that represents the value indicated
+   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
+   * {@code Float} using the {@code Float} constructor.
    *
    * @return the value of this {@link JSONString} as a {@code Float}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString} does not contain a parseable float number.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
+   * does not contain a parseable float number.
    */
   @Override
   public Float toFloat() {
@@ -289,12 +311,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Integer} object that represents the value indicated by the {@code String} represented in
-   * the {@link JSONString}. The string is converted to a {@code Integer} using the {@code Integer} constructor.
+   * Constructs an return a newly allocated {@code Integer} object that represents the value
+   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
+   * to a {@code Integer} using the {@code Integer} constructor.
    *
    * @return the value of this {@link JSONString} as a {@code Integer}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString} does not contain a parseable integer
-   * number.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
+   * does not contain a parseable integer number.
    */
   @Override
   public Integer toInteger() {
@@ -302,8 +325,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Return a {@code String} with the value of {@code this} {@code JSONString} object converted to a JSON valid representation. A JSON
-   * string is always a string in double quotes. This method is used to create JSON strings.
+   * Return a {@code String} with the value of {@code this} {@code JSONString} object converted to a
+   * JSON valid representation. A JSON string is always a string in double quotes. This method is
+   * used to create JSON strings.
    *
    * @return a {@code String} with the JSON formated {@code String}.
    */
@@ -316,8 +340,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into a {@link JSONArray} object. The result is a {@link JSONArray} with only one {@link JSONString}
-   * created with the value of {@code this} {@link JSONString} object.
+   * Convert the {@link JSONString} into a {@link JSONArray} object. The result is a
+   * {@link JSONArray} with only one {@link JSONString} created with the value of {@code this}
+   * {@link JSONString} object.
    *
    * @return a {@link JSONArray} with only one element.
    */
@@ -327,8 +352,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@link JSONString} object that represents the value indicated by the {@code String} value of
-   * {@code this} {@link JSONString}. The string is created using the {@link JSONSting} constructor.
+   * Constructs an return a newly allocated {@link JSONString} object that represents the value
+   * indicated by the {@code String} value of {@code this} {@link JSONString}. The string is created
+   * using the {@link JSONSting} constructor.
    *
    * @return a {@link JSONString}.
    */
@@ -338,8 +364,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an {@code ArrayList} of {@link JSONValue} objects. The result list has only one element, the
-   * {@code this} object.
+   * Convert the {@link JSONString} into an {@code ArrayList} of {@link JSONValue} objects. The
+   * result list has only one element, the {@code this} object.
    *
    * @return an {@code ArrayList} of {@link JSONValue} objects.
    */
@@ -351,11 +377,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Long} object that represents the value indicated by the {@code String} represented in the
-   * {@link JSONString}. The string is converted to a {@code Long} using the {@code Long} constructor.
+   * Constructs an return a newly allocated {@code Long} object that represents the value indicated
+   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
+   * {@code Long} using the {@code Long} constructor.
    *
    * @return the value of this {@link JSONString} as a {@code Long}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString} does not contain a parseable long number.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
+   * does not contain a parseable long number.
    */
   @Override
   public Long toLong() {
@@ -363,11 +391,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@code Short} object that represents the value indicated by the {@code String} represented in
-   * the {@link JSONString}. The string is converted to a {@code Short} using the {@code Short} constructor.
+   * Constructs an return a newly allocated {@code Short} object that represents the value indicated
+   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
+   * {@code Short} using the {@code Short} constructor.
    *
    * @return the value of this {@link JSONString} as a {@code Short}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString} does not contain a parseable short number.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
+   * does not contain a parseable short number.
    */
   @Override
   public Short toShort() {
@@ -375,10 +405,11 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns a string representation of the {@code this} object. The string representacion for the object is the {@code String} represented
-   * for the {@link JSONString} object and is the same object that the internal {@code String} value of the object.
+   * Returns a string representation of the {@code this} object. The string representacion for the
+   * object is the {@code String} represented for the {@link JSONString} object and is the same
+   * object that the internal {@code String} value of the object.
    *
-   * @return a <code>String</code> representation of the value of {@code this} object.
+   * @return a {@code String} representation of the value of {@code this} object.
    */
   @Override
   public String toString() {
@@ -386,8 +417,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@code String} objects. The result array is an array with only one element, the
-   * {@code this} object.
+   * Convert the {@link JSONString} into an array of {@code String} objects. The result array is an
+   * array with only one element, the {@code this} object.
    *
    * @return an array of {@code String} with a single element.
    */

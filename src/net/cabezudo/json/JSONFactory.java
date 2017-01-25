@@ -24,9 +24,47 @@ import net.cabezudo.json.values.JSONValue;
 public class JSONFactory {
 
   /**
+   * Create a JSON structure representation of the object passed. For the conversión the method use
+   * a the next rules.
+   * <ul>
+   * <li>
+   * If the object is a {@link java.lang.Byte}, {@link java.lang.Short},
+   * {@link java.lang.Integer}, {@link java.lang.Long}, {@link java.lang.Float},
+   * {@link java.lang.Double}, {@link java.math.BigInteger}, or {@link java.math.BigDecimal} the
+   * method use a {@link net.cabezudo.json.values.JSONNumber}.
+   * </li>
+   * <li>
+   * If some property is a {@code byte}, {@code short}, {@code int}, {@code long}, {@code float}, or
+   * {@code double}, the method use a {@link net.cabezudo.json.values.JSONNumber}.
+   * </li>
+   * <li>
+   * If the object or some property is a {@link java.lang.Boolean} the method use a
+   * {@link net.cabezudo.json.values.JSONBoolean}.
+   * </li>
+   * <li>
+   * If some property is a {@code boolean} the method use a
+   * {@link net.cabezudo.json.values.JSONBoolean}.
+   * </li>
+   * <li>
+   * If the object or some property is a {@link java.lang.Character}, {@link java.lang.String},
+   * {@link java.util.Date}, {@link java.util.GregorianCalendar}, or {@link java.lang.Class} the
+   * method convert it to a {@link net.cabezudo.json.values.JSONString}.
+   * </li>
+   * <li>
+   * If some property is a {@code char} the method convert it to a
+   * {@link net.cabezudo.json.values.JSONString}.
+   * </li>
+   * <li>
+   * If a propery is a {@code byte[]} the method use a {@link net.cabezudo.json.values.JSONArray}.
+   * </li>
+   * <li>
+   * If the conversión can't be done using this rules the system try to convert the object using the
+   * {@link net.cabezudo.json.annotations.JSONProperty} annotation.
+   * </li>
+   * </ul>
    *
-   * @param object
-   * @return
+   * @param object the POJO from create the JSON structure.
+   * @return a {@link net.cabezudo.json.values.JSONValue} with a JSON structure.
    */
   public static JSONValue get(Object object) {
     if (object == null) {
