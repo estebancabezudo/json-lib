@@ -246,8 +246,10 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
+   * Create a JSON string representation of this {@code JSONArray} including the JSON string
+   * representation of the elements.
    *
-   * @return
+   * @return a {@code String} representation of this {@code JSONArray}.
    */
   @Override
   public String toJSON() {

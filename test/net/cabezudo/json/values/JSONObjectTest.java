@@ -85,7 +85,7 @@ public class JSONObjectTest {
     s = jsonObject.toJSON();
     assertEquals("{ \"name\": \"Esteban\", \"numberOfLegs\": 2 }", s);
 
-    jsonObject.deleteElement(0);
+    jsonObject.remove(0);
 
     s = jsonObject.toJSON();
     assertEquals("{ \"numberOfLegs\": 2 }", s);

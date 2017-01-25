@@ -187,8 +187,8 @@ public class JSON {
   /**
    * Convert a POJO in a {@link net.cabezudo.json.values.JSONValue}. The object must have the
    * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
-   * used as a object property. If the object is {@code Iterable} or the object is a primiteve array
-   * the result is a {@link net.cabezudo.json.values.JSONArray}.
+   * used as a JSON object property. If the object is {@code Iterable} or the object is a primitive
+   * array the result is a {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param object the object to be converted.
    * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.
