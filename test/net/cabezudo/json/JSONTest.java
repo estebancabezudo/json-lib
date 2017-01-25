@@ -18,17 +18,11 @@ import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.objects.Book;
-import net.cabezudo.json.objects.BookList;
-import net.cabezudo.json.objects.Data;
-import net.cabezudo.json.objects.Storage;
 import net.cabezudo.json.objects.Types;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
 import net.cabezudo.json.values.JSONObject;
 import net.cabezudo.json.values.JSONValue;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
@@ -154,48 +148,6 @@ public class JSONTest {
     assertEquals("{ \"id\": 1, \"name\": \"Evolution\" }", jsonValue.toJSON());
     jsonValue = jsonArray.getValue(1);
     assertEquals("{ \"id\": 2, \"name\": \"The double\" }", jsonValue.toJSON());
-  }
-
-  @Test
-  public void testToJSONReferencedTree() {
-    Log.debug("Create a refered JSON tree using Java objects.");
-    Data data = new Data();
-    JSONObject jsonObject = JSON.toJSONTree(data).toObject();
-    JSONElement jsonReferencedTree = JSON.toJSONReferencedTree(jsonObject);
-
-    String expectedString = "{ \"version\": 1, \"countryId\": 1, \"countryName\": { \"version\": 1, \"language\": 97, \"nameType\": 1, \"word\": 2 } }";
-
-    assertEquals(expectedString, jsonReferencedTree.toJSON());
-
-    BookList bookList = new BookList();
-    Book book;
-
-    book = new Book(1, "El doble.");
-    bookList.add(book);
-
-    book = new Book(8, "El principito.");
-    Book mostImportantBook = book;
-    bookList.add(book);
-
-    book = new Book(13, "Crónica de una muerte anunciada.");
-    bookList.add(book);
-
-    JSONObject jsonBookObject = JSON.toJSONTree(book).toObject();
-    assertEquals("{ \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" }", jsonBookObject.toJSON());
-
-    JSONElement jsonBookReferencedTree = JSON.toJSONReferencedTree(jsonBookObject);
-    assertEquals("{ \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" }", jsonBookReferencedTree.toJSON());
-
-    JSONValue jsonBookListObject = JSON.toJSONTree(bookList);
-    assertEquals("[ { \"id\": 1, \"name\": \"El doble.\" }, { \"id\": 8, \"name\": \"El principito.\" }, { \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" } ]", jsonBookListObject.toJSON());
-
-    Storage storage = new Storage(69, bookList, mostImportantBook);
-
-    JSONObject jsonStorageObject = JSON.toJSONTree(storage).toObject();
-    assertEquals("{ \"id\": 69, \"list\": [ { \"id\": 1, \"name\": \"El doble.\" }, { \"id\": 8, \"name\": \"El principito.\" }, { \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" } ], \"mostImportantBook\": { \"id\": 8, \"name\": \"El principito.\" } }", jsonStorageObject.toJSON());
-
-    JSONElement jsonStorageReferencedTree = JSON.toJSONReferencedTree(jsonStorageObject);
-    assertEquals("{ \"id\": 69, \"list\": [ 1, 8, 13 ], \"mostImportantBook\": 8 }", jsonStorageReferencedTree.toJSON());
   }
 
   @Test

@@ -12,6 +12,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import net.cabezudo.json.JSON;
+import net.cabezudo.json.JSONElement;
 import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONParseException;
@@ -1310,6 +1311,29 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       }
     }
     return jsonObject;
+  }
+
+  /**
+   * Create a JSON structure where the the root object don't contain another object structure,
+   * instead of it contain the references to the property value objects. The reference is a field
+   * value of the object. The value of the property that has the object is replaced with the value
+   * of the object property marked like reference field. The reference field must not be an object
+   * or array.
+   *
+   * @return a new {@link net.cabezudo.json.values.JSONObject} structure with all the object
+   * referenced.
+   */
+  public JSONObject toReferencedObject() {
+    JSONObject jsonReferencedObject = new JSONObject();
+
+    for (JSONPair jsonPair : list) {
+      JSONElement referencedElement = jsonPair.getValue().toReferencedElement();
+
+      JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement, getPosition());
+      jsonReferencedObject.add(newJSONPair);
+    }
+
+    return jsonReferencedObject;
   }
 
   /**

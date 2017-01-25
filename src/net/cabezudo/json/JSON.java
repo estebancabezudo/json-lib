@@ -185,45 +185,6 @@ public class JSON {
   }
 
   /**
-   * Create a JSON structure where the the root object don't contain another object, instead of it
-   * contain the references to the objects. The reference is a field value of the object. The value
-   * of the property that has the object is replaced with the value of the object property marked
-   * like reference field. The reference field should not be an object or array.
-   *
-   * @param jsonValue The JSON structure to be converted to a referenced structure.
-   * @return a new JSON structure with all the object referenced.
-   */
-  public static JSONValue toJSONReferencedTree(JSONValue jsonValue) {
-    if (jsonValue instanceof JSONObject) {
-      JSONObject jsonReferencedObject = new JSONObject();
-      JSONObject jsonObject = (JSONObject) jsonValue;
-
-      for (JSONPair jsonPair : jsonObject) {
-        JSONElement referencedElement = jsonPair.getValue().toReferencedElement();
-
-        JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement, jsonValue.getPosition());
-        jsonReferencedObject.add(newJSONPair);
-      }
-
-      return jsonReferencedObject;
-    }
-
-    if (jsonValue instanceof JSONArray) {
-      JSONArray jsonReferencedArray = new JSONArray();
-      JSONArray jsonArray = (JSONArray) jsonValue;
-
-      for (JSONElement jsonArrayElement : jsonArray) {
-        JSONElement referencedElement = jsonArrayElement.toReferencedElement();
-        jsonReferencedArray.add(referencedElement);
-      }
-
-      return jsonReferencedArray;
-    }
-
-    return (JSONValue) jsonValue.toReferencedElement();
-  }
-
-  /**
    * Convert a POJO in a {@link net.cabezudo.json.values.JSONValue}. The object must have the
    * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
    * used as a object property. If the object is {@code Iterable} or the object is a primiteve array
