@@ -23,26 +23,27 @@ import net.cabezudo.json.values.JSONObject;
 import net.cabezudo.json.values.JSONValue;
 
 /**
- * Provide the methods for parse and create JSON objects.
+ * Provide the methods to parse and create JSON objects.
  * <p>
- * JSON class allow you to parse a string with JSON format in to a JSON tree to manipulate. You can also get the string from a file on disk.
+ * JSON class allow you to parse a JSON string into a JSON tree to be manipulated. You can also get the string from a file on disk.
  * The JSON class allow you to create a JSON tree from any Java object and create a tree using the references to the object
  * <h4>Parse</h4>
  * <p>
  * You can create from a string a JSON tree that use objects to represent the JSON string. You can take parts of the tree, add elements,
  * delete elements and set new values.
  * <p>
- * Also, you can use a file disk like origin for the data to create the JSON tree.
+ * Also, you can use a file disk as source for the data to create the JSON tree.
  * <h4>JSON tree</h4>
  * The JSON tree is a tree formed for objects inherited from {@link net.cabezudo.java.json.JSONValue} that represent the JSON elements.
  * <p>
  * This elements has diferents properties and you hava many methods to work with its. The elements are null null {@link net.cabezudo.java.json.JSONArray JSONArray},
- * {@link net.cabezudo.json.values.JSONArray JSONArray}, {@link net.cabezudo.json.values.JSONBoolean JSONBoolean}, {@link net.cabezudo.json.values.JSONNull JSONNull},
+ * {@link net.cabezudo.json.values.JSONBoolean JSONBoolean}, {@link net.cabezudo.json.values.JSONNull JSONNull},
  * {@link net.cabezudo.json.values.JSONNumber JSONNumber}, {@link net.cabezudo.json.values.JSONObject JSONObject}, and
  * {@link net.cabezudo.json.values.JSONString JSONString}. You can get the values from the elements tree using dig methods to reach the
  * element or value you want or navigate through the tree getting the elements and theirs values one by one.
  * <h4>JSON referenced tree</h4>
  * <p>
+ * Whaaat
  * A referenced tree is a normal tree transformed into a small tree using references that you can specify for the objects. The easy way to
  * get a referency tree is using normal objects to create a JSONTree and than create a referenced tree. That is because the referenced
  * information isn't in the JSON string. If you create a tree from Java normal objects or using the elements one by one you can specify the

@@ -19,10 +19,10 @@ public class Formatter {
   }
 
   /**
-   * Add carriages returns and indent the given <code>String</code> and return the <code>String</code> with the JSON indented.
+   * Add carriages returns and indent the given <code>String</code> and return the <code>String</code> with formatted JSON.
    *
-   * @param jsonString the JSON <code>String</code> with the JSON string to indent.
-   * @return the JSON string indented.
+   * @param jsonString the JSON <code>String</code> with the JSON string in raw format.
+   * @return the JSON string formatted.
    */
   public static String indent(String jsonString) {
     StringBuilder sb = new StringBuilder();

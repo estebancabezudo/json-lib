@@ -9,8 +9,8 @@ import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONCastException;
 
 /**
- * The <code>JSONValue</code> class is an abstract class for implement a JSON value. A JSON value is a JSON sctructure component inherited
- * from {@link net.cabezudo.json.JSONElement} thet can be used in a pair or in an array. There are seven types for values: string,
+ * The <code>JSONValue</code> class is an abstract class to implement a JSON value. A JSON value is a JSON structure component inherited
+ * from {@link net.cabezudo.json.JSONElement} that can be used in a pair or in an array. There are seven types for values: string,
  * number, object, array, true, false, and null.
  *
  * <p>
@@ -29,7 +29,7 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * Returns if the JSON element is a value. This object represent a JSON value, so allways return a true.
+   * Returns true if the JSON element is a value. This object represent a JSON value, so always return a true.
    *
    * @return <code>true</code> because the object is a JSON value.
    */

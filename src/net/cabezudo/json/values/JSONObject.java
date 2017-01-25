@@ -18,6 +18,7 @@ import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
+ * Whaaat
  * A {@link JSONObject} is an object extended from {@link JSONValue} object in order to represent a JSON object that can be used to create
  * JSON structures.
  *

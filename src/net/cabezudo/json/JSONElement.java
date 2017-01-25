@@ -1,9 +1,10 @@
 package net.cabezudo.json;
 
 /**
- * The <code>JSONElement</code> class is an abstract class for implement all the posible elements in a JSON structure.
+ * The <code>JSONElement</code> class is an abstract class to implement all the posible elements in a JSON structure.
  *
  * <p>
+ * Whaaat
  * The class also provides additional default methods for implementing a concrete element and the default info to provide.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
