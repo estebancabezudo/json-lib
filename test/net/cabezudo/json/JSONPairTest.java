@@ -17,6 +17,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -24,7 +28,7 @@ import org.junit.Test;
  * @since 1.7
  * @date 10/01/2014
  */
-public class JSONPairIT {
+public class JSONPairTest {
 
   @Test
   public void testCompareTo() {

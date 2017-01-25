@@ -32,6 +32,9 @@ import static org.junit.Assert.fail;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.TemporaryFolder;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author Esteban Cabezudo
@@ -39,7 +42,7 @@ import org.junit.rules.TemporaryFolder;
  * @since 1.7
  * @date 08/03/2016
  */
-public class JSONIT {
+public class JSONTest {
 
   @Rule
   public TemporaryFolder folder = new TemporaryFolder();

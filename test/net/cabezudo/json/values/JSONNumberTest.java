@@ -8,6 +8,8 @@ import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -15,7 +17,7 @@ import org.junit.Test;
  * @since 1.7
  * @date 08/18/2016
  */
-public class JSONNumberIT {
+public class JSONNumberTest {
 
   @Test
   public void testCompareTo() {

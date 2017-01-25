@@ -16,6 +16,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -23,7 +26,7 @@ import org.junit.Test;
  * @since 1.7
  * @date 08/18/2016
  */
-public class JSONObjectIT {
+public class JSONObjectTest {
 
   private final int BIG_DECIMAL = 0;
   private final int BIG_INTEGER = 1;
