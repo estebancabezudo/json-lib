@@ -13,16 +13,18 @@ public class Log {
   private static final Logger LOG = Logger.getLogger(Log.class.getName());
 
   /**
+   * Print on console a message.
    *
    * @param message the message to print in console
    *
-   * @param objects an optional list of objects to print in console using the syntax of the {@link java.lang.String#format} method.
+   * @param objects an optional list of objects to print in console using the syntax of the
+   * {@link java.lang.String#format} method.
    */
   public static void debug(String message, Object... objects) {
     LOG.info(String.format(message, objects));
   }
 
   private Log() {
-    // To avoid the instantiation.
+    // Only to avoid the instantiation.
   }
 }

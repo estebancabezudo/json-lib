@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- *
- * @author esteban
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @date 10/01/2014
+ * @version 1.0
+ * @since 1.7
  */
 public class Formatter {
 
