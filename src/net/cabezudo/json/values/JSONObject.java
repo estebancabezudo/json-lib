@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json.values;
 
 import java.math.BigDecimal;
@@ -27,9 +50,7 @@ import net.cabezudo.json.exceptions.PropertyNotExistException;
  * structure.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 1.00, 10/01/2014
  */
 public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPair> {
 
@@ -43,7 +64,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * <p>
    * This constructor parse a string passed by parameter in order to create the {@link JSONObject}
-   * that represent the JSON object strcucture.
+   * that represent the JSON object structure.
    *
    * @param data The JSON string to parse.
    * @throws JSONParseException if the string passed by parameter can not be parsed.
@@ -111,9 +132,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Construct a {@link JSONObject} object from a POJO {@code Object} using the
    * {@link JSON#toJSONTree(java.lang.Object)}. The object must have the properties annotated with
-   * {@link JSONProperty} in order to be used as a JSON object
+   * {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a JSON object
    * property. If the object is {@code Iterable} or the object is a primitive array the method throw
-   * a {@link JSONCastException}.
+   * a {@link net.cabezudo.json.exceptions.JSONConvertionException}.
    *
    * @param object a POJO {@code Object}.
    */
@@ -810,8 +831,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return a unmodifiable list of all childs of type {@link JSONPair} of the
-   * object in the natural order.
+   * Return a unmodifiable list of all childs of type {@link JSONPair} of the object in the natural
+   * order.
    *
    * @return a {@code List<JSONPair>} object with the child's.
    */
@@ -846,11 +867,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the element associated with the property name. For an object the element is a
-   * {@link net.cabezudo.java.json.values.JSONPair} formed by the property name and the value.
+   * {@link net.cabezudo.json.JSONPair} formed by the property name and the value.
    *
    * @param propertyName the name of the property to get.
-   * @return an object {@link net.cabezudo.java.json.values.JSONPair JSONArray} with the pair
-   * data/value in the object with the property name specified.
+   * @return an object {@link net.cabezudo.json.JSONPair JSONArray} with the pair data/value in the
+   * object with the property name specified.
    * @throws PropertyNotExistException if the property specified don't exist in the object.
    */
   public JSONPair getElement(String propertyName) throws PropertyNotExistException {
@@ -863,11 +884,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the element in the position specified. For an object the element is a
-   * {@link net.cabezudo.java.json.values.JSONPair} formed by the property name and the value.
+   * {@link net.cabezudo.json.JSONPair} formed by the property name and the value.
    *
    * @param index the index of the property.
-   * @return an object {@link net.cabezudo.java.json.values.JSONPair} with the pair data/value in
-   * the object with the index specified.
+   * @return an object {@link net.cabezudo.json.JSONPair} with the pair data/value in the object
+   * with the index specified.
    * @throws PropertyNotExistException if the index is out of range.
    */
   public JSONPair getElement(int index) throws PropertyNotExistException {
@@ -929,8 +950,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONArray}.
+   * Return the value of the property with the name passed converted to {@link JSONArray}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONArray}.
@@ -945,9 +965,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONArray}. If the property doesn't exist throw a
-   * {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to {@link JSONArray}. If the
+   * property doesn't exist throw a {@link PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONArray}.
@@ -1212,8 +1231,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONPair}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to {@link JSONPair}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONPair}.
@@ -1227,8 +1246,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONPair}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to {@link JSONPair}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONPair}.
@@ -1302,8 +1321,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONArray}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to {@link JSONArray}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONArray}.
@@ -1317,8 +1336,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONArray}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to {@link JSONArray}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONArray}.
@@ -1362,8 +1381,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONObject}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to {@link JSONObject}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONObject}.
@@ -1377,8 +1396,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONObject}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to {@link JSONObject}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONObject}.
@@ -1452,8 +1471,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONValue}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to {@link JSONValue}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONValue}.
@@ -1471,8 +1490,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONValue}. If the property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to {@link JSONValue}. If the
+   * property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONValue}.
@@ -1486,8 +1505,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONObject}.
+   * Return the value of the property with the name passed converted to {@link JSONObject}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONObject}.
@@ -1499,9 +1517,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONObject}. If the property doesn't exist throw a
-   * {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to {@link JSONObject}. If the
+   * property doesn't exist throw a {@link PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONObject}.
@@ -1513,11 +1530,10 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Convert {@code this} object in a referenced {@link JSONElement}. Because the
-   * referenced element is the reference, this method return the value of the reference field.
+   * Convert {@code this} object in a referenced {@link JSONElement}. Because the referenced element
+   * is the reference, this method return the value of the reference field.
    *
-   * @return a {@link JSONValue} with the referenced element for
-   * {@code this} object.
+   * @return a {@link JSONValue} with the referenced element for {@code this} object.
    */
   @Override
   public JSONValue toReferencedElement() {
@@ -1545,8 +1561,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * of the object property marked like reference field. The reference field must not be an object
    * or array.
    *
-   * @return a new {@link JSONObject} structure with all the object
-   * referenced.
+   * @return a new {@link JSONObject} structure with all the object referenced.
    */
   public JSONObject toReferencedObject() {
     JSONObject jsonReferencedObject = new JSONObject();
@@ -1612,8 +1627,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to
-   * {@link JSONValue}.
+   * Return the value of the property with the name passed converted to {@link JSONValue}.
    *
    * @param propertyName the name of the property to return.
    * @return a {@link JSONValue}.
@@ -1628,9 +1642,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to
-   * {@link JSONValue}. If the property doesn't exist throw a
-   * {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to {@link JSONValue}. If the
+   * property doesn't exist throw a {@link PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@link JSONValue}.
@@ -1696,11 +1709,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Convert the properties values of {@code this} object in an array of elements of type
-   * {@link JSONValue} using the values of element and leaving out the
-   * properties names.
+   * {@link JSONValue} using the values of element and leaving out the properties names.
    *
-   * @return an array of type {@link JSONValue} with the values of
-   * {@code this} object properties.
+   * @return an array of type {@link JSONValue} with the values of {@code this} object properties.
    */
   @Override
   public JSONValue[] toArray() {
@@ -1736,12 +1747,10 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Convert the properties values of {@code this} object in a
-   * {@link JSONArray} object using the values and leaving out the
-   * properties names.
+   * Convert the properties values of {@code this} object in a {@link JSONArray} object using the
+   * values and leaving out the properties names.
    *
-   * @return an array of type {@link JSONArray} with the values of
-   * {@code this} object properties.
+   * @return an array of type {@link JSONArray} with the values of {@code this} object properties.
    */
   @Override
   public JSONArray toJSONArray() {

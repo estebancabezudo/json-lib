@@ -23,12 +23,12 @@ import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
 import net.cabezudo.json.values.JSONObject;
 import net.cabezudo.json.values.JSONValue;
-import org.junit.Rule;
-import org.junit.Test;
-import org.junit.rules.TemporaryFolder;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import org.junit.Rule;
+import org.junit.Test;
+import org.junit.rules.TemporaryFolder;
 
 /**
  * @author Esteban Cabezudo
@@ -126,6 +126,11 @@ public class JSONTest {
     } catch (JSONParseException | PropertyNotExistException e) {
       fail(e.getMessage());
     }
+  }
+
+  // TODO the parse fail to explain the lack of rigth brace.
+  public void testUnexpectedBracket() throws JSONParseException {
+    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
   }
 
   @Test

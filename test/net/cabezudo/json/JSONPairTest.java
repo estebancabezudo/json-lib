@@ -1,15 +1,12 @@
 package net.cabezudo.json;
 
-import net.cabezudo.json.JSONPair;
-import net.cabezudo.json.JSON;
-import net.cabezudo.json.Log;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import net.cabezudo.json.exceptions.JSONCastException;
+import net.cabezudo.json.exceptions.JSONConvertionException;
 import net.cabezudo.json.values.JSONString;
 import net.cabezudo.json.values.JSONValue;
 import static org.junit.Assert.assertEquals;
@@ -17,10 +14,6 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -556,7 +549,7 @@ public class JSONPairTest {
     jsonPair.toLong();
   }
 
-  @Test(expected = JSONCastException.class)
+  @Test(expected = JSONConvertionException.class)
   public void testToObject() {
     Log.debug("Convert the element into a JSONObject object.");
     JSONPair jsonPair = new JSONPair("key", "A string");

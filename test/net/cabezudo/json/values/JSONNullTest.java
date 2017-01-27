@@ -2,7 +2,6 @@ package net.cabezudo.json.values;
 
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
-import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
@@ -89,7 +88,7 @@ public class JSONNullTest {
     JSONNull jsonNull = new JSONNull();
     JSONArray array = jsonNull.toJSONArray();
     assertEquals(1, array.size());
-    assertEquals(new JSONString("null"), array.getValue(0));
+    assertEquals(new JSONNull(), array.getValue(0));
   }
 
   @Test

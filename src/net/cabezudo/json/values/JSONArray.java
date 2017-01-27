@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json.values;
 
 import java.math.BigDecimal;
@@ -17,13 +40,11 @@ import net.cabezudo.json.exceptions.PropertyNotExistException;
  * JSON array that can be used to create JSON structures.
  *
  * <p>
- * A {@code JSONArray} is a list of {@link JSONValues} objects that represent the JSON array
- * structure.
+ * A {@code JSONArray} is a list of {@link net.cabezudo.json.values.JSONValue} objects that
+ * represent the JSON array structure.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @date 10/01/2014
- * @version 1.0
- * @since 1.7
+ * @version 1.00, 10/01/2014
  */
 public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValue> {
 
@@ -32,7 +53,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   /**
    * Construct an empty JSON array object.
    *
-   * @param position
+   * @param position a {@link net.cabezudo.json.Position} object with the position of the array in a
+   * source file or {@code String}.
    */
   public JSONArray(Position position) {
     // Nothing to do here. Just needed for create an empty array.
@@ -52,8 +74,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Construct a {@code JSONArray} using the values provided of type
-   * {@link JSONValue}.
+   * Construct a {@code JSONArray} using the values provided of type {@link JSONValue}.
    *
    * @param jsonValues an array with the values for array elements.
    */
@@ -156,12 +177,11 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve the {@link JSONValue} of the element in the position
-   * {@code index} of {@code this} {@code JSONArray}.
+   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this}
+   * {@code JSONArray}.
    *
    * @param index the position in the array for the element to retrieve.
-   * @return a {@link JSONValue} or null if the {@code index} is out of
-   * range.
+   * @return a {@link JSONValue} or null if the {@code index} is out of range.
    */
   public JSONValue getNullValue(int index) {
     if (index < 0 || index >= list.size()) {
@@ -176,17 +196,16 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * of the property that has the object is replaced with the value of the object property marked
    * like reference field. The reference field should not be an object or array.
    *
-   * @return a new {@link JSONArray} structure with all the object
-   * referenced.
+   * @return a new {@link JSONArray} structure with all the object referenced.
    */
   public JSONArray toReferencedTree() {
     return toReferencedElement();
   }
 
   /**
-   * Retrieve a referenced {@link JSONArray}. For an {@code JSONArray} the
-   * referenced element is the same than a referenced {@code JSONArray}, all the element of type
-   * {@link JSONObjects} will be replaces by the reference.
+   * Retrieve a referenced {@link JSONArray}. For an {@code JSONArray} the referenced element is the
+   * same than a referenced {@code JSONArray}, all the element of type
+   * {@link net.cabezudo.json.values.JSONObject} will be replaces by the reference.
    *
    * @return a referenced {@code JSONArray}.
    */
@@ -200,8 +219,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve the {@link JSONValue} of the element in the position
-   * {@code index} of {@code this} {@code JSONArray}.
+   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this}
+   * {@code JSONArray}.
    *
    * @param index the position in the array for the element to retrieve.
    * @return a {@link JSONValue}.
@@ -251,7 +270,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    *
    * @param index the position of the element to replace.
    * @param jsonValue the value in the position passed.
-   * @return
+   * @return the {@link net.cabezudo.json.values.JSONValue} element previously at the specified
+   * position.
    */
   public JSONValue setValue(int index, JSONValue jsonValue) {
     return list.set(index, jsonValue);
@@ -272,8 +292,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    * Convert the elements of {@code this} {@code JSONArray} in an array of objects of type
    * {@link JSONValue}.
    *
-   * @return an array of type {@link JSONValue} with the values of
-   * {@code this} {@code JSONArray} elements.
+   * @return an array of type {@link JSONValue} with the values of {@code this} {@code JSONArray}
+   * elements.
    */
   @Override
   public JSONValue[] toArray() {
@@ -345,8 +365,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return a {@code List} of {@link JSONValue} with the values of
-   * {@code this} {@code JSONArray} elements.
+   * Return a {@code List} of {@link JSONValue} with the values of {@code this} {@code JSONArray}
+   * elements.
    *
    * @return a {@code List} of {@link JSONValue}.
    */
@@ -521,9 +541,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed converted to
-   * {@link JSONObject}. If the {@code index} value is out of range throw a
-   * {@link ElementNotExistException}.
+   * Return the value of the element in the position passed converted to {@link JSONObject}. If the
+   * {@code index} value is out of range throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@link JSONObject}.
@@ -712,8 +731,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   /**
    * Return the value of the element with the {@code index} value passed converted to
-   * {@link JSONObject}. If {@code index} value is out of range return
-   * {@code null}.
+   * {@link JSONObject}. If {@code index} value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@link JSONObject}.
@@ -758,13 +776,13 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   /**
    * Dig into {@code this} {@code JSONArray} object to find a element or property to convert to
-   * {@link JSONValue}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * {@link JSONValue}. The position of elements in an array are specified using the index in
+   * brackets and the index and the objects properties are separated by dots. Example:
+   * population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@link JSONValue} with the property value or {@code null} if
-   * the element or property doesn't exist.
+   * @return a {@link JSONValue} with the property value or {@code null} if the element or property
+   * doesn't exist.
    */
   public JSONValue digNullValue(String fullPropertyName) {
     return digNullValue(fullPropertyName, 1);
@@ -1000,9 +1018,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   /**
    * Dig into {@code this} {@code JSONArray} object to find a element or property to convert to
-   * {@link JSONObject}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * {@link JSONObject}. The position of elements in an array are specified using the index in
+   * brackets and the index and the objects properties are separated by dots. Example:
+   * population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@link JSONObject} with the property or element.
@@ -1225,13 +1243,13 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
 
   /**
    * Dig into {@code this} {@code JSONArray} object to find a element or property to convert to
-   * {@link JSONObject}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * {@link JSONObject}. The position of elements in an array are specified using the index in
+   * brackets and the index and the objects properties are separated by dots. Example:
+   * population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@link JSONObject} with the property value, the element or
-   * {@code null} if the element or property doesn't exist.
+   * @return a {@link JSONObject} with the property value, the element or {@code null} if the
+   * element or property doesn't exist.
    */
   public JSONObject digNullObject(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);

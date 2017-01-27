@@ -7,9 +7,9 @@ import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import net.cabezudo.json.objects.Data;
 import net.cabezudo.json.values.JSONObject;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
+import org.junit.Test;
 
 /**
  * @author Esteban Cabezudo
@@ -86,7 +86,7 @@ public class FormatterTest {
             + "}\n";
 
     Data data = new Data();
-    JSONObject jsonTree = JSON.toJSONTree(data).toObject();
+    JSONObject jsonTree = JSON.toJSONObject(data);
     String jsonString = jsonTree.toJSON();
 
     String indentString = Formatter.indent(jsonString);

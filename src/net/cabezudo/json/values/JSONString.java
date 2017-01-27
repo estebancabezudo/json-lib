@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json.values;
 
 import java.math.BigDecimal;
@@ -11,24 +34,22 @@ import java.util.List;
 import java.util.Objects;
 import net.cabezudo.json.JSON;
 import net.cabezudo.json.Position;
-import net.cabezudo.json.exceptions.JSONCastException;
+import net.cabezudo.json.exceptions.JSONConvertionException;
 
 /**
- * A {@link JSONString} is an object extended from {@link JSONValue} object in order to represent a
- * JSON string that can be used to create JSON structures.
+ * A {@link net.cabezudo.json.values.JSONString} is an object extended from {@link JSONValue} object
+ * in order to represent a JSON string that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 1.00, 10/01/2014
  */
 public class JSONString extends JSONValue<JSONString> {
 
   private final String value;
 
   /**
-   * Initializes a newly created {@link JSONString} object so that it represents the same string as
-   * the argument.
+   * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object so that it
+   * represents the same string as the argument.
    *
    * @param value A {@code String}
    */
@@ -37,8 +58,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object so that it represents the same string as
-   * the argument.
+   * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object so that it
+   * represents the same string as the argument.
    *
    * @param value A {@code String}
    * @param position The position of the {@code String} in origen
@@ -49,8 +70,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code Character} passed as
-   * argument.
+   * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object using the
+   * {@code Character} passed as argument.
    *
    * @param character A {@code Character} object.
    */
@@ -60,9 +81,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code BigInteger} object
-   * passed as argument. The object convertion is made using the {@code toString()} method of the
-   * {@code BigInteger} object.
+   * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object using the
+   * {@code BigInteger} object passed as argument. The object convertion is made using the
+   * {@code toString()} method of the {@code BigInteger} object.
    *
    * @param bigInteger A {@code BigInteger} object.
    */
@@ -72,9 +93,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Initializes a newly created {@link JSONString} object using the {@code BigdECIMAL} object
-   * passed as argument. The object convertion is made using the {@code toString()} method of the
-   * {@code BigdECIMAL} object.
+   * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object using the
+   * {@code BigdECIMAL} object passed as argument. The object convertion is made using the
+   * {@code toString()} method of the {@code BigdECIMAL} object.
    *
    * @param bigDecimal A {@code BigDecimal} object.
    */
@@ -90,13 +111,16 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Compares the string values represented by two {@link JSONString} objects.
+   * Compares the string values represented by two {@link net.cabezudo.json.values.JSONString}
+   * objects.
    *
-   * @param jsonString the {@link JSONString} to be compared.
-   * @return the integer value {@code 0} if the argument {@link JSONString} is equal to this
-   * {@link JSONString}; a value less than {@code 0} if this {@link JSONString} is lexicographically
-   * less than the {@link JSONString} argument; and a value greater than {@code 0} if this
-   * {@link JSONString} is lexicographically greater than the {@link JSONString} argument.
+   * @param jsonString the {@link net.cabezudo.json.values.JSONString} to be compared.
+   * @return the integer value {@code 0} if the argument {@link net.cabezudo.json.values.JSONString}
+   * is equal to this {@link net.cabezudo.json.values.JSONString}; a value less than {@code 0} if
+   * this {@link net.cabezudo.json.values.JSONString} is lexicographically less than the
+   * {@link net.cabezudo.json.values.JSONString} argument; and a value greater than {@code 0} if
+   * this {@link net.cabezudo.json.values.JSONString} is lexicographically greater than the
+   * {@link net.cabezudo.json.values.JSONString} argument.
    */
   @Override
   public int compareTo(JSONString jsonString) {
@@ -130,8 +154,9 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * /**
-   * Returns {@code this} {@link JSONString} object, a non referenced {@link JSONString} object is
-   * the same object than a referenced {@link JSONString} object because is not an JSON object to be
+   * Returns {@code this} {@link net.cabezudo.json.values.JSONString} object, a non referenced
+   * {@link net.cabezudo.json.values.JSONString} object is the same object than a referenced
+   * {@link net.cabezudo.json.values.JSONString} object because is not an JSON object to be
    * referenced.
    *
    * @return The element whose referenciable objects have been replaced with their references.
@@ -142,8 +167,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns a hash code for this string. The hash code for a {@link JSONString} is the same hash
-   * that a {@code String} object.
+   * Returns a hash code for this string. The hash code for a
+   * {@link net.cabezudo.json.values.JSONString} is the same hash that a {@code String} object.
    *
    * @return a hash code value for this object.
    */
@@ -153,10 +178,10 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns if the JSON element is a {@link JSONString}. This object represent a JSON string, so
-   * allways return a true.
+   * Returns if the JSON element is a {@link net.cabezudo.json.values.JSONString}. This object
+   * represent a JSON string, so allways return a true.
    *
-   * @return {@code true} because the object is a {@link JSONString}.
+   * @return {@code true} because the object is a {@link net.cabezudo.json.values.JSONString}.
    */
   @Override
   public boolean isString() {
@@ -164,8 +189,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@link JSONValue} objects. The result array is
-   * an array of only one element, the {@code this} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into an array of {@link JSONValue}
+   * objects. The result array is an array of only one element, the {@code this} object.
    *
    * @return an array of {@link JSONValue} with a single element.
    */
@@ -179,10 +204,11 @@ public class JSONString extends JSONValue<JSONString> {
   /**
    * Try to create, using the {@code BigDecimal} constructor, a {@code BigDecimal} object using the
    * {@code BigDecimal} rules for {@code String} and throw a {@code NumberFormatException} if the
-   * {@link JSONString} don't have a valid representation for a {code BigDecimal}.
+   * {@link net.cabezudo.json.values.JSONString} don't have a valid representation for a {code
+   * BigDecimal}.
    *
    * @return a {code BigDecimal} result to translate the {@code String} represented in
-   * {@link JSONString}.
+   * {@link net.cabezudo.json.values.JSONString}.
    * @throws NumberFormatException if {@code value} is not a valid representation of a
    * {@code BigDecimal}.
    */
@@ -194,10 +220,11 @@ public class JSONString extends JSONValue<JSONString> {
   /**
    * Try to create, using the {@code BigInteger} constructor, a {@code BigInteger} object using the
    * {@code BigInteger} rules for {code String} and throw a {@code NumberFormatException} if the
-   * {@link JSONString} don't have a valid representation for a {code BigInteger}.
+   * {@link net.cabezudo.json.values.JSONString} don't have a valid representation for a {code
+   * BigInteger}.
    *
    * @return a {code BigInteger} result to translate the {@code String} represented in
-   * {@link JSONString}.
+   * {@link net.cabezudo.json.values.JSONString}.
    * @throws NumberFormatException if {@code value} is not a valid representation of a
    * {@code BigInteger}.
    */
@@ -212,7 +239,7 @@ public class JSONString extends JSONValue<JSONString> {
    * not {@code null} and is equal, ignoring case, to the string {@code "true"}.
    *
    * @return a {code Boolean} result to convert, using {@code Boolean.valueOf()}, the {@code String}
-   * represented in {@link JSONString}.
+   * represented in {@link net.cabezudo.json.values.JSONString}.
    */
   @Override
   public Boolean toBoolean() {
@@ -221,10 +248,11 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Byte} object that represents the value indicated
-   * by the {@code String} value in the {@link JSONString}. The string is converted to a
-   * {@code Byte} value in exactly the manner used by the {@code parseByte} method for radix 10.
+   * by the {@code String} value in the {@link net.cabezudo.json.values.JSONString}. The string is
+   * converted to a {@code Byte} value in exactly the manner used by the {@code parseByte} method
+   * for radix 10.
    *
-   * @return the value of this {@link JSONString} as a {@code Byte}.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Byte}.
    * @throws NumberFormatException if the {@code String} does not contain a parsable {@code Byte}.
    */
   @Override
@@ -233,8 +261,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@code byte} primitives. The result array is an
-   * array of only one element, the converted value of {@code this} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into an array of {@code byte}
+   * primitives. The result array is an array of only one element, the converted value of
+   * {@code this} object.
    *
    * @return an array of {@link JSONValue} with a only one element.
    */
@@ -247,12 +276,13 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Calendar} object that represents the value
-   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
-   * to a {@code Calendar} value using the {@code SimpleDateFormat} {@code parse} method and the
-   * pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
+   * indicated by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}.
+   * The string is converted to a {@code Calendar} value using the {@code SimpleDateFormat}
+   * {@code parse} method and the pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
    *
-   * @return the value of this {@link JSONString} as a {@code Calendar}.
-   * @throws JSONCastException if the {@code String} does not contain a parsable {@code Calendar}.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Calendar}.
+   * @throws JSONConvertionException if the {@code String} does not contain a parsable
+   * {@code Calendar}.
    */
   @Override
   public Calendar toCalendar() {
@@ -261,7 +291,7 @@ public class JSONString extends JSONValue<JSONString> {
     try {
       date = sdf.parse(value);
     } catch (ParseException e) {
-      throw new JSONCastException("I can't convert a " + value + " to a Calendar.", e);
+      throw new JSONConvertionException("I can't convert a " + value + " to a Calendar.", e);
     }
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);
@@ -269,9 +299,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into a {@code Character} object using the {@code this} value.
-   * The result {@code Character} is a {@code Character} object created with the first character of
-   * the value {@code String}.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into a {@code Character} object using
+   * the {@code this} value. The result {@code Character} is a {@code Character} object created with
+   * the first character of the value {@code String}.
    *
    * @return a {@code Character}.
    * @exception IndexOutOfBoundsException if the value {@code String} length is less than one.
@@ -284,12 +314,12 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Double} object that represents the value
-   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
-   * to a {@code Double} using the {@code Double} constructor.
+   * indicated by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}.
+   * The string is converted to a {@code Double} using the {@code Double} constructor.
    *
-   * @return the value of this {@link JSONString} as a {@code Double}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
-   * does not contain a parseable double number.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Double}.
+   * @throws NumberFormatException if the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} does not contain a parseable double number.
    */
   @Override
   public Double toDouble() {
@@ -298,12 +328,12 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Float} object that represents the value indicated
-   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
-   * {@code Float} using the {@code Float} constructor.
+   * by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}. The
+   * string is converted to a {@code Float} using the {@code Float} constructor.
    *
-   * @return the value of this {@link JSONString} as a {@code Float}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
-   * does not contain a parseable float number.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Float}.
+   * @throws NumberFormatException if the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} does not contain a parseable float number.
    */
   @Override
   public Float toFloat() {
@@ -312,12 +342,12 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Integer} object that represents the value
-   * indicated by the {@code String} represented in the {@link JSONString}. The string is converted
-   * to a {@code Integer} using the {@code Integer} constructor.
+   * indicated by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}.
+   * The string is converted to a {@code Integer} using the {@code Integer} constructor.
    *
-   * @return the value of this {@link JSONString} as a {@code Integer}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
-   * does not contain a parseable integer number.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Integer}.
+   * @throws NumberFormatException if the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} does not contain a parseable integer number.
    */
   @Override
   public Integer toInteger() {
@@ -340,9 +370,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into a {@link JSONArray} object. The result is a
-   * {@link JSONArray} with only one {@link JSONString} created with the value of {@code this}
-   * {@link JSONString} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into a {@link JSONArray} object. The
+   * result is a {@link JSONArray} with only one {@link net.cabezudo.json.values.JSONString} created
+   * with the value of {@code this} {@link net.cabezudo.json.values.JSONString} object.
    *
    * @return a {@link JSONArray} with only one element.
    */
@@ -352,11 +382,12 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Constructs an return a newly allocated {@link JSONString} object that represents the value
-   * indicated by the {@code String} value of {@code this} {@link JSONString}. The string is created
-   * using the {@link JSONSting} constructor.
+   * Constructs an return a newly allocated {@link net.cabezudo.json.values.JSONString} object that
+   * represents the value indicated by the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString}. The string is created using the
+   * {@link net.cabezudo.json.values.JSONString} constructor.
    *
-   * @return a {@link JSONString}.
+   * @return a {@link net.cabezudo.json.values.JSONString}.
    */
   @Override
   public JSONString toJSONString() {
@@ -364,8 +395,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an {@code ArrayList} of {@link JSONValue} objects. The
-   * result list has only one element, the {@code this} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into an {@code ArrayList} of
+   * {@link JSONValue} objects. The result list has only one element, the {@code this} object.
    *
    * @return an {@code ArrayList} of {@link JSONValue} objects.
    */
@@ -378,12 +409,12 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Long} object that represents the value indicated
-   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
-   * {@code Long} using the {@code Long} constructor.
+   * by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}. The
+   * string is converted to a {@code Long} using the {@code Long} constructor.
    *
-   * @return the value of this {@link JSONString} as a {@code Long}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
-   * does not contain a parseable long number.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Long}.
+   * @throws NumberFormatException if the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} does not contain a parseable long number.
    */
   @Override
   public Long toLong() {
@@ -392,12 +423,12 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Constructs an return a newly allocated {@code Short} object that represents the value indicated
-   * by the {@code String} represented in the {@link JSONString}. The string is converted to a
-   * {@code Short} using the {@code Short} constructor.
+   * by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}. The
+   * string is converted to a {@code Short} using the {@code Short} constructor.
    *
-   * @return the value of this {@link JSONString} as a {@code Short}.
-   * @throws NumberFormatException if the {@code String} value of {@code this} {@link JSONString}
-   * does not contain a parseable short number.
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Short}.
+   * @throws NumberFormatException if the {@code String} value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} does not contain a parseable short number.
    */
   @Override
   public Short toShort() {
@@ -406,8 +437,8 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Returns a string representation of the {@code this} object. The string representacion for the
-   * object is the {@code String} represented for the {@link JSONString} object and is the same
-   * object that the internal {@code String} value of the object.
+   * object is the {@code String} represented for the {@link net.cabezudo.json.values.JSONString}
+   * object and is the same object that the internal {@code String} value of the object.
    *
    * @return a {@code String} representation of the value of {@code this} object.
    */
@@ -417,8 +448,8 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link JSONString} into an array of {@code String} objects. The result array is an
-   * array with only one element, the {@code this} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into an array of {@code String}
+   * objects. The result array is an array with only one element, the {@code this} object.
    *
    * @return an array of {@code String} with a single element.
    */

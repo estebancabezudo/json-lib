@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json;
 
 import java.io.IOException;
@@ -27,24 +50,24 @@ import net.cabezudo.json.values.JSONValue;
  * JSON class allow you to parse a string with JSON format in to a JSON tree to manipulate. You can
  * also get the string from a file on disk. The JSON class allow you to create a JSON tree from any
  * Java object and create a tree using the references to the object
- * <h4>Parse</h4>
+ * <h1>Parse</h1>
  * <p>
  * You can create from a string a JSON tree that use objects to represent the JSON string. You can
  * take parts of the tree, add elements, delete elements and set new values.
  * <p>
  * Also, you can use a file disk like origin for the data to create the JSON tree.
- * <h4>JSON tree</h4>
- * The JSON tree is a tree formed for objects inherited from
- * {@link net.cabezudo.java.json.JSONValue} that represent the JSON elements.
+ * <h1>JSON tree</h1>
+ * The JSON tree is a tree formed for objects inherited from {@link JSONValue} that represent the
+ * JSON elements.
  * <p>
  * This elements has different properties and you have many methods to work with its. The elements
- * are null null {@link net.cabezudo.java.json.JSONArray}, {@link JSONArray},
- * {@link JSONBoolean}, {@link JSONNull},
- * {@link JSONNumber}, {@link JSONObject}, and
- * {@link JSONString}. You can get the values from the elements tree using
+ * are null null {@link JSONArray}, {@link JSONArray},
+ * {@link net.cabezudo.json.values.JSONBoolean}, {@link JSONNull},
+ * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and
+ * {@link net.cabezudo.json.values.JSONString}. You can get the values from the elements tree using
  * dig methods to reach the element or value you want or navigate through the tree getting the
  * elements and theirs values one by one.
- * <h4>JSON referenced tree</h4>
+ * <h1>JSON referenced tree</h1>
  * <p>
  * A referenced tree is a normal tree transformed into a small tree using references that you can
  * specify for the objects. The easy way to get a referenced tree is using normal objects to create
@@ -53,12 +76,10 @@ import net.cabezudo.json.values.JSONValue;
  * you can specify the field that going to be used to create the referenced tree. The JSON elements
  * has or can have the reference information but not that JESON trees created parsing a JSON string.
  * In order to set the field reference for a object you can use
- * {@link net.cabezudo.java.json.JSONNull#setReferenceFieldName(String referenceFieldName) }.
+ * {@link JSONNull#setReferenceFieldName(String referenceFieldName)}.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 1.00, 10/01/2014
  */
 public class JSON {
 
@@ -157,9 +178,8 @@ public class JSON {
   }
 
   /**
-   * Convert a list of objects in a {@link JSONArray} The objects in the
-   * list must have the properties annotated with {@link JSONProperty}
-   * in order to be used as object property.
+   * Convert a list of objects in a {@link JSONArray} The objects in the list must have the
+   * properties annotated with {@link JSONProperty} in order to be used as object property.
    *
    * @param list the list of objects to be converted.
    * @return a {@link JSONArray} with a list of JSON elements.
@@ -185,10 +205,9 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO in a {@link JSONValue}. The object must have the
-   * properties annotated with {@link JSONProperty} in order to be
-   * used as a JSON object property. If the object is {@code Iterable} or the object is a primitive
-   * array the result is a {@link JSONArray}.
+   * Convert a POJO in a {@link JSONValue}. The object must have the properties annotated with
+   * {@link JSONProperty} in order to be used as a JSON object property. If the object is
+   * {@code Iterable} or the object is a primitive array the result is a {@link JSONArray}.
    *
    * @param object the object to be converted.
    * @return a {@link JSONValue} created using the object passed.

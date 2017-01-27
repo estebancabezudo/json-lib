@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json.annotations;
 
 import java.lang.annotation.Retention;
@@ -14,9 +37,7 @@ import java.lang.annotation.RetentionPolicy;
  * not using the element {@code referenced}.
  *
  * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 07/06/2016
+ * @version 1.00, 07/06/2016
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JSONProperty {
@@ -42,14 +63,16 @@ public @interface JSONProperty {
   /**
    * Indicate if the property must be included in the JSON object if is zero or not.
    *
-   * @return {@code true if the property with null value will not show in the JSON object, {@code false} otherwise.
+   * @return {@code true} if the property with null value will not show in the JSON object,
+   * {@code false} otherwise.
    */
   boolean dontShowIfZero() default false;
 
   /**
    * Indicate if the property must be included in the JSON object if is null or not.
    *
-   * @return {@code true if the property with null value will not show in the JSON object, {@code false} otherwise.
+   * @return {@code true} if the property with null value will not show in the JSON object,
+   * {@code false} otherwise.
    */
   boolean dontShowIfNull() default false;
 
