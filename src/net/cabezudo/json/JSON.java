@@ -47,7 +47,7 @@ import net.cabezudo.json.values.JSONValue;
 /**
  * Provide the methods for parse and create JSON objects.
  * <p>
- * JSON class allow you to parse a string with JSON format in to a JSON tree to manipulate. You can
+ * JSON class allow you to parse a JSON string into a JSON tree to be manipulated. You can
  * also get the string from a file on disk. The JSON class allow you to create a JSON tree from any
  * Java object and create a tree using the references to the object
  * <h1>Parse</h1>
@@ -55,7 +55,7 @@ import net.cabezudo.json.values.JSONValue;
  * You can create from a string a JSON tree that use objects to represent the JSON string. You can
  * take parts of the tree, add elements, delete elements and set new values.
  * <p>
- * Also, you can use a file disk like origin for the data to create the JSON tree.
+ * Also, you can use a file disk as source for the data to create the JSON tree.
  * <h1>JSON tree</h1>
  * The JSON tree is a tree formed for objects inherited from {@link JSONValue} that represent the
  * JSON elements.
