@@ -5,7 +5,7 @@
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
+ * in the Software without restriction, without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
@@ -39,8 +39,8 @@ public class JSONNull extends JSONValue<JSONNull> {
   private final String nullString = "null";
 
   /**
-   * Construct a {@code JSONNull}. The method also take a {@link Position} in order to save the
-   * position in origin and give it when a parse error is throw.
+   * Construct a {@code JSONNull}. The method also takes a {@link Position} in order to save the
+   * position in origin and give it when a parse error is thrown.
    *
    * @param position the position of the value in the source.
    */
@@ -58,7 +58,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   /**
    * Compares two {@code JSONNull} objects.
    *
-   * @param o the {@code Object} to be compared.
+   * @param or the {@code Object} to be compared.
    * @return {@code true} if {@code this} {@code JSONNull} is equal to the argument {@code false}
    * otherwise.
    */
@@ -68,7 +68,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Returns the hash code for this {@code JSONNull}.
+   * Return the hash code for this {@code JSONNull}.
    *
    * @return hash code for this {@code JSONNull}.
    */
