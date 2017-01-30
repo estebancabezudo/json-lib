@@ -16,6 +16,7 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.ElementNotExistException;
+import net.cabezudo.json.exceptions.InvalidTokenException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.objects.Book;
@@ -99,7 +100,6 @@ public class JSONTest {
       path = Paths.get(uri);
 
       JSONObject jsonObject = JSON.parse(path, "utf-8").toObject();
-//  { "array": [ 1, 2, "3", 4], "boolean": true, "null": null, "number": 324, "anotherNumber": 324.3, "object": { "string": "Esteban Cabezudo", "number": 234 } }
 
       JSONArray jsonArray = jsonObject.getJSONArray("array");
       JSONValue jsonValue = jsonArray.getValue(1);
@@ -145,75 +145,80 @@ public class JSONTest {
     JSON.parse(jsonStringData);
   }
 
-  @Test(expected = EOSException.class)
+  @Test
   public void testParse03() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ \"John\", \"Peter\" a";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ \"John\", \"Peter\" a";
+    checkInvalidTokenException(jsonStringData, "I can't clasify the token a.", 1, 19);
   }
 
   @Test
   public void testParse04() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ \"John\", \"Peter\" }";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ \"John\", \"Peter\" }";
+    checkInvalidTokenException(jsonStringData, "comma or right bracket", "}", 1, 19);
   }
 
   @Test
   public void testParse05() throws JSONParseException {
-    String jsonStringData;
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" } ]";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" } ]";
+    checkInvalidTokenException(jsonStringData, "comma or right brace", "]", 1, 34);
   }
 
   @Test
   public void testParse06() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" }, ]";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" }, ]";
+    checkInvalidTokenException(jsonStringData, "string", "]", 1, 35);
   }
 
   @Test
   public void testParse07() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" }, { \"person\": { \"name\": \"John\" }, ]";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" }, { \"person\": { \"name\": \"John\" }, ]";
+    checkInvalidTokenException(jsonStringData, "string", "{", 1, 35);
   }
 
   @Test
   public void testParse08() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } } ]";
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } } ]";
     JSON.parse(jsonStringData);
   }
 
   @Test
   public void testParse09() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } }, ]";
-    JSON.parse(jsonStringData);
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } }, ]";
+    checkInvalidTokenException(jsonStringData, "value", "]", 1, 72);
   }
 
   @Test
   public void testParse10() throws JSONParseException {
-    String jsonStringData;
-
-    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" }, \"position\": { \"name\": \"Technical leader\" } } ]";
+    String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" }, \"position\": { \"name\": \"Technical leader\" } } ]";
     JSON.parse(jsonStringData);
   }
 
   @Test
   public void testParse11() throws JSONParseException {
-    String jsonStringData;
+    String jsonStringData = "{ \"name\": \"John\", \"childs\": [ { \"name\": \"Peter\" }, { \"name\": \"Jhon\" } ] }";
+    checkInvalidTokenException(jsonStringData, "comma or right brace", "}", 1, 31);
+  }
 
-    jsonStringData = "{ \"name\": \"John\", \"childs\": [ { \"name\": \"Peter\" }, { \"name\": \"Jhon\" } ] }";
-    JSON.parse(jsonStringData);
+  private void checkInvalidTokenException(
+          String jsonStringData, String message, int line, int row)
+          throws JSONParseException {
+    try {
+      JSON.parse(jsonStringData);
+    } catch (InvalidTokenException e) {
+      InvalidTokenException expectedException = new InvalidTokenException(message, new Position(line, row));
+      assertEquals(expectedException, e);
+    }
+  }
+
+  private void checkInvalidTokenException(
+          String jsonStringData, String expected, String have, int line, int row)
+          throws JSONParseException {
+    try {
+      JSON.parse(jsonStringData);
+    } catch (InvalidTokenException e) {
+      InvalidTokenException expectedException = new InvalidTokenException(expected, have, new Position(line, row));
+      assertEquals(expectedException, e);
+    }
   }
 
   // TODO the parse fail to explain the lack of rigth brace.

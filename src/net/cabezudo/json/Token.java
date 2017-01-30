@@ -121,7 +121,7 @@ class Token {
               sb = new StringBuilder(number.toString());
               break;
             } catch (NumberFormatException e) {
-              throw new InvalidTokenException("number", s, position);
+              throw new InvalidTokenException("I can't clasify the token " + s + ".", position);
             }
           } while (false);
           break;

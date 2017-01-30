@@ -40,6 +40,18 @@ public class InvalidTokenException extends JSONParseException {
    * {@link Position}. The position is used to store a position of the property in a source in order
    * to search the misspelled property.
    *
+   * @param message the detail message
+   * @param position the position to store.
+   */
+  public InvalidTokenException(String message, Position position) {
+    super(message, position);
+  }
+
+  /**
+   * Constructs a {@code InvalidTokenException} with a series of values to create a detail message,
+   * a cause, and a {@link Position}. The position is used to store a position of the property in a
+   * source in order to search the misspelled property.
+   *
    * @param expected the value expected for the token
    * @param value the value of the token
    * @param cause The cause (which is saved for later retrieval by the

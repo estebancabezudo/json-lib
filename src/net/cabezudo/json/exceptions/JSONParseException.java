@@ -23,6 +23,7 @@
  */
 package net.cabezudo.json.exceptions;
 
+import java.util.Objects;
 import net.cabezudo.json.Position;
 
 /**
@@ -73,5 +74,47 @@ public class JSONParseException extends Exception {
    */
   public Position getPosition() {
     return position;
+  }
+
+  /**
+   * Compares this exception to the specified object. The result is {@code true} if and only if the
+   * argument is not {@code null} and is a {@link net.cabezudo.json.exceptions.JSONParseException}
+   * object that has the same message and the same position as {@code this} object.
+   *
+   * @param object The object to compare this
+   * {@link net.cabezudo.json.exceptions.JSONParseException} against
+   * @return {@code true} if the given object represents a
+   * {@link net.cabezudo.json.exceptions.JSONParseException} equivalent to {@code this}
+   * {@link net.cabezudo.json.exceptions.JSONParseException}, {@code false} otherwise
+   */
+  @Override
+  public boolean equals(Object object) {
+    if (this == object) {
+      return true;
+    }
+    if (object == null) {
+      return false;
+    }
+    if (getClass() != object.getClass()) {
+      return false;
+    }
+    final JSONParseException other = (JSONParseException) object;
+    return Objects.equals(this.getMessage(), other.getMessage())
+            && Objects.equals(this.getPosition(), other.getPosition());
+  }
+
+  /**
+   * Returns a hash code for this {@link net.cabezudo.json.exceptions.JSONParseException}. The hash
+   * code for a {@link net.cabezudo.json.exceptions.JSONParseException} object is computed using the
+   * message and the position hash.
+   *
+   * @return a hash code value for {@code this} object.
+   */
+  @Override
+  public int hashCode() {
+    int hash = 7;
+    hash = 23 * hash + Objects.hashCode(this.getMessage());
+    hash = 23 * hash + Objects.hashCode(this.position);
+    return hash;
   }
 }
