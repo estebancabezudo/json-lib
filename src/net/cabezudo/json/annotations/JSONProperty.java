@@ -3,11 +3,11 @@
  *
  * Copyright (c) 2017 Esteban Cabezudo
  *
- * Permission is hereby granted, free of charge, to any person obtaining a copy
- * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
- * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
- * copies of the Software, and to permit persons to whom the Software is
+ * Permission is hereby granted, free of charge, to any person who obtains a copy
+ * of this software and it´s associated documentation files (the "Software"), to deal
+ * in the Software without restriction or limitation of rights.
+ * To use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit people to whom the Software is
  * furnished to do so, subject to the following conditions:
  *
  * The above copyright notice and this permission notice shall be included in all
@@ -18,7 +18,7 @@
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
  * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
- * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE, IT´S USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
 package net.cabezudo.json.annotations;
@@ -28,12 +28,12 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  *
- * User to mark a object field like a property of a JSON object. The field is marked in order to be
+ * Used to mark an object field like a property of a JSON object. The field is marked in order to be
  * used like property. You can also indicate with the annotation the name you want for the field in
- * the JSON object using the element {code name}. Also you can indicate if you want to show the
+ * the JSON object using the element {code name}. Also, you can indicate if you want to show the
  * property in the result JSON object if the property value is zero or if the property is {code
- * null}. If the field will be a referenciable fiel you can especify the field that be used like
- * reference with the element {code field}. Also you can specify if the fiel can be referenced or
+ * nulljjm}. If the field will be a referenciable field, you can specify the one that´s being used like
+ * reference with the element {code field}. You can as well specify if the field can be referenced or
  * not using the element {@code referenced}.
  *
  * @author Esteban Cabezudo
@@ -43,7 +43,7 @@ import java.lang.annotation.RetentionPolicy;
 public @interface JSONProperty {
 
   /**
-   * A string indicating that the name of the fiel will be the same for the JSON object propery.
+   * A string indicating that the name of the field will be the same for the JSON object propery.
    */
   public static final String DEFAULT_NAME = "The same as the name of the property.";
 
