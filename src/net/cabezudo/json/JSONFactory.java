@@ -28,7 +28,9 @@ import java.math.BigInteger;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.EmptyQueueException;
+import net.cabezudo.json.exceptions.InvalidTokenException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONBoolean;
@@ -71,7 +73,8 @@ public class JSONFactory {
    * method convert it to a {@link net.cabezudo.json.values.JSONString}.
    * </li>
    * <li>
-   * If some property is a {@code char} the method convert it to a {@link net.cabezudo.json.values.JSONString}.
+   * If some property is a {@code char} the method convert it to a
+   * {@link net.cabezudo.json.values.JSONString}.
    * </li>
    * <li>
    * If a propery is a {@code byte[]} the method use a {@link JSONArray}.
@@ -185,7 +188,7 @@ public class JSONFactory {
     try {
       token = tokens.poll();
     } catch (EmptyQueueException e) {
-      throw new JSONParseException("Unexpected end of tokens", e, position);
+      throw new EOSException(position);
     }
 
     JSONValue jsonValue;
@@ -215,72 +218,98 @@ public class JSONFactory {
         return jsonValue;
       default:
         position = token.getPosition();
-        throw new JSONParseException("Value expected but I have '" + token.getValue() + "' of type '" + type + "' in line " + position.getLine() + ", row " + position.getRow() + ".", position);
+        throw new InvalidTokenException("value", token.getValue(), position);
     }
   }
 
   JSONArray getJSONArray(Tokens tokens, Position position) throws JSONParseException {
-
     JSONArray jsonArray = new JSONArray(position);
     Token token;
+    if (!tokens.hasNext()) {
+      throw new EOSException(position);
+    }
     token = tokens.element();
 
-    if (token.isRightBracket()) {
-      return jsonArray;
-    }
-
-    try {
-      do {
-        JSONValue jsonValue = get(tokens);
-        jsonArray.add(jsonValue);
-
-        token = tokens.poll();
-        position = token.getPosition();
-
-      } while (token.getType() == TokenType.COMMA);
-
-      if (!token.isRightBracket()) {
-        throw new JSONParseException("Closing bracket expected and found " + token + ".", position);
+    do {
+      if (token.getType() == TokenType.RIGHT_BRACKET) {
+        break;
       }
 
-    } catch (EmptyQueueException e) {
-      throw new JSONParseException("Unexpected end.", e, position);
-    }
+      JSONValue jsonValue = get(tokens);
+      position = jsonValue.getPosition();
+      jsonArray.add(jsonValue);
+
+      try {
+        token = tokens.poll();
+        position = token.getPosition();
+      } catch (EmptyQueueException e) {
+        throw new EOSException(position);
+      }
+      if (token.getType() != TokenType.COMMA && token.getType() != TokenType.RIGHT_BRACKET) {
+        if (token.getType() == TokenType.NEWLINE) {
+          throw new EOSException(position);
+        } else {
+          throw new InvalidTokenException("comma or right bracket", token.getValue(), token.getPosition());
+        }
+      }
+    } while (true);
     return jsonArray;
   }
 
   JSONObject getJSONObject(Tokens tokens, Position position) throws JSONParseException {
     JSONObject jsonObject = new JSONObject();
     Token token;
-    Position positionOnToken = Position.INITIAL;
+
+    if (!tokens.hasNext()) {
+      throw new EOSException(position);
+    }
     token = tokens.element();
-    if (token.isRightBrace()) {
-      return jsonObject;
-    }
-    try {
-      do {
+
+    do {
+      if (token.getType() == TokenType.RIGHT_BRACE) {
+        break;
+      }
+
+      try {
         token = tokens.poll();
-        if (token.getType() != TokenType.STRING) {
-          throw new JSONParseException("Unexpected token: " + token, token.getPosition());
+        position = token.getPosition();
+      } catch (EmptyQueueException e) {
+        throw new EOSException(position);
+      }
+      if (token.getType() != TokenType.STRING) {
+        throw new InvalidTokenException("string", token.getValue(), token.getPosition());
+      }
+      JSONString jsonKeyString = createJSONString(token);
+
+      try {
+        token = tokens.poll();
+        position = token.getPosition();
+      } catch (EmptyQueueException e) {
+        throw new EOSException(position);
+      }
+      if (token.getType() != TokenType.COLON) {
+        throw new InvalidTokenException("colon", token.getValue(), token.getPosition());
+      }
+      JSONValue jsonValue = get(tokens);
+      JSONPair jsonPair = new JSONPair(jsonKeyString.toString(), jsonValue, position);
+      jsonObject.add(jsonPair);
+
+      try {
+        token = tokens.poll();
+        position = token.getPosition();
+      } catch (EmptyQueueException e) {
+        throw new EOSException(position);
+      }
+
+      if (token.getType() != TokenType.COMMA && token.getType() != TokenType.RIGHT_BRACE) {
+        if (token.getType() == TokenType.NEWLINE) {
+          throw new EOSException(position);
+        } else {
+          throw new InvalidTokenException("comma or right brace", token.getValue(), token.getPosition());
         }
-        JSONString jsonString = createJSONString(token);
+      }
+    } while (true);
 
-        token = tokens.poll();
-        if (token.getType() != TokenType.COLON) {
-          positionOnToken = token.getPosition();
-          throw new JSONParseException("Colon expected.", positionOnToken);
-        }
-
-        JSONValue jsonValue = get(tokens);
-        JSONPair jsonPair = new JSONPair(jsonString.toString(), jsonValue, position);
-        jsonObject.add(jsonPair);
-
-        token = tokens.poll();
-        positionOnToken = token.getPosition();
-      } while (token.getType() == TokenType.COMMA);
-    } catch (EmptyQueueException e) {
-      throw new JSONParseException("Unexpected end.", e, positionOnToken);
-    }
     return jsonObject;
   }
 }

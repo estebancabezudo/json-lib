@@ -40,14 +40,15 @@ public class InvalidTokenException extends JSONParseException {
    * {@link Position}. The position is used to store a position of the property in a source in order
    * to search the misspelled property.
    *
-   * @param message the detail message.
+   * @param expected the value expected for the token
+   * @param value the value of the token
    * @param cause The cause (which is saved for later retrieval by the
    * {@code java.lang.Throwable.getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    * @param position the position to store.
    */
-  public InvalidTokenException(String message, Throwable cause, Position position) {
-    super(message, cause, position);
+  public InvalidTokenException(String expected, String value, Throwable cause, Position position) {
+    super("Unexpected token. Waiting for a " + expected + " and have a " + value + ".", cause, position);
   }
 
   /**
@@ -55,10 +56,11 @@ public class InvalidTokenException extends JSONParseException {
    * {@link Position}. The position is used to store a position of the property in a source in order
    * to search the misspelled property.
    *
-   * @param message the detail message.
+   * @param expected the value expected for the token
+   * @param value the value of the token
    * @param position the position to store.
    */
-  public InvalidTokenException(String message, Position position) {
-    super(message, position);
+  public InvalidTokenException(String expected, String value, Position position) {
+    this(expected, value, null, position);
   }
 }

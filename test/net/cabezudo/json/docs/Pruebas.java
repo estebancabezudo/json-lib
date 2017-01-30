@@ -26,9 +26,7 @@ public class Pruebas {
   private final String jsonStringData = "{ \"name\": \"Jorge Méndez\", \"age\": 34, \"maritalStatus\": { \"id\": 8, \"name\": \"married\", \"happy\": true }, \"childs\": [ { \"id\": 6, \"name\": \"Huey\", \"age\": 5 }, { \"id\": 15, \"name\": \"Dewey\", \"age\": 6 }, { \"id\": 9, \"name\": \"Louie\", \"age\": 7 } ] }";
 
   public static void main(String[] args) throws JSONParseException, ElementNotExistException {
-
     Pruebas p = new Pruebas();
-
     p.testStructureCreationFromJSONElements();
     p.testParseAJSONString();
     p.testGetPropertiesFromAnObject();

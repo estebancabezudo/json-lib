@@ -44,7 +44,11 @@ class Token {
 
   @Override
   public String toString() {
-    return sb + " (" + type + ", " + position.getLine() + ", " + position.getRow() + ")";
+    return sb
+            + " (type: " + type
+            + ", position: " + position
+            + ", length: " + sb.length()
+            + ")";
   }
 
   void append(Character c) {
@@ -56,7 +60,7 @@ class Token {
 
     switch (s.length()) {
       case 0:
-        throw new InvalidTokenException("Zero length token.", position);
+        throw new RuntimeException("Zero length token.");
       case 1:
         switch (s) {
           case "\n":
@@ -117,7 +121,7 @@ class Token {
               sb = new StringBuilder(number.toString());
               break;
             } catch (NumberFormatException e) {
-              throw new InvalidTokenException("Unexpected token " + s + ".", position);
+              throw new InvalidTokenException("number", s, position);
             }
           } while (false);
           break;
@@ -164,5 +168,4 @@ class Token {
   int length() {
     return sb.length();
   }
-
 }

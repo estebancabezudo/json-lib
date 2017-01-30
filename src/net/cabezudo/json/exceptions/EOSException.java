@@ -21,58 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package net.cabezudo.json;
+package net.cabezudo.json.exceptions;
 
-import java.util.LinkedList;
-import java.util.Queue;
-import net.cabezudo.json.exceptions.EmptyQueueException;
-import net.cabezudo.json.exceptions.InvalidTokenException;
+import net.cabezudo.json.Position;
 
 /**
+ * Thrown when an end of string has been reached unexpectedly while parsing a JSON string.
+ *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/02/2014
+ * @version 1.00, 02/27/2017
  */
-class Tokens {
+public class EOSException extends JSONParseException {
 
-  private Position position;
-  private final Queue<Token> queue = new LinkedList<>();
-
-  boolean add(Token token) throws InvalidTokenException {
-    if (token == null || token.empty()) {
-      return false;
-    }
-    token.clasify();
-
-    TokenType tokenType = token.getType();
-    switch (tokenType) {
-      case SPACE:
-        return false;
-    }
-
-    if (queue.isEmpty()) {
-      position = token.getPosition();
-    }
-
-    return queue.offer(token);
-  }
-
-  Token element() {
-    return queue.element();
-  }
-
-  Position getPosition() {
-    return position;
-  }
-
-  boolean hasNext() {
-    return queue.size() > 0;
-  }
-
-  Token poll() throws EmptyQueueException {
-    Token token = queue.poll();
-    if (token == null) {
-      throw new EmptyQueueException();
-    }
-    return token;
+  /**
+   * Constructs a {@link EOSException} with a {@link Position}. The position is used to store a
+   * position of the property in a source in order to search the misspelled property.
+   *
+   * @param position the position to store.
+   */
+  public EOSException(Position position) {
+    super("Unexpected end of string", position);
   }
 }

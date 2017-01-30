@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.GregorianCalendar;
 import java.util.List;
+import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
@@ -126,6 +127,93 @@ public class JSONTest {
     } catch (JSONParseException | PropertyNotExistException e) {
       fail(e.getMessage());
     }
+  }
+
+  @Test
+  public void testParse01() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test(expected = EOSException.class)
+  public void testParse02() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ \"John\", \"Peter\" ";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test(expected = EOSException.class)
+  public void testParse03() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ \"John\", \"Peter\" a";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse04() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ \"John\", \"Peter\" }";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse05() throws JSONParseException {
+    String jsonStringData;
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" } ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse06() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" }, ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse07() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" }, { \"person\": { \"name\": \"John\" }, ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse08() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } } ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse09() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } }, ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse10() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" }, \"position\": { \"name\": \"Technical leader\" } } ]";
+    JSON.parse(jsonStringData);
+  }
+
+  @Test
+  public void testParse11() throws JSONParseException {
+    String jsonStringData;
+
+    jsonStringData = "{ \"name\": \"John\", \"childs\": [ { \"name\": \"Peter\" }, { \"name\": \"Jhon\" } ] }";
+    JSON.parse(jsonStringData);
   }
 
   // TODO the parse fail to explain the lack of rigth brace.
