@@ -5,7 +5,7 @@
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
+ * in the Software without restriction, without limitation of the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
@@ -50,7 +50,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   private final Boolean value;
 
   /**
-   * Return a {@code JSONBoolean} that correspond with the {@code boolean} value passed.
+   * Return a {@code JSONBoolean} that corresponds with the {@code boolean} value passed.
    *
    * @param value a {@code boolean} value.
    * @return Return a {@code JSONBoolean}.
@@ -105,7 +105,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code BigDecimal} object.
    *
-   * @return a {@code BigDecimal} object with a value of {@code 1} it {@code this} represent
+   * @return a {@code BigDecimal} object with a value of {@code 1} it {@code this} represents
    * {@code true}; {@code 0} otherwise.
    */
   @Override
@@ -117,7 +117,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code BigInteger} object.
    *
-   * @return a {@code BigInteger} object with a value of {@code 1} it {@code this} represent
+   * @return a {@code BigInteger} object with a value of {@code 1} it {@code this} represents
    * {@code true}; {@code 0} otherwise.
    */
   @Override
@@ -129,7 +129,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Boolean} object.
    *
-   * @return a {@code Boolean.TRUE} object it {@code this} represent {@code true}; {@code 0}
+   * @return a {@code Boolean.TRUE} object it {@code this} represents {@code true}; {@code 0}
    * otherwise.
    */
   @Override
@@ -140,7 +140,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represent {@code true};
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true};
    * {@code 0} otherwise.
    */
   @Override
@@ -162,7 +162,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Double} object.
    *
-   * @return a {@code Double} object with a value of {@code 1} it {@code this} represent
+   * @return a {@code Double} object with a value of {@code 1} it {@code this} represents
    * {@code true}; {@code 0} otherwise.
    */
   @Override
@@ -173,7 +173,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Float} object.
    *
-   * @return a {@code Float} object with a value of {@code 1} it {@code this} represent
+   * @return a {@code Float} object with a value of {@code 1} it {@code this} represents
    * {@code true}; {@code 0} otherwise.
    */
   @Override
@@ -184,7 +184,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Integer} object.
    *
-   * @return a {@code Integer} object with a value of {@code 1} it {@code this} represent
+   * @return a {@code Integer} object with a value of {@code 1} it {@code this} represents
    * {@code true}; {@code 0} otherwise.
    */
   @Override
@@ -195,7 +195,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code String} object.
    *
-   * @return a {@code String} object with a value of {@code true} it {@code this} represent
+   * @return a {@code String} object with a value of {@code true} it {@code this} represents
    * {@code true}; {@code false} otherwise.
    */
   @Override
@@ -240,7 +240,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represent {@code true};
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true};
    * {@code 0} otherwise.
    */
   @Override

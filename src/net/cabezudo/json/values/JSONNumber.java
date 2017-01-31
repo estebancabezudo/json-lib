@@ -5,7 +5,7 @@
  *
  * Permission is hereby granted, free of charge, to any person obtaining a copy
  * of this software and associated documentation files (the "Software"), to deal
- * in the Software without restriction, including without limitation the rights
+ * in the Software without restriction, without limitation the rights
  * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
  * copies of the Software, and to permit persons to whom the Software is
  * furnished to do so, subject to the following conditions:
@@ -41,14 +41,14 @@ import net.cabezudo.json.Position;
 public class JSONNumber extends JSONValue<JSONNumber> {
 
   /**
-   * De default scale for the BigDecimal conversions.
+   * The default scale for the BigDecimal conversions.
    */
   public static final int DEFAULT_SCALE = 6;
 
   private final BigDecimal value;
 
   /**
-   * Construct a {@code JSONNumber} using the {@code String} passed.
+   * Construct a new {@code String} value.
    *
    * @param value a {@code String} with a number.
    */
@@ -57,7 +57,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Byte} passed.
+   * Construct a {@code JSONNumber} using a {@code Byte} value.
    *
    * @param value a {@code Byte} with the number.
    */
@@ -66,7 +66,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Short} passed.
+   * Construct a {@code JSONNumber} using a {@code Short} value.
    *
    * @param value a {@code Short} with the number.
    */
@@ -75,7 +75,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Integer} passed.
+   * Construct a {@code JSONNumber} using a {@code Integer} value.
    *
    * @param value a {@code Integer} with the number.
    */
@@ -84,7 +84,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Long} passed.
+   * Construct a {@code JSONNumber} using a {@code Long} value.
    *
    * @param value a {@code Long} with the number.
    */
@@ -93,7 +93,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Float} passed.
+   * Construct a {@code JSONNumber} using a {@code Float} value.
    *
    * @param value a {@code Float} with the number.
    */
@@ -102,7 +102,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code Double} passed.
+   * Construct a {@code JSONNumber} using a {@code Double} value.
    *
    * @param value a {@code Double} with the number.
    */
@@ -111,7 +111,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code BigDecimal} passed.
+   * Construct a {@code JSONNumber} using a {@code BigDecimal} value.
    *
    * @param value a {@code BigDecimal} with the number.
    */
@@ -120,9 +120,9 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code BigDecimal} passed. The method also take a
+   * Construct a {@code JSONNumber} using a {@code BigDecimal} value. The method also takes a
    * {@link Position} in order to save the position in origin and give it when a parse error is
-   * throw.
+   * thrown.
    *
    * @param value a {@code BigDecimal} with the number.
    * @param position the position of the value in the source.
@@ -136,7 +136,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@code JSONNumber} using the {@code BigInteger} passed.
+   * Construct a {@code JSONNumber} using a {@code BigInteger} value.
    *
    * @param value a {@code BigInteger} with a number.
    */
@@ -197,7 +197,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Returns the hash code for this {@code JSONNumber}.
+   * Return the hash code for this {@code JSONNumber}.
    *
    * @return hash code for this {@code JSONNumber}.
    */
@@ -207,7 +207,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Returns whether the element is a {@code JSONNumber} or not.
+   * Return whether the element is a {@code JSONNumber} or not.
    *
    * @return {@code true}.
    */

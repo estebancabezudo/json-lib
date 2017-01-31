@@ -24,7 +24,7 @@
 package net.cabezudo.json;
 
 /**
- * The {code JSONElement} class is an abstract class for implement all the elements in a JSON
+ * The {code JSONElement} class is an abstract class to implement all the elements in a JSON
  * structure.
  *
  * <p>

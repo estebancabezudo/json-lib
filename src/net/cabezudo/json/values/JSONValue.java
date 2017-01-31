@@ -32,7 +32,7 @@ import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONConvertionException;
 
 /**
- * The {code JSONValue} class is an abstract class for implement a JSON value. A JSON value is a
+ * The {code JSONValue} class is an abstract class to implement a JSON value. A JSON value is a
  * JSON structure component inherited from {@link JSONElement} that can be used in a pair or in an
  * array. There are seven types for values: string, number, object, array, true, false, and null.
  *
