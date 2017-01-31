@@ -1,4 +1,4 @@
-package net.cabezudo.json.docs;
+package net.cabezudo.json.objects;
 
 import java.util.ArrayList;
 import java.util.List;
