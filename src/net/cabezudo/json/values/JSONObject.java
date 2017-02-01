@@ -64,10 +64,10 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * <p>
    * This constructor parse a string passed by parameter in order to create the {@link JSONObject}
-   * that represent the JSON object structure.
+   * that represents the JSON object structure.
    *
    * @param data The JSON string to parse.
-   * @throws JSONParseException if the string passed by parameter can not be parsed.
+   * @throws JSONParseException if the string passed by parameter can't be parsed.
    */
   public JSONObject(String data) throws JSONParseException {
     super(null);
@@ -81,7 +81,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Construct an empty {@link JSONObject} object.
    * <p>
-   * A empty {@link JSONObject} object can be used to create a more complex object by adding
+   * An empty {@link JSONObject} object can be used to create a more complex object by adding
    * {@link JSONPair} objects.
    *
    */
@@ -93,20 +93,20 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Construct an empty {@link JSONObject} object.
    * <p>
-   * A empty {@link JSONObject} object can be used to create a more complex object by adding
+   * An empty {@link JSONObject} object can be used to create a more complex object by adding
    * {@link JSONPair} objects.
    *
-   * @param position The position for the {@link JSONObject} in the JSON string.
+   * @param position The position for the {@link JSONObject} object in the JSON source.
    */
   public JSONObject(Position position) {
     super(position);
   }
 
   /**
-   * Construct a {@link JSONObject} object using the array of {@link JSONPair} objects to create the
-   * JSON object properties.
+   * Construct a {@link JSONObject} object using an array of {@link JSONPair} objects passed by
+   * parameter in order to create the JSON object properties.
    *
-   * @param jsonPairs the {@link JSONPair} objects to create the JSON object properties.
+   * @param jsonPairs the array of {@link JSONPair} objects to create the JSON object properties.
    */
   public JSONObject(JSONPair... jsonPairs) {
     super(null);
@@ -116,13 +116,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object using the properties of another {@link JSONObject}
+   * Construct a {@link JSONObject} object using the properties from another {@link JSONObject}
    * object.
    *
    * <p>
    * Create a copy of the {@link JSONObject} object passed by parameter.
    *
-   * @param jsonObject the {@link JSONObject} object which to take the properties.
+   * @param jsonObject the {@link JSONObject} object which from where properties are taken.
    */
   public JSONObject(JSONObject jsonObject) {
     super(jsonObject.getPosition());
@@ -130,11 +130,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object from a POJO {@code Object} using the
-   * {@link JSON#toJSONTree(java.lang.Object)}. The object must have the properties annotated with
+   * Construct a {@link JSONObject} object from an {@code Object} using the
+   * {@link JSON#toJSONTree(java.lang.Object)} method.
+   * <p>
+   * The object must have the properties annotated with
    * {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a JSON object
-   * property. If the object is {@code Iterable} or the object is a primitive array the method throw
-   * a {@link net.cabezudo.json.exceptions.JSONConvertionException}.
+   * property. If the object is {@code Iterable} or the object is a primitive array the method
+   * throws a {@link net.cabezudo.json.exceptions.JSONConvertionException}.
    *
    * @param object a POJO {@code Object}.
    */
@@ -163,7 +165,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Add a pair to the list of properties of {@code this} object.
+   * Add a {@link net.cabezudo.json.JSONPair} to the list of properties of {@code this} object.
    *
    * @param jsonPair a {@link JSONPair}.
    * @return the same {@link JSONPair} passed.
@@ -174,35 +176,40 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    *
-   * Compares two {@code JSONObject} objects.
+   * Compare two {@code JSONObject} objects.
    * <p>
-   * The rules for comparison are the next.
+   * The rules for comparison are the next:
    * <p>
-   * The method first compare the number of properties and return a value less than {@code 0} if
-   * {@code this} {@code JSONObject} has less properties than the argument and a value greater than
-   * {@code 0} if {@code this} {@code JSONObject} has more properties than the argument.
+   * The method first compares the number of properties and returns a value less than {@code 0} if
+   * {@code this} {@link net.cabezudo.json.values.JSONObject} has less properties than the argument;
+   * and a value greater than {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONObject}
+   * has more properties than the argument.
    * <p>
-   * If the comparison is {@code 0} compare the keys in natural order. Compare one at a time the
-   * keys and the result is a negative integer if the property name of a {@code this}
-   * {@code JSONObject} object lexicographically precedes the property name of the argument @code
-   * JSONObject}. The result is a positive integer if {@code this} {@code JSONObject}} object
-   * lexicographically follows the argument property name in the same position. The result is zero
-   * if all the property names are equal and in the same order.
+   * If the the number of properties comparison is {@code 0} then compare the keys in natural order.
+   * Compare one at a time the keys and the result is a negative integer if the property name of
+   * {@code this} {@link net.cabezudo.json.values.JSONObject} object lexicographically precedes the
+   * property name of the argument {@link net.cabezudo.json.values.JSONObject} object. The result is
+   * a positive integer if the property of {@code this} {@link net.cabezudo.json.values.JSONObject}
+   * object lexicographically follows the argument property name in the same position. The result is
+   * zero if all the property names are equal and in the same order.
    * <p>
-   * If the properties names are the same, compare the values. The method use the property order to
+   * If the properties names are the same, compare the values. The method uses the property order to
    * compare the values. Compare one at a time the values and the result is a negative integer if
-   * the property value of {@code this} {@code JSONObject} object is less than the property value of
-   * the argument @code JSONObject} object for the same property. The result is a positive integer
-   * the property value if {@code this} {@code JSONObject} object is great than the property value
-   * of the argument @code JSONObject} object for the same property. The result is zero if the
-   * property values are equals for all the properties.
+   * the property value of {@code this} {@link net.cabezudo.json.values.JSONObject} object is less
+   * than the property value of the argument {@link net.cabezudo.json.values.JSONObject} object for
+   * the same property. The result is a positive integer if the property value of {@code this}
+   * {@code JSONObject} object is greater than the property value of the argument
+   * {@link net.cabezudo.json.values.JSONObject} object for the same property. The result is zero if
+   * the property values are equal for all the properties.
    *
-   * @param jsonObject the {@code JSONObject} to be compared.
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} to be compared.
    *
-   * @return the value {@code 0} if {@code this} {@code JSONObject} is equal to the argument
-   * {@code JSONObject}; a value less than {@code 0} if {@code this} {@code JSONObject} is less
-   * (using the rules) than the argument {@code JSONObject}; and a value greater than {@code 0} if
-   * {@code this} {@code JSONObject} is greater (using the rules) than the argument {@code Integer}.
+   * @return the value {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONObject} is
+   * equal to the argument {@link net.cabezudo.json.values.JSONObject}; a value less than {@code 0}
+   * if {@code this} {@link net.cabezudo.json.values.JSONObject} is less (using the rules) than the
+   * argument {@link net.cabezudo.json.values.JSONObject} object; and a value greater than {@code 0}
+   * if {@code this} {@link net.cabezudo.json.values.JSONObject} object is greater (using the rules)
+   * than the argument {@link net.cabezudo.json.values.JSONObject}.
    */
   @Override
   public int compareTo(JSONObject jsonObject) {
@@ -247,10 +254,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Remove a property from {@code this} {@code JSONObject} object using the property name.
+   * Remove a property from {@code this} {@link net.cabezudo.json.values.JSONObject} object using
+   * the property name.
    *
    * @param propertyName the name of the property to remove.
-   * @return the {@code JSONPair} object removed from {@code this} {@code JSONObject} object.
+   * @return the {@link net.cabezudo.json.values.JSONPair} object removed from {@code this}
+   * {@link net.cabezudo.json.values.JSONObject} object.
    */
   public JSONPair remove(String propertyName) {
     JSONPair element = map.get(propertyName);

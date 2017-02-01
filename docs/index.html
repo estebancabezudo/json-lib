@@ -96,15 +96,15 @@ JSONValue jsonValue = JSON.parse(jsonStringData);</pre>
 
     <pre>JSONValue jsonValue;
 try {
-jsonValue = JSON.parse(jsonStringData);
+  jsonValue = JSON.parse(jsonStringData);
 } catch (JSONParseException e) {
-System.out.println(e.getMessage());
-System.out.println(jsonStringData);
-for (int i = 1; i &lt; e.getPosition().getRow(); i++) {
-System.out.print(" ");
-}
-System.out.println("^");
-return;
+  System.out.println(e.getMessage());
+  System.out.println(jsonStringData);
+  for (int i = 1; i &lt; e.getPosition().getRow(); i++) {
+    System.out.print(" ");
+  }
+  System.out.println("^");
+  return;
 }</pre>
 
     <p>Cuando un problema de análisis gramatical se encuentra, la excepción JSONParseException contiene la posición donde se encuentra el problema. Luego de analizar la cadena podemos hacer consultas a los datos.</p>
