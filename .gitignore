@@ -19,3 +19,4 @@ build.xml
 manifest.mf
 /nbdist/
 /dist/
+/bin/

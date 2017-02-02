@@ -42,7 +42,7 @@ public class Pruebas {
     p.testGetChildsFromAnObject();
     p.testOnePairFromAnObjectUsingThePropertyName();
     p.testGetAReferencedElement();
-    p.testGetACustomReferencedElement();
+    p.testGetACustomReferencedObject();
     p.testCreateAJSONStructureFromPOJO();
     p.testCreateAJSONStructureFromPOJOWithReferences();
     p.testGetAnElementFromArrayUsingTheIndex();
@@ -200,17 +200,21 @@ public class Pruebas {
     System.out.println("\n" + (char) 27 + "[32m*** Get a referenced element.");
     JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
 
-    JSONValue jsonReferencedElement = jsonObject.getReferencedElement();
+    JSONValue jsonReferencedElement = jsonObject.toReferencedElement();
     System.out.println(jsonReferencedElement);
   }
 
-  private void testGetACustomReferencedElement() throws JSONParseException {
-    System.out.println("\n" + (char) 27 + "[32m*** Get a custom referenced element.");
+  private void testGetACustomReferencedObject() throws JSONParseException {
+    System.out.println("\n" + (char) 27 + "[32m*** Get a custom referenced object.");
     JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
 
     JSONObject maritalStatus = jsonObject.getNullObject("maritalStatus");
     maritalStatus.setReferenceFieldName("name");
-    JSONValue jsonReferencedElement = jsonObject.getReferencedElement();
+    jsonObject.setReferenceFieldName("name");
+
+    JSONObject jsonReferencedObject = jsonObject.toReferencedObject();
+    System.out.println(jsonReferencedObject);
+    JSONValue jsonReferencedElement = jsonObject.toReferencedElement();
     System.out.println(jsonReferencedElement);
   }
 
@@ -229,7 +233,8 @@ public class Pruebas {
     Person son = new Person("Julio", "Perez", 12);
     Person person = new Person("Juan", "Perez", 34, son);
     JSONObject jsonPerson = JSON.toJSONObject(person);
-    JSONElement jsonReferencedElement = JSON.toJSONReferencedTree(jsonPerson);
+    jsonPerson.setReferenceFieldName("name");
+    JSONElement jsonReferencedElement = jsonPerson.toReferencedObject();
     System.out.println(jsonReferencedElement);
   }
 

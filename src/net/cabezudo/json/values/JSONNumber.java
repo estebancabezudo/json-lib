@@ -137,7 +137,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    * @return
    */
   @Override
-  public JSONNumber getReferencedElement() {
+  public JSONNumber toReferencedElement() {
     return this;
   }
 

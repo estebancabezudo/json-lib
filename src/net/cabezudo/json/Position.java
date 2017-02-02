@@ -17,10 +17,20 @@ public class Position {
     this.row = row;
   }
 
+  /**
+   * Return a primitive {@code int} with the line number of the position.
+   *
+   * @return the line number for the position.
+   */
   public int getLine() {
     return line;
   }
 
+  /**
+   * Return a primitive {@code int} with the row number of the position.
+   *
+   * @return the row number for the position.
+   */
   public int getRow() {
     return row;
   }

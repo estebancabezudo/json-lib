@@ -5,9 +5,12 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.JSON;
+import net.cabezudo.json.Log;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
+import net.cabezudo.json.objects.Book;
+import net.cabezudo.json.objects.BookList;
 import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
@@ -19,7 +22,7 @@ import org.junit.Test;
  * @version 1.0
  * @since 1.7
  */
-public class JSONArrayIT {
+public class JSONArrayTest {
 
   @Test
   public void testAddJSONValue() throws ElementNotExistException {
@@ -112,7 +115,7 @@ public class JSONArrayIT {
     b.setReferenceFieldName("id");
     jsonArray.add(b);
 
-    JSONArray referencedElement = jsonArray.getReferencedElement();
+    JSONArray referencedElement = jsonArray.toReferencedElement();
 
     JSONValue c = referencedElement.getValue(0);
     long d = c.toInteger();
@@ -768,5 +771,27 @@ public class JSONArrayIT {
     String value = jsonArray.digNullString("[0]");
     String expectedValue = "House";
     assertEquals(expectedValue, value);
+  }
+
+  @Test
+  public void testToJSONReferencedArray() {
+    Log.debug("Create a refered JSONArray using Java objects.");
+
+    String expectedString = "{ \"version\": 1, \"countryId\": 1, \"countryName\": { \"version\": 1, \"language\": 97, \"nameType\": 1, \"word\": 2 } }";
+
+    BookList bookList = new BookList();
+    Book book;
+
+    book = new Book(1, "El doble.");
+    bookList.add(book);
+
+    book = new Book(8, "El principito.");
+    bookList.add(book);
+
+    book = new Book(13, "Crónica de una muerte anunciada.");
+    bookList.add(book);
+
+    JSONArray jsonBookListArray = JSON.toJSONTree(bookList).toJSONArray();
+    assertEquals("[ { \"id\": 1, \"name\": \"El doble.\" }, { \"id\": 8, \"name\": \"El principito.\" }, { \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" } ]", jsonBookListArray.toJSON());
   }
 }

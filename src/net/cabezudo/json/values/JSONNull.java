@@ -42,7 +42,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    * @return
    */
   @Override
-  public JSONNull getReferencedElement() {
+  public JSONNull toReferencedElement() {
     return this;
   }
 

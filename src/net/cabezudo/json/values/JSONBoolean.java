@@ -54,7 +54,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
    * @return
    */
   @Override
-  public JSONBoolean getReferencedElement() {
+  public JSONBoolean toReferencedElement() {
     return this;
   }
 

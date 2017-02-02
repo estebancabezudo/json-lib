@@ -134,14 +134,27 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
+   * Create a JSON structure where the the root array don't contain another object, instead of it
+   * contain the references to the objects. The reference is a field value of the object. The value
+   * of the property that has the object is replaced with the value of the object property marked
+   * like reference field. The reference field should not be an object or array.
+   *
+   * @return a new {@link net.cabezudo.json.values.JSONArray} structure with all the object
+   * referenced.
+   */
+  public JSONArray toReferencedTree() {
+    return toReferencedElement();
+  }
+
+  /**
    *
    * @return
    */
   @Override
-  public JSONArray getReferencedElement() {
+  public JSONArray toReferencedElement() {
     JSONArray jsonArray = new JSONArray();
     for (JSONElement jsonElement : list) {
-      jsonArray.add(jsonElement.getReferencedElement());
+      jsonArray.add(jsonElement.toReferencedElement());
     }
     return jsonArray;
   }
