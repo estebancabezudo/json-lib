@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json;
 
 import java.math.BigDecimal;
@@ -11,13 +34,11 @@ import net.cabezudo.json.values.JSONValue;
 
 /**
  * A JSON object is build with only one element. A JSON pair. A JSON pair has a key
- * and a value. The key is the property name for an element in a JSON object and the value can be any type of value. A value only can be an
- * object inherited of JSONValue. This class represent the element that contain a JSON object. 
+ * and a value. The key is the property name for an element in a JSON object and the value can be any type of value. 
+ * A value only can be an object inherited of JSONValue. This class represent the element that contain a JSON object. 
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @date 10/01/2014
- * @version 1.0
- * @since 1.7
+ * @version 1.00, 10/01/2014
  */
 public class JSONPair extends JSONElement implements Comparable<JSONPair> {
 
@@ -45,8 +66,8 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   /**
    *
    * @param key the name for the key pair part
-   * @param object the object to use like value. The constructor convert, if possible, the object to a JSONValue. using
-   * {@link net.cabezudo.json.JSON#toJSONTree(java.lang.Object) toJSONTree} method.
+   * @param object the object to use like value. The constructor convert, if possible, the object to
+   * a JSONValue. using {@link JSON#toJSONTree(java.lang.Object) toJSONTree} method.
    */
   public JSONPair(String key, Object object) {
     this(key, object, null);
@@ -59,8 +80,9 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    *
    *
    * @param jsonPair the {@code JSONPair} to be compared.
-   * @return the value {@code 0} if the argument string is equal to this string; a value less than {@code 0} if this {code JSONPair} is less
-   * than the string argument; and a value greater than {@code 0} if this {code JSONPair} is greater than the {@code JSONPair} argument.
+   * @return the value {@code 0} if the argument string is equal to this string; a value less than
+   * {@code 0} if this {code JSONPair} is less than the string argument; and a value greater than
+   * {@code 0} if this {code JSONPair} is greater than the {@code JSONPair} argument.
    */
   @Override
   public int compareTo(JSONPair jsonPair) {
@@ -78,7 +100,8 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    *
    * @param o The object to compare this {@code JSONPair} against
    *
-   * @return {@code true} if the given object represents a {@code JSONPair} has an equal key and an equal value, {@code false} otherwise.
+   * @return {@code true} if the given object represents a {@code JSONPair} has an equal key and an
+   * equal value, {@code false} otherwise.
    *
    */
   @Override
@@ -109,8 +132,9 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   }
 
   /**
-   * Create a new {@code JSONPair} and replace the object for the value of the reference field. The key is the same and the value, if is a
-   * object, and have a reference field, for the value of the reference field of the object.
+   * Create a new {@code JSONPair} and replace the object for the value of the reference field. The
+   * key is the same and the value, if is a object, and have a reference field, for the value of the
+   * reference field of the object.
    *
    * @return the referenced JSONPair for this {@code JSONPair}
    */
@@ -131,7 +155,8 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   }
 
   /**
-   * Returns a hash code for this {code JSONPair}. The hash code is computed using the hash code of the key and the hash code of the value.
+   * Returns a hash code for this {code JSONPair}. The hash code is computed using the hash code of the key and 
+   * the hash code of the value.
    *
    * @return a hash code value for this object.
    */
@@ -214,9 +239,11 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   }
 
   /**
-   * Create a JSON string representation of this {@code JSONPair} including the JSON string representation of the value. The JSON string is
-   * the key in double quotation marks, a colon and the JSON string value using the {@link net.cabezudo.json.values.JSONValue#toJSON() }
-   * method. If the value is {@code null} the method return {@link net.cabezudo.json.values.JSONNull }.
+   * Create a JSON string representation of this {@code JSONPair} including the JSON string
+   * representation of the value. The JSON string is the key in double quotation marks, a colon and
+   * the JSON string value using the {@link JSONValue#toJSON() }
+   * method. If the value is {@code null} the method return {@link JSONNull
+   * }.
    *
    * @return a {@code String} representation of this {@code JSONPair}.
    */
@@ -235,7 +262,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    * Convert the value of this {@code JSONPair} into a {@link net.cabezudo.json.values.JSONArray}. If the value can't be converted the method throws a
    * runtime exception {@link net.cabezudo.json.exceptions.JSONCastException}. The rules for conversion depends of the type of value.
    *
-   * @return a {@link net.cabezudo.json.values.JSONArray} with the conversion of value.
+   * @return a {@link JSONArray} with the conversion of value.
    */
   public JSONArray toJSONArray() {
     return value.toJSONArray();
@@ -245,7 +272,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    * Convert the value of this {@code JSONPair} into a {@link net.cabezudo.json.values.JSONString }. If the value can't be converted the method throws a
    * runtime exception {@link net.cabezudo.json.exceptions.JSONCastException}. The rules for conversion depends of the type of value.
    *
-   * @return a {@link net.cabezudo.json.values.JSONString } with the conversion of value.
+   * @return a {@link JSONString } with the conversion of value.
    */
   public JSONString toJSONString() {
     return value.toJSONString();
@@ -285,7 +312,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    * Convert the value of this {@code JSONPair} into a {@link net.cabezudo.json.values.JSONObject }. If the value can't be converted the method throws a
    * runtime exception {@link net.cabezudo.json.exceptions.JSONCastException}. The rules for conversion depends of the type of value.
    *
-   * @return a {@link net.cabezudo.json.values.JSONObject } with the conversion of value.
+   * @return a {@link JSONObject } with the conversion of value.
    */
   public JSONObject toObject() {
     return value.toObject();
@@ -302,8 +329,8 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
   }
 
   /**
-   * Return a string representation of this {@code JSONPair}. The string is formed using a open parenthesis, the key, a comma, the string
-   * representation of the value and a close parenthesis.
+   * Return a string representation of this {@code JSONPair}. The string is formed using a open
+   * parenthesis, the key, a comma, the string representation of the value and a close parenthesis.
    *
    * @return a {@code String} representation of this {@code JSONPair}
    */

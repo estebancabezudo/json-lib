@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json.values;
 
 import java.util.ArrayList;
@@ -5,41 +28,72 @@ import java.util.List;
 import net.cabezudo.json.Position;
 
 /**
+ * A {@link JSONNull} is an object extended from {@link JSONValue} object in order to represent a
+ * null that can be used to create JSON structures.
+ *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 1.00, 10/01/2014
  */
 public class JSONNull extends JSONValue<JSONNull> {
 
   private final String nullString = "null";
 
+  /**
+   * Construct a {@code JSONNull}. The method also takes a {@link Position} in order to save the
+   * position in origin and give it when a parse error is thrown.
+   *
+   * @param position the position of the value in the source.
+   */
   public JSONNull(Position position) {
     super(position);
   }
 
+  /**
+   * Construct a {@code JSONNull}.
+   */
   public JSONNull() {
     this(null);
   }
 
+  /**
+   * Compares two {@code JSONNull} objects.
+   *
+   * @param or the {@code Object} to be compared.
+   * @return {@code true} if {@code this} {@code JSONNull} is equal to the argument {@code false}
+   * otherwise.
+   */
   @Override
   public boolean equals(Object o) {
     return o instanceof JSONNull;
   }
 
+  /**
+   * Return the hash code for this {@code JSONNull}.
+   *
+   * @return hash code for this {@code JSONNull}.
+   */
   @Override
   public int hashCode() {
     return this.nullString.hashCode();
   }
 
+  /**
+   * Compares two {@code JSONNull} objects.
+   *
+   * @param jsonNull the {@code JSONNull} to be compared.
+   *
+   * @return the value {@code 0}.
+   */
   @Override
   public int compareTo(JSONNull jsonNull) {
     return 0;
   }
 
   /**
+   * Return the referenced element for {@code this} object. For a {@code JSONNull} object,
+   * {@code this} object and the referenced version is the same.
    *
-   * @return
+   * @return {@code this} object.
    */
   @Override
   public JSONNull toReferencedElement() {
@@ -47,8 +101,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Returns whether the element is a {@code JSONNull} or not.
    *
-   * @return
+   * @return {@code true} if the element is a {@code JSONNull}; {@code false} otherwise.
    */
   @Override
   public boolean isNull() {
@@ -56,8 +111,10 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Convert {@code this} object to a string with the representation of the JSON structure in a JSON
+   * string form.
    *
-   * @return
+   * @return a {@code String} with the JSON string representation of {@code this} object.
    */
   @Override
   public String toJSON() {
@@ -65,19 +122,22 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Convert {@code this} object to a {@link JSONArray} object. The result {@link JSONArray} only
+   * has {@code this} element.
    *
-   * @return
+   * @return a {@link JSONArray} object.
    */
   @Override
   public JSONArray toJSONArray() {
     JSONArray jsonArray = new JSONArray();
-    jsonArray.add(nullString);
+    jsonArray.add(this);
     return jsonArray;
   }
 
   /**
+   * Convert {@code this} object to a {@link net.cabezudo.json.values.JSONString} object.
    *
-   * @return
+   * @return a {@link net.cabezudo.json.values.JSONString}.
    */
   @Override
   public JSONString toJSONString() {
@@ -85,8 +145,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Convert {@code this} object to a {@code List} of {@link JSONValue} objects.
    *
-   * @return
+   * @return a {@code List} of {@link JSONValue} with only {@code this} element.
    */
   @Override
   public List<JSONValue> toList() {
@@ -96,8 +157,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Convert {@code this} object to an array of {@code String} objects.
    *
-   * @return
+   * @return an array of {@code String} with only one element.
    */
   @Override
   public String[] toStringArray() {

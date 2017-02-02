@@ -1,5 +1,6 @@
 package net.cabezudo.json.docs;
 
+import net.cabezudo.json.objects.Person;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -21,14 +22,12 @@ import net.cabezudo.json.values.JSONValue;
  * @version 1.00.00
  * @date 01/20/2017
  */
-public class Pruebas {
+public class Examples {
 
   private final String jsonStringData = "{ \"name\": \"Jorge Méndez\", \"age\": 34, \"maritalStatus\": { \"id\": 8, \"name\": \"married\", \"happy\": true }, \"childs\": [ { \"id\": 6, \"name\": \"Huey\", \"age\": 5 }, { \"id\": 15, \"name\": \"Dewey\", \"age\": 6 }, { \"id\": 9, \"name\": \"Louie\", \"age\": 7 } ] }";
 
   public static void main(String[] args) throws JSONParseException, ElementNotExistException {
-
-    Pruebas p = new Pruebas();
-
+    Examples p = new Examples();
     p.testStructureCreationFromJSONElements();
     p.testParseAJSONString();
     p.testGetPropertiesFromAnObject();
@@ -96,7 +95,7 @@ public class Pruebas {
       System.out.println("name: " + jsonNameValue);
 
     } catch (PropertyNotExistException e) {
-      Logger.getLogger(Pruebas.class.getName()).log(Level.SEVERE, null, e);
+      Logger.getLogger(Examples.class.getName()).log(Level.SEVERE, null, e);
     }
 
     JSONValue jsonNameValue = jsonObject.getNullValue("nonExistingProperty");

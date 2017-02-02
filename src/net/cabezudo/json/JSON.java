@@ -1,3 +1,26 @@
+/**
+ * MIT License
+ *
+ * Copyright (c) 2017 Esteban Cabezudo
+ *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy
+ * of this software and associated documentation files (the "Software"), to deal
+ * in the Software without restriction, including without limitation the rights
+ * to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+ * copies of the Software, and to permit persons to whom the Software is
+ * furnished to do so, subject to the following conditions:
+ *
+ * The above copyright notice and this permission notice shall be included in all
+ * copies or substantial portions of the Software.
+ *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+ * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+ * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+ * AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+ * LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+ * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+ * SOFTWARE.
+ */
 package net.cabezudo.json;
 
 import java.io.IOException;
@@ -24,6 +47,7 @@ import net.cabezudo.json.values.JSONValue;
 /**
  * Provides the methods to parse and create JSON objects.
  * <p>
+<<<<<<< HEAD
  * JSON class allow you to parse a string with JSON format in to a JSON tree object to be manipulated. The input may be
  * obtained from a file on the filesystem. The JSON class allow you to create a JSON tree from any
  * Java object (OOLV: Redundant?) and create a tree using the references to the object
@@ -46,8 +70,8 @@ import net.cabezudo.json.values.JSONValue;
  * OOLV: Please explain like I'm a five years old kid
  * 
  * A referenced tree is a normal tree transformed into a small tree using references that you can
- * specify for the objects. The easy way to get a referency tree is using normal objects to create a
- * JSONTree and than create a referenced tree. That is because the referenced information isn't in
+ * specify for the objects. The easy way to get a referenced tree is using normal objects to create
+ * a JSONTree and than create a referenced tree. That is because the referenced information isn't in
  * the JSON string. If you create a tree from Java normal objects or using the elements one by one
  * you can specify the field that going to be used to create the referenced tree. The JSON elements
  * has or can have the reference information but not that JSON trees created parsing a JSON string.
@@ -55,9 +79,7 @@ import net.cabezudo.json.values.JSONValue;
  * {@link net.cabezudo.java.json.JSONNull#setReferenceFieldName(String referenceFieldName) }.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 1.00, 10/01/2014
  */
 public class JSON {
 
@@ -156,12 +178,11 @@ public class JSON {
   }
 
   /**
-   * Convert a list of objects in a {@link net.cabezudo.json.values.JSONArray} The objects in the
-   * list must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty}
-   * in order to be used as object property.
+   * Convert a list of objects in a {@link JSONArray} The objects in the list must have the
+   * properties annotated with {@link JSONProperty} in order to be used as object property.
    *
    * @param list the list of objects to be converted.
-   * @return a {@link net.cabezudo.json.values.JSONArray} with a list of JSON elements.
+   * @return a {@link JSONArray} with a list of JSON elements.
    */
   public static JSONArray toJSONArray(List<?> list) {
     JSONArray jsonArray = new JSONArray();
@@ -174,23 +195,29 @@ public class JSON {
 
   /**
    * Convert a POJO in a JSONObject. The object must have the properties annotated with
-   * {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a object property.
+   * {@link JSONProperty} in order to be used as a object property.
    *
    * @param object the object to be converted.
-   * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
+   * @return a {@link JSONObject} created using the object passed.
    */
   public static JSONObject toJSONObject(Object object) {
     return toJSONTree(object).toObject();
   }
 
   /**
+<<<<<<< HEAD
    * Convert a POJO into a {@link net.cabezudo.json.values.JSONValue}. The object must have the
    * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
    * included in the conversion. If the object is {@code Iterable} or the object is a primitive array
    * the result is a {@link net.cabezudo.json.values.JSONArray}.
+=======
+   * Convert a POJO in a {@link JSONValue}. The object must have the properties annotated with
+   * {@link JSONProperty} in order to be used as a JSON object property. If the object is
+   * {@code Iterable} or the object is a primitive array the result is a {@link JSONArray}.
+>>>>>>> develop
    *
    * @param object the object to be converted.
-   * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.
+   * @return a {@link JSONValue} created using the object passed.
    */
   public static JSONValue toJSONTree(Object object) {
     if (object == null) {

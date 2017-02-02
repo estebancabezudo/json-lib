@@ -639,7 +639,7 @@ public class JSONArrayTest {
 
   @Test
   public void testDigObject() throws JSONParseException, PropertyNotExistException {
-    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
+    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } } ]").toJSONArray();
     JSONObject jsonValue = jsonArray.digObject("[0].person");
     String value = jsonValue.toJSON();
     String expectedValue = "{ \"name\": \"John\" }";
@@ -750,7 +750,7 @@ public class JSONArrayTest {
 
   @Test
   public void testDigNullObject() throws JSONParseException {
-    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
+    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } } ]").toJSONArray();
     JSONObject jsonValue = jsonArray.digNullObject("[0].person");
     String value = jsonValue.toJSON();
     String expectedValue = "{ \"name\": \"John\" }";
