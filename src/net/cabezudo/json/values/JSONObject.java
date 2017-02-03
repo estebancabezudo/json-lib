@@ -1686,12 +1686,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Tells whether or not {@code this} object is referenciable.
+   * Tells whether or not {@code this} object is referenceable.
    *
    * @return {@code true}.
    */
   @Override
-  public boolean isReferenciable() {
+  public boolean isReferenceable() {
     return true;
   }
 

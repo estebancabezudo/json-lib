@@ -9,6 +9,24 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -66,9 +84,9 @@ public class JSONBooleanTest {
   }
 
   @Test
-  public void testIsNotReferenciable() {
+  public void testIsNotReferenceable() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
-    assertEquals(true, jsonBoolean.isNotReferenciable());
+    assertEquals(true, jsonBoolean.isNotReferenceable());
   }
 
   @Test
@@ -90,9 +108,9 @@ public class JSONBooleanTest {
   }
 
   @Test
-  public void testIsReferenciable() {
+  public void testIsReferenceable() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
-    assertEquals(false, jsonBoolean.isReferenciable());
+    assertEquals(false, jsonBoolean.isReferenceable());
   }
 
   @Test

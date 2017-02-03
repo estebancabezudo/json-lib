@@ -5,8 +5,6 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -56,9 +54,9 @@ public class JSONNumberTest {
   }
 
   @Test
-  public void testIsNotReferenciable() {
+  public void testIsNotReferenceable() {
     JSONNumber jsonNumber = new JSONNumber(1);
-    assertEquals(true, jsonNumber.isNotReferenciable());
+    assertEquals(true, jsonNumber.isNotReferenceable());
   }
 
   @Test
@@ -80,9 +78,9 @@ public class JSONNumberTest {
   }
 
   @Test
-  public void testIsReferenciable() {
+  public void testIsReferenceable() {
     JSONNumber jsonNumber = new JSONNumber(1);
-    assertEquals(false, jsonNumber.isReferenciable());
+    assertEquals(false, jsonNumber.isReferenceable());
   }
 
   @Test

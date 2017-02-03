@@ -102,12 +102,12 @@ public abstract class JSONElement implements JSONable {
   }
 
   /**
-   * Returns whether the element is referenciable or not.
+   * Returns whether the element is referenceable or not.
    *
-   * @return {@code true} if the element is not referenciable, {@code false} otherwise.
+   * @return {@code true} if the element is not referenceable, {@code false} otherwise.
    */
-  public boolean isNotReferenciable() {
-    return !isReferenciable();
+  public boolean isNotReferenceable() {
+    return !isReferenceable();
   }
 
   /**
@@ -138,11 +138,11 @@ public abstract class JSONElement implements JSONable {
   }
 
   /**
-   * Returns whether the element is referenciable or not.
+   * Returns whether the element is referenceable or not.
    *
-   * @return {@code true} if the element is referenciable, {@code false} otherwise.
+   * @return {@code true} if the element is referenceable, {@code false} otherwise.
    */
-  public boolean isReferenciable() {
+  public boolean isReferenceable() {
     return false;
   }
 

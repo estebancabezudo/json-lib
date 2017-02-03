@@ -9,11 +9,11 @@ import java.util.Date;
 import net.cabezudo.json.exceptions.JSONConvertionException;
 import net.cabezudo.json.values.JSONString;
 import net.cabezudo.json.values.JSONValue;
+import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
-import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -127,10 +127,10 @@ public class JSONPairTest {
   }
 
   @Test
-  public void testIsReferenciable() {
-    Log.debug("Check if the element is referenciable.");
+  public void testIsReferenceable() {
+    Log.debug("Check if the element is referenceable.");
     JSONPair jsonPair = new JSONPair("key", "A string");
-    assertTrue(!jsonPair.isReferenciable());
+    assertTrue(!jsonPair.isReferenceable());
   }
 
   @Test

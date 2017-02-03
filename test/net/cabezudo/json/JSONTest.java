@@ -221,12 +221,6 @@ public class JSONTest {
     }
   }
 
-  // TODO the parse fail to explain the lack of rigth brace.
-  public void testUnexpectedBracket() throws JSONParseException {
-    JSONArray jsonArray = JSON.parse("[ { \"person\": { \"name\": \"John\" } ]").toJSONArray();
-  }
-
-  @Test
   public void testToJSONArray() throws ElementNotExistException {
 
     List<JSONable> list = new ArrayList<>();
