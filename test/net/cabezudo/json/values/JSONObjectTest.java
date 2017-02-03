@@ -1542,7 +1542,7 @@ public class JSONObjectTest {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
-    assertEquals(false, jsonObject.isNotReferenciable());
+    assertEquals(false, jsonObject.isNotReferenceable());
   }
 
   @Test
@@ -1574,7 +1574,7 @@ public class JSONObjectTest {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 
-    assertEquals(true, jsonObject.isReferenciable());
+    assertEquals(true, jsonObject.isReferenceable());
   }
 
   @Test

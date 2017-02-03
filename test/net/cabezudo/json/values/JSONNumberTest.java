@@ -58,7 +58,7 @@ public class JSONNumberTest {
   @Test
   public void testIsNotReferenciable() {
     JSONNumber jsonNumber = new JSONNumber(1);
-    assertEquals(true, jsonNumber.isNotReferenciable());
+    assertEquals(true, jsonNumber.isNotReferenceable());
   }
 
   @Test
@@ -82,7 +82,7 @@ public class JSONNumberTest {
   @Test
   public void testIsReferenciable() {
     JSONNumber jsonNumber = new JSONNumber(1);
-    assertEquals(false, jsonNumber.isReferenciable());
+    assertEquals(false, jsonNumber.isReferenceable());
   }
 
   @Test

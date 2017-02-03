@@ -32,14 +32,14 @@ import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONConvertionException;
 
 /**
- * The {code JSONValue} class is an abstract class that represents a JSON attribute. A JSON value extends
- * from {@link net.cabezudo.json.JSONElement} and can be used
- * in a attribute-value pair or in an array. There are seven types for values: string, number, object, array, true,
- * false, and null.
+ * The {code JSONValue} class is an abstract class that represents a JSON attribute. A JSON value
+ * extends from {@link net.cabezudo.json.JSONElement} and can be used in a attribute-value pair or
+ * in an array. There are seven types for values: string, number, object, array, true, false, and
+ * null.
  *
  * <p>
- * The class also provides additional default methods for implementing a concrete (OOLV define:concrete value) value and the
- * default type conversions.
+ * The class also provides additional default methods for implementing a concrete object value and
+ * the default type conversions. (OOLV define:concrete value)
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @param <T> the type of elements in this list
@@ -52,8 +52,11 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * Returns if the JSON element is a value (OOLV When is not a value? Define: value). This object represent a JSON value, so always return a
-   * true.
+   * Returns if the JSON element is a value. The method override the
+   * {@link net.cabezudo.json.JSONElement#isValue()} in order to indicate that all the object
+   * derived from this are values. Not all the element of a JSON structure are values, some jus are
+   * elements of the structure, like an object, a pair or an array. This object represent a JSON
+   * value, so always return a true. (OOLV When is not a value? Define: value)
    *
    * @return {@code true} because the object is a JSON value.
    */
@@ -207,10 +210,11 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
 
   /**
    * OOLV: Please explain like I'm a five years old kid
-   * 
-   * This method return the tree structure of this object in a structure with a root node of type
-   * {@link JSONValue}. A JSON tree is a {@code JSONElement} object and the child nodes, the child
-   * nodes of the child nodes and so on. Therefore the root element is {@code this} object.
+   *
+   * This method return the JSON structure of this object. A JSON structure is created with JSON
+   * elements and have a root element with child elements and this child elements can have another
+   * child element, creating a tree structure with several leafs. If you convert this object to a
+   * JSON structure, the root element is {@code this} object.
    *
    * @return a {@link JSONValue} object with the JSON structure with the representation of
    * {@code this} object if the conversion is possible.

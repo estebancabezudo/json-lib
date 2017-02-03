@@ -68,7 +68,7 @@ public class JSONBooleanTest {
   @Test
   public void testIsNotReferenciable() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
-    assertEquals(true, jsonBoolean.isNotReferenciable());
+    assertEquals(true, jsonBoolean.isNotReferenceable());
   }
 
   @Test
@@ -92,7 +92,7 @@ public class JSONBooleanTest {
   @Test
   public void testIsReferenciable() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
-    assertEquals(false, jsonBoolean.isReferenciable());
+    assertEquals(false, jsonBoolean.isReferenceable());
   }
 
   @Test

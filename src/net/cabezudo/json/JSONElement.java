@@ -24,12 +24,11 @@
 package net.cabezudo.json;
 
 /**
- * The {code JSONElement} class is an abstract class to implement every element in a JSON
- * structure.
+ * The {code JSONElement} class is an abstract class to implement every element in a JSON structure.
  *
  * <p>
- * The class also provides additional default methods for implementing a specific element type and the
- * default methods implementation.
+ * The class also provides additional default methods for implementing a specific element type and
+ * the default methods implementation.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.00, 10/03/2014
@@ -75,9 +74,7 @@ public abstract class JSONElement implements JSONable {
   public abstract JSONElement toReferencedElement();
 
   /**
-   * OOLV: child elements?
-   * 
-   * Returns whether the element has elements or not.
+   * Returns whether the element has child elements or not.
    *
    * @return {@code true} if the element has elements, {@code false} otherwise.
    */
@@ -104,13 +101,16 @@ public abstract class JSONElement implements JSONable {
   }
 
   /**
-   * OOLV: Define:referenciable
-   * Returns whether the element is referenciable or not.
    *
-   * @return {@code true} if the element is not referenciable, {@code false} otherwise.
+   * OOLV: Define referenciable
+   *
+   * Returns whether the element is referenceable or not. A element is referenceable if you can
+   * convert it into a reference.
+   *
+   * @return {@code true} if the element is not referenceable, {@code false} otherwise.
    */
-  public boolean isNotReferenciable() {
-    return !isReferenciable();
+  public boolean isNotReferenceable() {
+    return !isReferenceable();
   }
 
   /**
@@ -145,7 +145,7 @@ public abstract class JSONElement implements JSONable {
    *
    * @return {@code true} if the element is referenciable, {@code false} otherwise.
    */
-  public boolean isReferenciable() {
+  public boolean isReferenceable() {
     return false;
   }
 
