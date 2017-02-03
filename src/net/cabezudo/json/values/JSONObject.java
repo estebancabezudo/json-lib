@@ -258,7 +258,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * the property name.
    *
    * @param propertyName the name of the property to remove.
-   * @return the {@link net.cabezudo.json.values.JSONPair} object removed from {@code this}
+   * @return the {@link net.cabezudo.json.JSONPair} object removed from {@code this}
    * {@link net.cabezudo.json.values.JSONObject} object.
    */
   public JSONPair remove(String propertyName) {
@@ -875,13 +875,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the element asociated with the property name. For an objet the element is a
-   * {@link net.cabezudo.java.json.values.JSONPair JSONArray} formed by the property name and the value.
+   * Return the element associated with the property name. For an object the element is a
+   * {@link net.cabezudo.json.JSONPair} formed by the property name and the value.
    *
-   * @param propertyName the name of the property to get
-   * @return an object {@link net.cabezudo.java.json.values.JSONPair JSONArray} with the pair data/value in the object with the property
-   * name specified.
-   * @throws net.cabezudo.json.exceptions.PropertyNotExistException if the property specified don't exist in the object
+   * @param propertyName the name of the property to get.
+   * @return an object {@link net.cabezudo.json.JSONPair JSONArray} with the pair data/value in the
+   * object with the property name specified.
+   * @throws PropertyNotExistException if the property specified don't exist in the object.
    */
   public JSONPair getElement(String propertyName) throws PropertyNotExistException {
     JSONPair jsonPair = getNullElement(propertyName);
@@ -1686,7 +1686,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Tells whether or not {@code this} object is referenciable.
+   * Tells whether or not {@code this} object is referenceable.
    *
    * @return {@code true}.
    */

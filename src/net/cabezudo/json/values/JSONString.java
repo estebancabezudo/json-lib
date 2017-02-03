@@ -159,7 +159,7 @@ public class JSONString extends JSONValue<JSONString> {
    * {@link net.cabezudo.json.values.JSONString} object because is not an JSON object to be
    * referenced.
    *
-   * @return The element whose referenciable objects have been replaced with their references.
+   * @return The element whose referenceable objects have been replaced with their references.
    */
   @Override
   public JSONValue toReferencedElement() {

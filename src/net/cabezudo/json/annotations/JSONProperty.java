@@ -27,14 +27,12 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- *
- * Marks an object attribute like a property of a JSON object. You can also indicate with the 
- * annotation the name you want for the field in
- * the JSON object using the element {code name}. Also you can indicate if you want to show the
- * property in the result JSON object if the property value is zero or if the property is {code
- * null}. If the field will be a referenciable field you can specify the field that be used like
- * reference with the element {code field}. Also you can specify if the field can be referenced or
- * not using the element {@code referenced}.
+ * Marks an object attribute like a property of a JSON object. You can also indicate with the
+ * annotation the name you want for the field in the JSON object using the element {code name}. Also
+ * you can indicate if you want to show the property in the result JSON object if the property value
+ * is zero or if the property is {code null}. If the field will be a referenciable field you can
+ * specify the field that be used like reference with the element {code field}. Also you can specify
+ * if the field can be referenced or not using the element {@code referenced}.
  *
  * @author Esteban Cabezudo
  * @version 1.00, 07/06/2016

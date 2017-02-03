@@ -32,10 +32,9 @@ import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.JSONConvertionException;
 
 /**
- * The {code JSONValue} class is an abstract class that represents a JSON attribute. A JSON value
- * extends from {@link net.cabezudo.json.JSONElement} and can be used in a attribute-value pair or
- * in an array. There are seven types for values: string, number, object, array, true, false, and
- * null.
+ * The {code JSONValue} class is an abstract class to implement a JSON value. A JSON value is a JSON
+ * structure component inherited from {@link JSONElement} that can be used in a pair or in an array.
+ * There are seven types for values: string, number, object, array, true, false, and null.
  *
  * <p>
  * The class also provides additional default methods for implementing a concrete object value and
@@ -52,11 +51,8 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * Returns if the JSON element is a value. The method override the
-   * {@link net.cabezudo.json.JSONElement#isValue()} in order to indicate that all the object
-   * derived from this are values. Not all the element of a JSON structure are values, some jus are
-   * elements of the structure, like an object, a pair or an array. This object represent a JSON
-   * value, so always return a true. (OOLV When is not a value? Define: value)
+   * Returns if the JSON element is a value. This object represent a JSON value, so always return a
+   * {@code true}.
    *
    * @return {@code true} because the object is a JSON value.
    */
@@ -66,9 +62,10 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to an array of JSON values. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to an array of
+   * {@link JSONValue}. The default behavior is to throw a {@link JSONConvertionException}
+   * exception. Each class that implements a value may have a different behavior so it could
+   * override this method.
    *
    * @return an array of {@link JSONValue} object if the conversion is possible.
    */
@@ -77,9 +74,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code BigDecimal} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code BigDecimal} object.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code BigDecimal} object if the conversion is possible.
    */
@@ -88,9 +85,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code BigInteger} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code BigInteger} object.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code BigInteger} object if the conversion is possible.
    */
@@ -99,9 +96,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Boolean} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Boolean} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Boolean} object if the conversion is possible.
    */
@@ -110,9 +107,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Byte} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Byte} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Byte} object if the conversion is possible.
    */
@@ -121,9 +118,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to an array of primitives {code
-   * byte} object. The default behavior is to throw a cast exception. Each class that implements a
-   * value may have a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to an array of {@code byte}
+   * object. The default behavior is to throw a {@link JSONConvertionException} Each class that
+   * implements a value may have a different behavior so it could override this method.
    *
    * @return an array of {@code byte} object if the conversion is possible.
    */
@@ -132,9 +129,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Calendar} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Calendar} object.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Calendar} object if the conversion is possible.
    */
@@ -143,9 +140,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Character} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Character} object.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Character} object if the conversion is possible.
    */
@@ -154,9 +151,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Double} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Double} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Double} object if the conversion is possible.
    */
@@ -165,9 +162,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Float} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Float} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Float} object if the conversion is possible.
    */
@@ -176,9 +173,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Integer} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Integer} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Integer} object if the conversion is possible.
    */
@@ -188,8 +185,8 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
 
   /**
    * This method implements the default behavior to convert a value to a {@link JSONArray} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@link JSONArray} object if the conversion is possible.
    */
@@ -198,9 +195,10 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {@link JSONString} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a
+   * {@link net.cabezudo.json.values.JSONString} object. The default behavior is to throw a
+   * {@link JSONConvertionException} Each object that implements a value may have a different
+   * behavior so it could override this method.
    *
    * @return a {@link net.cabezudo.json.values.JSONString} object if the conversion is possible.
    */
@@ -225,9 +223,10 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code List} of
-   * {@link JSONValue} object. The default behavior is to throw a cast exception. Each class that
-   * implements a value may have a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code List} of
+   * {@link JSONValue} objects. The default behavior is to throw a {@link JSONConvertionException}
+   * Each object that implements a value may have a different behavior so it could override this
+   * method.
    *
    * @return a {@code List} of {@link JSONValue} objects if the conversion is possible.
    */
@@ -236,9 +235,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Long} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Long} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Long} object if the conversion is possible.
    */
@@ -248,8 +247,8 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
 
   /**
    * This method implements the default behavior to convert a value to a {@link JSONObject} object.
-   * The default behavior is to throw a cast exception. Each class that implements a value may have
-   * a different behavior so it could override this method.
+   * The default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@link JSONObject} object if the conversion is possible.
    */
@@ -258,9 +257,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to a {code Short} object. The
-   * default behavior is to throw a cast exception. Each class that implements a value may have a
-   * different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to a {@code Short} object. The
+   * default behavior is to throw a {@link JSONConvertionException} Each class that implements a
+   * value may have a different behavior so it could override this method.
    *
    * @return a {@code Short} object if the conversion is possible.
    */
@@ -269,9 +268,9 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
-   * This method implements the default behavior to convert a value to an array of {code String}
-   * objects. The default behavior is to throw a cast exception. Each class that implements a value
-   * may have a different behavior so it could override this method.
+   * This method implements the default behavior to convert a value to an array of {@code String}
+   * object. The default behavior is to throw a {@link JSONConvertionException} Each class that
+   * implements a value may have a different behavior so it could override this method.
    *
    * @return an array of {@code String} object if the conversion is possible.
    */

@@ -58,7 +58,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   /**
    * Compares two {@code JSONNull} objects.
    *
-   * @param or the {@code Object} to be compared.
+   * @param o the {@code Object} to be compared.
    * @return {@code true} if {@code this} {@code JSONNull} is equal to the argument {@code false}
    * otherwise.
    */

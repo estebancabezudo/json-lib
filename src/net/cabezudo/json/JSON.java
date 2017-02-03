@@ -50,20 +50,20 @@ import net.cabezudo.json.values.JSONValue;
  * JSON class allow you to parse a string with JSON format in to a JSON tree object to be
  * manipulated. The input may be obtained from a file on the file system. The JSON class allow you
  * to create a JSON tree from any object and create a tree using the references to the object
- * <h4>Parse</h4>
+ * <h1>Parse</h1>
  * <p>
  * The JSON tree obtained includes many methods to manipulate its members, such as add elements,
  * delete elements and set new values.
- * <h4>JSON tree</h4>
+ * <h1>JSON tree</h1>
  * The JSON tree is a tree formed by objects that extends from
- * {@link net.cabezudo.java.json.JSONValue}, representing the JSON elements.
+ * {@link net.cabezudo.json.values.JSONValue}, representing the JSON elements.
  * <p>
- * There are six different types of elements in a JSON structure: {@link net.cabezudo.java.json.JSONArray},
+ * There are six different types of elements in a JSON structure: {@link net.cabezudo.json.values.JSONArray},
  * {@link net.cabezudo.json.values.JSONBoolean}, {@link net.cabezudo.json.values.JSONNull},
  * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and
  * {@link net.cabezudo.json.values.JSONString}. You can get the elements from the JSON structure
  * navigating deep into the structure in order to reach the elements one by one.
- * <h4>JSON referenced tree</h4>
+ * <h1>JSON referenced tree</h1>
  * <p>
  * OOLV: Please explain like I'm a five years old kid
  *

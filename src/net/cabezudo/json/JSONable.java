@@ -26,7 +26,8 @@ package net.cabezudo.json;
 import net.cabezudo.json.values.JSONValue;
 
 /**
- * Enables the capability to convert an object into a JSON string representation and into a JSON java object.
+ * The user of this interface can convert the object in a JSON string representation of the object
+ * and to a JSON structure representation of the object.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.00, 10/23/2014
