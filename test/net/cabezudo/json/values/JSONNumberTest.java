@@ -5,9 +5,9 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
