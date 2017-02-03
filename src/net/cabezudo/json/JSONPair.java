@@ -371,7 +371,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
 
   /**
    * Convert the value of this {@code JSONPair} to an native array of strings and return it. If the
-   * value can't be converter the method throw a runtime exception
+   * value can't be converted the method throw a runtime exception
    * {@link net.cabezudo.json.exceptions.JSONConvertionException}. The rules for conversion depends
    * of the type of value.
    *

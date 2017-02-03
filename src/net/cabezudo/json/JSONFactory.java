@@ -65,7 +65,8 @@ public class JSONFactory {
    * {@link net.cabezudo.json.values.JSONBoolean}.
    * </li>
    * <li>
-   * If some property is a {@code boolean} the method use a {@link JSONBoolean}.
+   * If some property is a {@code boolean} type the method use a
+   * {@link net.cabezudo.json.values.JSONBoolean}.
    * </li>
    * <li>
    * If the object or a property is a {@link java.lang.Character}, {@link java.lang.String},

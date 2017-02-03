@@ -27,7 +27,6 @@ import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;
 
 /**
- *
  * Marks an object attribute like a property of a JSON object. You can also indicate with the
  * annotation the name you want for the field in the JSON object using the element {code name}. Also
  * you can indicate if you want to show the property in the result JSON object if the property value
