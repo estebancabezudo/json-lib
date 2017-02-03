@@ -8,8 +8,6 @@ import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -56,7 +54,7 @@ public class JSONNumberTest {
   }
 
   @Test
-  public void testIsNotReferenciable() {
+  public void testIsNotReferenceable() {
     JSONNumber jsonNumber = new JSONNumber(1);
     assertEquals(true, jsonNumber.isNotReferenceable());
   }
@@ -80,7 +78,7 @@ public class JSONNumberTest {
   }
 
   @Test
-  public void testIsReferenciable() {
+  public void testIsReferenceable() {
     JSONNumber jsonNumber = new JSONNumber(1);
     assertEquals(false, jsonNumber.isReferenceable());
   }

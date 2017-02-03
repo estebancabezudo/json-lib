@@ -1538,7 +1538,7 @@ public class JSONObjectTest {
   }
 
   @Test
-  public void testIsNotReferenciable() throws JSONParseException {
+  public void testIsNotReferenceable() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);
 

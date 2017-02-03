@@ -497,7 +497,6 @@ public class JSONArrayTest {
   @Test
   public void testGetNullDouble() throws JSONParseException {
     JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
-    System.out.println(jsonArray);
     Double value = jsonArray.getNullDouble(0);
     Double expectedValue = 15.5;
     assertEquals(expectedValue, value);
@@ -718,7 +717,6 @@ public class JSONArrayTest {
   @Test
   public void testDigNullDouble() throws JSONParseException {
     JSONArray jsonArray = JSON.parse("[ 15.5 ]").toJSONArray();
-    System.out.println(jsonArray);
     Double value = jsonArray.digNullDouble("[0]");
     Double expectedValue = 15.5;
     assertEquals(expectedValue, value);

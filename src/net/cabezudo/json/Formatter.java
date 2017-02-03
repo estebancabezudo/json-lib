@@ -41,8 +41,8 @@ public class Formatter {
   }
 
   /**
-   * Beuatifies {@code String} and return a {@code String} with
-   * the indented JSON.
+   * Add carriages returns and indent the given {@code String} and return the {@code String} with
+   * formatted JSON.
    *
    * @param jsonString the JSON {@code String} with the JSON string in raw format.
    * @return the JSON string formatted.

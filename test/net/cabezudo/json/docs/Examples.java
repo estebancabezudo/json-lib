@@ -1,6 +1,5 @@
 package net.cabezudo.json.docs;
 
-import net.cabezudo.json.objects.Person;
 import java.util.Calendar;
 import java.util.List;
 import java.util.logging.Level;
@@ -12,6 +11,7 @@ import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
+import net.cabezudo.json.objects.Person;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONObject;
 import net.cabezudo.json.values.JSONString;

@@ -127,8 +127,8 @@ public class JSONPairTest {
   }
 
   @Test
-  public void testIsReferenciable() {
-    Log.debug("Check if the element is referenciable.");
+  public void testIsReferenceable() {
+    Log.debug("Check if the element is referenceable.");
     JSONPair jsonPair = new JSONPair("key", "A string");
     assertTrue(!jsonPair.isReferenceable());
   }
