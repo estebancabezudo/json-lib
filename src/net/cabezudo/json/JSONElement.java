@@ -24,12 +24,11 @@
 package net.cabezudo.json;
 
 /**
- * The {code JSONElement} class is an abstract class to implement all the elements in a JSON
- * structure.
+ * The {code JSONElement} class is an abstract class to implement every element in a JSON structure.
  *
  * <p>
- * The class also provides additional default methods for implementing a concrete element and the
- * default methods implementation.
+ * The class also provides additional default methods for implementing a specific element type and
+ * the default methods implementation.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.00, 10/03/2014
@@ -75,7 +74,7 @@ public abstract class JSONElement implements JSONable {
   public abstract JSONElement toReferencedElement();
 
   /**
-   * Returns whether the element has elements or not.
+   * Returns whether the element has child elements or not.
    *
    * @return {@code true} if the element has elements, {@code false} otherwise.
    */
@@ -102,7 +101,8 @@ public abstract class JSONElement implements JSONable {
   }
 
   /**
-   * Returns whether the element is referenceable or not.
+   * Returns whether the element is referenceable or not. A element is referenceable if you can
+   * convert it into a reference.
    *
    * @return {@code true} if the element is not referenceable, {@code false} otherwise.
    */

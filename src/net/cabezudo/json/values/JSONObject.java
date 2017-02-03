@@ -60,7 +60,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   private final Map<String, JSONPair> map = new HashMap<>();
 
   /**
-   * Create a newly {@link JSONObject} object using a JSON string.
+   * Create a new {@link JSONObject} object using a JSON string.
    *
    * <p>
    * This constructor parse a string passed by parameter in order to create the {@link JSONObject}
