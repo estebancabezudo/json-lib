@@ -258,7 +258,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * the property name.
    *
    * @param propertyName the name of the property to remove.
-   * @return the {@link net.cabezudo.json.values.JSONPair} object removed from {@code this}
+   * @return the {@link net.cabezudo.json.JSONPair} object removed from {@code this}
    * {@link net.cabezudo.json.values.JSONObject} object.
    */
   public JSONPair remove(String propertyName) {
