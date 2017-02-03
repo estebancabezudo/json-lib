@@ -2,11 +2,8 @@ package net.cabezudo.json.values;
 
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
+import static org.junit.Assert.assertEquals;
 import org.junit.Test;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertEquals;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
