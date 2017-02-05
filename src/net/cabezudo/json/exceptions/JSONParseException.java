@@ -39,13 +39,13 @@ public class JSONParseException extends Exception {
   private final Position position;
 
   /**
-   * Constructs a {@code JSONParseException} with a specified detail message, a cause, and a
-   * {@link Position}. The position is used to store a position of the property in a source in order
-   * to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail
+   * message, a cause, and a {@link net.cabezudo.json.Position}. The position is used to store a
+   * position of the property in a source in order to search the misspelled property.
    *
    * @param message the detail message.
    * @param cause The cause (which is saved for later retrieval by the
-   * {@code java.lang.Throwable.getCause()} method. (A null value is permitted, and indicates that
+   * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    * @param position the position to store.
    */
@@ -55,9 +55,9 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Constructs a {@code JSONParseException} with a specified detail message, and a
-   * {@link Position}. The position is used to store a position of the property in a source in order
-   * to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail
+   * message, and a {@link net.cabezudo.json.Position}. The position is used to store a position of
+   * the property in a source in order to search the misspelled property.
    *
    * @param message the detail message.
    * @param position the position to store.
@@ -68,9 +68,10 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Retrieve a {@link Position} object used to store additional data about the exception.
+   * Retrieve a {@link net.cabezudo.json.Position} object used to store additional data about the
+   * exception.
    *
-   * @return the {@link Position} stored in the exception.
+   * @return the {@link net.cabezudo.json.Position} stored in the exception.
    */
   public Position getPosition() {
     return position;

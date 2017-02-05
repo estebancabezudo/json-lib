@@ -35,7 +35,8 @@ public class NotPropertiesException extends RuntimeException {
   private static final long serialVersionUID = -6963919273551386164L;
 
   /**
-   * Constructs a {@code NotPropertiesException} with the specified detail message.
+   * Constructs a {@link net.cabezudo.json.exceptions.NotPropertiesException} with the specified
+   * detail message.
    *
    * @param message the detail message.
    */

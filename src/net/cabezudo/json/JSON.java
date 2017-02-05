@@ -196,11 +196,12 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO in a JSONObject. The object must have the properties annotated with
-   * {@link JSONProperty} in order to be used as a object property.
+   * Convert a POJO in a {@link net.cabezudo.json.values.JSONObject}. The object must have the
+   * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
+   * used as a object property.
    *
    * @param object the object to be converted.
-   * @return a {@link JSONObject} created using the object passed.
+   * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
    */
   public static JSONObject toJSONObject(Object object) {
     return toJSONTree(object).toObject();
@@ -213,7 +214,7 @@ public class JSON {
    * array the result is a {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param object the object to be converted.
-   * @return a {@link JSONValue} created using the object passed.
+   * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.
    */
   public static JSONValue toJSONTree(Object object) {
     if (object == null) {

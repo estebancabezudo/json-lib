@@ -149,16 +149,16 @@ extends <a href="../../../../net/cabezudo/json/exceptions/JSONParseException.htm
 <tr class="altColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html#InvalidTokenException-java.lang.String-net.cabezudo.json.Position-">InvalidTokenException</a></span>(java.lang.String&nbsp;message,
                      <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</code>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a specified detail message, a cause, and a
- <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a specified detail
+ message, a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
 </td>
 </tr>
 <tr class="rowColor">
 <td class="colOne"><code><span class="memberNameLink"><a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html#InvalidTokenException-java.lang.String-java.lang.String-net.cabezudo.json.Position-">InvalidTokenException</a></span>(java.lang.String&nbsp;expected,
                      java.lang.String&nbsp;value,
                      <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</code>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a specified detail message, and a
- <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a specified detail
+ message, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
 </td>
 </tr>
 <tr class="altColor">
@@ -166,8 +166,8 @@ extends <a href="../../../../net/cabezudo/json/exceptions/JSONParseException.htm
                      java.lang.String&nbsp;value,
                      java.lang.Throwable&nbsp;cause,
                      <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</code>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a series of values to create a detail message,
- a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a series of values
+ to create a detail message, a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>.</div>
 </td>
 </tr>
 </table>
@@ -222,9 +222,9 @@ extends <a href="../../../../net/cabezudo/json/exceptions/JSONParseException.htm
 <h4>InvalidTokenException</h4>
 <pre>public&nbsp;InvalidTokenException(java.lang.String&nbsp;message,
                              <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</pre>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a specified detail message, a cause, and a
- <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is used to store a position of the property in a source in order
- to search the misspelled property.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a specified detail
+ message, a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is used to store a
+ position of the property in a source in order to search the misspelled property.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>message</code> - the detail message</dd>
@@ -242,15 +242,16 @@ extends <a href="../../../../net/cabezudo/json/exceptions/JSONParseException.htm
                              java.lang.String&nbsp;value,
                              java.lang.Throwable&nbsp;cause,
                              <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</pre>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a series of values to create a detail message,
- a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is used to store a position of the property in a
- source in order to search the misspelled property.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a series of values
+ to create a detail message, a cause, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is
+ used to store a position of the property in a source in order to search the misspelled
+ property.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>expected</code> - the value expected for the token</dd>
 <dd><code>value</code> - the value of the token</dd>
 <dd><code>cause</code> - The cause (which is saved for later retrieval by the
- <code>java.lang.Throwable.getCause()</code> method. (A null value is permitted, and indicates that
+ <code>Throwable.getCause()</code> method. (A null value is permitted, and indicates that
  the cause is nonexistent or unknown.)</dd>
 <dd><code>position</code> - the position to store.</dd>
 </dl>
@@ -265,9 +266,9 @@ extends <a href="../../../../net/cabezudo/json/exceptions/JSONParseException.htm
 <pre>public&nbsp;InvalidTokenException(java.lang.String&nbsp;expected,
                              java.lang.String&nbsp;value,
                              <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json">Position</a>&nbsp;position)</pre>
-<div class="block">Constructs a <code>InvalidTokenException</code> with a specified detail message, and a
- <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is used to store a position of the property in a source in order
- to search the misspelled property.</div>
+<div class="block">Constructs a <a href="../../../../net/cabezudo/json/exceptions/InvalidTokenException.html" title="class in net.cabezudo.json.exceptions"><code>InvalidTokenException</code></a> with a specified detail
+ message, and a <a href="../../../../net/cabezudo/json/Position.html" title="class in net.cabezudo.json"><code>Position</code></a>. The position is used to store a position of
+ the property in a source in order to search the misspelled property.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>expected</code> - the value expected for the token</dd>

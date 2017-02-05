@@ -36,9 +36,9 @@ public class InvalidTokenException extends JSONParseException {
   private static final long serialVersionUID = -5344150067571800301L;
 
   /**
-   * Constructs a {@code InvalidTokenException} with a specified detail message, a cause, and a
-   * {@link Position}. The position is used to store a position of the property in a source in order
-   * to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.InvalidTokenException} with a specified detail
+   * message, a cause, and a {@link net.cabezudo.json.Position}. The position is used to store a
+   * position of the property in a source in order to search the misspelled property.
    *
    * @param message the detail message
    * @param position the position to store.
@@ -48,14 +48,15 @@ public class InvalidTokenException extends JSONParseException {
   }
 
   /**
-   * Constructs a {@code InvalidTokenException} with a series of values to create a detail message,
-   * a cause, and a {@link Position}. The position is used to store a position of the property in a
-   * source in order to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.InvalidTokenException} with a series of values
+   * to create a detail message, a cause, and a {@link net.cabezudo.json.Position}. The position is
+   * used to store a position of the property in a source in order to search the misspelled
+   * property.
    *
    * @param expected the value expected for the token
    * @param value the value of the token
    * @param cause The cause (which is saved for later retrieval by the
-   * {@code java.lang.Throwable.getCause()} method. (A null value is permitted, and indicates that
+   * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    * @param position the position to store.
    */
@@ -64,9 +65,9 @@ public class InvalidTokenException extends JSONParseException {
   }
 
   /**
-   * Constructs a {@code InvalidTokenException} with a specified detail message, and a
-   * {@link Position}. The position is used to store a position of the property in a source in order
-   * to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.InvalidTokenException} with a specified detail
+   * message, and a {@link net.cabezudo.json.Position}. The position is used to store a position of
+   * the property in a source in order to search the misspelled property.
    *
    * @param expected the value expected for the token
    * @param value the value of the token

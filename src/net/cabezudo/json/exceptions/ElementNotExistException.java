@@ -39,9 +39,9 @@ public class ElementNotExistException extends Exception {
   private final Position position;
 
   /**
-   * Constructs a {@code ElementNotExistException} with the specified detail message and a
-   * {@link Position}. The position is used to store a position of the property in a source in order
-   * to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.ElementNotExistException} with the specified
+   * detail message and a {@link net.cabezudo.json.Position}. The position is used to store a
+   * position of the property in a source in order to search the misspelled property.
    *
    * @param message the detail message.
    * @param position the data position to store.
@@ -52,9 +52,10 @@ public class ElementNotExistException extends Exception {
   }
 
   /**
-   * Retrieve a {@link Position} object used to store additional data about the exception.
+   * Retrieve a {@link net.cabezudo.json.Position} object used to store additional data about the
+   * exception.
    *
-   * @return the {@link Position} stored in the exception.
+   * @return the {@link net.cabezudo.json.Position} stored in the exception.
    */
   public Position getPosition() {
     return position;

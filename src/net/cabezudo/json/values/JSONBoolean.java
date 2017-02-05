@@ -39,21 +39,22 @@ import net.cabezudo.json.Position;
 public class JSONBoolean extends JSONValue<JSONBoolean> {
 
   /**
-   * A {@code JSONBoolean} {@code false} object.
+   * A {@link net.cabezudo.json.values.JSONBoolean} {@code false} object.
    */
   public static final JSONBoolean FALSE = new JSONBoolean(false, null);
   /**
-   * A {@code JSONBoolean} {@code true} object.
+   * A {@link net.cabezudo.json.values.JSONBoolean} {@code true} object.
    */
   public static final JSONBoolean TRUE = new JSONBoolean(true, null);
 
   private final Boolean value;
 
   /**
-   * Return a {@code JSONBoolean} that corresponds with the {@code boolean} value passed.
+   * Return a {@link net.cabezudo.json.values.JSONBoolean} that corresponds with the {@code boolean}
+   * value passed.
    *
    * @param value a {@code boolean} value.
-   * @return Return a {@code JSONBoolean}.
+   * @return Return a {@link net.cabezudo.json.values.JSONBoolean}.
    */
   public static JSONBoolean get(boolean value) {
     if (value) {
@@ -69,9 +70,9 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Compares this {@code JSONBoolean} with another.
+   * Compares this {@link net.cabezudo.json.values.JSONBoolean} with another.
    *
-   * @param jsonBoolean the {@code JSONBoolean} to be compared.
+   * @param jsonBoolean the {@link net.cabezudo.json.values.JSONBoolean} to be compared.
    * @return zero if this object represents the same boolean value as the argument; a positive value
    * if this object represents {@code true} and the argument represents {@code false}; and a
    * negative value if this object represents {@code false} and the argument represents {@code true}
@@ -82,8 +83,9 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a {@code JSONBoolean} object,
-   * {@code this} object and the referenced version is the same.
+   * Return the referenced element for {@code this} object. For a
+   * {@link net.cabezudo.json.values.JSONBoolean} object, {@code this} object and the referenced
+   * version is the same.
    *
    * @return {@code this} object.
    */
@@ -93,7 +95,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Returns whether the element is a {@code JSONBoolean} or not.
+   * Returns whether the element is a {@link net.cabezudo.json.values.JSONBoolean} or not.
    *
    * @return {@code true}.
    */
@@ -140,8 +142,8 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true};
-   * {@code 0} otherwise.
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents
+   * {@code true}; {@code 0} otherwise.
    */
   @Override
   public Byte toByte() {
@@ -216,7 +218,8 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Convert {@code this} object to a {@link net.cabezudo.json.values.JSONString} object using {@code toString()} method.
+   * Convert {@code this} object to a {@link net.cabezudo.json.values.JSONString} object using
+   * {@code toString()} method.
    *
    * @return a {@link net.cabezudo.json.values.JSONString} object.
    */
@@ -240,8 +243,8 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true};
-   * {@code 0} otherwise.
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents
+   * {@code true}; {@code 0} otherwise.
    */
   @Override
   public Long toLong() {

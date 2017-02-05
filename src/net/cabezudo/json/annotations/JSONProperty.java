@@ -28,11 +28,11 @@ import java.lang.annotation.RetentionPolicy;
 
 /**
  * Marks an object attribute like a property of a JSON object. You can also indicate with the
- * annotation the name you want for the field in the JSON object using the element {code name}. Also
- * you can indicate if you want to show the property in the result JSON object if the property value
- * is zero or if the property is {code null}. If the field will be a referenceable field you can
- * specify the field that be used like reference with the element {code field}. Also you can specify
- * if the field can be referenced or not using the element {@code referenced}.
+ * annotation the name you want for the field in the JSON object using the element {@code name}.
+ * Also you can indicate if you want to show the property in the result JSON object if the property
+ * value is zero or if the property is {@code null}. If the field will be a referenceable field you
+ * can specify the field that be used like reference with the element {@code field}. Also you can
+ * specify if the field can be referenced or not using the element {@code referenced}.
  *
  * @author Esteban Cabezudo
  * @version 1.00, 07/06/2016
@@ -54,7 +54,7 @@ public @interface JSONProperty {
    * The name of the JSON object.
    *
    * @return a string indicating that the name of the JSON object property. If the method return
-   * {code DEFAULT_NAME} the library must use the field name.
+   * {@code DEFAULT_NAME} the library must use the field name.
    */
   String name() default DEFAULT_NAME;
 

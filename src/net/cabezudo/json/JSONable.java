@@ -37,7 +37,7 @@ public interface JSONable {
   /**
    * Create a JSON string representation of this object.
    *
-   * @return a <code>String</code> with a JSON string representation of the object.
+   * @return a {@code String} with a JSON string representation of the object.
    */
   String toJSON();
 

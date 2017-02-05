@@ -102,7 +102,7 @@ public abstract class JSONElement implements JSONable {
 
   /**
    *
-   * OOLV: Define referenciable
+   * OOLV: Define referenceable
    *
    * Returns whether the element is referenceable or not. A element is referenceable if you can
    * convert it into a reference.

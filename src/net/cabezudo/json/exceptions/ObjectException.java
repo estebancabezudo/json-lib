@@ -52,7 +52,7 @@ public class ObjectException extends RuntimeException {
    *
    * @param message the detail message.
    * @param cause The cause (which is saved for later retrieval by the
-   * {@code java.lang.Throwable.getCause()} method. (A null value is permitted, and indicates that
+   * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    */
   public ObjectException(String message, Throwable cause) {

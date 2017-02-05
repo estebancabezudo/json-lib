@@ -82,7 +82,7 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object using the
-   * {@code BigInteger} object passed as argument. The object convertion is made using the
+   * {@code BigInteger} object passed as argument. The object conversion is made using the
    * {@code toString()} method of the {@code BigInteger} object.
    *
    * @param bigInteger A {@code BigInteger} object.
@@ -94,8 +94,8 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Initializes a newly created {@link net.cabezudo.json.values.JSONString} object using the
-   * {@code BigdECIMAL} object passed as argument. The object convertion is made using the
-   * {@code toString()} method of the {@code BigdECIMAL} object.
+   * {@code BigDecimal} object passed as argument. The object conversion is made using the
+   * {@code toString()} method of the {@code BigDecimal} object.
    *
    * @param bigDecimal A {@code BigDecimal} object.
    */
@@ -192,7 +192,7 @@ public class JSONString extends JSONValue<JSONString> {
    * Convert the {@link net.cabezudo.json.values.JSONString} into an array of {@link JSONValue}
    * objects. The result array is an array of only one element, the {@code this} object.
    *
-   * @return an array of {@link JSONValue} with a single element.
+   * @return an array of {@link net.cabezudo.json.values.JSONValue} with a single element.
    */
   @Override
   public JSONValue[] toArray() {
@@ -236,9 +236,9 @@ public class JSONString extends JSONValue<JSONString> {
   /**
    * Returns a {@code Boolean} with the boolean value represented by the specified string. The
    * {@code Boolean} returned represents a true value if the string represented in {@code this} is
-   * not {@code null} and is equal, ignoring case, to the string {@code "true"}.
+   * not {@code null} and is equal, ignoring case, to the string {@code true}.
    *
-   * @return a {code Boolean} result to convert, using {@code Boolean.valueOf()}, the {@code String}
+   * @return a {code Boolean} result to convert, using {@code Boolean#valueOf()}, the {@code String}
    * represented in {@link net.cabezudo.json.values.JSONString}.
    */
   @Override
@@ -253,7 +253,7 @@ public class JSONString extends JSONValue<JSONString> {
    * for radix 10.
    *
    * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Byte}.
-   * @throws NumberFormatException if the {@code String} does not contain a parsable {@code Byte}.
+   * @throws NumberFormatException if the {@code String} does not contain a parseable {@code Byte}.
    */
   @Override
   public Byte toByte() {
@@ -281,7 +281,7 @@ public class JSONString extends JSONValue<JSONString> {
    * {@code parse} method and the pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
    *
    * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Calendar}.
-   * @throws JSONConvertionException if the {@code String} does not contain a parsable
+   * @throws JSONConvertionException if the {@code String} does not contain a parseable
    * {@code Calendar}.
    */
   @Override
@@ -355,9 +355,9 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Return a {@code String} with the value of {@code this} {@code JSONString} object converted to a
-   * JSON valid representation. A JSON string is always a string in double quotes. This method is
-   * used to create JSON strings.
+   * Return a {@code String} with the value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} object converted to a JSON valid representation. A
+   * JSON string is always a string in double quotes. This method is used to create JSON strings.
    *
    * @return a {@code String} with the JSON formated {@code String}.
    */
@@ -370,11 +370,13 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Convert the {@link net.cabezudo.json.values.JSONString} into a {@link JSONArray} object. The
-   * result is a {@link JSONArray} with only one {@link net.cabezudo.json.values.JSONString} created
-   * with the value of {@code this} {@link net.cabezudo.json.values.JSONString} object.
+   * Convert the {@link net.cabezudo.json.values.JSONString} into a
+   * {@link net.cabezudo.json.values.JSONArray} object. The result is a
+   * {@link net.cabezudo.json.values.JSONArray} with only one
+   * {@link net.cabezudo.json.values.JSONString} created with the value of {@code this}
+   * {@link net.cabezudo.json.values.JSONString} object.
    *
-   * @return a {@link JSONArray} with only one element.
+   * @return a {@link net.cabezudo.json.values.JSONArray} with only one element.
    */
   @Override
   public JSONArray toJSONArray() {
@@ -396,9 +398,10 @@ public class JSONString extends JSONValue<JSONString> {
 
   /**
    * Convert the {@link net.cabezudo.json.values.JSONString} into an {@code ArrayList} of
-   * {@link JSONValue} objects. The result list has only one element, the {@code this} object.
+   * {@link net.cabezudo.json.values.JSONValue} objects. The result list has only one element, the
+   * {@code this} object.
    *
-   * @return an {@code ArrayList} of {@link JSONValue} objects.
+   * @return an {@code ArrayList} of {@link net.cabezudo.json.values.JSONValue} objects.
    */
   @Override
   public List<JSONValue> toList() {
@@ -436,7 +439,7 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
-   * Returns a string representation of the {@code this} object. The string representacion for the
+   * Returns a string representation of the {@code this} object. The string representation for the
    * object is the {@code String} represented for the {@link net.cabezudo.json.values.JSONString}
    * object and is the same object that the internal {@code String} value of the object.
    *

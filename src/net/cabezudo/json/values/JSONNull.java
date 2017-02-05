@@ -39,8 +39,8 @@ public class JSONNull extends JSONValue<JSONNull> {
   private final String nullString = "null";
 
   /**
-   * Construct a {@code JSONNull}. The method also takes a {@link Position} in order to save the
-   * position in origin and give it when a parse error is thrown.
+   * Construct a {@link net.cabezudo.json.values.JSONNull}. The method also takes a {@link Position}
+   * in order to save the position in origin and give it when a parse error is thrown.
    *
    * @param position the position of the value in the source.
    */
@@ -49,18 +49,18 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Construct a {@code JSONNull}.
+   * Construct a {@link net.cabezudo.json.values.JSONNull}.
    */
   public JSONNull() {
     this(null);
   }
 
   /**
-   * Compares two {@code JSONNull} objects.
+   * Compares two {@link net.cabezudo.json.values.JSONNull} objects.
    *
    * @param o the {@code Object} to be compared.
-   * @return {@code true} if {@code this} {@code JSONNull} is equal to the argument {@code false}
-   * otherwise.
+   * @return {@code true} if {@code this} {@link net.cabezudo.json.values.JSONNull} is equal to the
+   * argument {@code false} otherwise.
    */
   @Override
   public boolean equals(Object o) {
@@ -68,9 +68,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Return the hash code for this {@code JSONNull}.
+   * Return the hash code for this {@link net.cabezudo.json.values.JSONNull}.
    *
-   * @return hash code for this {@code JSONNull}.
+   * @return hash code for this {@link net.cabezudo.json.values.JSONNull}.
    */
   @Override
   public int hashCode() {
@@ -78,9 +78,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Compares two {@code JSONNull} objects.
+   * Compares two {@link net.cabezudo.json.values.JSONNull} objects.
    *
-   * @param jsonNull the {@code JSONNull} to be compared.
+   * @param jsonNull the {@link net.cabezudo.json.values.JSONNull} to be compared.
    *
    * @return the value {@code 0}.
    */
@@ -90,8 +90,9 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a {@code JSONNull} object,
-   * {@code this} object and the referenced version is the same.
+   * Return the referenced element for {@code this} object. For a
+   * {@link net.cabezudo.json.values.JSONNull} object, {@code this} object and the referenced
+   * version is the same.
    *
    * @return {@code this} object.
    */
@@ -101,9 +102,10 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Returns whether the element is a {@code JSONNull} or not.
+   * Returns whether the element is a {@link net.cabezudo.json.values.JSONNull} or not.
    *
-   * @return {@code true} if the element is a {@code JSONNull}; {@code false} otherwise.
+   * @return {@code true} if the element is a
+   * {@link net.cabezudo.json.values.JSONNull}; {@code false} otherwise.
    */
   @Override
   public boolean isNull() {
