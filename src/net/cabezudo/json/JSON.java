@@ -65,6 +65,7 @@ import net.cabezudo.json.values.JSONValue;
  * navigating deep into the structure in order to reach the elements one by one.
  * <h1>JSON referenced tree</h1>
  * <p>
+ * OOLV: Please explain like I'm a five years old kid
  *
  * A referenced JSON structure is a normal JSON structure transformed into a small structure. To do
  * this we replace the value of a JSON object for their reference. The reference is the value of the

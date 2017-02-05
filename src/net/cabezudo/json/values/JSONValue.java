@@ -39,7 +39,7 @@ import net.cabezudo.json.exceptions.JSONConvertionException;
  *
  * <p>
  * The class also provides additional default methods for implementing a concrete object value and
- * the default type conversions.
+ * the default type conversions. (OOLV define:concrete value)
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @param <T> the type of elements in this list
