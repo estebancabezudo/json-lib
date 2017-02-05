@@ -129,13 +129,14 @@ var activeTableTab = "activeTableTab";
 <pre>public abstract class <span class="typeNameLabel">JSONValue&lt;T&gt;</span>
 extends <a href="../../../../net/cabezudo/json/JSONElement.html" title="class in net.cabezudo.json">JSONElement</a>
 implements java.lang.Comparable&lt;T&gt;</pre>
-<div class="block">The {code JSONValue} class is an abstract class to implement a JSON value. A JSON value is a JSON
- structure component inherited from <a href="../../../../net/cabezudo/json/JSONElement.html" title="class in net.cabezudo.json"><code>JSONElement</code></a> that can be used in a pair or in an array.
- There are seven types for values: string, number, object, array, true, false, and null.
+<div class="block">The <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> class is an abstract class to implement a JSON
+ value. A JSON value is a JSON structure component inherited from
+ <a href="../../../../net/cabezudo/json/JSONElement.html" title="class in net.cabezudo.json"><code>JSONElement</code></a> that can be used in a pair or in an array. There are seven
+ types for values: string, number, object, array, true, false, and null.
 
  <p>
  The class also provides additional default methods for implementing a concrete object value and
- the default type conversions.</div>
+ the default type conversions. (OOLV define:concrete value)</div>
 </li>
 </ul>
 </div>
@@ -212,6 +213,7 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <td class="colFirst"><code>byte[]</code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/cabezudo/json/values/JSONValue.html#toByteArray--">toByteArray</a></span>()</code>
 <div class="block">This method implements the default behavior to convert a value to an array of <code>byte</code>
+
  object.</div>
 </td>
 </tr>
@@ -248,7 +250,8 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <tr id="i12" class="altColor">
 <td class="colFirst"><code><a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values">JSONArray</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../../net/cabezudo/json/values/JSONValue.html#toJSONArray--">toJSONArray</a></span>()</code>
-<div class="block">This method implements the default behavior to convert a value to a <a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> object.</div>
+<div class="block">This method implements the default behavior to convert a value to a
+ <a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> object.</div>
 </td>
 </tr>
 <tr id="i13" class="rowColor">
@@ -381,12 +384,13 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toArray</h4>
 <pre>public&nbsp;<a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values">JSONValue</a>[]&nbsp;toArray()</pre>
 <div class="block">This method implements the default behavior to convert a value to an array of
- <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a>. The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
- exception. Each class that implements a value may have a different behavior so it could
- override this method.</div>
+ <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a>. The default behavior is to throw a
+ <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> exception. Each class that
+ implements a value may have a different behavior so it could override this method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>an array of <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> object if the conversion is possible.</dd>
+<dd>an array of <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> object if the conversion is
+ possible.</dd>
 </dl>
 </li>
 </ul>
@@ -398,8 +402,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toBigDecimal</h4>
 <pre>public&nbsp;java.math.BigDecimal&nbsp;toBigDecimal()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>BigDecimal</code> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>BigDecimal</code> object if the conversion is possible.</dd>
@@ -414,8 +419,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toBigInteger</h4>
 <pre>public&nbsp;java.math.BigInteger&nbsp;toBigInteger()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>BigInteger</code> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>BigInteger</code> object if the conversion is possible.</dd>
@@ -430,8 +436,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toBoolean</h4>
 <pre>public&nbsp;java.lang.Boolean&nbsp;toBoolean()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Boolean</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Boolean</code> object if the conversion is possible.</dd>
@@ -446,8 +453,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toByte</h4>
 <pre>public&nbsp;java.lang.Byte&nbsp;toByte()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Byte</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Byte</code> object if the conversion is possible.</dd>
@@ -462,8 +470,10 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toByteArray</h4>
 <pre>public&nbsp;byte[]&nbsp;toByteArray()</pre>
 <div class="block">This method implements the default behavior to convert a value to an array of <code>byte</code>
- object. The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that
- implements a value may have a different behavior so it could override this method.</div>
+
+ object. The default behavior is to throw a
+ <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a value
+ may have a different behavior so it could override this method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>an array of <code>byte</code> object if the conversion is possible.</dd>
@@ -478,8 +488,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toCalendar</h4>
 <pre>public&nbsp;java.util.Calendar&nbsp;toCalendar()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Calendar</code> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Calendar</code> object if the conversion is possible.</dd>
@@ -494,8 +505,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toCharacter</h4>
 <pre>public&nbsp;java.lang.Character&nbsp;toCharacter()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Character</code> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Character</code> object if the conversion is possible.</dd>
@@ -510,8 +522,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toDouble</h4>
 <pre>public&nbsp;java.lang.Double&nbsp;toDouble()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Double</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Double</code> object if the conversion is possible.</dd>
@@ -526,8 +539,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toFloat</h4>
 <pre>public&nbsp;java.lang.Float&nbsp;toFloat()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Float</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Float</code> object if the conversion is possible.</dd>
@@ -542,8 +556,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toInteger</h4>
 <pre>public&nbsp;java.lang.Integer&nbsp;toInteger()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Integer</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Integer</code> object if the conversion is possible.</dd>
@@ -557,9 +572,10 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <li class="blockList">
 <h4>toJSONArray</h4>
 <pre>public&nbsp;<a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values">JSONArray</a>&nbsp;toJSONArray()</pre>
-<div class="block">This method implements the default behavior to convert a value to a <a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+<div class="block">This method implements the default behavior to convert a value to a
+ <a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> object. The default behavior is to throw a
+ <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a value
+ may have a different behavior so it could override this method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="../../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> object if the conversion is possible.</dd>
@@ -598,8 +614,8 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
 <dd><code><a href="../../../../net/cabezudo/json/JSONable.html#toJSONTree--">toJSONTree</a></code>&nbsp;in interface&nbsp;<code><a href="../../../../net/cabezudo/json/JSONable.html" title="interface in net.cabezudo.json">JSONable</a></code></dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> object with the JSON structure with the representation of
- <code>this</code> object if the conversion is possible.</dd>
+<dd>a <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> object with the JSON structure with the
+ representation of <code>this</code> object if the conversion is possible.</dd>
 </dl>
 </li>
 </ul>
@@ -611,12 +627,13 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toList</h4>
 <pre>public&nbsp;java.util.List&lt;<a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values">JSONValue</a>&gt;&nbsp;toList()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>List</code> of
- <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> objects. The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
- Each object that implements a value may have a different behavior so it could override this
- method.</div>
+ <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> objects. The default behavior is to throw a
+ <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each object that implements a value may have a different
+ behavior so it could override this method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>a <code>List</code> of <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> objects if the conversion is possible.</dd>
+<dd>a <code>List</code> of <a href="../../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a> objects if the conversion
+ is possible.</dd>
 </dl>
 </li>
 </ul>
@@ -628,8 +645,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toLong</h4>
 <pre>public&nbsp;java.lang.Long&nbsp;toLong()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Long</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Long</code> object if the conversion is possible.</dd>
@@ -644,8 +662,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toObject</h4>
 <pre>public&nbsp;<a href="../../../../net/cabezudo/json/values/JSONObject.html" title="class in net.cabezudo.json.values">JSONObject</a>&nbsp;toObject()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <a href="../../../../net/cabezudo/json/values/JSONObject.html" title="class in net.cabezudo.json.values"><code>JSONObject</code></a> object.
- The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <a href="../../../../net/cabezudo/json/values/JSONObject.html" title="class in net.cabezudo.json.values"><code>JSONObject</code></a> object if the conversion is possible.</dd>
@@ -660,8 +679,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toShort</h4>
 <pre>public&nbsp;java.lang.Short&nbsp;toShort()</pre>
 <div class="block">This method implements the default behavior to convert a value to a <code>Short</code> object. The
- default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a
- value may have a different behavior so it could override this method.</div>
+ default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a>
+ Each class that implements a value may have a different behavior so it could override this
+ method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>a <code>Short</code> object if the conversion is possible.</dd>
@@ -676,8 +696,9 @@ implements java.lang.Comparable&lt;T&gt;</pre>
 <h4>toStringArray</h4>
 <pre>public&nbsp;java.lang.String[]&nbsp;toStringArray()</pre>
 <div class="block">This method implements the default behavior to convert a value to an array of <code>String</code>
- object. The default behavior is to throw a <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that
- implements a value may have a different behavior so it could override this method.</div>
+ object. The default behavior is to throw a
+ <a href="../../../../net/cabezudo/json/exceptions/JSONConvertionException.html" title="class in net.cabezudo.json.exceptions"><code>JSONConvertionException</code></a> Each class that implements a value
+ may have a different behavior so it could override this method.</div>
 <dl>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>an array of <code>String</code> object if the conversion is possible.</dd>

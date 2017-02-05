@@ -34,11 +34,12 @@ public class JSONConvertionException extends RuntimeException {
   private static final long serialVersionUID = 4633405861210769003L;
 
   /**
-   * Constructs a {@code JSONConvertionException} with a specified detail message, end a cause.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONConvertionException} with a specified
+   * detail message, end a cause.
    *
    * @param message the detail message.
    * @param cause The cause (which is saved for later retrieval by the
-   * {@code java.lang.Throwable.getCause()} method. (A null value is permitted, and indicates that
+   * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    */
   public JSONConvertionException(String message, Throwable cause) {
@@ -46,7 +47,8 @@ public class JSONConvertionException extends RuntimeException {
   }
 
   /**
-   * Constructs a {@code JSONConvertionException} with a specified detail message.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONConvertionException} with a specified
+   * detail message.
    *
    * @param message the detail message.
    */

@@ -42,12 +42,13 @@ import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
- * A {@code JSONObject} is an object extended from {@link JSONValue} object in order to represent a
- * JSON object that can be used to create JSON structures.
+ * A {@link net.cabezudo.json.values.JSONObject} is an object extended from
+ * {@link net.cabezudo.json.values.JSONValue} object in order to represent a JSON object that can be
+ * used to create JSON structures.
  *
  * <p>
- * A {@link JSONObject} is a list of {@code JSONPair} objects that represent the JSON object
- * structure.
+ * A {@link net.cabezudo.json.values.JSONObject} is a list of {@link net.cabezudo.json.JSONPair}
+ * objects that represent the JSON object structure.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 1.00, 10/01/2014
@@ -60,11 +61,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   private final Map<String, JSONPair> map = new HashMap<>();
 
   /**
-   * Create a new {@link JSONObject} object using a JSON string.
+   * Create a new {@link net.cabezudo.json.values.JSONObject} object using a JSON string.
    *
    * <p>
-   * This constructor parse a string passed by parameter in order to create the {@link JSONObject}
-   * that represents the JSON object structure.
+   * This constructor parse a string passed by parameter in order to create the
+   * {@link net.cabezudo.json.values.JSONObject} that represents the JSON object structure.
    *
    * @param data The JSON string to parse.
    * @throws JSONParseException if the string passed by parameter can't be parsed.
@@ -79,10 +80,10 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct an empty {@link JSONObject} object.
+   * Construct an empty {@link net.cabezudo.json.values.JSONObject} object.
    * <p>
-   * An empty {@link JSONObject} object can be used to create a more complex object by adding
-   * {@link JSONPair} objects.
+   * An empty {@link net.cabezudo.json.values.JSONObject} object can be used to create a more
+   * complex object by adding {@link net.cabezudo.json.JSONPair} objects.
    *
    */
   public JSONObject() {
@@ -91,22 +92,25 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct an empty {@link JSONObject} object.
+   * Construct an empty {@link net.cabezudo.json.values.JSONObject} object.
    * <p>
-   * An empty {@link JSONObject} object can be used to create a more complex object by adding
-   * {@link JSONPair} objects.
+   * An empty {@link net.cabezudo.json.values.JSONObject} object can be used to create a more
+   * complex object by adding {@link net.cabezudo.json.JSONPair} objects.
    *
-   * @param position The position for the {@link JSONObject} object in the JSON source.
+   * @param position The position for the {@link net.cabezudo.json.values.JSONObject} object in the
+   * JSON source.
    */
   public JSONObject(Position position) {
     super(position);
   }
 
   /**
-   * Construct a {@link JSONObject} object using an array of {@link JSONPair} objects passed by
-   * parameter in order to create the JSON object properties.
+   * Construct a {@link net.cabezudo.json.values.JSONObject} object using an array of
+   * {@link net.cabezudo.json.JSONPair} objects passed by parameter in order to create the JSON
+   * object properties.
    *
-   * @param jsonPairs the array of {@link JSONPair} objects to create the JSON object properties.
+   * @param jsonPairs the array of {@link net.cabezudo.json.JSONPair} objects to create the JSON
+   * object properties.
    */
   public JSONObject(JSONPair... jsonPairs) {
     super(null);
@@ -116,13 +120,14 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object using the properties from another {@link JSONObject}
-   * object.
+   * Construct a {@link net.cabezudo.json.values.JSONObject} object using the properties from
+   * another {@link net.cabezudo.json.values.JSONObject} object.
    *
    * <p>
-   * Create a copy of the {@link JSONObject} object passed by parameter.
+   * Create a copy of the {@link net.cabezudo.json.values.JSONObject} object passed by parameter.
    *
-   * @param jsonObject the {@link JSONObject} object which from where properties are taken.
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} object which from where
+   * properties are taken.
    */
   public JSONObject(JSONObject jsonObject) {
     super(jsonObject.getPosition());
@@ -130,8 +135,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Construct a {@link JSONObject} object from an {@code Object} using the
-   * {@link JSON#toJSONTree(java.lang.Object)} method.
+   * Construct a {@link net.cabezudo.json.values.JSONObject} object from an {@code Object} using the
+   * {@link net.cabezudo.json.JSON#toJSONTree(java.lang.Object)} method.
    * <p>
    * The object must have the properties annotated with
    * {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a JSON object
@@ -167,8 +172,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   /**
    * Add a {@link net.cabezudo.json.JSONPair} to the list of properties of {@code this} object.
    *
-   * @param jsonPair a {@link JSONPair}.
-   * @return the same {@link JSONPair} passed.
+   * @param jsonPair a {@link net.cabezudo.json.JSONPair}.
+   * @return the same {@link net.cabezudo.json.JSONPair} passed.
    */
   public JSONPair add(JSONPair jsonPair) {
     return privateAdd(jsonPair);
@@ -176,7 +181,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    *
-   * Compare two {@code JSONObject} objects.
+   * Compare two {@link net.cabezudo.json.values.JSONObject} objects.
    * <p>
    * The rules for comparison are the next:
    * <p>
@@ -198,9 +203,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * the property value of {@code this} {@link net.cabezudo.json.values.JSONObject} object is less
    * than the property value of the argument {@link net.cabezudo.json.values.JSONObject} object for
    * the same property. The result is a positive integer if the property value of {@code this}
-   * {@code JSONObject} object is greater than the property value of the argument
-   * {@link net.cabezudo.json.values.JSONObject} object for the same property. The result is zero if
-   * the property values are equal for all the properties.
+   * {@link net.cabezudo.json.values.JSONObject} object is greater than the property value of the
+   * argument {@link net.cabezudo.json.values.JSONObject} object for the same property. The result
+   * is zero if the property values are equal for all the properties.
    *
    * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} to be compared.
    *
@@ -269,12 +274,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Remove a property from {@code this} {@code JSONObject} object using the position of the
-   * property.
+   * Remove a property from {@code this} {@code net.cabezudo.json.values.JSONObject} object using
+   * the position of the property.
    *
-   * @param index a{@code int} with the position of the property in {@code this} {@code JSONObject}
-   * object.
-   * @return the {@code JSONPair} object removed from {@code this} {@code JSONObject} object.
+   * @param index a{@code int} with the position of the property in {@code this}
+   * {@code net.cabezudo.json.values.JSONObject} object.
+   * @return the {@code net.cabezudo.json.JSONPair} object removed from {@code this}
+   * {@code net.cabezudo.json.values.JSONObject} object.
    */
   public JSONPair remove(int index) {
     JSONPair element = list.get(index);
@@ -285,9 +291,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Boolean}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@code net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Boolean}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Boolean} with the property value.
@@ -299,9 +305,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Byte}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@code net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Byte}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Byte} with the property value.
@@ -313,9 +319,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Character}. The properties are separated by dots and the position of elements in an
-   * array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@code net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Character}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Character} with the property value.
@@ -327,9 +333,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Double}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@code net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Double}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Double} with the property value.
@@ -341,9 +347,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Float}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Float}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Float} with the property value.
@@ -355,9 +361,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Integer}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Integer}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Integer} with the property value.
@@ -369,9 +375,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Long}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Long}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Long} with the property value.
@@ -383,9 +389,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Boolean}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Boolean}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Boolean} with the property value or {@code null} if the property doesn't
@@ -400,9 +406,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Byte}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Byte}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Byte} with the property value or {@code null} if the property doesn't exist.
@@ -416,9 +422,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Character}. The properties are separated by dots and the position of elements in an
-   * array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Character}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Character} with the property value or {@code null} if the property doesn't
@@ -433,9 +439,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Double}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Double}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Double} with the property value or {@code null} if the property doesn't exist.
@@ -449,9 +455,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Float}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Float}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Float} with the property value or {@code null} if the property doesn't exist.
@@ -465,9 +471,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code Integer}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Integer}. The properties are separated by dots and the position of elements
+   * in an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Integer} with the property value or {@code null} if the property doesn't
@@ -482,9 +488,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Long}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Long}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Long} with the property value or {@code null} if the property doesn't exist.
@@ -498,13 +504,14 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code JSONObject}. The properties are separated by dots and the position of elements in an
-   * array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@link net.cabezudo.json.values.JSONObject}. The properties are separated by dots
+   * and the position of elements in an array are specified using the index in brackets. Example:
+   * person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
-   * @return a {@code JSONObject} with the property value or {@code null} if the property doesn't
-   * exist.
+   * @return a {@link net.cabezudo.json.values.JSONObject} with the property value or {@code null}
+   * if the property doesn't exist.
    */
   public JSONObject digNullObject(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -515,9 +522,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Short}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Short}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Short} with the property value or {@code null} if the property doesn't exist.
@@ -531,9 +538,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code String}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code String}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code String} with the property value or {@code null} if the property doesn't exist.
@@ -547,13 +554,14 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code JSONValue}. The properties are separated by dots and the position of elements in an
-   * array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@link net.cabezudo.json.values.JSONValue}. The properties are separated by dots and
+   * the position of elements in an array are specified using the index in brackets. Example:
+   * person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
-   * @return a {@code JSONValue} with the property value or {@code null} if the property doesn't
-   * exist.
+   * @return a {@link net.cabezudo.json.values.JSONValue} with the property value or {@code null} if
+   * the property doesn't exist.
    */
   public JSONValue digNullValue(String fullPropertyName) {
     return digNullValue(fullPropertyName, 1);
@@ -593,12 +601,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code JSONObject}. The properties are separated by dots and the position of elements in an
-   * array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@link net.cabezudo.json.values.JSONObject}. The properties are separated by dots
+   * and the position of elements in an array are specified using the index in brackets. Example:
+   * person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
-   * @return a {@code JSONObject} with the property value.
+   * @return a {@link net.cabezudo.json.values.JSONObject} with the property value.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONObject digObject(String fullPropertyName) throws PropertyNotExistException {
@@ -607,9 +616,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to {@code Short}.
-   * The properties are separated by dots and the position of elements in an array are specified
-   * using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code Short}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code Short} with the property value.
@@ -621,9 +630,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property to convert to
-   * {@code String}. The properties are separated by dots and the position of elements in an array
-   * are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property to
+   * convert to {@code String}. The properties are separated by dots and the position of elements in
+   * an array are specified using the index in brackets. Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
    * @return a {@code String} with the property value.
@@ -635,12 +644,13 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Dig into {@code this} {@code JSONObject} object to find a property and return a
-   * {@code JSONValue} object. The properties are separated by dots and the position of elements in
-   * an array are specified using the index in brackets. Example: person.childs.[3].name
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONObject} object to find a property and
+   * return a {@link net.cabezudo.json.values.JSONValue} object. The properties are separated by
+   * dots and the position of elements in an array are specified using the index in brackets.
+   * Example: person.childs.[3].name
    *
    * @param fullPropertyName The path of the property to search.
-   * @return a {@code JSONValue} with the property value.
+   * @return a {@link net.cabezudo.json.values.JSONValue} with the property value.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONValue digValue(String fullPropertyName) throws PropertyNotExistException {
@@ -652,10 +662,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@code JSONValue[]}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONValue[]}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@code JSONValue[]}.
+   * @return a {@link net.cabezudo.json.values.JSONValue[]}.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONValue[] getArray(String propertyName) throws PropertyNotExistException {
@@ -678,7 +689,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code BigDecimal}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code BigDecimal}.
@@ -703,7 +714,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code BigInteger}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code BigInteger}.
@@ -728,7 +739,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Boolean}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Boolean}.
@@ -753,7 +764,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Byte}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Byte}.
@@ -778,7 +789,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code byte[]}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code byte[]}.
@@ -803,7 +814,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Calendar}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Calendar}.
@@ -828,7 +839,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Character}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Character}.
@@ -840,8 +851,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return a unmodifiable list of all childs of type {@link JSONPair} of the object in the natural
-   * order.
+   * Return a unmodifiable list of all childs of type {@link net.cabezudo.json.JSONPair} of the
+   * object in the natural order.
    *
    * @return a {@code List<JSONPair>} object with the child's.
    */
@@ -863,7 +874,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Double}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Double}.
@@ -922,7 +933,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Float}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Float}.
@@ -947,7 +958,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Integer}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Integer}.
@@ -959,10 +970,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONArray}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONArray}.
+   * @return a {@link net.cabezudo.json.values.JSONArray}.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONArray getJSONArray(String propertyName) throws PropertyNotExistException {
@@ -974,11 +986,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONArray}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONArray}. If the property doesn't exist throw a
+   * {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONArray}.
+   * @return a {@link net.cabezudo.json.values.JSONArray}.
    * @throws PropertyNotExistException if the index is out of range.
    */
   public JSONArray getJSONArray(int index) throws PropertyNotExistException {
@@ -1003,7 +1016,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Long}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Long}.
@@ -1240,11 +1253,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONPair}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.JSONPair}. If the property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONPair}.
+   * @return a {@link net.cabezudo.json.JSONPair}.
    */
   public JSONPair getNullElement(String propertyName) {
     JSONPair jsonPair = map.get(propertyName);
@@ -1255,11 +1268,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONPair}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.JSONPair}. If the property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONPair}.
+   * @return a {@link net.cabezudo.json.JSONPair}.
    */
   public JSONPair getNullElement(int index) {
     if (index < 0 || index > list.size()) {
@@ -1330,11 +1343,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONArray}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONArray}. If the property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONArray}.
+   * @return a {@link net.cabezudo.json.values.JSONArray}.
    */
   public JSONArray getNullJSONArray(String propertyName) {
     JSONValue jsonValue = getNullValue(propertyName);
@@ -1345,11 +1358,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONArray}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONArray}. If the property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONArray}.
+   * @return a {@link net.cabezudo.json.values.JSONArray}.
    */
   public JSONArray getNullJSONArray(int index) {
     JSONValue jsonValue = getNullValue(index);
@@ -1390,11 +1403,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONObject}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONObject}. If the property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONObject}.
+   * @return a {@link net.cabezudo.json.values.JSONObject}.
    */
   public JSONObject getNullObject(String propertyName) {
     JSONValue jsonValue = getNullValue(propertyName);
@@ -1405,11 +1418,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONObject}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONObject}. If the property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONObject}.
+   * @return a {@link net.cabezudo.json.values.JSONObject}.
    */
   public JSONObject getNullObject(int index) {
     JSONValue jsonValue = getNullValue(index);
@@ -1480,11 +1493,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONValue}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONValue}. If the property doesn't exist return {@code null}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONValue}.
+   * @return a {@link net.cabezudo.json.values.JSONValue}.
    */
   public JSONValue getNullValue(String propertyName) {
     if (propertyName == null || propertyName.isEmpty()) {
@@ -1499,11 +1512,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONValue}. If the
-   * property doesn't exist return {@code null}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONValue}. If the property doesn't exist return {@code null}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONValue}.
+   * @return a {@link net.cabezudo.json.values.JSONValue}.
    */
   public JSONValue getNullValue(int index) {
     if (index < 0 || index > list.size()) {
@@ -1514,10 +1527,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONObject}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONObject}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONObject}.
+   * @return a {@link net.cabezudo.json.values.JSONObject}.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONObject getObject(String propertyName) throws PropertyNotExistException {
@@ -1526,11 +1540,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONObject}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONObject}. If the property doesn't exist throw a
+   * {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONObject}.
+   * @return a {@link net.cabezudo.json.values.JSONObject}.
    * @throws PropertyNotExistException if the index is out of range.
    */
   public JSONObject getObject(int index) throws PropertyNotExistException {
@@ -1539,10 +1554,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Convert {@code this} object in a referenced {@link JSONElement}. Because the referenced element
-   * is the reference, this method return the value of the reference field.
+   * Convert {@code this} object in a referenced {@link net.cabezudo.json.JSONElement}. Because the
+   * referenced element is the reference, this method return the value of the reference field.
    *
-   * @return a {@link JSONValue} with the referenced element for {@code this} object.
+   * @return a {@link net.cabezudo.json.values.JSONValue} with the referenced element for
+   * {@code this} object.
    */
   @Override
   public JSONValue toReferencedElement() {
@@ -1570,7 +1586,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * of the object property marked like reference field. The reference field must not be an object
    * or array.
    *
-   * @return a new {@link JSONObject} structure with all the object referenced.
+   * @return a new {@link net.cabezudo.json.values.JSONObject} structure with all the object
+   * referenced.
    */
   public JSONObject toReferencedObject() {
     JSONObject jsonReferencedObject = new JSONObject();
@@ -1599,7 +1616,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code Short}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code Short}.
@@ -1624,7 +1641,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Return the value of the property with the index passed converted to {@code String}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
    * @return a {@code String}.
@@ -1636,10 +1653,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the name passed converted to {@link JSONValue}.
+   * Return the value of the property with the name passed converted to
+   * {@link net.cabezudo.json.values.JSONValue}.
    *
    * @param propertyName the name of the property to return.
-   * @return a {@link JSONValue}.
+   * @return a {@link net.cabezudo.json.values.JSONValue}.
    * @throws PropertyNotExistException if the property doesn't exist.
    */
   public JSONValue getValue(String propertyName) throws PropertyNotExistException {
@@ -1651,11 +1669,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Return the value of the property with the index passed converted to {@link JSONValue}. If the
-   * property doesn't exist throw a {@link PropertyNotExistException}.
+   * Return the value of the property with the index passed converted to
+   * {@link net.cabezudo.json.values.JSONValue}. If the property doesn't exist throw a
+   * {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
    * @param index the index of the property to return.
-   * @return a {@link JSONValue}.
+   * @return a {@link net.cabezudo.json.values.JSONValue}.
    * @throws PropertyNotExistException if the index is out of range.
    */
   public JSONValue getValue(int index) throws PropertyNotExistException {
@@ -1676,7 +1695,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Tells whether or not {@code this} object is a {@code JSONObject}.
+   * Tells whether or not {@code this} object is a {@link net.cabezudo.json.values.JSONObject}.
    *
    * @return {@code true}.
    */
@@ -1706,11 +1725,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Returns the number of properties in {@code this} {@code JSONObject}. If {@code this}
-   * {@code JSONObject} contains more than <tt>Integer.MAX_VALUE</tt> properties, returns
+   * Returns the number of properties in {@code this} {@link net.cabezudo.json.values.JSONObject}.
+   * If {@code this} {@link net.cabezudo.json.values.JSONObject} contains more than
+   * <tt>Integer.MAX_VALUE</tt> properties, returns
    * <tt>Integer.MAX_VALUE</tt>.
    *
-   * @return the number of properties in {@code this} {@code JSONObject}.
+   * @return the number of properties in {@code this} {@link net.cabezudo.json.values.JSONObject}.
    */
   public int size() {
     return list.size();
@@ -1718,9 +1738,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Convert the properties values of {@code this} object in an array of elements of type
-   * {@link JSONValue} using the values of element and leaving out the properties names.
+   * {@link net.cabezudo.json.values.JSONValue} using the values of element and leaving out the
+   * properties names.
    *
-   * @return an array of type {@link JSONValue} with the values of {@code this} object properties.
+   * @return an array of type {@link net.cabezudo.json.values.JSONValue} with the values of
+   * {@code this} object properties.
    */
   @Override
   public JSONValue[] toArray() {
@@ -1736,10 +1758,11 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Create a JSON string representation of {@code this} {@code JSONObject} including the JSON
-   * string representation of the properties.
+   * Create a JSON string representation of {@code this} {@link net.cabezudo.json.values.JSONObject}
+   * including the JSON string representation of the properties.
    *
-   * @return a {@code String} representation of {@code this} {@code JSONObject}.
+   * @return a {@code String} representation of {@code this}
+   * {@link net.cabezudo.json.values.JSONObject}.
    */
   @Override
   public String toJSON() {
@@ -1756,10 +1779,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Convert the properties values of {@code this} object in a {@link JSONArray} object using the
-   * values and leaving out the properties names.
+   * Convert the properties values of {@code this} object in a
+   * {@link net.cabezudo.json.values.JSONArray} object using the values and leaving out the
+   * properties names.
    *
-   * @return an array of type {@link JSONArray} with the values of {@code this} object properties.
+   * @return an array of type {@link net.cabezudo.json.values.JSONArray} with the values of
+   * {@code this} object properties.
    */
   @Override
   public JSONArray toJSONArray() {
