@@ -32,7 +32,7 @@ import net.cabezudo.json.Position;
  * null that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public class JSONNull extends JSONValue<JSONNull> {
 

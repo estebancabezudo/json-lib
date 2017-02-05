@@ -6,17 +6,13 @@ import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 08/18/2016
+ * @version 0.9, 08/18/2016
  */
 public class JSONStringTest {
 

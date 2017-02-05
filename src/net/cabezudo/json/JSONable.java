@@ -30,7 +30,7 @@ import net.cabezudo.json.values.JSONValue;
  * and to a JSON structure representation of the object.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/23/2014
+ * @version 0.9, 10/23/2014
  */
 public interface JSONable {
 

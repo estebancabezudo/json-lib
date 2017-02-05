@@ -41,7 +41,7 @@ package net.cabezudo.json.exceptions;
  * </ul>
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 01/22/2016
+ * @version 0.9, 01/22/2016
  */
 public class ObjectException extends RuntimeException {
 

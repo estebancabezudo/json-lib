@@ -30,7 +30,7 @@ import net.cabezudo.json.exceptions.InvalidTokenException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/02/2014
+ * @version 0.9, 10/02/2014
  */
 class Tokens {
 

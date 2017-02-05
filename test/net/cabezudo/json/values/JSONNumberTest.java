@@ -11,9 +11,7 @@ import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 08/18/2016
+ * @version 0.9, 08/18/2016
  */
 public class JSONNumberTest {
 

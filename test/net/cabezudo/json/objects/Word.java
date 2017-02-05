@@ -3,10 +3,8 @@ package net.cabezudo.json.objects;
 import net.cabezudo.json.annotations.JSONProperty;
 
 /**
- * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 08/02/2016
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 08/02/2016
  */
 public class Word {
 
@@ -22,7 +20,6 @@ public class Word {
   @JSONProperty
   private final String string = "افغانستان";
 
-
   public long getId() {
     return id;
   }
@@ -34,6 +31,7 @@ public class Word {
   public String getString() {
     return string;
   }
+
   public Version getVersion() {
     return VERSION;
   }

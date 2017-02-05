@@ -17,9 +17,7 @@ import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.0
- * @since 1.7
- * @date 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public class JSONPairTest {
 

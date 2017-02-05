@@ -28,7 +28,7 @@ import java.util.List;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public class Formatter {
 

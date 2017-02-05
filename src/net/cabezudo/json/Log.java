@@ -27,7 +27,7 @@ import java.util.logging.Logger;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 08/09/2016
+ * @version 0.9, 08/09/2016
  */
 public class Log {
 

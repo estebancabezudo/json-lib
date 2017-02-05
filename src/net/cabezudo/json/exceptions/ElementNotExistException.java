@@ -30,7 +30,7 @@ import net.cabezudo.json.Position;
  * {@link net.cabezudo.json.values.JSONArray} or {@link net.cabezudo.json.values.JSONObject}.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 01/23/2017
+ * @version 0.9, 01/23/2017
  */
 public class ElementNotExistException extends Exception {
 

@@ -27,7 +27,7 @@ package net.cabezudo.json.exceptions;
  * Thrown when has been reached the endo of the token queue while parsing a JSON string.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/03/2014
+ * @version 0.9, 10/03/2014
  */
 public class EmptyQueueException extends Exception {
 

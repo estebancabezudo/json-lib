@@ -28,7 +28,7 @@ package net.cabezudo.json.exceptions;
  * {@link net.cabezudo.json.annotations.JSONProperty} annotations in POJO properties.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 07/06/2016
+ * @version 0.9, 07/06/2016
  */
 public class NotPropertiesException extends RuntimeException {
 

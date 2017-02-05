@@ -9,10 +9,8 @@ import net.cabezudo.json.annotations.JSONProperty;
 import net.cabezudo.json.values.JSONNumber;
 
 /**
- * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 08/04/2016
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 08/04/2016
  */
 public class Types {
 

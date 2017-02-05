@@ -18,9 +18,8 @@ import net.cabezudo.json.values.JSONString;
 import net.cabezudo.json.values.JSONValue;
 
 /**
- * @autor Esteban Cabezudo
- * @version 1.00.00
- * @date 01/20/2017
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 01/20/2017
  */
 public class Examples {
 

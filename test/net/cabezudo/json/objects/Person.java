@@ -5,9 +5,8 @@ import java.util.List;
 import net.cabezudo.json.annotations.JSONProperty;
 
 /**
- * @autor Esteban Cabezudo
- * @version 1.00.00
- * @date 01/22/2017
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 01/22/2017
  */
 public class Person {
 

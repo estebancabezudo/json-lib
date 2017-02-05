@@ -43,7 +43,7 @@ import net.cabezudo.json.exceptions.JSONConvertionException;
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @param <T> the type of elements in this list
- * @version 1.00, 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public abstract class JSONValue<T> extends JSONElement implements Comparable<T> {
 

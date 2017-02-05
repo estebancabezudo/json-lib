@@ -39,7 +39,7 @@ import net.cabezudo.json.values.JSONValue;
  * contain a JSON object.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public class JSONPair extends JSONElement implements Comparable<JSONPair> {
 

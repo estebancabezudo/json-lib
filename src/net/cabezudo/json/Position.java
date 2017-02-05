@@ -25,7 +25,7 @@ package net.cabezudo.json;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 09/16/2016
+ * @version 0.9, 09/16/2016
  */
 public class Position {
 

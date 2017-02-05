@@ -41,7 +41,7 @@ import net.cabezudo.json.exceptions.JSONConvertionException;
  * in order to represent a JSON string that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/01/2014
+ * @version 0.9, 10/01/2014
  */
 public class JSONString extends JSONValue<JSONString> {
 

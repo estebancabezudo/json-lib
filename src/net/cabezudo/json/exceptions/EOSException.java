@@ -29,7 +29,7 @@ import net.cabezudo.json.Position;
  * Thrown when an end of string has been reached unexpectedly while parsing a JSON string.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 02/27/2017
+ * @version 0.9, 02/27/2017
  */
 public class EOSException extends JSONParseException {
 

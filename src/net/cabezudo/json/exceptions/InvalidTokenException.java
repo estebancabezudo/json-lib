@@ -29,7 +29,7 @@ import net.cabezudo.json.Position;
  * Thrown when an invalid token if found while parsing a JSON string.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 01/21/2016
+ * @version 0.9, 01/21/2016
  */
 public class InvalidTokenException extends JSONParseException {
 

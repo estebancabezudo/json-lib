@@ -29,7 +29,7 @@ import net.cabezudo.json.Position;
  * Thrown when an application tried to get a non existent property from an object.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 08/09/2015
+ * @version 0.9, 08/09/2015
  */
 public class PropertyNotExistException extends Exception {
 

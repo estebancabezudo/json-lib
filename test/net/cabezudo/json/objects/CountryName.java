@@ -3,10 +3,8 @@ package net.cabezudo.json.objects;
 import net.cabezudo.json.annotations.JSONProperty;
 
 /**
- * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 08/02/2016
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 08/02/2016
  */
 public class CountryName {
 
@@ -15,7 +13,6 @@ public class CountryName {
 
   @JSONProperty
   private final Language language = new Language();
-
 
   @JSONProperty()
   private final NameType nameType = NameType.LONG;
@@ -27,13 +24,14 @@ public class CountryName {
     return language;
   }
 
-
   public NameType getNameType() {
     return nameType;
   }
+
   public Version getVersion() {
     return VERSION;
   }
+
   public Word getWord() {
     return word;
   }

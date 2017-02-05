@@ -35,7 +35,7 @@ import java.lang.annotation.RetentionPolicy;
  * specify if the field can be referenced or not using the element {@code referenced}.
  *
  * @author Esteban Cabezudo
- * @version 1.00, 07/06/2016
+ * @version 0.9, 07/06/2016
  */
 @Retention(RetentionPolicy.RUNTIME)
 public @interface JSONProperty {

@@ -18,9 +18,7 @@ import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @date 10/01/2014
- * @version 1.0
- * @since 1.7
+ * @version 0.9, 10/01/2014
  */
 public class JSONArrayTest {
 

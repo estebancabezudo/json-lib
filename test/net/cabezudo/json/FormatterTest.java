@@ -12,10 +12,8 @@ import static org.junit.Assert.fail;
 import org.junit.Test;
 
 /**
- * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 08/03/2016
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 08/03/2016
  */
 public class FormatterTest {
 

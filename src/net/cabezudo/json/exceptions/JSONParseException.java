@@ -30,7 +30,7 @@ import net.cabezudo.json.Position;
  * Thrown when an error has been reached unexpectedly while parsing a JSON string.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 06/04/2014
+ * @version 0.9, 06/04/2014
  */
 public class JSONParseException extends Exception {
 

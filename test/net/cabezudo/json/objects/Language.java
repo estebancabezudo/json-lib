@@ -3,10 +3,8 @@ package net.cabezudo.json.objects;
 import net.cabezudo.json.annotations.JSONProperty;
 
 /**
- * @author Esteban Cabezudo
- * @version 1.0
- * @since 1.7
- * @date 08/02/2016
+ * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
+ * @version 0.9, 08/02/2016
  */
 public class Language {
 
@@ -26,6 +24,7 @@ public class Language {
   public String getCharset() {
     return charset;
   }
+
   public String getCollation() {
     return collation;
   }
@@ -37,6 +36,7 @@ public class Language {
   public String getLetterCode() {
     return letterCode;
   }
+
   public Version getVersion() {
     return VERSION;
   }

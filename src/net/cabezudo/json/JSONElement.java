@@ -31,7 +31,7 @@ package net.cabezudo.json;
  * the default methods implementation.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 10/03/2014
+ * @version 0.9, 10/03/2014
  */
 public abstract class JSONElement implements JSONable {
 

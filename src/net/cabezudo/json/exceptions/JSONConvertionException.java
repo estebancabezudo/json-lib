@@ -27,7 +27,7 @@ package net.cabezudo.json.exceptions;
  * Thrown when the conversion between one object to another is not possible.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
- * @version 1.00, 01/21/2016
+ * @version 0.9, 01/21/2016
  */
 public class JSONConvertionException extends RuntimeException {
 
