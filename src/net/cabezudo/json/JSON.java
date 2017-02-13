@@ -39,6 +39,8 @@ import net.cabezudo.json.exceptions.EmptyQueueException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.NotPropertiesException;
 import net.cabezudo.json.exceptions.ObjectException;
+import net.cabezudo.json.exceptions.PropertyNotExistException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
 import net.cabezudo.json.values.JSONObject;
@@ -86,6 +88,9 @@ import net.cabezudo.json.values.JSONValue;
 public class JSON {
 
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
+
+  public static void main(String... args) throws PropertyNotExistException {
+  }
 
   private static Object getFieldValue(Object object, String getterName) {
     Method method;
@@ -153,7 +158,7 @@ public class JSON {
         jsonElement = jsonFactory.getJSONArray(tokens, token.getPosition());
         break;
       default:
-        throw new JSONParseException("Unexpected token: " + token, token.getPosition());
+        throw new UnexpectedElementException(token.getValue(), token.getPosition());
     }
     return jsonElement;
   }

@@ -24,7 +24,7 @@
 package net.cabezudo.json;
 
 import java.math.BigDecimal;
-import net.cabezudo.json.exceptions.InvalidTokenException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -55,7 +55,7 @@ class Token {
     sb.append(c);
   }
 
-  void clasify() throws InvalidTokenException {
+  void clasify() throws UnexpectedElementException {
     String s = sb.toString();
 
     switch (s.length()) {
@@ -121,7 +121,7 @@ class Token {
               sb = new StringBuilder(number.toString());
               break;
             } catch (NumberFormatException e) {
-              throw new InvalidTokenException("I can't clasify the token " + s + ".", position);
+              throw new UnexpectedElementException(s, position);
             }
           } while (false);
           break;

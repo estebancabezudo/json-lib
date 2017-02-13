@@ -30,7 +30,7 @@ import java.util.Calendar;
 import java.util.Date;
 import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.EmptyQueueException;
-import net.cabezudo.json.exceptions.InvalidTokenException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONBoolean;
@@ -220,7 +220,7 @@ public class JSONFactory {
         return jsonValue;
       default:
         position = token.getPosition();
-        throw new InvalidTokenException("value", token.getValue(), position);
+        throw new UnexpectedElementException("value", token.getValue(), position);
     }
   }
 
@@ -251,7 +251,7 @@ public class JSONFactory {
         if (token.getType() == TokenType.NEWLINE) {
           throw new EOSException(position);
         } else {
-          throw new InvalidTokenException("comma or right bracket", token.getValue(), token.getPosition());
+          throw new UnexpectedElementException("comma or right bracket", token.getValue(), token.getPosition());
         }
       }
     } while (true);
@@ -278,8 +278,11 @@ public class JSONFactory {
       } catch (EmptyQueueException e) {
         throw new EOSException(position);
       }
+      if (token.getType() == TokenType.NEWLINE) {
+        continue;
+      }
       if (token.getType() != TokenType.STRING) {
-        throw new InvalidTokenException("string", token.getValue(), token.getPosition());
+        throw new UnexpectedElementException("string", token.getValue(), token.getPosition());
       }
       JSONString jsonKeyString = createJSONString(token);
 
@@ -290,7 +293,7 @@ public class JSONFactory {
         throw new EOSException(position);
       }
       if (token.getType() != TokenType.COLON) {
-        throw new InvalidTokenException("colon", token.getValue(), token.getPosition());
+        throw new UnexpectedElementException("colon", token.getValue(), token.getPosition());
       }
       JSONValue jsonValue = get(tokens);
       JSONPair jsonPair = new JSONPair(jsonKeyString.toString(), jsonValue, position);
@@ -307,7 +310,7 @@ public class JSONFactory {
         if (token.getType() == TokenType.NEWLINE) {
           throw new EOSException(position);
         } else {
-          throw new InvalidTokenException("comma or right brace", token.getValue(), token.getPosition());
+          throw new UnexpectedElementException("comma or right brace", token.getValue(), token.getPosition());
         }
       }
     } while (true);

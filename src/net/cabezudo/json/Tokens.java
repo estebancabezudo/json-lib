@@ -26,7 +26,7 @@ package net.cabezudo.json;
 import java.util.LinkedList;
 import java.util.Queue;
 import net.cabezudo.json.exceptions.EmptyQueueException;
-import net.cabezudo.json.exceptions.InvalidTokenException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -37,7 +37,7 @@ class Tokens {
   private Position position;
   private final Queue<Token> queue = new LinkedList<>();
 
-  boolean add(Token token) throws InvalidTokenException {
+  boolean add(Token token) throws UnexpectedElementException {
     if (token == null || token.empty()) {
       return false;
     }

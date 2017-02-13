@@ -16,9 +16,9 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.ElementNotExistException;
-import net.cabezudo.json.exceptions.InvalidTokenException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.objects.Book;
 import net.cabezudo.json.objects.Types;
 import net.cabezudo.json.values.JSONArray;
@@ -43,9 +43,7 @@ public class JSONTest {
 
   @Test
   public void testParse() throws ElementNotExistException {
-    Log.debug("Parse a string into a JSONElement tree.");
     String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
-    Log.debug("String: " + jsonUnparsedString);
     try {
       JSONObject jsonObject = JSON.parse(jsonUnparsedString).toObject();
 
@@ -68,7 +66,6 @@ public class JSONTest {
       jsonValue = jsonObject.getValue("string");
       assertTrue(jsonValue.isString());
       String name = jsonValue.toString();
-      Log.debug("Name: " + name);
       assertEquals("George \\\"Baby Face\\\" Nelson", name);
 
       jsonValue = jsonObject.getValue("number");
@@ -81,7 +78,6 @@ public class JSONTest {
 
   @Test
   public void testParsePath() throws IOException, ElementNotExistException {
-    Log.debug("Get a string from a file and parse into a JSONElement tree.");
 
     final File temporaryFile = folder.newFile("tempFile.txt");
     try {
@@ -146,31 +142,31 @@ public class JSONTest {
   @Test
   public void testParse03() throws JSONParseException {
     String jsonStringData = "[ \"John\", \"Peter\" a";
-    checkInvalidTokenException(jsonStringData, "I can't clasify the token a.", 1, 19);
+    checkUnexpectedElementException(jsonStringData, "a", 1, 19);
   }
 
   @Test
   public void testParse04() throws JSONParseException {
     String jsonStringData = "[ \"John\", \"Peter\" }";
-    checkInvalidTokenException(jsonStringData, "comma or right bracket", "}", 1, 19);
+    checkUnexpectedElementException(jsonStringData, "comma or right bracket", "}", 1, 19);
   }
 
   @Test
   public void testParse05() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" } ]";
-    checkInvalidTokenException(jsonStringData, "comma or right brace", "]", 1, 34);
+    checkUnexpectedElementException(jsonStringData, "comma or right brace", "]", 1, 34);
   }
 
   @Test
   public void testParse06() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" }, ]";
-    checkInvalidTokenException(jsonStringData, "string", "]", 1, 35);
+    checkUnexpectedElementException(jsonStringData, "string", "]", 1, 35);
   }
 
   @Test
   public void testParse07() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" }, { \"person\": { \"name\": \"John\" }, ]";
-    checkInvalidTokenException(jsonStringData, "string", "{", 1, 35);
+    checkUnexpectedElementException(jsonStringData, "string", "{", 1, 35);
   }
 
   @Test
@@ -182,7 +178,7 @@ public class JSONTest {
   @Test
   public void testParse09() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } }, ]";
-    checkInvalidTokenException(jsonStringData, "value", "]", 1, 72);
+    checkUnexpectedElementException(jsonStringData, "value", "]", 1, 72);
   }
 
   @Test
@@ -194,27 +190,49 @@ public class JSONTest {
   @Test
   public void testParse11() throws JSONParseException {
     String jsonStringData = "{ \"name\": \"John\", \"childs\": [ { \"name\": \"Peter\" }, { \"name\": \"Jhon\" } ] }";
-    checkInvalidTokenException(jsonStringData, "comma or right brace", "}", 1, 31);
+    checkUnexpectedElementException(jsonStringData, "comma or right brace", "}", 1, 31);
   }
 
-  private void checkInvalidTokenException(
-          String jsonStringData, String message, int line, int row)
+  @Test
+  public void testParseWithEndsOfLines() throws PropertyNotExistException {
+    String jsonStringData
+            = "{\n"
+            + "  \"coreVersion\": \"1.00.00\",\n"
+            + "  \"general\": {\n"
+            + "    \"defaultLocale\": \"es\",\n"
+            + "    \"defaultCountry\": \"MX\",\n"
+            + "    \"initialSection\": \"sites.list\"\n"
+            + "  }\n"
+            + "}\n";
+    try {
+      JSONObject jsonData = JSON.parse(jsonStringData).toObject();
+      assertEquals("1.00.00", jsonData.getString("coreVersion"));
+      assertEquals("es", jsonData.digString("general.defaultLocale"));
+      assertEquals("MX", jsonData.digString("general.defaultCountry"));
+      assertEquals("sites.list", jsonData.digString("general.initialSection"));
+    } catch (JSONParseException e) {
+      System.out.println(e.getMessage() + " " + e.getPosition());
+    }
+  }
+
+  private void checkUnexpectedElementException(
+          String jsonStringData, String value, int line, int row)
           throws JSONParseException {
     try {
       JSON.parse(jsonStringData);
-    } catch (InvalidTokenException e) {
-      InvalidTokenException expectedException = new InvalidTokenException(message, new Position(line, row));
+    } catch (UnexpectedElementException e) {
+      UnexpectedElementException expectedException = new UnexpectedElementException(value, new Position(line, row));
       assertEquals(expectedException, e);
     }
   }
 
-  private void checkInvalidTokenException(
+  private void checkUnexpectedElementException(
           String jsonStringData, String expected, String have, int line, int row)
           throws JSONParseException {
     try {
       JSON.parse(jsonStringData);
-    } catch (InvalidTokenException e) {
-      InvalidTokenException expectedException = new InvalidTokenException(expected, have, new Position(line, row));
+    } catch (UnexpectedElementException e) {
+      UnexpectedElementException expectedException = new UnexpectedElementException(expected, have, new Position(line, row));
       assertEquals(expectedException, e);
     }
   }
@@ -244,10 +262,8 @@ public class JSONTest {
   public void testToJSONTree() {
 
     try {
-      Log.debug("Create a JSON tree with all the know types.%n");
       Types types = new Types();
       JSONObject jsonTypesValue = JSON.toJSONTree(types).toObject();
-      Log.debug("Types to JSON string: %s.%n", jsonTypesValue.toJSON());
       assertEquals(BigDecimal.class, jsonTypesValue.getBigDecimal("bigDecimal").getClass());
       assertEquals(BigInteger.class, jsonTypesValue.getBigInteger("bigInteger").getClass());
       assertEquals(byte[].class, jsonTypesValue.getByteArray("byteArray").getClass());

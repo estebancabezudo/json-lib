@@ -23,7 +23,7 @@
  */
 package net.cabezudo.json;
 
-import net.cabezudo.json.exceptions.InvalidTokenException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
@@ -31,7 +31,7 @@ import net.cabezudo.json.exceptions.InvalidTokenException;
  */
 class Tokenizer {
 
-  static Tokens tokenize(String string) throws InvalidTokenException {
+  static Tokens tokenize(String string) throws UnexpectedElementException {
     char[] chars = string.toCharArray();
     Tokens tokens = new Tokens();
     Token token = new Token(Position.INITIAL);
@@ -70,6 +70,7 @@ class Tokenizer {
           case '\n':
             line++;
             row = 1;
+            break;
           case ' ':
           case '\u00A0':
           case ':':

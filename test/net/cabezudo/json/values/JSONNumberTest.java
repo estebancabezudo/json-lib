@@ -15,6 +15,16 @@ import org.junit.Test;
  */
 public class JSONNumberTest {
 
+  @Test(expected = IllegalArgumentException.class)
+  public void testJSONNumberWithNullValueParameterAndPosition() {
+    new JSONNumber(null, null);
+  }
+
+  @Test(expected = IllegalArgumentException.class)
+  public void testJSONNumberWithNullBigIntegerValueParameter() {
+    new JSONNumber((BigInteger) null);
+  }
+
   @Test
   public void testCompareTo() {
     JSONNumber a = new JSONNumber(1);
@@ -29,7 +39,20 @@ public class JSONNumberTest {
   public void testEquals() {
     JSONNumber a = new JSONNumber(10);
     JSONNumber b = new JSONNumber(10);
-    assertEquals(a, b);
+    assertEquals(true, a.equals(b));
+  }
+
+  @Test
+  public void testEqualsWitNull() {
+    JSONNumber a = new JSONNumber(10);
+    assertEquals(false, a.equals(null));
+  }
+
+  @Test
+  public void testEqualsWithAnotherObject() {
+    JSONNumber a = new JSONNumber(10);
+    String b = "ten";
+    assertEquals(false, a.equals(b));
   }
 
   @Test
@@ -61,6 +84,13 @@ public class JSONNumberTest {
   public void testIsNull() {
     JSONNumber jsonNumber = new JSONNumber(1);
     assertEquals(false, jsonNumber.isNull());
+  }
+
+  @Test
+  public void testHashCode() {
+    BigDecimal bigDecimal = new BigDecimal(1);
+    JSONNumber jsonNumber = new JSONNumber(1);
+    assertEquals(bigDecimal.hashCode(), jsonNumber.hashCode());
   }
 
   @Test
@@ -180,8 +210,8 @@ public class JSONNumberTest {
   @Test
   public void testToJSONString() {
     JSONNumber jsonNumber = new JSONNumber(69.7);
-    String s = jsonNumber.toString();
-    assertEquals("69.7", s);
+    JSONString jsonString = jsonNumber.toJSONString();
+    assertEquals("69.7", jsonString.toString());
   }
 
   @Test

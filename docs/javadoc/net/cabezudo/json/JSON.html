@@ -18,7 +18,7 @@
     catch(err) {
     }
 //-->
-var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9};
+var methods = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -131,6 +131,7 @@ extends java.lang.Object</pre>
  navigating deep into the structure in order to reach the elements one by one.
  <h1>JSON referenced tree</h1>
  <p>
+ OOLV: Please explain like I'm a five years old kid
 
  A referenced JSON structure is a normal JSON structure transformed into a small structure. To do
  this we replace the value of a JSON object for their reference. The reference is the value of the
@@ -182,6 +183,10 @@ extends java.lang.Object</pre>
 <th class="colLast" scope="col">Method and Description</th>
 </tr>
 <tr id="i0" class="altColor">
+<td class="colFirst"><code>static void</code></td>
+<td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#main-java.lang.String...-">main</a></span>(java.lang.String...&nbsp;args)</code>&nbsp;</td>
+</tr>
+<tr id="i1" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values">JSONValue</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#parse-java.nio.file.Path-java.lang.String-">parse</a></span>(java.nio.file.Path&nbsp;filePath,
      java.lang.String&nbsp;charsetName)</code>
@@ -189,26 +194,26 @@ extends java.lang.Object</pre>
  objects representation of JSON elements.</div>
 </td>
 </tr>
-<tr id="i1" class="rowColor">
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static <a href="../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values">JSONValue</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#parse-java.lang.String-">parse</a></span>(java.lang.String&nbsp;string)</code>
 <div class="block">Parse a string and create a JSON structure of objects representation of JSON elements.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values">JSONArray</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#toJSONArray-java.util.List-">toJSONArray</a></span>(java.util.List&lt;?&gt;&nbsp;list)</code>
 <div class="block">Convert a list of objects in a <a href="../../../net/cabezudo/json/values/JSONArray.html" title="class in net.cabezudo.json.values"><code>JSONArray</code></a> The objects in the list must have the
  properties annotated with <a href="../../../net/cabezudo/json/annotations/JSONProperty.html" title="annotation in net.cabezudo.json.annotations"><code>JSONProperty</code></a> in order to be used as object property.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code>static <a href="../../../net/cabezudo/json/values/JSONObject.html" title="class in net.cabezudo.json.values">JSONObject</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#toJSONObject-java.lang.Object-">toJSONObject</a></span>(java.lang.Object&nbsp;object)</code>
 <div class="block">Convert a POJO in a <a href="../../../net/cabezudo/json/values/JSONObject.html" title="class in net.cabezudo.json.values"><code>JSONObject</code></a>.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>static <a href="../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values">JSONValue</a></code></td>
 <td class="colLast"><code><span class="memberNameLink"><a href="../../../net/cabezudo/json/JSON.html#toJSONTree-java.lang.Object-">toJSONTree</a></span>(java.lang.Object&nbsp;object)</code>
 <div class="block">Convert a POJO into a <a href="../../../net/cabezudo/json/values/JSONValue.html" title="class in net.cabezudo.json.values"><code>JSONValue</code></a>.</div>
@@ -257,6 +262,20 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a name="main-java.lang.String...-">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>main</h4>
+<pre>public static&nbsp;void&nbsp;main(java.lang.String...&nbsp;args)
+                 throws <a href="../../../net/cabezudo/json/exceptions/PropertyNotExistException.html" title="class in net.cabezudo.json.exceptions">PropertyNotExistException</a></pre>
+<dl>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code><a href="../../../net/cabezudo/json/exceptions/PropertyNotExistException.html" title="class in net.cabezudo.json.exceptions">PropertyNotExistException</a></code></dd>
+</dl>
+</li>
+</ul>
 <a name="parse-java.lang.String-">
 <!--   -->
 </a>
