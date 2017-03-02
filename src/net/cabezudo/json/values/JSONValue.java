@@ -36,10 +36,9 @@ import net.cabezudo.json.exceptions.JSONConvertionException;
  * value. A JSON value is a JSON structure component inherited from
  * {@link net.cabezudo.json.JSONElement} that can be used in a pair or in an array. There are seven
  * types for values: string, number, object, array, true, false, and null.
- *
  * <p>
  * The class also provides additional default methods for implementing a concrete object value and
- * the default type conversions. (OOLV define:concrete value)
+ * the default type conversions.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @param <T> the type of elements in this list

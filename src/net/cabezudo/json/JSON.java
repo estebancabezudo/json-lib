@@ -67,12 +67,11 @@ import net.cabezudo.json.values.JSONValue;
  * navigating deep into the structure in order to reach the elements one by one.
  * <h1>JSON referenced tree</h1>
  * <p>
- * OOLV: Please explain like I'm a five years old kid
- *
- * A referenced JSON structure is a normal JSON structure transformed into a small structure. To do
- * this we replace the value of a JSON object for their reference. The reference is the value of the
- * reference field, an arbitrary field you can choose. The default field name used is {@code id}. A
- * common example of a reference is the foreign key in a relational table.
+ * A referenced JSON structure is a normal JSON structure transformed into a smaller one. To do this
+ * we replace the value of each JSON object in the structure for their reference. The reference is
+ * the value of the reference field, an arbitrary field selected for this purpose. The default
+ * reference field name used is {@code id}. A common example of a reference is the foreign key in a
+ * relational table.
  * <p>
  * The easy way to get a referenced tree is using annotated objects in order to create a JSON
  * structure. Is the easy way because if you get a JSON structure with a JSON string there isn't
