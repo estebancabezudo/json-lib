@@ -39,7 +39,6 @@ import net.cabezudo.json.exceptions.EmptyQueueException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.NotPropertiesException;
 import net.cabezudo.json.exceptions.ObjectException;
-import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
@@ -88,7 +87,7 @@ public class JSON {
 
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
-  public static void main(String... args) throws PropertyNotExistException {
+  public static void main(String... args) throws JSONParseException {
   }
 
   private static Object getFieldValue(Object object, String getterName) {
@@ -141,7 +140,7 @@ public class JSON {
 
     Token token;
     try {
-      token = tokens.poll();
+      token = tokens.consume();
     } catch (EmptyQueueException e) {
       throw new JSONParseException("Unexpected end parsing " + string + ".", e, Position.INITIAL);
     }

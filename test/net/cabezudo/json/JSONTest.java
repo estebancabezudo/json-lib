@@ -194,6 +194,44 @@ public class JSONTest {
   }
 
   @Test
+  public void testParse12() throws JSONParseException {
+    String jsonStringData
+            = "{\n"
+            + "  \"coreVersion\": \"1.00.00\",\n"
+            + "  \"general\": {\n"
+            + "    \"initialSection\": \"sites.list\"\n"
+            + "  }, \n"
+            + "  \"data\": {\n"
+            + "  },\n"
+            + "  \"info\": \"one\"\n"
+            + "}\n";
+
+    String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": {  }, \"info\": \"one\" }";
+
+    JSONObject jsonValue = JSON.parse(jsonStringData).toObject();
+    assertEquals(expected, jsonValue.toJSON());
+  }
+
+  @Test
+  public void testParse13() throws JSONParseException {
+    String jsonStringData
+            = "{\n"
+            + "  \"coreVersion\": \"1.00.00\",\n"
+            + "  \"general\": {\n"
+            + "    \"initialSection\": \"sites.list\"\n"
+            + "  }, \n"
+            + "  \"data\": [\n"
+            + "  ],\n"
+            + "  \"info\": \"one\"\n"
+            + "}\n";
+
+    String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": [  ], \"info\": \"one\" }";
+
+    JSONObject jsonValue = JSON.parse(jsonStringData).toObject();
+    assertEquals(expected, jsonValue.toJSON());
+  }
+
+  @Test
   public void testParseWithEndsOfLines() throws PropertyNotExistException {
     String jsonStringData
             = "{\n"

@@ -30,8 +30,8 @@ import java.util.Calendar;
 import java.util.Date;
 import net.cabezudo.json.exceptions.EOSException;
 import net.cabezudo.json.exceptions.EmptyQueueException;
-import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.exceptions.JSONParseException;
+import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONBoolean;
 import net.cabezudo.json.values.JSONNull;
@@ -183,16 +183,19 @@ public class JSONFactory {
   }
 
   private JSONValue get(Tokens tokens) throws JSONParseException {
-
     Token token;
     Position position = Position.INITIAL;
-
     try {
-      token = tokens.poll();
+      token = tokens.consume();
     } catch (EmptyQueueException e) {
       throw new EOSException(position);
     }
+    return get(token, tokens);
+  }
 
+  private JSONValue get(Token token, Tokens tokens) throws JSONParseException {
+
+    Position position;
     JSONValue jsonValue;
 
     TokenType type = token.getType();
@@ -230,31 +233,38 @@ public class JSONFactory {
     if (!tokens.hasNext()) {
       throw new EOSException(position);
     }
-    token = tokens.element();
 
+    try {
+      token = tokens.consume();
+    } catch (EmptyQueueException e) {
+      throw new RuntimeException(e);
+    }
     do {
       if (token.getType() == TokenType.RIGHT_BRACKET) {
         break;
       }
 
-      JSONValue jsonValue = get(tokens);
+      JSONValue jsonValue = get(token, tokens);
       position = jsonValue.getPosition();
       jsonArray.add(jsonValue);
 
       try {
-        token = tokens.poll();
-        position = token.getPosition();
+        token = tokens.consume();
       } catch (EmptyQueueException e) {
         throw new EOSException(position);
       }
       if (token.getType() != TokenType.COMMA && token.getType() != TokenType.RIGHT_BRACKET) {
-        if (token.getType() == TokenType.NEWLINE) {
+        throw new UnexpectedElementException("comma or right bracket", token.getValue(), token.getPosition());
+      }
+      if (token.getType() == TokenType.COMMA) {
+        try {
+          token = tokens.consume();
+        } catch (EmptyQueueException e) {
           throw new EOSException(position);
-        } else {
-          throw new UnexpectedElementException("comma or right bracket", token.getValue(), token.getPosition());
         }
       }
     } while (true);
+
     return jsonArray;
   }
 
@@ -265,29 +275,25 @@ public class JSONFactory {
     if (!tokens.hasNext()) {
       throw new EOSException(position);
     }
-    token = tokens.element();
+
+    try {
+      token = tokens.consume();
+    } catch (EmptyQueueException e) {
+      throw new EOSException(position);
+    }
 
     do {
       if (token.getType() == TokenType.RIGHT_BRACE) {
         break;
       }
 
-      try {
-        token = tokens.poll();
-        position = token.getPosition();
-      } catch (EmptyQueueException e) {
-        throw new EOSException(position);
-      }
-      if (token.getType() == TokenType.NEWLINE) {
-        continue;
-      }
       if (token.getType() != TokenType.STRING) {
         throw new UnexpectedElementException("string", token.getValue(), token.getPosition());
       }
       JSONString jsonKeyString = createJSONString(token);
 
       try {
-        token = tokens.poll();
+        token = tokens.consume();
         position = token.getPosition();
       } catch (EmptyQueueException e) {
         throw new EOSException(position);
@@ -300,17 +306,21 @@ public class JSONFactory {
       jsonObject.add(jsonPair);
 
       try {
-        token = tokens.poll();
+        token = tokens.consume();
         position = token.getPosition();
       } catch (EmptyQueueException e) {
         throw new EOSException(position);
       }
 
       if (token.getType() != TokenType.COMMA && token.getType() != TokenType.RIGHT_BRACE) {
-        if (token.getType() == TokenType.NEWLINE) {
+        throw new UnexpectedElementException("comma or right brace", token.getValue(), token.getPosition());
+      }
+      if (token.getType() == TokenType.COMMA) {
+        try {
+          token = tokens.consume();
+          position = token.getPosition();
+        } catch (EmptyQueueException e) {
           throw new EOSException(position);
-        } else {
-          throw new UnexpectedElementException("comma or right brace", token.getValue(), token.getPosition());
         }
       }
     } while (true);

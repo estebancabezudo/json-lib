@@ -92,10 +92,6 @@ class Tokenizer {
       }
     }
     tokens.add(token);
-    token = new Token(new Position(line, row));
-    token.append('\n');
-    tokens.add(token);
-
     return tokens;
   }
 

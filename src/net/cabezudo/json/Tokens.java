@@ -23,6 +23,7 @@
  */
 package net.cabezudo.json;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
 import net.cabezudo.json.exceptions.EmptyQueueException;
@@ -32,7 +33,7 @@ import net.cabezudo.json.exceptions.UnexpectedElementException;
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/02/2014
  */
-class Tokens {
+class Tokens implements Iterable<Token> {
 
   private Position position;
   private final Queue<Token> queue = new LinkedList<>();
@@ -56,8 +57,12 @@ class Tokens {
     return queue.offer(token);
   }
 
-  Token element() {
-    return queue.element();
+  Token element() throws EmptyQueueException {
+    Token token = queue.element();
+    if (token == null) {
+      throw new EmptyQueueException();
+    }
+    return token;
   }
 
   Position getPosition() {
@@ -68,11 +73,16 @@ class Tokens {
     return queue.size() > 0;
   }
 
-  Token poll() throws EmptyQueueException {
+  Token consume() throws EmptyQueueException {
     Token token = queue.poll();
     if (token == null) {
       throw new EmptyQueueException();
     }
     return token;
+  }
+
+  @Override
+  public Iterator<Token> iterator() {
+    return queue.iterator();
   }
 }
