@@ -1796,6 +1796,24 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Convert the properties values of {@code this} object in a primitive array of
+   * {@link net.cabezudo.json.values.JSONPair} objects using the values and properties names.
+   *
+   * @return a primitive array of {@link net.cabezudo.json.values.JSONPair} with the values of
+   * {@code this} object names and properties.
+   */
+  public JSONPair[] toJSONPairArray() {
+    int size = list.size();
+    JSONPair[] jsonPairArray = new JSONPair[size];
+
+    for (int i = 0; i < size; i++) {
+      JSONPair jsonPair = list.get(i);
+      jsonPairArray[i] = jsonPair;
+    }
+    return jsonPairArray;
+  }
+
+  /**
    * Return the JSON structure behind {@code this} object that is the reference to {@code this}
    * object.
    *

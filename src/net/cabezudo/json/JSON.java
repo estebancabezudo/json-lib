@@ -100,7 +100,9 @@ public class JSON {
     }
     try {
       return method.invoke(object);
-    } catch (InvocationTargetException | IllegalAccessException | IllegalArgumentException e) {
+    } catch (InvocationTargetException e) {
+      throw new ObjectException("The method  " + getterName + " for the object " + objectClass.getName() + " throw an error.", e);
+    } catch (IllegalAccessException | IllegalArgumentException e) {
       throw new ObjectException("Getting the field value using " + getterName + " in the object " + objectClass.getName() + ".", e);
     }
   }

@@ -159,6 +159,26 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
+   * Convert {@code this} object to a {@code Integer}.
+   *
+   * @return a {@code null}.
+   */
+  @Override
+  public Integer toInteger() {
+    return null;
+  }
+
+  /**
+   * Convert {@code this} object to a {@code Long}.
+   *
+   * @return a {@code null}.
+   */
+  @Override
+  public Long toLong() {
+    return null;
+  }
+
+  /**
    * Convert {@code this} object to an array of {@code String} objects.
    *
    * @return an array of {@code String} with only one element.

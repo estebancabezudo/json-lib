@@ -1911,6 +1911,98 @@ public class JSONObjectTest {
   }
 
   @Test
+  public void testToJSONPairArray() throws JSONParseException, PropertyNotExistException, ElementNotExistException {
+    Types types = new Types();
+    JSONObject jsonObject = new JSONObject(types);
+
+    JSONPair[] array = jsonObject.toJSONPairArray();
+
+    assertEquals(24, array.length);
+
+    JSONValue value;
+
+    value = array[BIG_DECIMAL].getValue();
+    assertEquals(new JSONNumber(15.4), value);
+
+    value = array[BIG_INTEGER].getValue();
+    assertEquals(new JSONNumber(14), value);
+
+    value = array[BYTE_ARRAY].getValue();
+    JSONArray a = (JSONArray) value;
+    assertEquals(4, a.size());
+    assertEquals(new JSONNumber(1), a.getValue(0));
+    assertEquals(new JSONNumber(2), a.getValue(1));
+    assertEquals(new JSONNumber(3), a.getValue(2));
+    assertEquals(new JSONNumber(4), a.getValue(3));
+
+    value = array[CALENDAR].getValue();
+    assertEquals(new JSONString("1974-01-30T14:20:12.125Z"), value);
+
+    value = array[DATE].getValue();
+    assertEquals(new JSONString("1974-01-30T14:20:12.125Z"), value);
+
+    value = array[OBJECT_BOOLEAN].getValue();
+    assertEquals(JSONBoolean.TRUE, value);
+
+    value = array[OBJECT_BYTE].getValue();
+    assertEquals(new JSONNumber(2), value);
+
+    value = array[OBJECT_CHARACTER].getValue();
+    assertEquals(new JSONString("b"), value);
+
+    value = array[OBJECT_DOUBLE].getValue();
+    assertEquals(new JSONNumber(12.5), value);
+
+    value = array[OBJECT_FLOAT].getValue();
+    assertEquals(new JSONNumber(10.5), value);
+
+    value = array[OBJECT_INTEGER].getValue();
+    assertEquals(new JSONNumber(6), value);
+
+    value = array[OBJECT_LONG].getValue();
+    assertEquals(new JSONNumber(8), value);
+
+    value = array[OBJECT_SHORT].getValue();
+    assertEquals(new JSONNumber(4), value);
+
+    value = array[NULL_REFERENCE].getValue();
+    assertEquals(new JSONNull(), value);
+
+    value = array[BOOLEAN].getValue();
+    assertEquals(JSONBoolean.get(false), value);
+
+    value = array[BYTE].getValue();
+    assertEquals(new JSONNumber(1), value);
+
+    value = array[CHARACTER].getValue();
+    assertEquals(new JSONString('a'), value);
+
+    value = array[DOUBLE].getValue();
+    assertEquals(new JSONNumber(11.5), value);
+
+    value = array[FLOAT].getValue();
+    assertEquals(new JSONNumber(9.5), value);
+
+    value = array[INTEGER].getValue();
+    assertEquals(new JSONNumber(5), value);
+
+    value = array[LONG].getValue();
+    assertEquals(new JSONNumber(7), value);
+
+    value = array[SHORT].getValue();
+    assertEquals(new JSONNumber(3), value);
+
+    value = array[STRING].getValue();
+    assertEquals(new JSONString("Esteban"), value);
+
+    JSONObject jsonBook = array[BOOK].getValue().toObject();
+    int id = jsonBook.getInteger("id");
+    String name = jsonBook.getString("name");
+    assertEquals(1, id);
+    assertEquals("Evolution", name);
+  }
+
+  @Test
   public void testToJSONReferencedTree() {
     Log.debug("Create a refered JSON tree using Java objects.");
     Data data = new Data();

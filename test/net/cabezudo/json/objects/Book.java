@@ -13,7 +13,7 @@ import net.cabezudo.json.values.JSONObject;
 public class Book implements JSONable {
 
   @JSONProperty
-  private final int id;
+  private final Integer id;
 
   @JSONProperty
   private final String name;
@@ -35,7 +35,7 @@ public class Book implements JSONable {
       return false;
     }
     final Book book = (Book) o;
-    if (this.id != book.id) {
+    if (!Objects.equals(this.id, book.id)) {
       return false;
     }
     return Objects.equals(this.name, book.name);
