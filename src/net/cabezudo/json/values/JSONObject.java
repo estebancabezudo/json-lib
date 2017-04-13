@@ -1695,6 +1695,16 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Returns whether the element is empty or not.
+   *
+   * @return {@code true} if the object hasn't properties, {@code false} otherwise.
+   */
+  @Override
+  public boolean isEmpty() {
+    return list.isEmpty();
+  }
+
+  /**
    * Tells whether or not {@code this} object is a {@link net.cabezudo.json.values.JSONObject}.
    *
    * @return {@code true}.

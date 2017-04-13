@@ -1560,6 +1560,22 @@ public class JSONObjectTest {
   }
 
   @Test
+  public void testIsEmptyTrue() throws JSONParseException {
+    JSONObject jsonObject = new JSONObject();
+
+    assertEquals(true, jsonObject.isEmpty());
+  }
+
+  @Test
+  public void testIsEmptyFalse() throws JSONParseException {
+    JSONObject jsonObject = new JSONObject();
+    JSONPair jsonPair = new JSONPair("edad", 20);
+    jsonObject.add(jsonPair);
+
+    assertEquals(false, jsonObject.isEmpty());
+  }
+
+  @Test
   public void testIsObject() throws JSONParseException {
     Types types = new Types();
     JSONObject jsonObject = new JSONObject(types);

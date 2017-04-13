@@ -160,6 +160,14 @@ public class JSON {
       default:
         throw new UnexpectedElementException(token.getValue(), token.getPosition());
     }
+    if (tokens.hasNext()) {
+      try {
+        token = tokens.consume();
+      } catch (EmptyQueueException e) {
+        throw new RuntimeException(e);
+      }
+      throw new UnexpectedElementException(token.getValue(), token.getPosition());
+    }
     return jsonElement;
   }
 
@@ -292,6 +300,9 @@ public class JSON {
           }
 
           if (jsonValue.isNumber() && property.dontShowIfZero() && jsonValue.toInteger() == 0) {
+            continue;
+          }
+          if ((jsonValue.isArray() || jsonValue.isObject()) && property.dontShowIfEmpty() && jsonValue.isEmpty()) {
             continue;
           }
         }

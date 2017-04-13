@@ -75,6 +75,14 @@ public @interface JSONProperty {
   boolean dontShowIfNull() default false;
 
   /**
+   * Indicate if the property should be included in the JSON object if it is null or not.
+   *
+   * @return {@code true} if the property with empty value will not show in the JSON object,
+   * {@code false} otherwise.
+   */
+  boolean dontShowIfEmpty() default false;
+
+  /**
    *
    * Return the referenced field name used for an object in the annotated field. The default value
    * is {@code id}.

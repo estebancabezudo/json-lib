@@ -44,7 +44,7 @@ public class UnexpectedElementException extends JSONParseException {
    * @param position the position to store.
    */
   public UnexpectedElementException(String value, Position position) {
-    super("Unexpected element " + value + ".", position);
+    super("Unexpected element: " + value, position);
   }
 
   /**

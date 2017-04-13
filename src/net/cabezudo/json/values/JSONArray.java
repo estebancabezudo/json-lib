@@ -265,6 +265,16 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
+   * Returns whether the element is empty or not.
+   *
+   * @return {@code true} if the array hasn't elements, {@code false} otherwise.
+   */
+  @Override
+  public boolean isEmpty() {
+    return !hasElements();
+  }
+
+  /**
    * Returns an iterator over the properties in {@code this}
    * {@link net.cabezudo.json.values.JSONArray} in proper sequence.
    *

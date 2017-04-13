@@ -23,6 +23,8 @@
  */
 package net.cabezudo.json;
 
+import net.cabezudo.json.exceptions.InvalidOperationException;
+
 /**
  * The {code JSONElement} class is an abstract class to implement every element in a JSON structure.
  *
@@ -98,6 +100,16 @@ public abstract class JSONElement implements JSONable {
    */
   public boolean isBoolean() {
     return false;
+  }
+
+  /**
+   * Returns whether the element is empty or not.
+   *
+   * @throws InvalidOperationException if the element can't be empty or not empty.
+   * @return {@code true} if the element is empty, {@code false} otherwise.
+   */
+  public boolean isEmpty() {
+    throw new InvalidOperationException("A " + this.getClass().getName() + " can't be empty or not empty");
   }
 
   /**
