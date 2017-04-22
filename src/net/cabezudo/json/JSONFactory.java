@@ -202,29 +202,30 @@ public class JSONFactory {
     switch (type) {
       case STRING:
         jsonValue = createJSONString(token);
-        return jsonValue;
+        break;
       case NUMBER:
         BigDecimal bigDecimal = new BigDecimal(token.getValue());
         jsonValue = new JSONNumber(bigDecimal);
-        return jsonValue;
+        break;
       case LEFT_BRACE:
         jsonValue = getJSONObject(tokens, token.getPosition());
-        return jsonValue;
+        break;
       case LEFT_BRACKET:
         jsonValue = getJSONArray(tokens, token.getPosition());
-        return jsonValue;
+        break;
       case FALSE:
       case TRUE:
         boolean booleanValue = "true".equals(token.getValue());
         jsonValue = JSONBoolean.get(booleanValue);
-        return jsonValue;
+        break;
       case NULL:
         jsonValue = new JSONNull();
-        return jsonValue;
+        break;
       default:
         position = token.getPosition();
         throw new UnexpectedElementException("value", token.getValue(), position);
     }
+    return jsonValue;
   }
 
   JSONArray getJSONArray(Tokens tokens, Position position) throws JSONParseException {
