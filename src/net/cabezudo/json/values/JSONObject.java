@@ -76,6 +76,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (jsonData instanceof JSONObject) {
       JSONObject jsonObject = (JSONObject) jsonData;
       copy(jsonObject);
+    } else {
+      throw new JSONParseException("I can't parse the parameter to a JSONObject.", Position.INITIAL);
     }
   }
 
@@ -155,7 +157,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     }
   }
 
-  private List<String> getKeyList() {
+  public List<String> getKeyList() {
     return new ArrayList(keys);
   }
 
@@ -813,6 +815,20 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Return the value of the property with the name passed converted to {@code Calendar} using the
+   * pattern parameter.
+   *
+   * @param propertyName the name of the property to return.
+   * @param pattern the pattern to use for the conversion.
+   * @return a {@code Calendar}.
+   * @throws PropertyNotExistException if the property doesn't exist.
+   */
+  public Calendar getCalendar(String propertyName, String pattern) throws PropertyNotExistException {
+    JSONValue jsonValue = getValue(propertyName);
+    return jsonValue.toCalendar(pattern);
+  }
+
+  /**
    * Return the value of the property with the index passed converted to {@code Calendar}. If the
    * property doesn't exist throw a {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
    *
@@ -823,6 +839,21 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public Calendar getCalendar(int index) throws PropertyNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toCalendar();
+  }
+
+  /**
+   * Return the value of the property with the index passed converted to {@code Calendar} using the
+   * pattern parameter. If the property doesn't exist throw a
+   * {@link net.cabezudo.json.exceptions.PropertyNotExistException}.
+   *
+   * @param index the index of the property to return.
+   * @param pattern the pattern to use for the conversion.
+   * @return a {@code Calendar}.
+   * @throws PropertyNotExistException if the index is out of range.
+   */
+  public Calendar getCalendar(int index, String pattern) throws PropertyNotExistException {
+    JSONValue jsonValue = getValue(index);
+    return jsonValue.toCalendar(pattern);
   }
 
   /**
@@ -1178,6 +1209,22 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Return the value of the property with the name passed converted to {@code Calendar} using the
+   * pattern parameter. If the property doesn't exist return {@code null}.
+   *
+   * @param propertyName the name of the property to return.
+   * @param pattern the pattern to use for the conversion.
+   * @return a {@code Calendar}.
+   */
+  public Calendar getNullCalendar(String propertyName, String pattern) {
+    JSONValue jsonValue = getNullValue(propertyName);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCalendar(pattern);
+  }
+
+  /**
    * Return the value of the property with the index passed converted to {@code Calendar}. If the
    * property doesn't exist return {@code null}.
    *
@@ -1190,6 +1237,22 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       return null;
     }
     return jsonValue.toCalendar();
+  }
+
+  /**
+   * Return the value of the property with the index passed converted to {@code Calendar} using the
+   * pattern parameter. If the property doesn't exist return {@code null}.
+   *
+   * @param index the index of the property to return.
+   * @param pattern the patter to use for the conversion
+   * @return a {@code Calendar}.
+   */
+  public Calendar getNullCalendar(int index, String pattern) {
+    JSONValue jsonValue = getNullValue(index);
+    if (jsonValue == null) {
+      return null;
+    }
+    return jsonValue.toCalendar(pattern);
   }
 
   /**

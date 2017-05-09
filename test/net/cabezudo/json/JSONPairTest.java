@@ -6,7 +6,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import net.cabezudo.json.exceptions.JSONConvertionException;
+import net.cabezudo.json.exceptions.JSONConversionException;
 import net.cabezudo.json.values.JSONString;
 import net.cabezudo.json.values.JSONValue;
 import static org.junit.Assert.assertEquals;
@@ -547,7 +547,7 @@ public class JSONPairTest {
     jsonPair.toLong();
   }
 
-  @Test(expected = JSONConvertionException.class)
+  @Test(expected = JSONConversionException.class)
   public void testToObject() {
     Log.debug("Convert the element into a JSONObject object.");
     JSONPair jsonPair = new JSONPair("key", "A string");

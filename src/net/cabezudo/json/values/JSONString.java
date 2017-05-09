@@ -34,7 +34,7 @@ import java.util.List;
 import java.util.Objects;
 import net.cabezudo.json.JSON;
 import net.cabezudo.json.Position;
-import net.cabezudo.json.exceptions.JSONConvertionException;
+import net.cabezudo.json.exceptions.JSONConversionException;
 
 /**
  * A {@link net.cabezudo.json.values.JSONString} is an object extended from {@link JSONValue} object
@@ -281,17 +281,23 @@ public class JSONString extends JSONValue<JSONString> {
    * {@code parse} method and the pattern specified for {@link JSON#SIMPLE_DATE_FORMAT_PATTERN}.
    *
    * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code Calendar}.
-   * @throws JSONConvertionException if the {@code String} does not contain a parseable
+   * @throws JSONConversionException if the {@code String} does not contain a parseable
    * {@code Calendar}.
    */
   @Override
   public Calendar toCalendar() {
-    SimpleDateFormat sdf = new SimpleDateFormat(JSON.SIMPLE_DATE_FORMAT_PATTERN);
+    return toCalendar(JSON.SIMPLE_DATE_FORMAT_PATTERN);
+  }
+
+  @Override
+  public Calendar toCalendar(String pattern) {
+    SimpleDateFormat sdf = new SimpleDateFormat(pattern);
+
     Date date;
     try {
       date = sdf.parse(value);
     } catch (ParseException e) {
-      throw new JSONConvertionException("I can't convert a " + value + " to a Calendar.", e);
+      throw new JSONConversionException("I can't convert a " + value + " to a Calendar.", e);
     }
     Calendar calendar = Calendar.getInstance();
     calendar.setTime(date);

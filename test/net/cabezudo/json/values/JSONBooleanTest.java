@@ -1,5 +1,7 @@
 package net.cabezudo.json.values;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
@@ -49,6 +51,14 @@ public class JSONBooleanTest {
   }
 
   @Test
+  public void testCompareTo() {
+    JSONBoolean a = JSONBoolean.TRUE;
+    JSONBoolean b = JSONBoolean.TRUE;
+
+    assertTrue(a.compareTo(b) == 0);
+  }
+
+  @Test
   public void testIsArray() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
     assertEquals(false, jsonBoolean.isArray());
@@ -58,6 +68,42 @@ public class JSONBooleanTest {
   public void testIsBoolean() {
     JSONBoolean jsonBoolean = JSONBoolean.TRUE;
     assertEquals(true, jsonBoolean.isBoolean());
+  }
+
+  @Test
+  public void testToTrueBigDecimal() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    BigDecimal a = jsonBoolean.toBigDecimal();
+    BigDecimal b = new BigDecimal(1);
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseBigDecimal() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    BigDecimal a = jsonBoolean.toBigDecimal();
+    BigDecimal b = new BigDecimal(0);
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueBigInteger() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    BigInteger a = jsonBoolean.toBigInteger();
+    BigInteger b = new BigInteger("1");
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseBigInteger() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    BigInteger a = jsonBoolean.toBigInteger();
+    BigInteger b = new BigInteger("0");
+
+    assertEquals(a, b);
   }
 
   @Test
@@ -115,6 +161,96 @@ public class JSONBooleanTest {
   }
 
   @Test
+  public void testToTrueByte() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Byte a = jsonBoolean.toByte();
+    Byte b = 1;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseByte() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Byte a = jsonBoolean.toByte();
+    Byte b = 0;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueCharacter() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Character a = jsonBoolean.toCharacter();
+    Character b = '1';
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseCharacter() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Character a = jsonBoolean.toCharacter();
+    Character b = '0';
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueDouble() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Double a = jsonBoolean.toDouble();
+    Double b = 1d;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseDouble() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Double a = jsonBoolean.toDouble();
+    Double b = 0d;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueFloat() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Float a = jsonBoolean.toFloat();
+    Float b = 1f;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseFloat() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Float a = jsonBoolean.toFloat();
+    Float b = 0f;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueInteger() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Integer a = jsonBoolean.toInteger();
+    Integer b = 1;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseInteger() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Integer a = jsonBoolean.toInteger();
+    Integer b = 0;
+
+    assertEquals(a, b);
+  }
+
+  @Test
   public void testToJSON() {
     JSONBoolean a = JSONBoolean.TRUE;
     JSONBoolean b = JSONBoolean.FALSE;
@@ -159,14 +295,48 @@ public class JSONBooleanTest {
   }
 
   @Test
-  public void testToStringArray() {
-    JSONBoolean a = JSONBoolean.TRUE;
-    JSONBoolean b = JSONBoolean.FALSE;
+  public void testToTrueLong() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Long a = jsonBoolean.toLong();
+    Long b = 1l;
 
-    String stirngTrue = a.toString();
-    String stirngFalse = b.toString();
-
-    assertEquals("true", stirngTrue);
-    assertEquals("false", stirngFalse);
+    assertEquals(a, b);
   }
+
+  @Test
+  public void testToFalseLong() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Long a = jsonBoolean.toLong();
+    Long b = 0l;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToTrueShort() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    Short a = jsonBoolean.toShort();
+    Short b = 1;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToFalseShort() {
+    JSONBoolean jsonBoolean = JSONBoolean.FALSE;
+    Short a = jsonBoolean.toShort();
+    Short b = 0;
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testToStringArray() {
+    JSONBoolean jsonBoolean = JSONBoolean.TRUE;
+    String[] a = jsonBoolean.toStringArray();
+
+    assertTrue(a.length == 1);
+    assertEquals("true", a[0]);
+  }
+
 }

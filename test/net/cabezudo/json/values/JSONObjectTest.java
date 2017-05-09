@@ -9,6 +9,7 @@ import net.cabezudo.json.JSON;
 import net.cabezudo.json.JSONElement;
 import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Log;
+import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
@@ -54,6 +55,28 @@ public class JSONObjectTest {
   private final int SHORT = 22;
   private final int STRING = 23;
 
+  @Test(expected = JSONParseException.class)
+  public void testConstructorParseException() throws JSONParseException {
+    JSONObject jsonObject = new JSONObject("[1, 3, 4, 5]");
+  }
+
+  @Test
+  public void testPositionConstructor() {
+    JSONObject jsonObject = new JSONObject(Position.INITIAL);
+  }
+
+  @Test
+  public void testPairsConstructor() throws JSONParseException {
+    JSONPair a = new JSONPair("a", "a");
+    JSONPair b = new JSONPair("b", "b");
+    JSONPair c = new JSONPair("c", "c");
+    JSONObject jsonObjectExpected = new JSONObject("{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
+    JSONObject jsonObjectCreated = new JSONObject(a, b, c);
+    System.out.println(jsonObjectExpected);
+    System.out.println(jsonObjectCreated);
+    assertEquals(jsonObjectExpected.toString(), jsonObjectCreated.toString());
+  }
+
   @Test
   public void testAdd() {
     JSONObject jsonObject = new JSONObject();
@@ -66,8 +89,24 @@ public class JSONObjectTest {
     assertEquals("{ \"name\": \"Esteban\", \"numberOfLegs\": 2 }", s);
   }
 
+  @Test(expected = RuntimeException.class)
+  public void testAddTheSameKey() {
+    JSONObject jsonObject = new JSONObject();
+    JSONPair jsonNamePair = new JSONPair("name", "Esteban");
+    jsonObject.add(jsonNamePair);
+    JSONPair jsonNumberOfLegsPair = new JSONPair("numberOfLegs", 2);
+    jsonObject.add(jsonNumberOfLegsPair);
+    jsonNamePair = new JSONPair("name", "Esteban");
+    jsonObject.add(jsonNamePair);
+  }
+
   @Test
-  public void testCompareTo() {
+  public void testGetKeyList() throws JSONParseException {
+    JSONObject jsonObject = new JSONObject("{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
+    List<String> keyList = jsonObject.getKeyList();
+    assertEquals("a", keyList.get(0));
+    assertEquals("b", keyList.get(1));
+    assertEquals("c", keyList.get(2));
   }
 
   @Test

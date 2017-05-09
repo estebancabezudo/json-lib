@@ -5,16 +5,41 @@ import java.math.BigInteger;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
+import net.cabezudo.json.exceptions.JSONConversionException;
 import org.junit.Assert;
-import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
+import org.junit.Test;
 
 /**
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 08/18/2016
  */
 public class JSONStringTest {
+
+  @Test
+  public void testBigIntegerConstructor() {
+    String s = "1234567";
+    BigInteger bi = new BigInteger(s);
+    JSONString a = new JSONString(s);
+    JSONString b = new JSONString(bi);
+
+    assertEquals(a, b);
+  }
+
+  @Test
+  public void testCalendarConstructor() {
+    String s = "1974-01-30T14:20:12.125Z";
+
+    JSONString a = new JSONString(s);
+
+    Calendar calendar = Calendar.getInstance();
+    calendar.set(1974, 0, 30, 14, 20, 12);
+    calendar.set(Calendar.MILLISECOND, 125);
+    JSONString b = new JSONString(calendar);
+
+    assertEquals(a, b);
+  }
 
   @Test
   public void testCompareTo() {
@@ -38,6 +63,17 @@ public class JSONStringTest {
     assertTrue(a.equals(c));
     assertTrue(!b.equals(a));
     assertTrue(c.equals(a));
+  }
+
+  @Test
+  public void testOtherEquals() {
+    JSONString a = new JSONString("Esteban");
+    String b = null;
+
+    assertTrue(!a.equals(b));
+
+    b = "invalid class";
+    assertTrue(!a.equals(b));
   }
 
   @Test
@@ -148,6 +184,25 @@ public class JSONStringTest {
 
     Calendar calendar = a.toCalendar();
     assertEquals(expectedCalendar, calendar);
+  }
+
+  @Test
+  public void testToCalendarWithPattern() {
+    JSONString a = new JSONString("1974-01-30");
+
+    Calendar expectedCalendar = Calendar.getInstance();
+
+    expectedCalendar.set(1974, 0, 30, 0, 0, 0);
+    expectedCalendar.set(Calendar.MILLISECOND, 0);
+
+    Calendar calendar = a.toCalendar("yyyy-MM-dd");
+    assertEquals(expectedCalendar, calendar);
+  }
+
+  @Test(expected = JSONConversionException.class)
+  public void testToCalendarParseException() {
+    JSONString a = new JSONString("wrong pattern");
+    a.toCalendar();
   }
 
   @Test

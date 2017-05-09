@@ -29,7 +29,7 @@ package net.cabezudo.json.exceptions;
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 01/21/2016
  */
-public class JSONConvertionException extends RuntimeException {
+public class JSONConversionException extends RuntimeException {
 
   private static final long serialVersionUID = 4633405861210769003L;
 
@@ -42,7 +42,7 @@ public class JSONConvertionException extends RuntimeException {
    * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
    * the cause is nonexistent or unknown.)
    */
-  public JSONConvertionException(String message, Throwable cause) {
+  public JSONConversionException(String message, Throwable cause) {
     super(message, cause);
   }
 
@@ -52,7 +52,7 @@ public class JSONConvertionException extends RuntimeException {
    *
    * @param message the detail message.
    */
-  public JSONConvertionException(String message) {
+  public JSONConversionException(String message) {
     super(message);
   }
 }
