@@ -38,6 +38,7 @@ import net.cabezudo.json.JSON;
 import net.cabezudo.json.JSONElement;
 import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Position;
+import net.cabezudo.json.exceptions.InvalidReferencedValue;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
@@ -148,7 +149,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param object a POJO {@code Object}.
    */
   public JSONObject(Object object) {
-    this(JSON.toJSONTree(object).toObject());
+    this(JSON.toJSONTree(object).toJSONObject());
   }
 
   private void copy(JSONObject jsonObject) {
@@ -520,7 +521,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (jsonValue == null) {
       return null;
     }
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -591,7 +592,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       String nextPropertyName = fullPropertyName.substring(newStartPosition);
 
       if (nextLevelValue.isObject()) {
-        JSONObject nextLevelObject = nextLevelValue.toObject();
+        JSONObject nextLevelObject = nextLevelValue.toJSONObject();
         return nextLevelObject.digNullValue(nextPropertyName, newStartPosition + oldPosition);
       }
       if (nextLevelValue.isArray()) {
@@ -614,7 +615,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    */
   public JSONObject digObject(String fullPropertyName) throws PropertyNotExistException {
     JSONValue jsonValue = digValue(fullPropertyName);
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1477,7 +1478,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (jsonValue == null) {
       return null;
     }
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1492,7 +1493,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (jsonValue == null) {
       return null;
     }
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1599,7 +1600,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    */
   public JSONObject getObject(String propertyName) throws PropertyNotExistException {
     JSONValue jsonValue = getValue(propertyName);
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1613,7 +1614,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    */
   public JSONObject getObject(int index) throws PropertyNotExistException {
     JSONValue jsonValue = getValue(index);
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1630,6 +1631,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       String keyName = jsonPair.getKey();
       if (keyName.equals(referenceFieldNameToSearch)) {
         JSONValue jsonReferenceValue = jsonPair.getValue();
+        if (jsonReferenceValue.isObject()) {
+          throw new InvalidReferencedValue("The referenced property value can be an object.");
+        }
         return jsonReferenceValue;
       }
     }
@@ -1656,7 +1660,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     JSONObject jsonReferencedObject = new JSONObject();
 
     for (JSONPair jsonPair : list) {
-      JSONElement referencedElement = jsonPair.getValue().toReferencedElement();
+      JSONValue jsonValue = jsonPair.getValue();
+      JSONElement referencedElement = jsonValue.toReferencedElement();
 
       JSONPair newJSONPair = new JSONPair(jsonPair.getKey(), referencedElement, getPosition());
       jsonReferencedObject.add(newJSONPair);
@@ -1903,7 +1908,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @return {@code this} object.
    */
   @Override
-  public JSONObject toObject() {
+  public JSONObject toJSONObject() {
     return this;
   }
 

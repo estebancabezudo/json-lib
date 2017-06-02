@@ -345,7 +345,7 @@ public class JSONPair extends JSONElement implements Comparable<JSONPair> {
    * @return a {@link JSONObject} with the conversion of value.
    */
   public JSONObject toObject() {
-    return value.toObject();
+    return value.toJSONObject();
   }
 
   /**

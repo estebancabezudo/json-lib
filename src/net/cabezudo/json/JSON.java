@@ -217,7 +217,7 @@ public class JSON {
    * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
    */
   public static JSONObject toJSONObject(Object object) {
-    return toJSONTree(object).toObject();
+    return toJSONTree(object).toJSONObject();
   }
 
   /**
@@ -306,7 +306,7 @@ public class JSON {
             continue;
           }
         }
-        jsonObject.setReferenceFieldName(property.field());
+        jsonValue.setReferenceFieldName(property.field());
         JSONPair jsonPair = new JSONPair(fieldName, jsonValue);
         jsonObject.add(jsonPair);
       }

@@ -278,7 +278,7 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
    *
    * @return a {@link net.cabezudo.json.values.JSONObject} object if the conversion is possible.
    */
-  public JSONObject toObject() {
+  public JSONObject toJSONObject() {
     throw new JSONConversionException("I can't convert a " + this.getClass().getName() + " to a JSONObject");
   }
 

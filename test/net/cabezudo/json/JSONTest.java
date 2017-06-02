@@ -45,7 +45,7 @@ public class JSONTest {
   public void testParse() throws ElementNotExistException {
     String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
     try {
-      JSONObject jsonObject = JSON.parse(jsonUnparsedString).toObject();
+      JSONObject jsonObject = JSON.parse(jsonUnparsedString).toJSONObject();
 
       JSONArray jsonArray = jsonObject.getJSONArray("array");
       JSONValue jsonValue = jsonArray.getValue(1);
@@ -60,7 +60,7 @@ public class JSONTest {
       jsonValue = jsonObject.getValue("anotherNumber");
       assertTrue(jsonValue.isNumber());
 
-      jsonObject = jsonObject.getValue("object").toObject();
+      jsonObject = jsonObject.getValue("object").toJSONObject();
       assertTrue(jsonObject.isObject());
 
       jsonValue = jsonObject.getValue("string");
@@ -93,7 +93,7 @@ public class JSONTest {
       URI uri = temporaryFile.toURI();
       path = Paths.get(uri);
 
-      JSONObject jsonObject = JSON.parse(path, "utf-8").toObject();
+      JSONObject jsonObject = JSON.parse(path, "utf-8").toJSONObject();
 
       JSONArray jsonArray = jsonObject.getJSONArray("array");
       JSONValue jsonValue = jsonArray.getValue(1);
@@ -108,7 +108,7 @@ public class JSONTest {
       jsonValue = jsonObject.getValue("anotherNumber");
       assertTrue(jsonValue.isNumber());
 
-      jsonObject = jsonObject.getValue("object").toObject();
+      jsonObject = jsonObject.getValue("object").toJSONObject();
       assertTrue(jsonObject.isObject());
 
       jsonValue = jsonObject.getValue("string");
@@ -208,7 +208,7 @@ public class JSONTest {
 
     String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": {  }, \"info\": \"one\" }";
 
-    JSONObject jsonValue = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());
   }
 
@@ -227,7 +227,7 @@ public class JSONTest {
 
     String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": [  ], \"info\": \"one\" }";
 
-    JSONObject jsonValue = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());
   }
 
@@ -243,7 +243,7 @@ public class JSONTest {
             + "  }\n"
             + "}\n";
     try {
-      JSONObject jsonData = JSON.parse(jsonStringData).toObject();
+      JSONObject jsonData = JSON.parse(jsonStringData).toJSONObject();
       assertEquals("1.00.00", jsonData.getString("coreVersion"));
       assertEquals("es", jsonData.digString("general.defaultLocale"));
       assertEquals("MX", jsonData.digString("general.defaultCountry"));
@@ -301,7 +301,7 @@ public class JSONTest {
 
     try {
       Types types = new Types();
-      JSONObject jsonTypesValue = JSON.toJSONTree(types).toObject();
+      JSONObject jsonTypesValue = JSON.toJSONTree(types).toJSONObject();
       assertEquals(BigDecimal.class, jsonTypesValue.getBigDecimal("bigDecimal").getClass());
       assertEquals(BigInteger.class, jsonTypesValue.getBigInteger("bigInteger").getClass());
       assertEquals(byte[].class, jsonTypesValue.getByteArray("byteArray").getClass());

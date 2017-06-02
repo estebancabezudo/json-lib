@@ -82,12 +82,12 @@ public class Examples {
 
     System.out.println("Is an object: " + jsonValue.isObject());
 
-    JSONObject jsonObject = jsonValue.toObject();
+    JSONObject jsonObject = jsonValue.toJSONObject();
   }
 
   private void testGetPropertiesFromAnObject() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get properties from an object.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     try {
       JSONValue jsonNameValue = jsonObject.getValue("name");
@@ -104,7 +104,7 @@ public class Examples {
     System.out.println("maritalStatus.name: " + jsonMaritalStatusNameValue);
 
     JSONValue jsonMaritalStatusValue = jsonObject.getNullValue("maritalStatus");
-    JSONObject jsonMaritalStatusObject = jsonMaritalStatusValue.toObject();
+    JSONObject jsonMaritalStatusObject = jsonMaritalStatusValue.toJSONObject();
     JSONValue jsonHappyValue = jsonMaritalStatusObject.getNullValue("happy");
     boolean happy = jsonHappyValue.toBoolean();
     System.out.println("Is happy: " + happy);
@@ -112,7 +112,7 @@ public class Examples {
 
   private void testGetABooleanInOneLine() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get a boolean in one line.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONObject jsonMaritalStatusObject = jsonObject.getNullObject("maritalStatus");
     Boolean happy = jsonMaritalStatusObject.getNullBoolean("happy");
@@ -121,7 +121,7 @@ public class Examples {
 
   private void testDigABooleanInOneLine() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Dig a boolean in one line.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     Boolean happy = jsonObject.digNullBoolean("maritalStatus.happy");
     System.out.println("Is happy: " + happy);
@@ -129,7 +129,7 @@ public class Examples {
 
   private void testGetAPropertyUsingAnIndex() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get a property using an index.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     int age = jsonObject.getNullInteger(1);
     System.out.println("age: " + age);
@@ -137,11 +137,11 @@ public class Examples {
 
   private void testTraverseAnArray() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Traverse an array.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONArray jsonArray = jsonObject.getNullJSONArray("childs");
     for (JSONValue jsonItemValue : jsonArray) {
-      JSONObject child = jsonItemValue.toObject();
+      JSONObject child = jsonItemValue.toJSONObject();
       String name = child.getNullString("name");
       int age = child.getNullInteger("age");
       System.out.println(name + " as " + age + " years old.");
@@ -150,7 +150,7 @@ public class Examples {
 
   private void testGetTheNumberOfChildren() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get the number of children.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     int objectSize = jsonObject.size();
     System.out.println("Object size: " + objectSize);
@@ -161,7 +161,7 @@ public class Examples {
 
   private void testAddPropertiesToAnObject() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Add properties to an object.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONPair jsonHairColorPair = new JSONPair("hairColor", "black");
     jsonObject.add(jsonHairColorPair);
@@ -170,7 +170,7 @@ public class Examples {
 
   private void testRemovePropertiesFromAnObject() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Remove properties from an object.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     jsonObject.remove("hairColor");
     System.out.println(Formatter.indent(jsonObject.toJSON()));
@@ -178,7 +178,7 @@ public class Examples {
 
   private void testGetChildsFromAnObject() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get childs from an object.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     List<JSONPair> childs = jsonObject.getChilds();
     for (JSONPair child : childs) {
@@ -188,7 +188,7 @@ public class Examples {
 
   private void testOnePairFromAnObjectUsingThePropertyName() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** One pair from an object using the property name.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONPair jsonPair = jsonObject.getNullElement("age");
     System.out.println(jsonPair);
@@ -196,7 +196,7 @@ public class Examples {
 
   private void testGetAReferencedElement() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get a referenced element.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONValue jsonReferencedElement = jsonObject.toReferencedElement();
     System.out.println(jsonReferencedElement);
@@ -204,7 +204,7 @@ public class Examples {
 
   private void testGetACustomReferencedObject() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get a custom referenced object.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONObject maritalStatus = jsonObject.getNullObject("maritalStatus");
     maritalStatus.setReferenceFieldName("name");
@@ -238,7 +238,7 @@ public class Examples {
 
   private void testGetAnElementFromArrayUsingTheIndex() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Get an element from an array using the index.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
     JSONArray jsonArray = jsonObject.getNullJSONArray("childs");
     JSONObject jsonFirstChild = jsonArray.getNullObject(0);
     System.out.println("First child: " + jsonFirstChild);
@@ -246,7 +246,7 @@ public class Examples {
 
   private void testDigStringFromAnArray() throws JSONParseException {
     System.out.println("\n" + (char) 27 + "[32m*** Dig string from an array.");
-    JSONObject jsonObject = JSON.parse(jsonStringData).toObject();
+    JSONObject jsonObject = JSON.parse(jsonStringData).toJSONObject();
 
     JSONObject jsonChild = jsonObject.digNullObject("childs.[0]");
     System.out.println("Child: " + jsonChild);
@@ -260,7 +260,7 @@ public class Examples {
 
     System.out.println(JSON.SIMPLE_DATE_FORMAT_PATTERN);
 
-    JSONObject jsonObject = JSON.parse("{ \"date\": \"2017-01-23T11:20:32.222Z-0000\" }").toObject();
+    JSONObject jsonObject = JSON.parse("{ \"date\": \"2017-01-23T11:20:32.222Z-0000\" }").toJSONObject();
 
     Calendar calendar = jsonObject.getNullCalendar("date");
     System.out.println("Calendar: " + calendar);

@@ -742,7 +742,7 @@ public class JSONObjectTest {
 
     pair = childs.get(BOOK);
     assertEquals("book", pair.getKey());
-    JSONObject jsonBook = pair.getValue().toObject();
+    JSONObject jsonBook = pair.getValue().toJSONObject();
     int id = jsonBook.getInteger("id");
     String name = jsonBook.getString("name");
     assertEquals(1, id);
@@ -1509,7 +1509,7 @@ public class JSONObjectTest {
     JSONObject jsonObject = new JSONObject(types);
 
     JSONValue jsonTypes = jsonObject.toReferencedElement();
-    JSONObject referencedObject = ((JSONValue) jsonTypes.toReferencedElement()).toObject();
+    JSONObject referencedObject = ((JSONValue) jsonTypes.toReferencedElement()).toJSONObject();
     JSONPair referencedPair = referencedObject.getElement("book");
     assertEquals("\"book\": 1", referencedPair.toJSON());
   }
@@ -1753,7 +1753,7 @@ public class JSONObjectTest {
           break;
         case BOOK:
           assertEquals("book", jsonPair.getKey());
-          JSONObject jsonBook = jsonPair.getValue().toObject();
+          JSONObject jsonBook = jsonPair.getValue().toJSONObject();
           int id = jsonBook.getInteger("id");
           String name = jsonBook.getString("name");
           assertEquals(1, id);
@@ -1854,7 +1854,7 @@ public class JSONObjectTest {
     value = array[STRING];
     assertEquals(new JSONString("Esteban"), value);
 
-    JSONObject jsonBook = array[BOOK].toObject();
+    JSONObject jsonBook = array[BOOK].toJSONObject();
     int id = jsonBook.getInteger("id");
     String name = jsonBook.getString("name");
     assertEquals(1, id);
@@ -1958,7 +1958,7 @@ public class JSONObjectTest {
     value = array.getValue(STRING);
     assertEquals(new JSONString("Esteban"), value);
 
-    JSONObject jsonBook = array.getValue(BOOK).toObject();
+    JSONObject jsonBook = array.getValue(BOOK).toJSONObject();
     int id = jsonBook.getInteger("id");
     String name = jsonBook.getString("name");
     assertEquals(1, id);
@@ -2050,7 +2050,7 @@ public class JSONObjectTest {
     value = array[STRING].getValue();
     assertEquals(new JSONString("Esteban"), value);
 
-    JSONObject jsonBook = array[BOOK].getValue().toObject();
+    JSONObject jsonBook = array[BOOK].getValue().toJSONObject();
     int id = jsonBook.getInteger("id");
     String name = jsonBook.getString("name");
     assertEquals(1, id);
@@ -2061,7 +2061,7 @@ public class JSONObjectTest {
   public void testToJSONReferencedTree() {
     Log.debug("Create a refered JSON tree using Java objects.");
     Data data = new Data();
-    JSONObject jsonObject = JSON.toJSONTree(data).toObject();
+    JSONObject jsonObject = JSON.toJSONTree(data).toJSONObject();
     JSONElement jsonReferencedTree = jsonObject.toReferencedObject();
 
     String expectedString = "{ \"version\": 1, \"countryId\": 1, \"countryName\": { \"version\": 1, \"language\": 97, \"nameType\": 1, \"word\": 2 } }";
@@ -2083,7 +2083,7 @@ public class JSONObjectTest {
 
     Storage storage = new Storage(69, bookList, mostImportantBook);
 
-    JSONObject jsonStorageObject = JSON.toJSONTree(storage).toObject();
+    JSONObject jsonStorageObject = JSON.toJSONTree(storage).toJSONObject();
     assertEquals("{ \"id\": 69, \"list\": [ { \"id\": 1, \"name\": \"El doble.\" }, { \"id\": 8, \"name\": \"El principito.\" }, { \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" } ], \"mostImportantBook\": { \"id\": 8, \"name\": \"El principito.\" } }", jsonStorageObject.toJSON());
 
     JSONElement jsonStorageReferencedTree = jsonStorageObject.toReferencedObject();

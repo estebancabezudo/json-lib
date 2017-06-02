@@ -576,7 +576,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONObject getObject(int index) throws ElementNotExistException {
     JSONValue jsonValue = getValue(index);
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -767,7 +767,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     if (jsonValue == null) {
       return null;
     }
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -837,7 +837,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
       String nextPropertyName = fullPropertyName.substring(p);
 
       if (nextLevelValue.isObject()) {
-        JSONObject nextLevelObject = nextLevelValue.toObject();
+        JSONObject nextLevelObject = nextLevelValue.toJSONObject();
         return nextLevelObject.digNullValue(nextPropertyName, p + oldPosition);
       }
       if (nextLevelValue.isArray()) {
@@ -1054,7 +1054,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
    */
   public JSONObject digObject(String fullPropertyName) throws PropertyNotExistException {
     JSONValue jsonValue = digValue(fullPropertyName);
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
@@ -1282,7 +1282,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     if (jsonValue == null) {
       return null;
     }
-    return jsonValue.toObject();
+    return jsonValue.toJSONObject();
   }
 
   /**
