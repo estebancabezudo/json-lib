@@ -1631,8 +1631,8 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       String keyName = jsonPair.getKey();
       if (keyName.equals(referenceFieldNameToSearch)) {
         JSONValue jsonReferenceValue = jsonPair.getValue();
-        if (jsonReferenceValue.isObject()) {
-          throw new InvalidReferencedValue("The referenced property value can be an object.");
+        if (jsonReferenceValue.isObject() || jsonReferenceValue.isArray() || jsonReferenceValue.isBoolean()) {
+          throw new InvalidReferencedValue("The reference property value can't be a " + jsonReferenceValue.getClass().getSimpleName() + ". Property name: " + keyName + ".");
         }
         return jsonReferenceValue;
       }
