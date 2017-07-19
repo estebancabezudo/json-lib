@@ -9,7 +9,7 @@ import net.cabezudo.json.annotations.JSONProperty;
 public enum NameType {
   SHORT, LONG;
 
-  @JSONProperty(field = "index")
+  @JSONProperty
   private final int index;
 
   private NameType() {

@@ -2066,6 +2066,8 @@ public class JSONObjectTest {
 
     String expectedString = "{ \"version\": 1, \"countryId\": 1, \"countryName\": { \"version\": 1, \"language\": 97, \"nameType\": 1, \"word\": 2 } }";
 
+    System.out.println("Expected: " + expectedString);
+    System.out.println("  Result: " + jsonReferencedTree.toJSON());
     assertEquals(expectedString, jsonReferencedTree.toJSON());
 
     BookList bookList = new BookList();
@@ -2084,9 +2086,11 @@ public class JSONObjectTest {
     Storage storage = new Storage(69, bookList, mostImportantBook);
 
     JSONObject jsonStorageObject = JSON.toJSONTree(storage).toJSONObject();
+    System.out.println(jsonStorageObject.toJSON());
     assertEquals("{ \"id\": 69, \"list\": [ { \"id\": 1, \"name\": \"El doble.\" }, { \"id\": 8, \"name\": \"El principito.\" }, { \"id\": 13, \"name\": \"Crónica de una muerte anunciada.\" } ], \"mostImportantBook\": { \"id\": 8, \"name\": \"El principito.\" } }", jsonStorageObject.toJSON());
 
     JSONElement jsonStorageReferencedTree = jsonStorageObject.toReferencedObject();
+    System.out.println(jsonStorageReferencedTree.toJSON());
     assertEquals("{ \"id\": 69, \"list\": [ 1, 8, 13 ], \"mostImportantBook\": 8 }", jsonStorageReferencedTree.toJSON());
   }
 

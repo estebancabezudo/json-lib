@@ -14,7 +14,7 @@ public class CountryName {
   @JSONProperty
   private final Language language = new Language();
 
-  @JSONProperty()
+  @JSONProperty(field = "index")
   private final NameType nameType = NameType.LONG;
 
   @JSONProperty
