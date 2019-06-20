@@ -48,37 +48,27 @@ import net.cabezudo.json.values.JSONValue;
 /**
  * Provides the methods to parse and create JSON objects.
  * <p>
- * JSON class allow you to parse a string with JSON format in to a JSON tree object to be
- * manipulated. The input may be obtained from a file on the file system. The JSON class allow you
- * to create a JSON tree from any object and create a tree using the references to the object
+ * JSON class allow you to parse a string with JSON format in to a JSON tree object to be manipulated. The input may be obtained from a file on the file system. The JSON class allow you to create a
+ * JSON tree from any object and create a tree using the references to the object
  * <h1>Parse</h1>
  * <p>
- * The JSON tree obtained includes many methods to manipulate its members, such as add elements,
- * delete elements and set new values.
+ * The JSON tree obtained includes many methods to manipulate its members, such as add elements, delete elements and set new values.
  * <h1>JSON tree</h1>
- * The JSON tree is a tree formed by objects that extends from
- * {@link net.cabezudo.json.values.JSONValue}, representing the JSON elements.
+ * The JSON tree is a tree formed by objects that extends from {@link net.cabezudo.json.values.JSONValue}, representing the JSON elements.
  * <p>
  * There are six different types of elements in a JSON structure: {@link net.cabezudo.json.values.JSONArray},
  * {@link net.cabezudo.json.values.JSONBoolean}, {@link net.cabezudo.json.values.JSONNull},
- * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and
- * {@link net.cabezudo.json.values.JSONString}. You can get the elements from the JSON structure
+ * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and {@link net.cabezudo.json.values.JSONString}. You can get the elements from the JSON structure
  * navigating deep into the structure in order to reach the elements one by one.
  * <h1>JSON referenced tree</h1>
  * <p>
- * A referenced JSON structure is a normal JSON structure transformed into a smaller one. To do this
- * we replace the value of each JSON object in the structure for their reference. The reference is
- * the value of the reference field, an arbitrary field selected for this purpose. The default
- * reference field name used is {@code id}. A common example of a reference is the foreign key in a
- * relational table.
+ * A referenced JSON structure is a normal JSON structure transformed into a smaller one. To do this we replace the value of each JSON object in the structure for their reference. The reference is the
+ * value of the reference field, an arbitrary field selected for this purpose. The default reference field name used is {@code id}. A common example of a reference is the foreign key in a relational
+ * table.
  * <p>
- * The easy way to get a referenced tree is using annotated objects in order to create a JSON
- * structure. Is the easy way because if you get a JSON structure with a JSON string there isn't
- * information about the referenced field If you create a tree from a Java normal object or creating
- * the JSON structure using the elements object one by one, you can specify the field that going to
- * be used to create the referenced tree with the method
- * {@link net.cabezudo.json.JSONElement#setReferenceFieldName(java.lang.String)}. The JSON elements
- * has reference information.
+ * The easy way to get a referenced tree is using annotated objects in order to create a JSON structure. Is the easy way because if you get a JSON structure with a JSON string there isn't information
+ * about the referenced field If you create a tree from a Java normal object or creating the JSON structure using the elements object one by one, you can specify the field that going to be used to
+ * create the referenced tree with the method {@link net.cabezudo.json.JSONElement#setReferenceFieldName(java.lang.String)}. The JSON elements has reference information.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -88,6 +78,10 @@ public class JSON {
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
   public static void main(String... args) throws JSONParseException {
+    JSONObject jsonObject = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"c\" } }").toJSONObject();
+    JSONObject jsonObjectToMerge = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"cc\" } }").toJSONObject();
+    jsonObject.merge(jsonObjectToMerge);
+    System.out.println(jsonObject);
   }
 
   private static Object getFieldValue(Object object, String getterName) {
@@ -133,8 +127,7 @@ public class JSON {
    *
    * @param string the string used to create the JSON structure.
    * @return the JSON structure.
-   * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The
-   * exception contains the information of the position where the parse error raise.
+   * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The exception contains the information of the position where the parse error raise.
    */
   public static JSONValue parse(String string) throws JSONParseException {
     Tokens tokens = Tokenizer.tokenize(string);
@@ -172,15 +165,12 @@ public class JSON {
   }
 
   /**
-   * This method take the information from a file and parses it to create a JSON structure of
-   * objects representation of JSON elements.
+   * This method take the information from a file and parses it to create a JSON structure of objects representation of JSON elements.
    *
    * @param filePath the {@link java.nio.file.Path} where is the file
    * @param charsetName The name of a supported {@code Charset}
-   * @return A JSON structure of objects JSONValue and JSONPair representation of the data in the
-   * string.
-   * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The
-   * exception contains the information of the position where the parse error raise.
+   * @return A JSON structure of objects JSONValue and JSONPair representation of the data in the string.
+   * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The exception contains the information of the position where the parse error raise.
    * @throws java.io.UnsupportedEncodingException if the Character Encoding is not supported.
    * @throws IOException if an I/O error occurs opening the file.
    */
@@ -193,8 +183,7 @@ public class JSON {
   }
 
   /**
-   * Convert a list of objects in a {@link JSONArray} The objects in the list must have the
-   * properties annotated with {@link JSONProperty} in order to be used as object property.
+   * Convert a list of objects in a {@link JSONArray} The objects in the list must have the properties annotated with {@link JSONProperty} in order to be used as object property.
    *
    * @param list the list of objects to be converted.
    * @return a {@link JSONArray} with a list of JSON elements.
@@ -209,9 +198,8 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO in a {@link net.cabezudo.json.values.JSONObject}. The object must have the
-   * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
-   * used as a object property.
+   * Convert a POJO in a {@link net.cabezudo.json.values.JSONObject}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a
+   * object property.
    *
    * @param object the object to be converted.
    * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
@@ -221,10 +209,8 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO into a {@link net.cabezudo.json.values.JSONValue}. The object must have the
-   * properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be
-   * included in the conversion. If the object is {@code Iterable} or the object is a primitive
-   * array the result is a {@link net.cabezudo.json.values.JSONArray}.
+   * Convert a POJO into a {@link net.cabezudo.json.values.JSONValue}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be included in
+   * the conversion. If the object is {@code Iterable} or the object is a primitive array the result is a {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param object the object to be converted.
    * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.

@@ -169,18 +169,27 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
-   * Add the properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object.
+   * Merge the properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object. If the property doesn't exists in the actual object. Add it. If the property exists in the actual
+   * object and the value is not an object, replace the value. If the property exists in the actual object and the value is an object merge the object.
    *
    * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
    */
   public void merge(JSONObject jsonObject) {
-    for (JSONPair jsonPair : jsonObject.list) {
+    jsonObject.list.forEach((jsonPair) -> {
       String key = jsonPair.getKey();
-      if (this.contains(key)) {
-        this.remove(key);
+      JSONValue value = this.getNullValue(key);
+      if (value == null) {
+        privateAdd(jsonPair);
+      } else {
+        if (value.isObject()) {
+          JSONObject object = value.toJSONObject();
+          object.merge(jsonPair.getValue().toJSONObject());
+        } else {
+          this.remove(key);
+          privateAdd(jsonPair);
+        }
       }
-      privateAdd(jsonPair);
-    }
+    });
   }
 
   /**
