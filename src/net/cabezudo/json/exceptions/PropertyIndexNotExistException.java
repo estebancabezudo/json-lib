@@ -31,24 +31,24 @@ import net.cabezudo.json.Position;
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 08/09/2015
  */
-public class PropertyNotExistException extends Exception {
+public class PropertyIndexNotExistException extends Exception {
 
   private static final long serialVersionUID = 6985635990014405620L;
 
   private final Position position;
-  private final String propertyName;
+  private final int index;
 
   /**
    * Constructs a {@code PropertyNotExistException} with the specified detail message and a {@link net.cabezudo.json.Position}.The position
    * is used to store a position of the property in a source in order to search the misspelled property.
    *
-   * @param propertyName the name of the non existing property.
+   * @param index the non existing index.
    * @param message the detail message.
    * @param position the data position to store.
    */
-  public PropertyNotExistException(String propertyName, String message, Position position) {
+  public PropertyIndexNotExistException(int index, String message, Position position) {
     super(message);
-    this.propertyName = propertyName;
+    this.index = index;
     this.position = position;
   }
 
@@ -57,8 +57,8 @@ public class PropertyNotExistException extends Exception {
    *
    * @return the {@link net.cabezudo.json.Position} stored in the exception.
    */
-  public String getPropertyName() {
-    return propertyName;
+  public int getIndex() {
+    return index;
   }
 
   /**

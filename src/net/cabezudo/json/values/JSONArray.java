@@ -36,13 +36,12 @@ import net.cabezudo.json.exceptions.ElementNotExistException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
- * A {@link net.cabezudo.json.values.JSONArray} is an object extended from
- * {@link net.cabezudo.json.values.JSONValue} object in order to represent a JSON array that can be
- * used to create JSON structures.
+ * A {@link net.cabezudo.json.values.JSONArray} is an object extended from {@link net.cabezudo.json.values.JSONValue} object in order to
+ * represent a JSON array that can be used to create JSON structures.
  *
  * <p>
- * A {@link net.cabezudo.json.values.JSONArray} is a list of
- * {@link net.cabezudo.json.values.JSONValue} objects that represent the JSON array structure.
+ * A {@link net.cabezudo.json.values.JSONArray} is a list of {@link net.cabezudo.json.values.JSONValue} objects that represent the JSON
+ * array structure.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -54,8 +53,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   /**
    * Construct an empty JSON array object.
    *
-   * @param position a {@link net.cabezudo.json.Position} object with the position of the array in a
-   * source file or {@code String}.
+   * @param position a {@link net.cabezudo.json.Position} object with the position of the array in a source file or {@code String}.
    */
   public JSONArray(Position position) {
     // Nothing to do here. Just needed for create an empty array.
@@ -63,8 +61,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values in the {@code List}
-   * provided.
+   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values in the {@code List} provided.
    *
    * @param valuesList a {@code List} with the values for array elements.
    */
@@ -76,8 +73,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values provided of type
-   * {@link JSONValue}.
+   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values provided of type {@link JSONValue}.
    *
    * @param jsonValues an array with the values for array elements.
    */
@@ -89,8 +85,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values provided than will be
-   * converted using {@link JSON#toJSONTree(java.lang.Object)} into the array elements.
+   * Construct a {@link net.cabezudo.json.values.JSONArray} using the values provided than will be converted using
+   * {@link JSON#toJSONTree(java.lang.Object)} into the array elements.
    *
    * @param objects an array with POJO elements.
    */
@@ -137,24 +133,18 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Compare two array using the size first and compare the elements one by one if the size is the
-   * same.
+   * Compare two array using the size first and compare the elements one by one if the size is the same.
    * <p>
-   * First a value less than {@code 0} if the size of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} is less than the size of the
-   * {@link net.cabezudo.json.values.JSONArray} passed as argument; and a value greater than
-   * {@code 0} if the size of {@code this} {@link net.cabezudo.json.values.JSONObject} is greater
-   * than the size of argument.
+   * First a value less than {@code 0} if the size of {@code this} {@link net.cabezudo.json.values.JSONArray} is less than the size of the
+   * {@link net.cabezudo.json.values.JSONArray} passed as argument; and a value greater than {@code 0} if the size of {@code this}
+   * {@link net.cabezudo.json.values.JSONObject} is greater than the size of argument.
    *
    * @param jsonArray the {@link net.cabezudo.json.values.JSONArray} to be compared.
    *
-   * @return a value less than {@code 0} if the size of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} is less than the size of the
-   * {@link net.cabezudo.json.values.JSONArray} passed as argument; and a value greater than
-   * {@code 0} if the size of {@code this} {@link net.cabezudo.json.values.JSONObject} is greater
-   * than the size of argument. Return {@code 0} if {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} size is equal to the argument
-   * {@link net.cabezudo.json.values.JSONArray};
+   * @return a value less than {@code 0} if the size of {@code this} {@link net.cabezudo.json.values.JSONArray} is less than the size of the
+   * {@link net.cabezudo.json.values.JSONArray} passed as argument; and a value greater than {@code 0} if the size of {@code this}
+   * {@link net.cabezudo.json.values.JSONObject} is greater than the size of argument. Return {@code 0} if {@code this}
+   * {@link net.cabezudo.json.values.JSONArray} size is equal to the argument {@link net.cabezudo.json.values.JSONArray};
    */
   @Override
   public int compareTo(JSONArray jsonArray) {
@@ -175,8 +165,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve from {@code this} {@link net.cabezudo.json.values.JSONArray} the element in the
-   * position {@code index}.
+   * Retrieve from {@code this} {@link net.cabezudo.json.values.JSONArray} the element in the position {@code index}.
    *
    * @param index the position of the element to retrieve.
    * @return the element in the position {@code index}.
@@ -186,8 +175,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray}.
+   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this} {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param index the position in the array for the element to retrieve.
    * @return a {@link JSONValue} or null if the {@code index} is out of range.
@@ -200,10 +188,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Create a JSON structure where the the root array doesn't contain another object, instead of it
-   * contain the references to the objects. The reference is a field value of the object. The value
-   * of the property that has the object is replaced with the value of the object property marked
-   * like reference field. The reference field should not be an object or array.
+   * Create a JSON structure where the the root array doesn't contain another object, instead of it contain the references to the objects.
+   * The reference is a field value of the object. The value of the property that has the object is replaced with the value of the object
+   * property marked like reference field. The reference field should not be an object or array.
    *
    * @return a new {@link JSONArray} structure with all the object referenced.
    */
@@ -212,10 +199,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve a referenced {@link JSONArray}. For a {@link net.cabezudo.json.values.JSONArray} the
-   * referenced element is the same as a referenced {@link net.cabezudo.json.values.JSONArray}, all
-   * the element of type {@link net.cabezudo.json.values.JSONObject} will be replaced by the
-   * reference.
+   * Retrieve a referenced {@link JSONArray}. For a {@link net.cabezudo.json.values.JSONArray} the referenced element is the same as a
+   * referenced {@link net.cabezudo.json.values.JSONArray}, all the element of type {@link net.cabezudo.json.values.JSONObject} will be
+   * replaced by the reference.
    *
    * @return a referenced {@link net.cabezudo.json.values.JSONArray}.
    */
@@ -229,8 +215,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray}.
+   * Retrieve the {@link JSONValue} of the element in the position {@code index} of {@code this} {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param index the position in the array for the element to retrieve.
    * @return a {@link JSONValue}.
@@ -275,11 +260,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Returns an iterator over the properties in {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} in proper sequence.
+   * Returns an iterator over the properties in {@code this} {@link net.cabezudo.json.values.JSONArray} in proper sequence.
    *
-   * @return an iterator over the properties in {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} in proper sequence.
+   * @return an iterator over the properties in {@code this} {@link net.cabezudo.json.values.JSONArray} in proper sequence.
    */
   @Override
   public Iterator<JSONValue> iterator() {
@@ -287,21 +270,20 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Replace the old value in {@code this} {@link net.cabezudo.json.values.JSONArray} for the passed
-   * value in the position indicated by {@code index}.
+   * Replace the old value in {@code this} {@link net.cabezudo.json.values.JSONArray} for the passed value in the position indicated by
+   * {@code index}.
    *
    * @param index the position of the element to replace.
    * @param jsonValue the value used to replace.
-   * @return the {@link net.cabezudo.json.values.JSONValue} element previously at the specified
-   * position.
+   * @return the {@link net.cabezudo.json.values.JSONValue} element previously at the specified position.
    */
   public JSONValue setValue(int index, JSONValue jsonValue) {
     return list.set(index, jsonValue);
   }
 
   /**
-   * Returns the number of elements in {@code this} {@link net.cabezudo.json.values.JSONArray}. If
-   * {@code this} {@link net.cabezudo.json.values.JSONArray} contains more than
+   * Returns the number of elements in {@code this} {@link net.cabezudo.json.values.JSONArray}. If {@code this}
+   * {@link net.cabezudo.json.values.JSONArray} contains more than
    * <tt>Integer.MAX_VALUE</tt> elements, returns
    * <tt>Integer.MAX_VALUE</tt>.
    *
@@ -312,11 +294,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Convert the elements of {@code this} {@link net.cabezudo.json.values.JSONArray} in an array of
-   * objects of type {@link JSONValue}.
+   * Convert the elements of {@code this} {@link net.cabezudo.json.values.JSONArray} in an array of objects of type {@link JSONValue}.
    *
-   * @return an array of type {@link JSONValue} with the values of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} elements.
+   * @return an array of type {@link JSONValue} with the values of {@code this} {@link net.cabezudo.json.values.JSONArray} elements.
    */
   @Override
   public JSONValue[] toArray() {
@@ -330,11 +310,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Convert the elements of {@code this} {@link net.cabezudo.json.values.JSONArray} in an array of
-   * primitive type {@code byte}.
+   * Convert the elements of {@code this} {@link net.cabezudo.json.values.JSONArray} in an array of primitive type {@code byte}.
    *
-   * @return an array of primitive type {@code byte} with the values of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} elements.
+   * @return an array of primitive type {@code byte} with the values of {@code this} {@link net.cabezudo.json.values.JSONArray} elements.
    */
   @Override
   public byte[] toByteArray() {
@@ -348,11 +326,10 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Create a JSON string representation of {@code this} {@link net.cabezudo.json.values.JSONArray}
-   * including the JSON string representation of the elements.
+   * Create a JSON string representation of {@code this} {@link net.cabezudo.json.values.JSONArray} including the JSON string representation
+   * of the elements.
    *
-   * @return a {@code String} representation of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray}.
+   * @return a {@code String} representation of {@code this} {@link net.cabezudo.json.values.JSONArray}.
    */
   @Override
   public String toJSON() {
@@ -379,8 +356,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the JSON structure behind {@code this} object that is the reference to {@code this}
-   * object.
+   * Return the JSON structure behind {@code this} object that is the reference to {@code this} object.
    *
    * @return {@code this} object.
    */
@@ -390,8 +366,7 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return a {@code List} of {@link JSONValue} with the values of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} elements.
+   * Return a {@code List} of {@link JSONValue} with the values of {@code this} {@link net.cabezudo.json.values.JSONArray} elements.
    *
    * @return a {@code List} of {@link JSONValue}.
    */
@@ -405,8 +380,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return an array of {@code String} objects with the values of {@code this}
-   * {@link net.cabezudo.json.values.JSONArray} elements converted to {@code String}.
+   * Return an array of {@code String} objects with the values of {@code this} {@link net.cabezudo.json.values.JSONArray} elements converted
+   * to {@code String}.
    *
    * @return an array of {@code String} objects.
    */
@@ -422,11 +397,10 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Add all the objects within a POJO {@code Iterable} lisT. The elements will be converted to JSON
-   * elements using {@link JSON#toJSONTree(java.lang.Object)}.
+   * Add all the objects within a POJO {@code Iterable} lisT. The elements will be converted to JSON elements using
+   * {@link JSON#toJSONTree(java.lang.Object)}.
    *
-   * @param list an {@code Iterable} list of POJO objects; that is an object which implements the
-   * interface {@code Iterable}.
+   * @param list an {@code Iterable} list of POJO objects; that is an object which implements the interface {@code Iterable}.
    *
    */
   public void addAll(Iterable list) {
@@ -436,8 +410,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code BigDecimal}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code BigDecimal}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code BigDecimal}.
@@ -449,8 +423,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code BigInteger}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code BigInteger}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code BigInteger}.
@@ -462,8 +436,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Boolean}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Boolean}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Boolean}.
@@ -475,8 +449,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Byte}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Byte}. If the index is out of range throw
+   * a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Byte}.
@@ -488,8 +462,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Calendar}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Calendar}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Calendar}.
@@ -501,8 +475,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Character}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Character}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Character}.
@@ -514,8 +488,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the passed position in the parameters converted to
-   * {@code Double}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the passed position in the parameters converted to {@code Double}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Double}.
@@ -527,8 +501,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Float}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Float}. If the index is out of range throw
+   * a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Float}.
@@ -540,8 +514,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Long}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Long}. If the index is out of range throw
+   * a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Long}.
@@ -553,8 +527,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Integer}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Integer}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Integer}.
@@ -566,9 +540,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@link JSONObject}. If the {@code index} value is out of range throw a
-   * {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@link JSONObject}. If the {@code index} value is
+   * out of range throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@link JSONObject}.
@@ -580,8 +553,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code Short}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code Short}. If the index is out of range throw
+   * a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code Short}.
@@ -593,8 +566,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element in the position passed in the parameters converted to
-   * {@code String}. If the index is out of range throw a {@link ElementNotExistException}.
+   * Return the value of the element in the position passed in the parameters converted to {@code String}. If the index is out of range
+   * throw a {@link ElementNotExistException}.
    *
    * @param index the index of the element to return.
    * @return a {@code String}.
@@ -606,8 +579,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code BigDecimal}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code BigDecimal}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code BigDecimal}.
@@ -621,8 +594,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code BigInteger}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code BigInteger}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code BigInteger}.
@@ -636,8 +609,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Boolean}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Boolean}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Boolean}.
@@ -651,8 +624,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Byte}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Byte}. If {@code index} value
+   * is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Byte}.
@@ -666,8 +639,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Calendar}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Calendar}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Calendar}.
@@ -681,8 +654,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Character}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Character}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Character}
@@ -696,8 +669,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Double}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Double}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Double}.
@@ -711,8 +684,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Float}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Float}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Float}.
@@ -726,8 +699,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Long}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Long}. If {@code index} value
+   * is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Long}.
@@ -741,8 +714,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Integer}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Integer}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Integer}.
@@ -756,8 +729,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@link JSONObject}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@link JSONObject}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@link JSONObject}.
@@ -771,8 +744,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code Short}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code Short}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code Short}.
@@ -786,8 +759,8 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Return the value of the element with the {@code index} value passed in the parameters converted
-   * to {@code String}. If {@code index} value is out of range return {@code null}.
+   * Return the value of the element with the {@code index} value passed in the parameters converted to {@code String}. If {@code index}
+   * value is out of range return {@code null}.
    *
    * @param index the index of the element to return.
    * @return a {@code String}.
@@ -801,14 +774,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@link JSONValue}. The position of elements in an array are specified
-   * using the index in brackets, and the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@link JSONValue}.
+   * The position of elements in an array are specified using the index in brackets, and the index and the object´s properties are separated
+   * by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@link JSONValue} with the property value or {@code null} if the element or property
-   * doesn't exist.
+   * @return a {@link JSONValue} with the property value or {@code null} if the element or property doesn't exist.
    */
   public JSONValue digNullValue(String fullPropertyName) {
     return digNullValue(fullPropertyName, 1);
@@ -875,10 +846,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code BigDecimal}. The position of elements in an array are specified
-   * using the index in brackets, and the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to
+   * {@code BigDecimal}. The position of elements in an array are specified using the index in brackets, and the index and the object´s
+   * properties are separated by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code BigDecimal} with the property or element.
@@ -887,16 +857,15 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   public JSONValue digValue(String fullPropertyName) throws PropertyNotExistException {
     JSONValue value = digNullValue(fullPropertyName);
     if (value == null) {
-      throw new PropertyNotExistException("The property " + fullPropertyName + " doesn't exist.", getPosition());
+      throw new PropertyNotExistException(fullPropertyName, "The property " + fullPropertyName + " doesn't exist.", getPosition());
     }
     return value;
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code BigDecimal}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code BigDecimal}.
+   * The position of elements in an array are specified using the index in brackets and the index and the objects properties are separated
+   * by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code BigDecimal} with the property or element.
@@ -908,10 +877,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code BigInteger}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code BigInteger}.
+   * The position of elements in an array are specified using the index in brackets and the index and the objects properties are separated
+   * by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code BigInteger} with the property or element.
@@ -923,10 +891,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Boolean}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Boolean}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Boolean} with the property or element.
@@ -938,10 +905,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Byte}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Byte}. The
+   * position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Byte} with the property or element.
@@ -953,10 +919,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Calendar}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Calendar}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Calendar} with the property or element.
@@ -968,10 +933,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Character}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Character}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Character} with the property or element.
@@ -983,10 +947,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Double}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Double}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Double} with the property or element.
@@ -998,10 +961,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Float}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Float}. The
+   * position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Float} with the property or element.
@@ -1013,10 +975,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Long}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Long}. The
+   * position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Long} with the property or element.
@@ -1028,10 +989,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Integer}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Integer}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Integer} with the property or element.
@@ -1043,10 +1003,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@link JSONObject}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to
+   * {@link JSONObject}. The position of elements in an array are specified using the index in brackets, the index and the object´s
+   * properties are separated by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@link JSONObject} with the property or element.
@@ -1058,10 +1017,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Short}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Short}. The
+   * position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code Short} with the property or element.
@@ -1073,10 +1031,9 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code String}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code String}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
    * @return a {@code String} with the property or element.
@@ -1088,14 +1045,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code BigDecimal}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to
+   * {@code BigDecimal}. The position of elements in an array are specified using the index in brackets, the index and the object´s
+   * properties are separated by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code BigDecimal} with the property value, the element or {@code null} if the
-   * element; or property doesn't exist.
+   * @return a {@code BigDecimal} with the property value, the element or {@code null} if the element; or property doesn't exist.
    */
   public BigDecimal digNullBigDecimal(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1106,14 +1061,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code BigInteger}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to
+   * {@code BigInteger}. The position of elements in an array are specified using the index in brackets, the index and the object´s
+   * properties are separated by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code BigInteger} with the property value, the element or {@code null} if the
-   * element or property doesn't exist.
+   * @return a {@code BigInteger} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public BigInteger digNullBigInteger(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1124,14 +1077,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Boolean}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Boolean}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Boolean} with the property value or, the element {@code null} if the element
-   * or property doesn't exist.
+   * @return a {@code Boolean} with the property value or, the element {@code null} if the element or property doesn't exist.
    */
   public Boolean digNullBoolean(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1142,14 +1093,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Byte}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Byte}. The
+   * position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Byte} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code Byte} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Byte digNullByte(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1160,14 +1109,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Calendar}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Calendar}.
+   * The position of elements in an array are specified using the index in brackets and the index and the objects properties are separated
+   * by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Calendar} with the property value, the element or {@code null} if the element
-   * or property doesn't exist.
+   * @return a {@code Calendar} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Calendar digNullCalendar(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1178,14 +1125,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Character}. The position of elements in an array are specified
-   * using the index in brackets and the index and the objects properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Character}.
+   * The position of elements in an array are specified using the index in brackets and the index and the objects properties are separated
+   * by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Character} with the property value, the element or {@code null} if the element
-   * or property doesn't exist.
+   * @return a {@code Character} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Character digNullCharacter(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1196,14 +1141,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Double}. The position of elements in an array are specified using
-   * the index in brackets and the index and the objects properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Double}. The
+   * position of elements in an array are specified using the index in brackets and the index and the objects properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Double} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code Double} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Double digNullDouble(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1214,14 +1157,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Float}. The position of elements in an array are specified using
-   * the index in brackets and the index and the objects properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Float}. The
+   * position of elements in an array are specified using the index in brackets and the index and the objects properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Float} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code Float} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Float digNullFloat(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1232,14 +1173,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Long}. The position of elements in an array are specified using
-   * the index in brackets and the index and the objects properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Long}. The
+   * position of elements in an array are specified using the index in brackets and the index and the objects properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Long} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code Long} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Long digNullLong(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1250,14 +1189,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code Integer}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code Integer}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Integer} with the property value, the element or {@code null} if the element
-   * or property doesn't exist.
+   * @return a {@code Integer} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Integer digNullInteger(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1268,14 +1205,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@link JSONObject}. The position of elements in an array are specified
-   * using the index in brackets, the index and the object´s properties are separated by dots.
-   * Example: population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to
+   * {@link JSONObject}. The position of elements in an array are specified using the index in brackets, the index and the object´s
+   * properties are separated by dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@link JSONObject} with the property value, the element or {@code null} if the
-   * element or property doesn't exist.
+   * @return a {@link JSONObject} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public JSONObject digNullObject(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1286,14 +1221,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or
-   * property to convert to {@code Short}. The position of elements in an array are specified using
-   * the index in brackets and the index and the objects properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find a element or property to convert to {@code Short}. The
+   * position of elements in an array are specified using the index in brackets and the index and the objects properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code Short} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code Short} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public Short digNullShort(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);
@@ -1304,14 +1237,12 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
-   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or
-   * property to convert to {@code String}. The position of elements in an array are specified using
-   * the index in brackets, the index and the object´s properties are separated by dots. Example:
-   * population.[343].childs.[2]
+   * Dig into {@code this} {@link net.cabezudo.json.values.JSONArray} object to find an element or property to convert to {@code String}.
+   * The position of elements in an array are specified using the index in brackets, the index and the object´s properties are separated by
+   * dots. Example: population.[343].childs.[2]
    *
    * @param fullPropertyName The full path of the property or element to search.
-   * @return a {@code String} with the property value, the element or {@code null} if the element or
-   * property doesn't exist.
+   * @return a {@code String} with the property value, the element or {@code null} if the element or property doesn't exist.
    */
   public String digNullString(String fullPropertyName) {
     JSONValue jsonValue = digNullValue(fullPropertyName);

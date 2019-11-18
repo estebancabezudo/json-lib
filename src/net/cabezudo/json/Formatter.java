@@ -41,8 +41,7 @@ public class Formatter {
   }
 
   /**
-   * Add carriages returns and indent the given {@code String} and return the {@code String} with
-   * formatted JSON.
+   * Add carriages returns and indent the given {@code String} and return the {@code String} with formatted JSON.
    *
    * @param jsonString the JSON {@code String} with the JSON string in raw format.
    * @return the JSON string formatted.
@@ -68,7 +67,7 @@ public class Formatter {
             lines.add(line);
             sb = new StringBuilder();
           }
-          line = new Character(c).toString();
+          line = Character.toString(c);
           if (i + 1 < cs.length) {
             c = cs[i + 1];
             if (c == ',') {
