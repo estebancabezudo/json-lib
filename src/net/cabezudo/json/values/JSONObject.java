@@ -169,6 +169,27 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   /**
+   * Add properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object. If the property doesn't exists in the actual object add it. If the property exists in the actual object and
+   * the value is not an object, leave unchanged. If the property exists in the actual object and the value is an object copy the object.
+   *
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
+   */
+  public void add(JSONObject jsonObject) {
+    jsonObject.list.forEach((jsonPair) -> {
+      String key = jsonPair.getKey();
+      JSONValue value = this.getNullValue(key);
+      if (value == null) {
+        privateAdd(jsonPair);
+      } else {
+        if (value.isObject()) {
+          JSONObject object = value.toJSONObject();
+          object.add(jsonPair.getValue().toJSONObject());
+        }
+      }
+    });
+  }
+
+  /**
    * Merge the properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object. If the property doesn't exists in the actual object. Add it. If the property exists in the actual
    * object and the value is not an object, replace the value. If the property exists in the actual object and the value is an object merge the object.
    *
@@ -257,7 +278,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
       JSONValue vb;
       String key = keyListOfThis.get(i);
       try {
-        va = this.getValue(key);
+        va  = this.getValue(key);
         vb = jsonObject.getValue(key);
       } catch (PropertyNotExistException e) {
         throw new RuntimeException(e);
