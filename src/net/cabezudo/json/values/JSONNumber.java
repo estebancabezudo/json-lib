@@ -26,15 +26,15 @@ package net.cabezudo.json.values;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 import java.math.MathContext;
+import java.math.RoundingMode;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import net.cabezudo.json.Position;
 
 /**
- * A {@link net.cabezudo.json.values.JSONNumber} is an object extended from
- * {@link net.cabezudo.json.values.JSONValue} object in order to represent a number that can be used
- * to create JSON structures.
+ * A {@link net.cabezudo.json.values.JSONNumber} is an object extended from {@link net.cabezudo.json.values.JSONValue} object in order to
+ * represent a number that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -121,9 +121,8 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONNumber} using a {@code BigDecimal} value. The
-   * method also takes a {@link Position} in order to save the position in origin and give it when a
-   * parse error is thrown.
+   * Construct a {@link net.cabezudo.json.values.JSONNumber} using a {@code BigDecimal} value. The method also takes a {@link Position} in
+   * order to save the position in origin and give it when a parse error is thrown.
    *
    * @param value a {@code BigDecimal} with the number.
    * @param position the position of the value in the source.
@@ -133,7 +132,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
     if (value == null) {
       throw new IllegalArgumentException("You can't create an object using null.");
     }
-    this.value = value.round(MathContext.UNLIMITED).setScale(DEFAULT_SCALE, BigDecimal.ROUND_HALF_UP).stripTrailingZeros();
+    this.value = value.round(MathContext.UNLIMITED).setScale(DEFAULT_SCALE, RoundingMode.HALF_UP).stripTrailingZeros();
   }
 
   /**
@@ -154,12 +153,10 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    *
    * @param jsonNumber the {@link net.cabezudo.json.values.JSONNumber} to be compared.
    *
-   * @return the value {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is
-   * equal to the argument {@link net.cabezudo.json.values.JSONNumber}; a value less than {@code 0}
-   * if {@code this} {@link net.cabezudo.json.values.JSONNumber} is less than the argument
-   * {@link net.cabezudo.json.values.JSONNumber}; and a value greater than {@code 0} if {@code this}
-   * {@link net.cabezudo.json.values.JSONNumber} is greater than the argument
-   * {@link net.cabezudo.json.values.JSONNumber}.
+   * @return the value {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is equal to the argument
+   * {@link net.cabezudo.json.values.JSONNumber}; a value less than {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is
+   * less than the argument {@link net.cabezudo.json.values.JSONNumber}; and a value greater than {@code 0} if {@code this}
+   * {@link net.cabezudo.json.values.JSONNumber} is greater than the argument {@link net.cabezudo.json.values.JSONNumber}.
    */
   @Override
   public int compareTo(JSONNumber jsonNumber) {
@@ -170,8 +167,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    * Compares two {@link net.cabezudo.json.values.JSONNumber} objects.
    *
    * @param o the {@code Object} to be compared.
-   * @return {@code true} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is equal to
-   * the argument {@code false} otherwise.
+   * @return {@code true} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is equal to the argument {@code false} otherwise.
    */
   @Override
   public boolean equals(Object o) {
@@ -189,9 +185,8 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a
-   * {@link net.cabezudo.json.values.JSONNumber} object, {@code this} object and the referenced
-   * version is the same.
+   * Return the referenced element for {@code this} object. For a {@link net.cabezudo.json.values.JSONNumber} object, {@code this} object
+   * and the referenced version is the same.
    *
    * @return {@code this} object.
    */
@@ -319,8 +314,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Convert {@code this} object to a string with the representation of the JSON structure in a JSON
-   * string form.
+   * Convert {@code this} object to a string with the representation of the JSON structure in a JSON string form.
    *
    * @return a {@code String} with the JSON string representation of {@code this} object.
    */
@@ -357,8 +351,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Convert {@code this} object to a {@code List} of {@link net.cabezudo.json.values.JSONValue}
-   * objects.
+   * Convert {@code this} object to a {@code List} of {@link net.cabezudo.json.values.JSONValue} objects.
    *
    * @return a {@code List} of {@link net.cabezudo.json.values.JSONValue} with {@code this} element.
    */
@@ -391,8 +384,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Convert {@code this} object to a {@code String} using
-   * {@link net.cabezudo.json.values.JSONNumber#toJSON()}.
+   * Convert {@code this} object to a {@code String} using {@link net.cabezudo.json.values.JSONNumber#toJSON()}.
    *
    * @return a {@code Stirng}.
    */

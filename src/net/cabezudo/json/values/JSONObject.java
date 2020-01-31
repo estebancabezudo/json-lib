@@ -40,6 +40,7 @@ import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Position;
 import net.cabezudo.json.exceptions.InvalidReferencedValue;
 import net.cabezudo.json.exceptions.JSONParseException;
+import net.cabezudo.json.exceptions.PropertyIndexNotExistException;
 import net.cabezudo.json.exceptions.PropertyNotExistException;
 
 /**
@@ -145,7 +146,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   }
 
   public List<String> getKeyList() {
-    return new ArrayList(keys);
+    return new ArrayList<String>(keys);
   }
 
   private JSONPair privateAdd(JSONPair jsonPair) {
@@ -274,16 +275,16 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     }
 
     for (int i = 0; i < size; i++) {
-      JSONValue va;
-      JSONValue vb;
+      JSONValue<JSONObject> va;
+      JSONValue<JSONObject> vb;
       String key = keyListOfThis.get(i);
       try {
-        va  = this.getValue(key);
-        vb = jsonObject.getValue(key);
+        va  = this.getValue(key).toJSONObject();
+        vb = jsonObject.getValue(key).toJSONObject();
       } catch (PropertyNotExistException e) {
         throw new RuntimeException(e);
       }
-      c = va.compareTo(vb);
+      c = va.compareTo(vb.toJSONObject());
       if (c != 0) {
         return c;
       }
@@ -653,7 +654,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONValue digValue(String fullPropertyName) throws PropertyNotExistException {
     JSONValue value = digNullValue(fullPropertyName);
     if (value == null) {
-      throw new PropertyNotExistException("The property " + fullPropertyName + " doesn't exist.", getPosition());
+      throw new PropertyNotExistException(fullPropertyName, "The property " + fullPropertyName + " doesn't exist.", getPosition());
     }
     return value;
   }
@@ -688,9 +689,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code BigDecimal}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public BigDecimal getBigDecimal(int index) throws PropertyNotExistException {
+  public BigDecimal getBigDecimal(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toBigDecimal();
   }
@@ -712,9 +713,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code BigInteger}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public BigInteger getBigInteger(int index) throws PropertyNotExistException {
+  public BigInteger getBigInteger(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toBigInteger();
   }
@@ -736,9 +737,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Boolean}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Boolean getBoolean(int index) throws PropertyNotExistException {
+  public Boolean getBoolean(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toBoolean();
   }
@@ -760,9 +761,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Byte}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Byte getByte(int index) throws PropertyNotExistException {
+  public Byte getByte(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toByte();
   }
@@ -784,9 +785,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code byte[]}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public byte[] getByteArray(int index) throws PropertyNotExistException {
+  public byte[] getByteArray(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toByteArray();
   }
@@ -821,9 +822,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Calendar}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Calendar getCalendar(int index) throws PropertyNotExistException {
+  public Calendar getCalendar(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toCalendar();
   }
@@ -835,9 +836,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param index the index of the property to return.
    * @param pattern the pattern to use for the conversion.
    * @return a {@code Calendar}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Calendar getCalendar(int index, String pattern) throws PropertyNotExistException {
+  public Calendar getCalendar(int index, String pattern) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toCalendar(pattern);
   }
@@ -859,9 +860,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Character}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Character getCharacter(int index) throws PropertyNotExistException {
+  public Character getCharacter(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toCharacter();
   }
@@ -892,9 +893,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Double}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Double getDouble(int index) throws PropertyNotExistException {
+  public Double getDouble(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toDouble();
   }
@@ -909,7 +910,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONPair getElement(String propertyName) throws PropertyNotExistException {
     JSONPair jsonPair = getNullElement(propertyName);
     if (jsonPair == null) {
-      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
+      throw new PropertyNotExistException(propertyName, "The property " + propertyName + " doesn't exist.", getPosition());
     }
     return jsonPair;
   }
@@ -919,12 +920,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property.
    * @return an object {@link net.cabezudo.json.JSONPair} with the pair data/value in the object with the index specified.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public JSONPair getElement(int index) throws PropertyNotExistException {
+  public JSONPair getElement(int index) throws PropertyIndexNotExistException {
     JSONPair jsonPair = getNullElement(index);
     if (jsonPair == null) {
-      throw new PropertyNotExistException("The property " + index + " doesn't exist.", getPosition());
+      throw new PropertyIndexNotExistException(index, "The property " + index + " doesn't exist.", getPosition());
     }
     return jsonPair;
   }
@@ -946,9 +947,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Float}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Float getFloat(int index) throws PropertyNotExistException {
+  public Float getFloat(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toFloat();
   }
@@ -970,9 +971,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Integer}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Integer getInteger(int index) throws PropertyNotExistException {
+  public Integer getInteger(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toInteger();
   }
@@ -998,9 +999,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@link net.cabezudo.json.values.JSONArray}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public JSONArray getJSONArray(int index) throws PropertyNotExistException {
+  public JSONArray getJSONArray(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     if (jsonValue == null) {
       return null;
@@ -1025,9 +1026,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Long}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Long getLong(int index) throws PropertyNotExistException {
+  public Long getLong(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toLong();
   }
@@ -1546,9 +1547,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@link net.cabezudo.json.values.JSONObject}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public JSONObject getObject(int index) throws PropertyNotExistException {
+  public JSONObject getObject(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toJSONObject();
   }
@@ -1617,9 +1618,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code Short}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public Short getShort(int index) throws PropertyNotExistException {
+  public Short getShort(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toShort();
   }
@@ -1641,9 +1642,9 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@code String}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public String getString(int index) throws PropertyNotExistException {
+  public String getString(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getValue(index);
     return jsonValue.toString();
   }
@@ -1658,7 +1659,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
   public JSONValue getValue(String propertyName) throws PropertyNotExistException {
     JSONValue jsonValue = getNullValue(propertyName);
     if (jsonValue == null) {
-      throw new PropertyNotExistException("The property " + propertyName + " doesn't exist.", getPosition());
+      throw new PropertyNotExistException(propertyName, "The property " + propertyName + " doesn't exist.", getPosition());
     }
     return jsonValue;
   }
@@ -1669,12 +1670,12 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    *
    * @param index the index of the property to return.
    * @return a {@link net.cabezudo.json.values.JSONValue}.
-   * @throws PropertyNotExistException if the index is out of range.
+   * @throws PropertyIndexNotExistException if the index is out of range.
    */
-  public JSONValue getValue(int index) throws PropertyNotExistException {
+  public JSONValue getValue(int index) throws PropertyIndexNotExistException {
     JSONValue jsonValue = getNullValue(index);
     if (jsonValue == null) {
-      throw new PropertyNotExistException("The position " + index + " don't have a value.", getPosition());
+      throw new PropertyIndexNotExistException(index, "The position " + index + " don't have a value.", getPosition());
     }
     return jsonValue;
   }
