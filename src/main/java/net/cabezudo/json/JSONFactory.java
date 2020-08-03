@@ -47,43 +47,34 @@ import net.cabezudo.json.values.JSONValue;
 public class JSONFactory {
 
   /**
-   * Create a JSON structure representation of the parameter object. For the conversion the method
-   * use any of the next rules.
+   * Create a JSON structure representation of the parameter object. For the conversion the method use any of the next rules.
    * <ul>
    * <li>
    * If the object is a {@link java.lang.Byte}, {@link java.lang.Short},
    * {@link java.lang.Integer}, {@link java.lang.Long}, {@link java.lang.Float},
-   * {@link java.lang.Double}, {@link java.math.BigInteger}, or {@link java.math.BigDecimal} object
-   * the method use a {@link net.cabezudo.json.values.JSONNumber}.
+   * {@link java.lang.Double}, {@link java.math.BigInteger}, or {@link java.math.BigDecimal} object the method use a {@link net.cabezudo.json.values.JSONNumber}.
    * </li>
    * <li>
-   * If a property is a {@code byte}, {@code short}, {@code int}, {@code long}, {@code float}, or
-   * {@code double} type, the method use a {@link net.cabezudo.json.values.JSONNumber}.
+   * If a property is a {@code byte}, {@code short}, {@code int}, {@code long}, {@code float}, or {@code double} type, the method use a {@link net.cabezudo.json.values.JSONNumber}.
    * </li>
    * <li>
-   * If the object or a property is a {@link java.lang.Boolean} object the method use a
-   * {@link net.cabezudo.json.values.JSONBoolean}.
+   * If the object or a property is a {@link java.lang.Boolean} object the method use a {@link net.cabezudo.json.values.JSONBoolean}.
    * </li>
    * <li>
-   * If some property is a {@code boolean} type the method use a
-   * {@link net.cabezudo.json.values.JSONBoolean}.
+   * If some property is a {@code boolean} type the method use a {@link net.cabezudo.json.values.JSONBoolean}.
    * </li>
    * <li>
    * If the object or a property is a {@link java.lang.Character}, {@link java.lang.String},
-   * {@link java.util.Date}, {@link java.util.GregorianCalendar}, or {@link java.lang.Class} object
-   * the method convert it to a {@link net.cabezudo.json.values.JSONString}.
+   * {@link java.util.Date}, {@link java.util.GregorianCalendar}, or {@link java.lang.Class} object the method convert it to a {@link net.cabezudo.json.values.JSONString}.
    * </li>
    * <li>
-   * If a property is a {@code char} type the method convert it to a
-   * {@link net.cabezudo.json.values.JSONString}.
+   * If a property is a {@code char} type the method convert it to a {@link net.cabezudo.json.values.JSONString}.
    * </li>
    * <li>
-   * If a property is a {@code byte[]} type the method use a
-   * {@link net.cabezudo.json.values.JSONArray}.
+   * If a property is a {@code byte[]} type the method use a {@link net.cabezudo.json.values.JSONArray}.
    * </li>
    * <li>
-   * If the conversion can't be done using this rules the system try to convert the object using the
-   * {@link net.cabezudo.json.annotations.JSONProperty} annotation.
+   * If the conversion can't be done using this rules the system try to convert the object using the {@link net.cabezudo.json.annotations.JSONProperty} annotation.
    * </li>
    * </ul>
    *

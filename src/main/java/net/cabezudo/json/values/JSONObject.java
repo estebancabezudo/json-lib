@@ -171,28 +171,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
 
   /**
    * Add properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object. If the property doesn't exists in the actual object add it. If the property exists in the actual object and
-   * the value is not an object, leave unchanged. If the property exists in the actual object and the value is an object copy the object.
-   *
-   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
-   */
-  public void add(JSONObject jsonObject) {
-    jsonObject.list.forEach((jsonPair) -> {
-      String key = jsonPair.getKey();
-      JSONValue value = this.getNullValue(key);
-      if (value == null) {
-        privateAdd(jsonPair);
-      } else {
-        if (value.isObject()) {
-          JSONObject object = value.toJSONObject();
-          object.add(jsonPair.getValue().toJSONObject());
-        }
-      }
-    });
-  }
-
-  /**
-   * Merge the properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object. If the property doesn't exists in the actual object. Add it. If the property exists in the actual
-   * object and the value is not an object, replace the value. If the property exists in the actual object and the value is an object merge the object.
+   * the value is not an object, leave unchanged. If the property exists in the actual object and the value is an object merge the object.
    *
    * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
    */
@@ -206,6 +185,27 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
         if (value.isObject()) {
           JSONObject object = value.toJSONObject();
           object.merge(jsonPair.getValue().toJSONObject());
+        }
+      }
+    });
+  }
+
+  /**
+   * Replace the properties from a {@link net.cabezudo.json.values.JSONObject} in the actual object. If the property doesn't exists in the actual object. Add it. If the property exists in the actual
+   * object and the value is not an object, replace the value. If the property exists in the actual object and the value is an object replace the object.
+   *
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
+   */
+  public void replace(JSONObject jsonObject) {
+    jsonObject.list.forEach((jsonPair) -> {
+      String key = jsonPair.getKey();
+      JSONValue value = this.getNullValue(key);
+      if (value == null) {
+        privateAdd(jsonPair);
+      } else {
+        if (value.isObject()) {
+          JSONObject object = value.toJSONObject();
+          object.replace(jsonPair.getValue().toJSONObject());
         } else {
           this.remove(key);
           privateAdd(jsonPair);

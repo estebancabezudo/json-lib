@@ -39,6 +39,7 @@ import net.cabezudo.json.exceptions.EmptyQueueException;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.NotPropertiesException;
 import net.cabezudo.json.exceptions.ObjectException;
+import net.cabezudo.json.exceptions.PropertyNotExistException;
 import net.cabezudo.json.exceptions.UnexpectedElementException;
 import net.cabezudo.json.values.JSONArray;
 import net.cabezudo.json.values.JSONNull;
@@ -77,11 +78,16 @@ public class JSON {
 
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
-  public static void main(String... args) throws JSONParseException {
-    JSONObject jsonObject = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"c\" } }").toJSONObject();
-    JSONObject jsonObjectToMerge = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"cc\" } }").toJSONObject();
-    jsonObject.merge(jsonObjectToMerge);
-    System.out.println(jsonObject);
+  public static void main(String... args) throws JSONParseException, PropertyNotExistException {
+//    JSONObject jsonObjectWithError = JSON.parse("{\"name\":\"\",\"hostname\":{}}").toJSONObject();
+//    JSONObject jsonObject = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"c\" } }").toJSONObject();
+//    JSONObject jsonObjectToMerge = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"cc\" } }").toJSONObject();
+//    jsonObject.merge(jsonObjectToMerge);
+    JSONObject json = JSON.parse("{ \"code\": \"\\b \\\" \\\\ \\/ \\b  \\f \\n \\r \\t resize(\\nwidth=1200, height=800)\"}").toJSONObject();
+    System.out.println(json);
+
+    String code = json.getString("code");
+    System.out.println(code);
   }
 
   private static Object getFieldValue(Object object, String getterName) {
@@ -130,14 +136,31 @@ public class JSON {
    * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The exception contains the information of the position where the parse error raise.
    */
   public static JSONValue parse(String string) throws JSONParseException {
-    Tokens tokens = Tokenizer.tokenize(string);
+
+    String quotationMarks = string.replaceAll("\\\"", "\"");
+    String reverseSolidus = quotationMarks.replaceAll("\\\\\\\\", "\\\\\\\\");
+    String solidus = reverseSolidus.replaceAll("\\/", "/");
+    String formFeeds = solidus.replaceAll("\\\\f", "\f");
+    String lineFeeds = formFeeds.replaceAll("\\\\n", "\n");
+    String carriageReturns = lineFeeds.replaceAll("\\\\r", "\r");
+    String horizontalTabs = carriageReturns.replaceAll("\\\\t", "\t");
+
+    if (string == null) {
+      throw new JSONParseException("null string parameter.", Position.INITIAL);
+    }
+    String code = horizontalTabs.trim();
+
+    if (code.isBlank()) {
+      throw new JSONParseException("Empty string.", Position.INITIAL);
+    }
+    Tokens tokens = Tokenizer.tokenize(code);
     JSONValue jsonElement;
 
     Token token;
     try {
       token = tokens.consume();
     } catch (EmptyQueueException e) {
-      throw new JSONParseException("Unexpected end parsing " + string + ".", e, Position.INITIAL);
+      throw new JSONParseException("Nothing to parse.", e, Position.INITIAL);
     }
 
     TokenType tokenType = token.getType();
