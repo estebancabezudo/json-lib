@@ -66,7 +66,7 @@ public class JSONTest {
       jsonValue = jsonObject.getValue("string");
       assertTrue(jsonValue.isString());
       String name = jsonValue.toString();
-      assertEquals("George \\\"Baby Face\\\" Nelson", name);
+      assertEquals("George \"Baby Face\" Nelson", name);
 
       jsonValue = jsonObject.getValue("number");
       assertTrue(jsonValue.isNumber());
@@ -81,7 +81,7 @@ public class JSONTest {
 
     final File temporaryFile = folder.newFile("tempFile.txt");
     try {
-      try (PrintWriter writer = new PrintWriter(temporaryFile, "UTF-8")) {
+      try ( PrintWriter writer = new PrintWriter(temporaryFile, "UTF-8")) {
         writer.println("{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"Esteban Cabezudo\", \"number\": 234 } }");
       }
     } catch (FileNotFoundException | UnsupportedEncodingException e) {
