@@ -30,8 +30,7 @@ import java.util.List;
 import net.cabezudo.json.Position;
 
 /**
- * A {@link JSONBoolean} is an object extended from {@link JSONValue} object in order to represent a
- * boolean that can be used to create JSON structures.
+ * A {@link JSONBoolean} is an object extended from {@link JSONValue} object in order to represent a boolean that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -50,8 +49,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   private final Boolean value;
 
   /**
-   * Return a {@link net.cabezudo.json.values.JSONBoolean} that corresponds with the {@code boolean}
-   * value passed.
+   * Return a {@link net.cabezudo.json.values.JSONBoolean} that corresponds with the {@code boolean} value passed.
    *
    * @param value a {@code boolean} value.
    * @return Return a {@link net.cabezudo.json.values.JSONBoolean}.
@@ -73,9 +71,8 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
    * Compares this {@link net.cabezudo.json.values.JSONBoolean} with another.
    *
    * @param jsonBoolean the {@link net.cabezudo.json.values.JSONBoolean} to be compared.
-   * @return zero if this object represents the same boolean value as the argument; a positive value
-   * if this object represents {@code true} and the argument represents {@code false}; and a
-   * negative value if this object represents {@code false} and the argument represents {@code true}
+   * @return zero if this object represents the same boolean value as the argument; a positive value if this object represents {@code true} and the argument represents
+   * {@code false}; and a negative value if this object represents {@code false} and the argument represents {@code true}
    */
   @Override
   public int compareTo(JSONBoolean jsonBoolean) {
@@ -83,9 +80,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a
-   * {@link net.cabezudo.json.values.JSONBoolean} object, {@code this} object and the referenced
-   * version is the same.
+   * Return the referenced element for {@code this} object. For a {@link net.cabezudo.json.values.JSONBoolean} object, {@code this} object and the referenced version is the same.
    *
    * @return {@code this} object.
    */
@@ -107,8 +102,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code BigDecimal} object.
    *
-   * @return a {@code BigDecimal} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code BigDecimal} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public BigDecimal toBigDecimal() {
@@ -119,8 +113,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code BigInteger} object.
    *
-   * @return a {@code BigInteger} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code BigInteger} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public BigInteger toBigInteger() {
@@ -131,8 +124,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Boolean} object.
    *
-   * @return a {@code Boolean.TRUE} object it {@code this} represents {@code true}; {@code 0}
-   * otherwise.
+   * @return a {@code Boolean.TRUE} object it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Boolean toBoolean() {
@@ -142,8 +134,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Byte toByte() {
@@ -153,8 +144,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Character} object.
    *
-   * @return a {@code Character} object with a value of {@code '1'} it {@code this} represent
-   * {@code true}; {@code '0'} otherwise.
+   * @return a {@code Character} object with a value of {@code '1'} it {@code this} represent {@code true}; {@code '0'} otherwise.
    */
   @Override
   public Character toCharacter() {
@@ -164,8 +154,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Double} object.
    *
-   * @return a {@code Double} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code Double} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Double toDouble() {
@@ -175,8 +164,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Float} object.
    *
-   * @return a {@code Float} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code Float} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Float toFloat() {
@@ -186,8 +174,17 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Integer} object.
    *
-   * @return a {@code Integer} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a primitive {@code int} with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
+   */
+  @Override
+  public int toInt() {
+    return (value ? 1 : 0);
+  }
+
+  /**
+   * Convert {@code this} object to a {@code Integer} object.
+   *
+   * @return a {@code Integer} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Integer toInteger() {
@@ -197,8 +194,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code String} object.
    *
-   * @return a {@code String} object with a value of {@code true} it {@code this} represents
-   * {@code true}; {@code false} otherwise.
+   * @return a {@code String} object with a value of {@code true} it {@code this} represents {@code true}; {@code false} otherwise.
    */
   @Override
   public String toJSON() {
@@ -218,8 +214,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   }
 
   /**
-   * Convert {@code this} object to a {@link net.cabezudo.json.values.JSONString} object using
-   * {@code toString()} method.
+   * Convert {@code this} object to a {@link net.cabezudo.json.values.JSONString} object using {@code toString()} method.
    *
    * @return a {@link net.cabezudo.json.values.JSONString} object.
    */
@@ -243,8 +238,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents
-   * {@code true}; {@code 0} otherwise.
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represents {@code true}; {@code 0} otherwise.
    */
   @Override
   public Long toLong() {
@@ -254,8 +248,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to a {@code Byte} object.
    *
-   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represent {@code true};
-   * {@code 0} otherwise.
+   * @return a {@code Byte} object with a value of {@code 1} it {@code this} represent {@code true}; {@code 0} otherwise.
    */
   @Override
   public Short toShort() {
@@ -265,8 +258,7 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
   /**
    * Convert {@code this} object to an array of {@code String} objects.
    *
-   * @return an array of {@code String} object with one element converted using {@code toString()}
-   * method.
+   * @return an array of {@code String} object with one element converted using {@code toString()} method.
    */
   @Override
   public String[] toStringArray() {

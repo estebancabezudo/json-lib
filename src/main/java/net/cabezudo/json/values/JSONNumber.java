@@ -33,8 +33,8 @@ import java.util.List;
 import net.cabezudo.json.Position;
 
 /**
- * A {@link net.cabezudo.json.values.JSONNumber} is an object extended from {@link net.cabezudo.json.values.JSONValue} object in order to
- * represent a number that can be used to create JSON structures.
+ * A {@link net.cabezudo.json.values.JSONNumber} is an object extended from {@link net.cabezudo.json.values.JSONValue} object in order to represent a number that can be used to
+ * create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -121,8 +121,8 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONNumber} using a {@code BigDecimal} value. The method also takes a {@link Position} in
-   * order to save the position in origin and give it when a parse error is thrown.
+   * Construct a {@link net.cabezudo.json.values.JSONNumber} using a {@code BigDecimal} value. The method also takes a {@link Position} in order to save the position in origin and
+   * give it when a parse error is thrown.
    *
    * @param value a {@code BigDecimal} with the number.
    * @param position the position of the value in the source.
@@ -153,10 +153,9 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    *
    * @param jsonNumber the {@link net.cabezudo.json.values.JSONNumber} to be compared.
    *
-   * @return the value {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is equal to the argument
-   * {@link net.cabezudo.json.values.JSONNumber}; a value less than {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is
-   * less than the argument {@link net.cabezudo.json.values.JSONNumber}; and a value greater than {@code 0} if {@code this}
-   * {@link net.cabezudo.json.values.JSONNumber} is greater than the argument {@link net.cabezudo.json.values.JSONNumber}.
+   * @return the value {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is equal to the argument {@link net.cabezudo.json.values.JSONNumber}; a value less than
+   * {@code 0} if {@code this} {@link net.cabezudo.json.values.JSONNumber} is less than the argument {@link net.cabezudo.json.values.JSONNumber}; and a value greater than {@code 0}
+   * if {@code this} {@link net.cabezudo.json.values.JSONNumber} is greater than the argument {@link net.cabezudo.json.values.JSONNumber}.
    */
   @Override
   public int compareTo(JSONNumber jsonNumber) {
@@ -185,8 +184,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a {@link net.cabezudo.json.values.JSONNumber} object, {@code this} object
-   * and the referenced version is the same.
+   * Return the referenced element for {@code this} object. For a {@link net.cabezudo.json.values.JSONNumber} object, {@code this} object and the referenced version is the same.
    *
    * @return {@code this} object.
    */
@@ -301,6 +299,16 @@ public class JSONNumber extends JSONValue<JSONNumber> {
   public Float toFloat() {
     float f = value.floatValue();
     return f;
+  }
+
+  /**
+   * Convert {@code this} object to a primitive {@code int} value.
+   *
+   * @return a primitive {@code int} value if the conversion is possible.
+   */
+  @Override
+  public int toInt() {
+    return value.intValueExact();
   }
 
   /**

@@ -153,12 +153,20 @@ public class JSONFactory {
         jsonValue = new JSONString(className);
         break;
       case "[B":
-        JSONArray jsonArray = new JSONArray();
+        JSONArray jsonByteArray = new JSONArray();
         byte[] byteArray = (byte[]) object;
         for (Byte b : byteArray) {
-          jsonArray.add(new JSONNumber(b));
+          jsonByteArray.add(new JSONNumber(b));
         }
-        jsonValue = jsonArray;
+        jsonValue = jsonByteArray;
+        break;
+      case "[I":
+        JSONArray jsonIntArray = new JSONArray();
+        int[] intArray = (int[]) object;
+        for (int i : intArray) {
+          jsonIntArray.add(new JSONNumber(i));
+        }
+        jsonValue = jsonIntArray;
         break;
       default:
         jsonValue = null;

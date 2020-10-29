@@ -312,6 +312,18 @@ public class JSONString extends JSONValue<JSONString> {
   }
 
   /**
+   * Constructs an return a primitive {@code int} value that represents the value indicated by the {@code String} represented in the {@link net.cabezudo.json.values.JSONString}.
+   * The string is converted to a {@code int} using the {@code Integer} constructor.
+   *
+   * @return the value of this {@link net.cabezudo.json.values.JSONString} as a {@code int}.
+   * @throws NumberFormatException if the {@code String} value of {@code this} {@link net.cabezudo.json.values.JSONString} does not contain a parseable integer number.
+   */
+  @Override
+  public int toInt() {
+    return Integer.valueOf(value);
+  }
+
+  /**
    * Constructs an return a newly allocated {@code Integer} object that represents the value indicated by the {@code String} represented in the
    * {@link net.cabezudo.json.values.JSONString}. The string is converted to a {@code Integer} using the {@code Integer} constructor.
    *
