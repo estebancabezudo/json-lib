@@ -1226,4 +1226,21 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
     }
     return jsonValue.toString();
   }
+
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
+    if (includeFirst) {
+      sb.append(JSON.getIndent(indent));
+    }
+    sb.append("[\n");
+    if (!list.isEmpty()) {
+      list.forEach(entry -> {
+        entry.toFormatedString(sb, indent + 1, true);
+        sb.append(",\n");
+      });
+      sb.setLength(Math.max(sb.length() - 2, 0));
+      sb.append("\n");
+    }
+    sb.append(JSON.getIndent(indent)).append("]");
+  }
 }

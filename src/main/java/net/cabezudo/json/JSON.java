@@ -24,7 +24,6 @@
 package net.cabezudo.json;
 
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
@@ -49,8 +48,8 @@ import net.cabezudo.json.values.JSONValue;
 /**
  * Provides the methods to parse and create JSON objects.
  * <p>
- * JSON class allow you to parse a string with JSON format in to a JSON tree object to be manipulated. The input may be obtained from a file on the file system. The JSON class allow you to create a
- * JSON tree from any object and create a tree using the references to the object
+ * JSON class allow you to parse a string with JSON format in to a JSON tree object to be manipulated. The input may be obtained from a file on the file system. The JSON class
+ * allow you to create a JSON tree from any object and create a tree using the references to the object
  * <h1>Parse</h1>
  * <p>
  * The JSON tree obtained includes many methods to manipulate its members, such as add elements, delete elements and set new values.
@@ -59,17 +58,18 @@ import net.cabezudo.json.values.JSONValue;
  * <p>
  * There are six different types of elements in a JSON structure: {@link net.cabezudo.json.values.JSONArray},
  * {@link net.cabezudo.json.values.JSONBoolean}, {@link net.cabezudo.json.values.JSONNull},
- * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and {@link net.cabezudo.json.values.JSONString}. You can get the elements from the JSON structure
- * navigating deep into the structure in order to reach the elements one by one.
+ * {@link net.cabezudo.json.values.JSONNumber}, {@link net.cabezudo.json.values.JSONObject}, and {@link net.cabezudo.json.values.JSONString}. You can get the elements from the JSON
+ * structure navigating deep into the structure in order to reach the elements one by one.
  * <h1>JSON referenced tree</h1>
  * <p>
- * A referenced JSON structure is a normal JSON structure transformed into a smaller one. To do this we replace the value of each JSON object in the structure for their reference. The reference is the
- * value of the reference field, an arbitrary field selected for this purpose. The default reference field name used is {@code id}. A common example of a reference is the foreign key in a relational
- * table.
+ * A referenced JSON structure is a normal JSON structure transformed into a smaller one. To do this we replace the value of each JSON object in the structure for their reference.
+ * The reference is the value of the reference field, an arbitrary field selected for this purpose. The default reference field name used is {@code id}. A common example of a
+ * reference is the foreign key in a relational table.
  * <p>
- * The easy way to get a referenced tree is using annotated objects in order to create a JSON structure. Is the easy way because if you get a JSON structure with a JSON string there isn't information
- * about the referenced field If you create a tree from a Java normal object or creating the JSON structure using the elements object one by one, you can specify the field that going to be used to
- * create the referenced tree with the method {@link net.cabezudo.json.JSONElement#setReferenceFieldName(java.lang.String)}. The JSON elements has reference information.
+ * The easy way to get a referenced tree is using annotated objects in order to create a JSON structure. Is the easy way because if you get a JSON structure with a JSON string
+ * there isn't information about the referenced field If you create a tree from a Java normal object or creating the JSON structure using the elements object one by one, you can
+ * specify the field that going to be used to create the referenced tree with the method {@link net.cabezudo.json.JSONElement#setReferenceFieldName(java.lang.String)}. The JSON
+ * elements has reference information.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -197,7 +197,7 @@ public class JSON {
    * @throws java.io.UnsupportedEncodingException if the Character Encoding is not supported.
    * @throws IOException if an I/O error occurs opening the file.
    */
-  public static JSONValue parse(Path filePath, String charsetName) throws JSONParseException, UnsupportedEncodingException, IOException {
+  public static JSONValue parse(Path filePath, String charsetName) throws JSONParseException, IOException {
     byte[] data;
     data = Files.readAllBytes(filePath);
     String jsonString;
@@ -221,8 +221,8 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO in a {@link net.cabezudo.json.values.JSONObject}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be used as a
-   * object property.
+   * Convert a POJO in a {@link net.cabezudo.json.values.JSONObject}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order
+   * to be used as a object property.
    *
    * @param object the object to be converted.
    * @return a {@link net.cabezudo.json.values.JSONObject} created using the object passed.
@@ -232,8 +232,8 @@ public class JSON {
   }
 
   /**
-   * Convert a POJO into a {@link net.cabezudo.json.values.JSONValue}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in order to be included in
-   * the conversion. If the object is {@code Iterable} or the object is a primitive array the result is a {@link net.cabezudo.json.values.JSONArray}.
+   * Convert a POJO into a {@link net.cabezudo.json.values.JSONValue}. The object must have the properties annotated with {@link net.cabezudo.json.annotations.JSONProperty} in
+   * order to be included in the conversion. If the object is {@code Iterable} or the object is a primitive array the result is a {@link net.cabezudo.json.values.JSONArray}.
    *
    * @param object the object to be converted.
    * @return a {@link net.cabezudo.json.values.JSONValue} created using the object passed.
@@ -252,6 +252,18 @@ public class JSON {
       Iterable iterable = (Iterable) object;
       JSONArray jsonArray = new JSONArray();
       for (Object child : iterable) {
+        if (child.getClass().equals(object.getClass())) {
+          throw new RuntimeException("Circular reference from " + object.getClass().getName());
+        }
+        jsonValue = toJSONTree(child);
+        jsonArray.add(jsonValue);
+      }
+      return jsonArray;
+    }
+    if (object.getClass().isArray()) {
+      Object[] array = (Object[]) object;
+      JSONArray jsonArray = new JSONArray();
+      for (Object child : array) {
         jsonValue = toJSONTree(child);
         jsonArray.add(jsonValue);
       }
@@ -326,6 +338,10 @@ public class JSON {
     }
 
     return jsonObject;
+  }
+
+  public static String getIndent(int size) {
+    return "  ".repeat(size);
   }
 
   private JSON() {

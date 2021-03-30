@@ -29,8 +29,7 @@ import net.cabezudo.json.exceptions.InvalidOperationException;
  * The {code JSONElement} class is an abstract class to implement every element in a JSON structure.
  *
  * <p>
- * The class also provides additional default methods for implementing a specific element type and
- * the default methods implementation.
+ * The class also provides additional default methods for implementing a specific element type and the default methods implementation.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/03/2014
@@ -60,16 +59,14 @@ public abstract class JSONElement implements JSONable {
   /**
    * Defines the name of the field used to reference the object.
    *
-   * @param referenceFieldName a {@code String} with the name of the field to be used to refer to
-   * the object.
+   * @param referenceFieldName a {@code String} with the name of the field to be used to refer to the object.
    */
   public void setReferenceFieldName(String referenceFieldName) {
     this.referenceFieldName = referenceFieldName;
   }
 
   /**
-   * This forces the implementation of a method method that returns the result of replace the
-   * objects that can be referenced by their references.
+   * This forces the implementation of a method method that returns the result of replace the objects that can be referenced by their references.
    *
    * @return The element whose referable objects have been replaced with their references.
    */
@@ -113,8 +110,7 @@ public abstract class JSONElement implements JSONable {
   }
 
   /**
-   * Returns whether the element is referenceable or not. A element is referenceable if you can
-   * convert it into a reference.
+   * Returns whether the element is referenceable or not. A element is referenceable if you can convert it into a reference.
    *
    * @return {@code true} if the element is not referenceable, {@code false} otherwise.
    */
@@ -184,5 +180,16 @@ public abstract class JSONElement implements JSONable {
   @Override
   public String toString() {
     return toJSON();
+  }
+
+  /**
+   * Return a indented string representation for this object.
+   *
+   * @return a {@code String} with a representation of the object.
+   */
+  public String toFormatedString() {
+    StringBuilder sb = new StringBuilder();
+    toFormatedString(sb, 0, false);
+    return sb.toString();
   }
 }

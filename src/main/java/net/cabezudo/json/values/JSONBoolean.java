@@ -266,4 +266,9 @@ public class JSONBoolean extends JSONValue<JSONBoolean> {
     s[0] = value.toString();
     return s;
   }
+
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
+    sb.append(value.toString());
+  }
 }

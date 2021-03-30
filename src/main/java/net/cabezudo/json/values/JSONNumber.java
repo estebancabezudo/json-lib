@@ -413,4 +413,9 @@ public class JSONNumber extends JSONValue<JSONNumber> {
     return s;
   }
 
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean inclueFisrt) {
+    sb.append(value.toPlainString());
+  }
+
 }

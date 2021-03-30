@@ -493,4 +493,9 @@ public class JSONString extends JSONValue<JSONString> {
     array[0] = value;
     return array;
   }
+
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
+    sb.append("\"").append(value).append("\"");
+  }
 }

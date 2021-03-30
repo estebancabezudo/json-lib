@@ -23,13 +23,13 @@
  */
 package net.cabezudo.json.values;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import net.cabezudo.json.Position;
 
 /**
- * A {@link JSONNull} is an object extended from {@link JSONValue} object in order to represent a
- * null that can be used to create JSON structures.
+ * A {@link JSONNull} is an object extended from {@link JSONValue} object in order to represent a null that can be used to create JSON structures.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/01/2014
@@ -39,8 +39,8 @@ public class JSONNull extends JSONValue<JSONNull> {
   private final String nullString = "null";
 
   /**
-   * Construct a {@link net.cabezudo.json.values.JSONNull}. The method also takes a {@link Position}
-   * in order to save the position in origin and give it when a parse error is thrown.
+   * Construct a {@link net.cabezudo.json.values.JSONNull}. The method also takes a {@link Position} in order to save the position in origin and give it when a parse error is
+   * thrown.
    *
    * @param position the position of the value in the source.
    */
@@ -59,8 +59,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    * Compares two {@link net.cabezudo.json.values.JSONNull} objects.
    *
    * @param o the {@code Object} to be compared.
-   * @return {@code true} if {@code this} {@link net.cabezudo.json.values.JSONNull} is equal to the
-   * argument {@code false} otherwise.
+   * @return {@code true} if {@code this} {@link net.cabezudo.json.values.JSONNull} is equal to the argument {@code false} otherwise.
    */
   @Override
   public boolean equals(Object o) {
@@ -90,9 +89,17 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Return the referenced element for {@code this} object. For a
-   * {@link net.cabezudo.json.values.JSONNull} object, {@code this} object and the referenced
-   * version is the same.
+   * Convert {@code this} object to a {@code BigDecimal}.
+   *
+   * @return a {@code null}.
+   */
+  @Override
+  public BigDecimal toBigDecimal() {
+    return null;
+  }
+
+  /**
+   * Return the referenced element for {@code this} object. For a {@link net.cabezudo.json.values.JSONNull} object, {@code this} object and the referenced version is the same.
    *
    * @return {@code this} object.
    */
@@ -104,8 +111,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   /**
    * Returns whether the element is a {@link net.cabezudo.json.values.JSONNull} or not.
    *
-   * @return {@code true} if the element is a
-   * {@link net.cabezudo.json.values.JSONNull}; {@code false} otherwise.
+   * @return {@code true} if the element is a {@link net.cabezudo.json.values.JSONNull}; {@code false} otherwise.
    */
   @Override
   public boolean isNull() {
@@ -113,8 +119,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Convert {@code this} object to a string with the representation of the JSON structure in a JSON
-   * string form.
+   * Convert {@code this} object to a string with the representation of the JSON structure in a JSON string form.
    *
    * @return a {@code String} with the JSON string representation of {@code this} object.
    */
@@ -124,8 +129,7 @@ public class JSONNull extends JSONValue<JSONNull> {
   }
 
   /**
-   * Convert {@code this} object to a {@link JSONArray} object. The result {@link JSONArray} only
-   * has {@code this} element.
+   * Convert {@code this} object to a {@link JSONArray} object. The result {@link JSONArray} only has {@code this} element.
    *
    * @return a {@link JSONArray} object.
    */
@@ -200,4 +204,8 @@ public class JSONNull extends JSONValue<JSONNull> {
     return s;
   }
 
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
+    sb.append("null");
+  }
 }

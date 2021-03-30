@@ -66,4 +66,19 @@ public class Book implements JSONable {
   public JSONObject toJSONTree() {
     return JSON.toJSONObject(this);
   }
+
+  @Override
+  public String toFormatedString() {
+    StringBuilder sb = new StringBuilder();
+    toFormatedString(sb, 0, false);
+    return sb.toString();
+  }
+
+  @Override
+  public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
+    sb.append("{\n");
+    sb.append("  \"id\": \"").append(id).append("\",\n");
+    sb.append("  \"name\": \"").append(name).append("\",\n");
+    sb.append("}\n");
+  }
 }

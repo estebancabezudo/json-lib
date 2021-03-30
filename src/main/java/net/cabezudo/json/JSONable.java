@@ -26,8 +26,7 @@ package net.cabezudo.json;
 import net.cabezudo.json.values.JSONValue;
 
 /**
- * The user of this interface can convert the object in a JSON string representation of the object
- * and to a JSON structure representation of the object.
+ * The user of this interface can convert the object in a JSON string representation of the object and to a JSON structure representation of the object.
  *
  * @author <a href="http://cabezudo.net">Esteban Cabezudo</a>
  * @version 0.9, 10/23/2014
@@ -47,4 +46,18 @@ public interface JSONable {
    * @return a JSON structure representation of the object.
    */
   JSONValue toJSONTree();
+
+  /**
+   * Return a indent string representation for this object.
+   *
+   */
+  String toFormatedString();
+
+  /**
+   * Return a string representation for this object with the indent the specified in the parameter.
+   *
+   * @param sb An object {@code StringBuilder} to put the string.
+   * @param indent, boolean includeFirst a {@code int} with the indent number for this block of code
+   */
+  void toFormatedString(StringBuilder sb, int indent, boolean includeFirst);
 }
