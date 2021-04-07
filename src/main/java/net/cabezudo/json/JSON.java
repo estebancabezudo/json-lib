@@ -138,6 +138,10 @@ public class JSON {
    */
   public static JSONValue parse(String string) throws JSONParseException {
 
+    if (string == null) {
+      throw new JSONParseException("null string parameter.", Position.INITIAL);
+    }
+
     String quotationMarks = string.replaceAll("\\\"", "\"");
     String reverseSolidus = quotationMarks.replaceAll("\\\\\\\\", "\\\\\\\\");
     String solidus = reverseSolidus.replaceAll("\\/", "/");
@@ -146,9 +150,6 @@ public class JSON {
     String carriageReturns = lineFeeds.replaceAll("\\\\r", "\r");
     String horizontalTabs = carriageReturns.replaceAll("\\\\t", "\t");
 
-    if (string == null) {
-      throw new JSONParseException("null string parameter.", Position.INITIAL);
-    }
     String code = horizontalTabs.trim();
 
     if (code.isBlank()) {

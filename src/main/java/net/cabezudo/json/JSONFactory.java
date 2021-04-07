@@ -194,7 +194,6 @@ public class JSONFactory {
 
   private JSONValue get(Token token, Tokens tokens) throws JSONParseException {
 
-    Position position;
     JSONValue jsonValue;
 
     TokenType type = token.getType();
@@ -221,8 +220,7 @@ public class JSONFactory {
         jsonValue = new JSONNull();
         break;
       default:
-        position = token.getPosition();
-        throw new UnexpectedElementException("value", token.getValue(), position);
+        throw new UnexpectedElementException("value", token.getValue(), token.getPosition());
     }
     return jsonValue;
   }
@@ -245,7 +243,7 @@ public class JSONFactory {
       }
 
       JSONValue jsonValue = get(token, tokens);
-      position = jsonValue.getPosition();
+
       jsonArray.add(jsonValue);
 
       try {

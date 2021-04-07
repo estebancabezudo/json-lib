@@ -36,7 +36,7 @@ import net.cabezudo.json.Position;
  */
 public class JSONNull extends JSONValue<JSONNull> {
 
-  private final String nullString = "null";
+  public static final String NULL = "null";
 
   /**
    * Construct a {@link net.cabezudo.json.values.JSONNull}. The method also takes a {@link Position} in order to save the position in origin and give it when a parse error is
@@ -73,7 +73,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    */
   @Override
   public int hashCode() {
-    return this.nullString.hashCode();
+    return NULL.hashCode();
   }
 
   /**
@@ -125,7 +125,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    */
   @Override
   public String toJSON() {
-    return nullString;
+    return NULL;
   }
 
   /**
@@ -147,7 +147,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    */
   @Override
   public JSONString toJSONString() {
-    return new JSONString(nullString, getPosition());
+    return new JSONString(NULL, getPosition());
   }
 
   /**
@@ -189,7 +189,7 @@ public class JSONNull extends JSONValue<JSONNull> {
    */
   @Override
   public String toString() {
-    return null;
+    return NULL;
   }
 
   /**
@@ -200,12 +200,12 @@ public class JSONNull extends JSONValue<JSONNull> {
   @Override
   public String[] toStringArray() {
     String[] s = new String[1];
-    s[0] = nullString;
+    s[0] = NULL;
     return s;
   }
 
   @Override
   public void toFormatedString(StringBuilder sb, int indent, boolean includeFirst) {
-    sb.append("null");
+    sb.append(NULL);
   }
 }
