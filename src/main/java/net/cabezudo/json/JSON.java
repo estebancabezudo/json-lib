@@ -28,6 +28,7 @@ import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
+import java.nio.charset.Charset;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.ArrayList;
@@ -203,6 +204,20 @@ public class JSON {
     String jsonString;
     jsonString = new String(data, charsetName);
     return parse(jsonString);
+  }
+
+  /**
+   * This method take the information from a file and parses it to create a JSON structure of objects representation of JSON elements.
+   *
+   * @param filePath the {@link java.nio.file.Path} where is the file
+   * @param charset The file {@code Charset}
+   * @return A JSON structure of objects JSONValue and JSONPair representation of the data in the string.
+   * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The exception contains the information of the position where the parse error raise.
+   * @throws java.io.UnsupportedEncodingException if the Character Encoding is not supported.
+   * @throws IOException if an I/O error occurs opening the file.
+   */
+  public static JSONValue parse(Path filePath, Charset charset) throws JSONParseException, IOException {
+    return parse(filePath, charset.toString());
   }
 
   /**
