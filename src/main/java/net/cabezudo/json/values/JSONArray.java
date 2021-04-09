@@ -350,6 +350,22 @@ public class JSONArray extends JSONValue<JSONArray> implements Iterable<JSONValu
   }
 
   /**
+   * Convert the elements of {@code this} {@link net.cabezudo.json.values.JSONArray} in an array of primitive type {@code int}.
+   *
+   * @return an array of primitive type {@code int} with the values of {@code this} {@link net.cabezudo.json.values.JSONArray} elements.
+   */
+  @Override
+  public double[] toDoubleArray() {
+    double[] doubleArray = new double[list.size()];
+    int i = 0;
+    for (JSONValue jsonValue : list) {
+      doubleArray[i] = jsonValue.toDouble();
+      i++;
+    }
+    return doubleArray;
+  }
+
+  /**
    * Create a JSON string representation of {@code this} {@link net.cabezudo.json.values.JSONArray} including the JSON string representation of the elements.
    *
    * @return a {@code String} representation of {@code this} {@link net.cabezudo.json.values.JSONArray}.

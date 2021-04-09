@@ -120,6 +120,18 @@ public abstract class JSONValue<T> extends JSONElement implements Comparable<T> 
   }
 
   /**
+   * This method implements the default behavior to convert a value to an array of {@code double}
+   *
+   * object. The default behavior is to throw a {@link net.cabezudo.json.exceptions.JSONConversionException} Each class that implements a value may have a different behavior so it
+   * could override this method.
+   *
+   * @return an array of {@code double} values if the conversion is possible.
+   */
+  public double[] toDoubleArray() {
+    throw new JSONConversionException("I can't convert a " + this.getClass().getName() + " to a double array");
+  }
+
+  /**
    * This method implements the default behavior to convert a value to an array of {@code int}
    *
    * object. The default behavior is to throw a {@link net.cabezudo.json.exceptions.JSONConversionException} Each class that implements a value may have a different behavior so it
