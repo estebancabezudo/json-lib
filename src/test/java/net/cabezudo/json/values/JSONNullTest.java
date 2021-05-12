@@ -3,7 +3,6 @@ package net.cabezudo.json.values;
 import java.util.List;
 import net.cabezudo.json.exceptions.ElementNotExistException;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 import org.junit.Test;
 
 /**
@@ -112,7 +111,7 @@ public class JSONNullTest {
   public void testToString() {
     JSONNull jsonNull = new JSONNull();
     String string = jsonNull.toString();
-    assertNull(string);
+    assertEquals("null", string);
   }
 
   @Test

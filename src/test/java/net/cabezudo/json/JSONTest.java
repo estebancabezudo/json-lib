@@ -81,7 +81,7 @@ public class JSONTest {
 
     final File temporaryFile = folder.newFile("tempFile.txt");
     try {
-      try ( PrintWriter writer = new PrintWriter(temporaryFile, "UTF-8")) {
+      try (PrintWriter writer = new PrintWriter(temporaryFile, "UTF-8")) {
         writer.println("{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"Esteban Cabezudo\", \"number\": 234 } }");
       }
     } catch (FileNotFoundException | UnsupportedEncodingException e) {
@@ -226,6 +226,19 @@ public class JSONTest {
             + "}\n";
 
     String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": [  ], \"info\": \"one\" }";
+
+    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
+    assertEquals(expected, jsonValue.toJSON());
+  }
+
+  @Test
+  public void testParse14() throws JSONParseException {
+    String jsonStringData
+            = "{\n"
+            + "  \"opacity\": 0.03,\n"
+            + "}\n";
+
+    String expected = "{ \"opacity\": 0.03 }";
 
     JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());

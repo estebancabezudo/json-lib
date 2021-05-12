@@ -328,11 +328,10 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    */
   @Override
   public String toJSON() {
-    if (value.intValue() == 0) { // To fix Java 7 trailing bug
+    if (value.compareTo(BigDecimal.ZERO) == 0) { // To fix Java 7 trailing bug
       return "0";
     }
-    String out = value.stripTrailingZeros().toPlainString();
-    return out;
+    return value.stripTrailingZeros().toPlainString();
   }
 
   /**
