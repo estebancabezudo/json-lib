@@ -33,7 +33,7 @@ public class Position {
   private final int row;
   public final int line;
 
-  Position(int line, int row) {
+  public Position(int line, int row) {
     this.line = line;
     this.row = row;
   }

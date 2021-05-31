@@ -267,7 +267,7 @@ public class JSONFactory {
   }
 
   JSONObject getJSONObject(Tokens tokens, Position position) throws JSONParseException {
-    JSONObject jsonObject = new JSONObject();
+    JSONObject jsonObject = new JSONObject(position);
     Token token;
 
     if (!tokens.hasNext()) {
