@@ -38,6 +38,7 @@ import net.cabezudo.json.JSON;
 import net.cabezudo.json.JSONElement;
 import net.cabezudo.json.JSONPair;
 import net.cabezudo.json.Position;
+import net.cabezudo.json.exceptions.DuplicateKeyException;
 import net.cabezudo.json.exceptions.InvalidReferencedValue;
 import net.cabezudo.json.exceptions.JSONParseException;
 import net.cabezudo.json.exceptions.PropertyIndexNotExistException;
@@ -189,6 +190,33 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
         }
       }
     });
+  }
+
+  /**
+   * Add properties from a {@link net.cabezudo.json.values.JSONObject} to the actual object.If the property doesn't exists in the actual object add it.If the property exists in the
+   * actual object and the value is not an object, leave unchanged. If the property exists in the actual object and the value is an object merge the object.
+   *
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
+   * @param acceptDuplicates throw an exception if there is a key with the same path
+   * @throws net.cabezudo.json.exceptions.DuplicateKeyException
+   */
+  public void merge(JSONObject jsonObject, boolean acceptDuplicates) throws DuplicateKeyException {
+    for (JSONPair jsonPair : jsonObject.list) {
+      String key = jsonPair.getKey();
+      JSONValue value = this.getNullValue(key);
+      if (value == null) {
+        privateAdd(jsonPair);
+      } else {
+        if (value.isObject()) {
+          JSONObject object = value.toJSONObject();
+          object.merge(jsonPair.getValue().toJSONObject());
+        } else {
+          if (!acceptDuplicates) {
+            throw new DuplicateKeyException("The key " + key + " already defined", jsonPair.getPosition());
+          }
+        }
+      }
+    };
   }
 
   /**
