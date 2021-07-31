@@ -58,12 +58,12 @@ public class JSONObjectTest {
 
   @Test(expected = JSONParseException.class)
   public void testConstructorParseException() throws JSONParseException {
-    JSONObject jsonObject = new JSONObject("[1, 3, 4, 5]");
+    JSONObject jsonObject = new JSONObject("testConstructorParseException", "[1, 3, 4, 5]");
   }
 
   @Test
   public void testPositionConstructor() {
-    JSONObject jsonObject = new JSONObject(Position.INITIAL);
+    JSONObject jsonObject = new JSONObject(new Position("testPositionConstructor"));
   }
 
   @Test
@@ -71,7 +71,7 @@ public class JSONObjectTest {
     JSONPair a = new JSONPair("a", "a");
     JSONPair b = new JSONPair("b", "b");
     JSONPair c = new JSONPair("c", "c");
-    JSONObject jsonObjectExpected = new JSONObject("{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
+    JSONObject jsonObjectExpected = new JSONObject("testPairsConstructor", "{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
     JSONObject jsonObjectCreated = new JSONObject(a, b, c);
     System.out.println(jsonObjectExpected);
     System.out.println(jsonObjectCreated);
@@ -103,7 +103,7 @@ public class JSONObjectTest {
 
   @Test
   public void testGetKeyList() throws JSONParseException {
-    JSONObject jsonObject = new JSONObject("{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
+    JSONObject jsonObject = new JSONObject("testGetKeyList", "{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
     List<String> keyList = jsonObject.getKeyList();
     assertEquals("a", keyList.get(0));
     assertEquals("b", keyList.get(1));

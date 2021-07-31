@@ -31,10 +31,10 @@ import net.cabezudo.json.exceptions.UnexpectedElementException;
  */
 class Tokenizer {
 
-  static Tokens tokenize(String string) throws UnexpectedElementException {
+  static Tokens tokenize(String origin, String string) throws UnexpectedElementException {
     char[] chars = string.toCharArray();
     Tokens tokens = new Tokens();
-    Token token = new Token(Position.INITIAL);
+    Token token = new Token(new Position(origin));
     boolean isString = false;
 
     int line = token.getPosition().getLine();
@@ -56,7 +56,7 @@ class Tokenizer {
             token.append(c);
             isString = false;
             tokens.add(token);
-            token = new Token(new Position(line, row + 1));
+            token = new Token(new Position(origin, line, row + 1));
           } else {
             token.append(c);
           }
@@ -80,10 +80,10 @@ class Tokenizer {
           case '[':
           case ']':
             tokens.add(token);
-            token = new Token(new Position(line, row));
+            token = new Token(new Position(origin, line, row));
             token.append(c);
             tokens.add(token);
-            token = new Token(new Position(line, row + 1));
+            token = new Token(new Position(origin, line, row + 1));
             break;
           default:
             token.append(c);

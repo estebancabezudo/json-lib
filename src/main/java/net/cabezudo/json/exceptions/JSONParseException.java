@@ -39,14 +39,12 @@ public class JSONParseException extends Exception {
   private final Position position;
 
   /**
-   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail
-   * message, a cause, and a {@link net.cabezudo.json.Position}. The position is used to store a
-   * position of the property in a source in order to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail message, a cause, and a {@link net.cabezudo.json.Position}. The position is used
+   * to store a position of the property in a source in order to search the misspelled property.
    *
    * @param message the detail message.
-   * @param cause The cause (which is saved for later retrieval by the
-   * {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that
-   * the cause is nonexistent or unknown.)
+   * @param cause The cause (which is saved for later retrieval by the {@link java.lang.Throwable#getCause()} method. (A null value is permitted, and indicates that the cause is
+   * nonexistent or unknown.)
    * @param position the position to store.
    */
   public JSONParseException(String message, Throwable cause, Position position) {
@@ -55,9 +53,8 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail
-   * message, and a {@link net.cabezudo.json.Position}. The position is used to store a position of
-   * the property in a source in order to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.JSONParseException} with a specified detail message, and a {@link net.cabezudo.json.Position}. The position is used to store a
+   * position of the property in a source in order to search the misspelled property.
    *
    * @param message the detail message.
    * @param position the position to store.
@@ -68,8 +65,7 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Retrieve a {@link net.cabezudo.json.Position} object used to store additional data about the
-   * exception.
+   * Retrieve a {@link net.cabezudo.json.Position} object used to store additional data about the exception.
    *
    * @return the {@link net.cabezudo.json.Position} stored in the exception.
    */
@@ -78,14 +74,11 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Compares this exception to the specified object. The result is {@code true} if and only if the
-   * argument is not {@code null} and is a {@link net.cabezudo.json.exceptions.JSONParseException}
-   * object that has the same message and the same position as {@code this} object.
+   * Compares this exception to the specified object. The result is {@code true} if and only if the argument is not {@code null} and is a
+   * {@link net.cabezudo.json.exceptions.JSONParseException} object that has the same message and the same position as {@code this} object.
    *
-   * @param object The object to compare this
-   * {@link net.cabezudo.json.exceptions.JSONParseException} against
-   * @return {@code true} if the given object represents a
-   * {@link net.cabezudo.json.exceptions.JSONParseException} equivalent to {@code this}
+   * @param object The object to compare this {@link net.cabezudo.json.exceptions.JSONParseException} against
+   * @return {@code true} if the given object represents a {@link net.cabezudo.json.exceptions.JSONParseException} equivalent to {@code this}
    * {@link net.cabezudo.json.exceptions.JSONParseException}, {@code false} otherwise
    */
   @Override
@@ -105,9 +98,8 @@ public class JSONParseException extends Exception {
   }
 
   /**
-   * Returns a hash code for this {@link net.cabezudo.json.exceptions.JSONParseException}. The hash
-   * code for a {@link net.cabezudo.json.exceptions.JSONParseException} object is computed using the
-   * message and the position hash.
+   * Returns a hash code for this {@link net.cabezudo.json.exceptions.JSONParseException}. The hash code for a {@link net.cabezudo.json.exceptions.JSONParseException} object is
+   * computed using the message and the position hash.
    *
    * @return a hash code value for {@code this} object.
    */

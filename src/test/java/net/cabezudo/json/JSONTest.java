@@ -45,7 +45,7 @@ public class JSONTest {
   public void testParse() throws ElementNotExistException {
     String jsonUnparsedString = "{ \"array\": [ 1, 2, \"3\", 4], \"boolean\": true, \"null\": null, \"number\": 324, \"anotherNumber\": 324.3, \"object\": { \"string\": \"George \\\"Baby Face\\\" Nelson\", \"number\": 234 } }";
     try {
-      JSONObject jsonObject = JSON.parse(jsonUnparsedString).toJSONObject();
+      JSONObject jsonObject = JSON.parse("testParse", jsonUnparsedString).toJSONObject();
 
       JSONArray jsonArray = jsonObject.getJSONArray("array");
       JSONValue jsonValue = jsonArray.getValue(1);
@@ -128,7 +128,7 @@ public class JSONTest {
     String jsonStringData;
 
     jsonStringData = "[ ]";
-    JSON.parse(jsonStringData);
+    JSON.parse("", jsonStringData);
   }
 
   @Test(expected = EOSException.class)
@@ -136,7 +136,7 @@ public class JSONTest {
     String jsonStringData;
 
     jsonStringData = "[ \"John\", \"Peter\" ";
-    JSON.parse(jsonStringData);
+    JSON.parse("", jsonStringData);
   }
 
   @Test
@@ -172,7 +172,7 @@ public class JSONTest {
   @Test
   public void testParse08() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" } } ]";
-    JSON.parse(jsonStringData);
+    JSON.parse("", jsonStringData);
   }
 
   @Test
@@ -184,7 +184,7 @@ public class JSONTest {
   @Test
   public void testParse10() throws JSONParseException {
     String jsonStringData = "[ { \"person\": { \"name\": \"John\" } }, { \"person\": { \"name\": \"Peter\" }, \"position\": { \"name\": \"Technical leader\" } } ]";
-    JSON.parse(jsonStringData);
+    JSON.parse("", jsonStringData);
   }
 
   @Test
@@ -208,7 +208,7 @@ public class JSONTest {
 
     String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": {  }, \"info\": \"one\" }";
 
-    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
+    JSONObject jsonValue = JSON.parse("", jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());
   }
 
@@ -227,7 +227,7 @@ public class JSONTest {
 
     String expected = "{ \"coreVersion\": \"1.00.00\", \"general\": { \"initialSection\": \"sites.list\" }, \"data\": [  ], \"info\": \"one\" }";
 
-    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
+    JSONObject jsonValue = JSON.parse("", jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());
   }
 
@@ -240,7 +240,7 @@ public class JSONTest {
 
     String expected = "{ \"opacity\": 0.03 }";
 
-    JSONObject jsonValue = JSON.parse(jsonStringData).toJSONObject();
+    JSONObject jsonValue = JSON.parse("", jsonStringData).toJSONObject();
     assertEquals(expected, jsonValue.toJSON());
   }
 
@@ -256,7 +256,7 @@ public class JSONTest {
             + "  }\n"
             + "}\n";
     try {
-      JSONObject jsonData = JSON.parse(jsonStringData).toJSONObject();
+      JSONObject jsonData = JSON.parse("", jsonStringData).toJSONObject();
       assertEquals("1.00.00", jsonData.getString("coreVersion"));
       assertEquals("es", jsonData.digString("general.defaultLocale"));
       assertEquals("MX", jsonData.digString("general.defaultCountry"));
@@ -270,9 +270,9 @@ public class JSONTest {
           String jsonStringData, String value, int line, int row)
           throws JSONParseException {
     try {
-      JSON.parse(jsonStringData);
+      JSON.parse("", jsonStringData);
     } catch (UnexpectedElementException e) {
-      UnexpectedElementException expectedException = new UnexpectedElementException(value, new Position(line, row));
+      UnexpectedElementException expectedException = new UnexpectedElementException(value, new Position("", line, row));
       assertEquals(expectedException, e);
     }
   }
@@ -281,9 +281,9 @@ public class JSONTest {
           String jsonStringData, String expected, String have, int line, int row)
           throws JSONParseException {
     try {
-      JSON.parse(jsonStringData);
+      JSON.parse("", jsonStringData);
     } catch (UnexpectedElementException e) {
-      UnexpectedElementException expectedException = new UnexpectedElementException(expected, have, new Position(line, row));
+      UnexpectedElementException expectedException = new UnexpectedElementException(expected, have, new Position("", line, row));
       assertEquals(expectedException, e);
     }
   }

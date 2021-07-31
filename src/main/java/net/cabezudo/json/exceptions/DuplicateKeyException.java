@@ -33,7 +33,8 @@ import net.cabezudo.json.Position;
  */
 public class DuplicateKeyException extends Exception {
 
-  private final Position position;
+  private final Position actualKey;
+  private final Position newKey;
 
   /**
    * Constructs a {@link net.cabezudo.json.exceptions.DuplicateKeyException} with the specified detail message and a {@link net.cabezudo.json.Position}. The position is used to
@@ -42,9 +43,10 @@ public class DuplicateKeyException extends Exception {
    * @param message the detail message.
    * @param position the data position to store.
    */
-  public DuplicateKeyException(String message, Position position) {
+  public DuplicateKeyException(String message, Position actualKey, Position newKey) {
     super(message);
-    this.position = position;
+    this.actualKey = actualKey;
+    this.newKey = newKey;
   }
 
   /**
@@ -52,7 +54,11 @@ public class DuplicateKeyException extends Exception {
    *
    * @return the {@link net.cabezudo.json.Position} stored in the exception.
    */
-  public Position getPosition() {
-    return position;
+  public Position getActualKey() {
+    return actualKey;
+  }
+
+  public Position getNewKey() {
+    return newKey;
   }
 }

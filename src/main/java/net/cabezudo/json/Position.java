@@ -29,13 +29,22 @@ package net.cabezudo.json;
  */
 public class Position {
 
-  public static final Position INITIAL = new Position(1, 1);
+  private final String origin;
   private final int row;
   public final int line;
 
-  public Position(int line, int row) {
+  public Position(String origin) {
+    this(origin, 1, 1);
+  }
+
+  public Position(String origin, int line, int row) {
+    this.origin = origin;
     this.line = line;
     this.row = row;
+  }
+
+  public String getOrigin() {
+    return origin;
   }
 
   /**
@@ -58,7 +67,7 @@ public class Position {
 
   @Override
   public String toString() {
-    return " Line " + getLine() + ", row " + getRow();
+    return getOrigin() + ":" + getLine() + ":" + getRow();
   }
 
   @Override

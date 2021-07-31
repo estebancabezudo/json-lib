@@ -34,9 +34,8 @@ import net.cabezudo.json.Position;
 public class EOSException extends JSONParseException {
 
   /**
-   * Constructs a {@link net.cabezudo.json.exceptions.EOSException} with a
-   * {@link net.cabezudo.json.Position}. The position is used to store a position of the property in
-   * a source in order to search the misspelled property.
+   * Constructs a {@link net.cabezudo.json.exceptions.EOSException} with a {@link net.cabezudo.json.Position}. The position is used to store a position of the property in a source
+   * in order to search the misspelled property.
    *
    * @param position the position to store.
    */

@@ -181,9 +181,8 @@ public class JSONFactory {
     return new JSONString(value, token.getPosition());
   }
 
-  private JSONValue get(Tokens tokens) throws JSONParseException {
+  private JSONValue get(Position position, Tokens tokens) throws JSONParseException {
     Token token;
-    Position position = Position.INITIAL;
     try {
       token = tokens.consume();
     } catch (EmptyQueueException e) {
@@ -299,7 +298,7 @@ public class JSONFactory {
       if (token.getType() != TokenType.COLON) {
         throw new UnexpectedElementException("colon", token.getValue(), token.getPosition());
       }
-      JSONValue jsonValue = get(tokens);
+      JSONValue jsonValue = get(position, tokens);
       JSONPair jsonPair = new JSONPair(jsonKeyString.toString(), jsonValue, position);
       jsonObject.add(jsonPair);
 

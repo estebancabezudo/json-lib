@@ -70,14 +70,14 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
    * @param data The JSON string to parse.
    * @throws JSONParseException if the string passed by parameter can't be parsed.
    */
-  public JSONObject(String data) throws JSONParseException {
+  public JSONObject(String origin, String data) throws JSONParseException {
     super(null);
-    JSONValue jsonData = JSON.parse(data);
+    JSONValue jsonData = JSON.parse(origin, data);
     if (jsonData instanceof JSONObject) {
       JSONObject jsonObject = (JSONObject) jsonData;
       copy(jsonObject);
     } else {
-      throw new JSONParseException("I can't parse the parameter to a JSONObject.", Position.INITIAL);
+      throw new JSONParseException("I can't parse the parameter to a JSONObject.", new Position(origin));
     }
   }
 
@@ -212,7 +212,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
           object.merge(jsonPair.getValue().toJSONObject());
         } else {
           if (!acceptDuplicates) {
-            throw new DuplicateKeyException("The key " + key + " already defined", jsonPair.getPosition());
+            throw new DuplicateKeyException("The key " + key + " already defined.", jsonPair.getPosition(), value.getPosition());
           }
         }
       }
@@ -241,6 +241,39 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
         }
       }
     });
+  }
+
+  /**
+   * Replace the properties from a {@link net.cabezudo.json.values.JSONObject} in the actual object.If the property doesn't exists in the actual object.Add it. If the property
+   * exists in the actual object, and the value is not an object, and <tt>acceptDuplicates</tt> is <tt>true</tt> replace the value. If the property exists in the actual object, and
+   * the value is an object, and <tt>acceptDuplicates</tt> is <tt>true</tt> replace the object.
+   *
+   * @param jsonObject the {@link net.cabezudo.json.values.JSONObject} from which to add the properties..
+   * @param acceptDuplicates if <tt>true</tt> an existing key value is replaced, if <tt>false</tt> throw an exception when the key already exists
+   * @throws net.cabezudo.json.exceptions.DuplicateKeyException if the acceptDuplicates are <tt>false</tt> and the key already exists
+   */
+  public void replace(JSONObject jsonObject, boolean acceptDuplicates) throws DuplicateKeyException {
+    System.out.println("******************************************************************************** jsonObject " + jsonObject.getPosition());
+    for (JSONPair jsonPair : jsonObject.list) {
+      String key = jsonPair.getKey();
+      JSONValue value = this.getNullValue(key);
+      if (value == null) {
+        privateAdd(jsonPair);
+      } else {
+        System.out.println("******************************************************************************** value " + value.getPosition());
+        if (acceptDuplicates) {
+          if (value.isObject()) {
+            JSONObject object = value.toJSONObject();
+            object.replace(jsonPair.getValue().toJSONObject());
+          } else {
+            this.remove(key);
+            privateAdd(jsonPair);
+          }
+        } else {
+          throw new DuplicateKeyException("The key " + key + " already defined.", jsonPair.getPosition(), value.getPosition());
+        }
+      }
+    };
   }
 
   /**

@@ -80,15 +80,13 @@ public class JSON {
   public static final String SIMPLE_DATE_FORMAT_PATTERN = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
 
   public static void main(String... args) throws JSONParseException, PropertyNotExistException {
-//    JSONObject jsonObjectWithError = JSON.parse("{\"name\":\"\",\"hostname\":{}}").toJSONObject();
-//    JSONObject jsonObject = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"c\" } }").toJSONObject();
-//    JSONObject jsonObjectToMerge = JSON.parse("{ \"a\": { \"b\": \"b\", \"c\": \"cc\" } }").toJSONObject();
-//    jsonObject.merge(jsonObjectToMerge);
-    JSONObject json = JSON.parse("{ \"code\": \"\\b \\\" \\\\ \\/ \\b  \\f \\n \\r \\t resize(\\nwidth=1200, height=800)\"}").toJSONObject();
-    System.out.println(json);
-
-    String code = json.getString("code");
-    System.out.println(code);
+    JSONPair a = new JSONPair("a", "a");
+    JSONPair b = new JSONPair("b", "b");
+    JSONPair c = new JSONPair("c", "c");
+    JSONObject jsonObjectExpected = new JSONObject("main()", "{\"a\": \"a\", \"b\":\"b\", \"c\":\"c\"}");
+    JSONObject jsonObjectCreated = new JSONObject(a, b, c);
+    System.out.println(jsonObjectExpected);
+    System.out.println(jsonObjectCreated);
   }
 
   private static Object getFieldValue(Object object, String getterName) {
@@ -136,10 +134,10 @@ public class JSON {
    * @return the JSON structure.
    * @throws JSONParseException if the {@code String} does not contain a parseable JSON string. The exception contains the information of the position where the parse error raise.
    */
-  public static JSONValue parse(String string) throws JSONParseException {
+  public static JSONValue parse(String origin, String string) throws JSONParseException {
 
     if (string == null) {
-      throw new JSONParseException("null string parameter.", Position.INITIAL);
+      throw new JSONParseException("null string parameter.", new Position(origin));
     }
 
     String quotationMarks = string.replaceAll("\\\"", "\"");
@@ -153,16 +151,16 @@ public class JSON {
     String code = horizontalTabs.trim();
 
     if (code.isBlank()) {
-      throw new JSONParseException("Empty string.", Position.INITIAL);
+      throw new JSONParseException("Empty string.", new Position(origin));
     }
-    Tokens tokens = Tokenizer.tokenize(code);
+    Tokens tokens = Tokenizer.tokenize(origin, code);
     JSONValue jsonElement;
 
     Token token;
     try {
       token = tokens.consume();
     } catch (EmptyQueueException e) {
-      throw new JSONParseException("Nothing to parse.", e, Position.INITIAL);
+      throw new JSONParseException("Nothing to parse.", e, new Position(origin));
     }
 
     TokenType tokenType = token.getType();
@@ -204,7 +202,7 @@ public class JSON {
     data = Files.readAllBytes(filePath);
     String jsonString;
     jsonString = new String(data, charsetName);
-    return parse(jsonString);
+    return parse(filePath.toString(), jsonString);
   }
 
   /**
