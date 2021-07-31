@@ -72,7 +72,7 @@ public class Formatter {
             c = cs[i + 1];
             if (c == ',') {
               line += c;
-              i++;
+              i += 1;
             }
           }
           lines.add(line);

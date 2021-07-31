@@ -216,7 +216,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
           }
         }
       }
-    };
+    }
   }
 
   /**
@@ -1397,8 +1397,7 @@ public class JSONObject extends JSONValue<JSONObject> implements Iterable<JSONPa
     if (index < 0 || index > list.size()) {
       return null;
     }
-    JSONPair jsonPair = list.get(index);
-    return jsonPair;
+    return list.get(index);
   }
 
   /**

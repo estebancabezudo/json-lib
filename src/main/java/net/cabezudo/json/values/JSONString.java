@@ -181,7 +181,7 @@ public class JSONString extends JSONValue<JSONString> {
    */
   @Override
   public JSONValue[] toArray() {
-    JSONValue array[] = new JSONValue[1];
+    JSONValue[] array = new JSONValue[1];
     array[0] = new JSONString(value, getPosition());
     return array;
   }

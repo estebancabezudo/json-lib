@@ -240,8 +240,7 @@ public class JSONNumber extends JSONValue<JSONNumber> {
    */
   @Override
   public Byte toByte() {
-    byte b = value.byteValueExact();
-    return b;
+    return value.byteValueExact();
   }
 
   /**

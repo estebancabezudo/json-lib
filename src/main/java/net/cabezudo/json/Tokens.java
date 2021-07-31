@@ -26,6 +26,7 @@ package net.cabezudo.json;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.Queue;
+import static net.cabezudo.json.TokenType.SPACE;
 import net.cabezudo.json.exceptions.EmptyQueueException;
 import net.cabezudo.json.exceptions.UnexpectedElementException;
 
@@ -45,9 +46,8 @@ class Tokens implements Iterable<Token> {
     token.clasify();
 
     TokenType tokenType = token.getType();
-    switch (tokenType) {
-      case SPACE:
-        return false;
+    if (SPACE.equals(tokenType)) {
+      return false;
     }
 
     if (queue.isEmpty()) {

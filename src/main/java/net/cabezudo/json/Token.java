@@ -91,10 +91,8 @@ class Token {
         }
         break;
       case 2:
-        switch (s) {
-          case "\"\"":
-            type = TokenType.STRING;
-            break;
+        if ("\"\"".equals(s)) {
+          type = TokenType.STRING;
         }
         break;
     }
